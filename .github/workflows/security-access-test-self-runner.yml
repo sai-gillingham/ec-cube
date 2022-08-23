@@ -6,7 +6,7 @@ on:
 jobs:
   access_test:
     name: Access Security test
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Checkout
         uses: actions/checkout@master
@@ -78,7 +78,7 @@ jobs:
             safe_files_issue.txt
   csrf_test:
     name: ${{ matrix.job_name }} Security test (Apache)
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     strategy:
       fail-fast: false
       matrix:
