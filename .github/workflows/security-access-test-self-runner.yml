@@ -102,12 +102,12 @@ jobs:
           export LANGUAGE=ja_JP
       - name: Install Japanese language pack
         run: |
-          sudo apt-get install language-pack-ja
-          sudo apt-get install japan*
-          sudo apt-get install fonts-arphic-ukai fonts-arphic-uming fonts-ipafont-mincho fonts-ipafont-gothic fonts-unfonts-core
+          sudo apt-get -y install language-pack-ja
+          sudo apt-get -y install japan*
+          sudo apt-get -y install fonts-arphic-ukai fonts-arphic-uming fonts-ipafont-mincho fonts-ipafont-gothic fonts-unfonts-core
       - name: Get base fonts
         run: |
-          sudo apt-get install ttf-mscorefonts-installer
+          sudo apt-get -y install ttf-mscorefonts-installer
           sudo fc-cache -fv
       - name: Run Google Chrome in Japanese Language
         run: |
