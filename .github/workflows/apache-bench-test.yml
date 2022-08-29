@@ -444,20 +444,18 @@ jobs:
           echo "::set-output name=list_avg::${RESULT}"
           echo $RESULT
         # Upload Evidence
-
-      - name: Drop PGSQL ECCUBE for 4.1
-        run: |
-          docker-compose -f docker-compose.yml -f docker-compose.bench.pgsql.yml down -v
-
-      - env:
-          GROUP: ${{ matrix.group }}
-        if: always()
-        run: echo "ARTIFACT_NAME=$(echo ${GROUP} | sed 's,/,-,g')" >> $GITHUB_ENV
       - name: Collect docker logs on failure
         if: always()
         uses: jwalton/gh-docker-logs@v1
         with:
           dest: './logs'
+      - name: Drop PGSQL ECCUBE for 4.1
+        run: |
+          docker-compose -f docker-compose.yml -f docker-compose.bench.pgsql.yml down -v
+      - env:
+          GROUP: ${{ matrix.group }}
+        if: always()
+        run: echo "ARTIFACT_NAME=$(echo ${GROUP} | sed 's,/,-,g')" >> $GITHUB_ENV
       - name: Upload Docker Logs
         if: always()
         uses: actions/upload-artifact@v2
@@ -493,7 +491,6 @@ jobs:
         uses: actions/checkout@master
         with:
           ref: "feature/ab_testing"
-
       - name: docker build
         run: docker compose build
       - name: Get Composer Cache Directory
@@ -556,6 +553,11 @@ jobs:
           echo "::set-output name=list_avg::${RESULT}"
           echo $RESULT
         # Upload Evidence
+      - name: Collect docker logs on failure
+        if: always()
+        uses: jwalton/gh-docker-logs@v1
+        with:
+          dest: './logs'
       - name: Drop PGSQL ECCUBE for 4.2
         run: |
           docker-compose -f docker-compose.yml -f docker-compose.bench.pgsql.yml down -v
@@ -563,11 +565,6 @@ jobs:
           GROUP: ${{ matrix.group }}
         if: always()
         run: echo "ARTIFACT_NAME=$(echo ${GROUP} | sed 's,/,-,g')" >> $GITHUB_ENV
-      - name: Collect docker logs on failure
-        if: always()
-        uses: jwalton/gh-docker-logs@v1
-        with:
-          dest: './logs'
       - name: Upload Docker Logs
         if: always()
         uses: actions/upload-artifact@v2
