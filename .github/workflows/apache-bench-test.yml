@@ -366,7 +366,7 @@ jobs:
           docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml up -d
       - name: Install Composer
         run: |
-          docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml exec -T ec-cube composer install --prod --no-interaction -o --apcu-autoloader
+          docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml exec -T ec-cube composer install --no-interaction -o --apcu-autoloader
       - name: Setup database schema
         run: |
           docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml exec -T ec-cube  bin/console doctrine:schema:create --env=prod
@@ -453,7 +453,7 @@ jobs:
           docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml up -d
       - name: Install Composer
         run: |
-          docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml exec -T ec-cube composer install --prod --no-interaction -o --apcu-autoloader
+          docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml exec -T ec-cube composer install --no-interaction -o --apcu-autoloader
       - name: Setup database schema
         run: |
           docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml exec -T ec-cube  bin/console doctrine:schema:create --env=prod
