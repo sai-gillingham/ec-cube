@@ -388,12 +388,6 @@ jobs:
           APP_ENV: dev
         run: |
           docker compose -f docker-compose.yml -f docker-compose.pgsql.yml up -d --wait
-      - name: Create Database
-        run: |
-          docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml exec -T ec-cube  bin/console doctrine:schema:create --env=prod
-      - name: Setup database schema
-        run: |
-          docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml exec -T ec-cube  bin/console doctrine:schema:create --env=prod
       - name: Setup base fixtures
         run: |
           docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml exec -T ec-cube  bin/console eccube:fixtures:load --env=prod
@@ -498,12 +492,6 @@ jobs:
           APP_ENV: dev
         run: |
           docker compose -f docker-compose.yml -f docker-compose.pgsql.yml up -d --wait
-      - name: Create Database
-        run: |
-          docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml exec -T ec-cube  bin/console doctrine:schema:create --env=prod
-      - name: Setup database schema
-        run: |
-          docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml exec -T ec-cube  bin/console doctrine:schema:create --env=prod
       - name: Setup base fixtures
         run: |
           docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml exec -T ec-cube  bin/console eccube:fixtures:load --env=prod
