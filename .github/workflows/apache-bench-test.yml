@@ -360,21 +360,38 @@ jobs:
         uses: actions/checkout@master
         with:
           ref: "4.1"
-      - name: Start Load EC-CUBE
+
+      - name: docker build
+        run: docker compose build
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
         run: |
-          sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
-          docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml up -d
-      - name: Install Composer
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Setup PHP
+        uses: nanasess/setup-php@master
+        with:
+          php-version: 7.4
+
+      - name: composer install
+        run: composer install --dev --no-interaction -o --apcu-autoloader
+
+      - name: Setup to EC-CUBE
         env:
-          DATABASE_URL: "postgres://postgres:postgres@localhost:15432/postgres"
+          APP_ENV: dev
+          DATABASE_URL: postgres://dbuser:secret@127.0.0.1:15432/eccubedb
+          DATABASE_SERVER_VERSION: 14
         run: |
-          docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml exec -T ec-cube composer install --no-interaction -o --apcu-autoloader
-      - name: Setup database schema
-        run: |
-          docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml exec -T ec-cube  bin/console doctrine:schema:create --env=prod
-      - name: Setup base fixtures
-        run: |
-          docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml exec -T ec-cube  bin/console eccube:fixtures:load --env=prod
+          docker compose -f docker-compose.yml -f docker-compose.pgsql.yml up -d --wait
+
       - id: ec-four-one-pg-hp
         name: Request home page
         run: |
@@ -394,6 +411,7 @@ jobs:
           export RESULT=$(echo "scale=4; 1.0 * $SUM / $COUNT" | bc -l)
           echo "::set-output name=home_avg::${RESULT}"
           echo $RESULT
+
       - id: ec-four-one-pg-list
         name: Request list page
         run: |
@@ -414,9 +432,11 @@ jobs:
           echo "::set-output name=list_avg::${RESULT}"
           echo $RESULT
         # Upload Evidence
+
       - name: Drop PGSQL ECCUBE for 4.1
         run: |
           docker-compose -f docker-compose.yml -f docker-compose.bench.pgsql.yml down -v
+
       - env:
           GROUP: ${{ matrix.group }}
         if: always()
