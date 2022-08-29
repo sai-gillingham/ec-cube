@@ -177,13 +177,17 @@ jobs:
         uses: actions/checkout@master
         with:
           ref: "4.1"
+      - name: Start Load MySQL Only 4.1
+        run: |
+          sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
+          docker-compose -f docker-compose.bench.mysql.yml up -d mysql
+      - name: Wait 2 minutes for the database to load, (as I do not know the databases active state)
+        run: sleep 120s
+        shell: bash
       - name: Start Load EC-CUBE on 4.1
         run: |
           sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
           docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml up -d
-      - name: Wait 2 minutes for the database to load, (as I do not know the databases active state)
-        run: sleep 120s
-        shell: bash
       - id: ec-four-one-my-hp
         name: Request home page
         run: |
@@ -269,13 +273,17 @@ jobs:
         uses: actions/checkout@master
         with:
           ref: "feature/ab_testing"
+      - name: Start Load MySQL Only 4.2
+        run: |
+          sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
+          docker-compose -f docker-compose.bench.mysql.yml up -d mysql
+      - name: Wait 2 minutes for the database to load, (as I do not know the databases active state)
+        run: sleep 120s
+        shell: bash
       - name: Start Load EC-CUBE on 4.2
         run: |
           sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
           docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml up -d
-      - name: Wait 2 minutes for the database to load, (as I do not know the databases active state)
-        run: sleep 120s
-        shell: bash
       - id: ec-four-two-my-hp
         name: Request home page
         run: |
