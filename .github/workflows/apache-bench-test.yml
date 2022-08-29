@@ -366,7 +366,7 @@ jobs:
           docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml up -d
       - name: Setup ECCUBE (PQSQL)
         run: |
-          docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml exec ec-cube composer run-script compile
+          docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml exec -it ec-cube composer run-script compile
       - id: ec-four-one-pg-hp
         name: Request home page
         run: |
