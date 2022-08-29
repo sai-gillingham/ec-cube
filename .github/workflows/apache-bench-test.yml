@@ -272,26 +272,6 @@ jobs:
         uses: actions/checkout@master
         with:
           ref: "feature/ab_testing"
-
-      - name: docker build
-        run: docker compose build
-      - name: Get Composer Cache Directory
-        id: composer-cache
-        run: |
-          echo "::set-output name=dir::$(composer config cache-files-dir)"
-      - uses: actions/cache@v1
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-composer-
-      - name: Setup PHP
-        uses: nanasess/setup-php@master
-        with:
-          php-version: 7.4
-      - name: composer install
-        run: |
-          docker-compose run eccube composer install --no-scripts --no-autoloader --no-plugins
       - name: Start Load MySQL Only 4.2
         run: |
           sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
