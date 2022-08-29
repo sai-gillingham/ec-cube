@@ -365,6 +365,8 @@ jobs:
           sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
           docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml up -d
       - name: Install Composer
+        env:
+          DATABASE_URL: "postgres://postgres:postgres@localhost:15432/postgres"
         run: |
           docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml exec -T ec-cube composer install --no-interaction -o --apcu-autoloader
       - name: Setup database schema
@@ -447,19 +449,60 @@ jobs:
         uses: actions/checkout@master
         with:
           ref: "feature/ab_testing"
+
+      - name: docker build
+        run: docker compose build
+
+      - name: Setup PHP
+        uses: nanasess/setup-php@master
+        with:
+          php-version: 7.4
+
+      - name: Install Composer
+        run: |
+          apt install php-cli unzip -y
+          curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
+          php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Install Composer
+        env:
+          APP_ENV: prod
+          DATABASE_URL: "postgres://dbuser:secret@localhost:15432/eccubedb"
+          DATABASE_SERVER_VERSION: 14
+        run: |
+          composer install --no-interaction -o --apcu-autoloader
+
+      - name: Setup to EC-CUBE
+        env:
+          APP_ENV: prod
+          DATABASE_URL: "postgres://dbuser:secret@localhost:15432/eccubedb"
+          DATABASE_SERVER_VERSION: 14
+
       - name: Start Load EC-CUBE on 4.2
         run: |
           sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
           docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml up -d
-      - name: Install Composer
-        run: |
-          docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml exec -T ec-cube composer install --no-interaction -o --apcu-autoloader
+
       - name: Setup database schema
         run: |
           docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml exec -T ec-cube  bin/console doctrine:schema:create --env=prod
+
       - name: Setup base fixtures
         run: |
           docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml exec -T ec-cube  bin/console eccube:fixtures:load --env=prod
+
       - id: ec-four-two-pg-hp
         name: Request home page
         run: |
