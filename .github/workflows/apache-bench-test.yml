@@ -177,36 +177,15 @@ jobs:
         uses: actions/checkout@master
         with:
           ref: "4.1"
-
-      - name: docker build
-        run: docker compose build
-      - name: Get Composer Cache Directory
-        id: composer-cache
-        run: |
-          echo "::set-output name=dir::$(composer config cache-files-dir)"
-      - uses: actions/cache@v1
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-composer-
-      - name: Setup PHP
-        uses: nanasess/setup-php@master
-        with:
-          php-version: 7.4
-      - name: composer install
-        run: |
-          docker-compose run eccube composer install --no-scripts --no-autoloader --no-plugins
-      - name: Start Load MySQL Only 4.1
-        run: |
-          sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
-          docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml up -d mysql
-      - name: Wait 2 minutes for the database to load, (as I do not know the databases active state)
-        run: sleep 120s
-        shell: bash
       - name: Start Load EC-CUBE on 4.1
         run: |
           sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
+          docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml up -d
+      - name: Sleep for MySQL
+        run: sleep 120s
+        shell: bash
+      - name: Restart Load EC-CUBE to wait for MySQL
+        run: |
           docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml up -d
       - id: ec-four-one-my-hp
         name: Request home page
@@ -317,12 +296,11 @@ jobs:
         run: |
           sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
           docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml up -d mysql
-      - name: Wait 2 minutes for the database to load, (as I do not know the databases active state)
+      - name: Sleep for MySQL
         run: sleep 120s
         shell: bash
-      - name: Start Load EC-CUBE on 4.2
+      - name: Restart Load EC-CUBE to wait for MySQL
         run: |
-          sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
           docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml up -d
       - id: ec-four-two-my-hp
         name: Request home page
