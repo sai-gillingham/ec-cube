@@ -410,6 +410,8 @@ jobs:
           APP_ENV: dev
         run: |
           docker compose -f docker-compose.yml -f docker-compose.pgsql.yml up -d --wait
+      - name: Wait 2 minutes for the database to load, (as I do not know the databases active state)
+        run: sleep 120s
       - id: ec-four-one-pg-hp
         name: Request home page
         run: |
@@ -524,6 +526,8 @@ jobs:
           APP_ENV: dev
         run: |
           docker compose -f docker-compose.yml -f docker-compose.pgsql.yml up -d --wait
+      - name: Wait 2 minutes for the database to load, (as I do not know the databases active state)
+        run: sleep 120s
       - id: ec-four-two-pg-hp
         name: Request home page
         run: |
