@@ -280,7 +280,7 @@ jobs:
           sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
           docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml up -d
       - name: Sleep for MySQL
-        run: sleep 240s
+        run: sleep 120s
         shell: bash
       - name: Restart Load EC-CUBE to wait for MySQL
         run: |
