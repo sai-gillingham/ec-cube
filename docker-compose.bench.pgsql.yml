@@ -25,8 +25,3 @@ services:
       - pg-database:/var/lib/postgresql/data
     networks:
       - backend
-    healthcheck:
-      test: pg_isready -U dbuser
-      interval: 3s
-      timeout: 3s
-      retries: 50
