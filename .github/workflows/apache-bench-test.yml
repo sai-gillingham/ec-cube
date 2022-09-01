@@ -329,18 +329,9 @@ jobs:
           GROUP: ${{ matrix.group }}
         if: always()
         run: echo "ARTIFACT_NAME=$(echo ${GROUP} | sed 's,/,-,g')" >> $GITHUB_ENV
-      - name: Collect docker logs on failure
-        if: always()
+      - name: Dump docker logs on failure
+        if: failure()
         uses: jwalton/gh-docker-logs@v1
-        with:
-          dest: './logs'
-      - name: Upload Docker Logs
-        if: always()
-        uses: actions/upload-artifact@v2
-        with:
-          name: ab-${{ env.ARTIFACT_NAME }}-4-1-mysql-docker-logs
-          path: |
-            logs
       - name: Upload ECCUBE 4.2 - MYSQL evidence
         if: always()
         uses: actions/upload-artifact@v2
