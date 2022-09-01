@@ -31,4 +31,4 @@ services:
       test: mysqladmin ping
       interval: 3s
       timeout: 3s
-      retries: 3
+      retries: 50
