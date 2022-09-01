@@ -182,11 +182,8 @@ jobs:
           sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
           docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml up -d
       - name: Sleep for MySQL
-        run: sleep 120s
+        run: sleep 60s
         shell: bash
-      - name: Restart Load EC-CUBE to wait for MySQL
-        run: |
-          docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml up -d
       - id: ec-four-one-my-hp
         name: Request home page
         run: |
@@ -275,12 +272,6 @@ jobs:
       - name: Start Load MySQL Only 4.2
         run: |
           sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
-          docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml up -d
-      - name: Sleep for MySQL
-        run: sleep 120s
-        shell: bash
-      - name: Restart Load EC-CUBE to wait for MySQL
-        run: |
           docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml up -d
       - id: ec-four-two-my-hp
         name: Request home page
