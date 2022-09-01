@@ -320,11 +320,6 @@ jobs:
           export RESULT=$(echo "scale=4; 1.0 * $SUM / $COUNT" | bc -l)
           echo "::set-output name=list_avg::${RESULT}"
           echo $RESULT
-      - name: Collect docker logs on failure
-        if: always()
-        uses: jwalton/gh-docker-logs@v1
-        with:
-          dest: './logs'
       - name: Drop MYSQL ECCUBE for 4.2
         run: |
           docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml down -v
@@ -334,6 +329,11 @@ jobs:
           GROUP: ${{ matrix.group }}
         if: always()
         run: echo "ARTIFACT_NAME=$(echo ${GROUP} | sed 's,/,-,g')" >> $GITHUB_ENV
+      - name: Collect docker logs on failure
+        if: always()
+        uses: jwalton/gh-docker-logs@v1
+        with:
+          dest: './logs'
       - name: Upload Docker Logs
         if: always()
         uses: actions/upload-artifact@v2
