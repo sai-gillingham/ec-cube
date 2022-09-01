@@ -6,15 +6,15 @@ volumes:
 
 services:
   ec-cube:
-    depends_on:
-      mysql:
-        condition: service_healthy
     environment:
       DATABASE_URL: "mysql://dbuser:secret@mysql/eccubedb"
       DATABASE_SERVER_VERSION: 5.7
       DATABASE_CHARSET: 'utf8mb4'
 
   mysql:
+    depends_on:
+      mysql:
+        condition: service_healthy
     build:
       context: .github/workflows/mysql
       dockerfile: Dockerfile
