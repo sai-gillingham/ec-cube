@@ -11,8 +11,6 @@ if [ ! -d /var/www/html/vendor/bin ]; then
     chown -R www-data: vendor
 fi
 
-sleep 120
-
 bin/console doctrine:query:sql 'select * from dtb_base_info' > /dev/null 2>&1 || (
     if [ -z ${DATABASE_URL} ]; then
         cp .env.dist .env
