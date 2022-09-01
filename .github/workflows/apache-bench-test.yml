@@ -383,8 +383,6 @@ jobs:
         with:
           ref: "4.1"
       - name: Setup to EC-CUBE
-        env:
-          APP_ENV: dev
         run: |
           sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
           docker compose -f docker-compose.yml -f docker-compose.pgsql.yml up -d --wait
