@@ -532,7 +532,7 @@ jobs:
         name: Request home page
         run: |
           sudo apt-get install apache2-utils
-          sudo wget -q -O visible_home_html.html http://localhost:8080
+          wget -q -O visible_home_html.html http://localhost:8080
           sudo ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.2-home_1.txt
           sudo ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.2-home_2.txt
           sudo ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.2-home_3.txt
@@ -552,7 +552,7 @@ jobs:
         name: Request list page
         run: |
           sudo apt-get install apache2-utils
-          sudo wget -q -O visible_list_html.html http://localhost:8080/products/list
+          wget -q -O visible_list_html.html http://localhost:8080/products/list
           sudo ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.2-list_1.txt
           sudo ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.2-list_2.txt
           sudo ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.2-list_3.txt
