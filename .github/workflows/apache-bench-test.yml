@@ -148,22 +148,22 @@ jobs:
           GROUP: ${{ matrix.group }}
         if: always()
         run: echo "ARTIFACT_NAME=$(echo ${GROUP} | sed 's,/,-,g')" >> $GITHUB_ENV
-#      - name: Upload ECCUBE 4.2 - PGSQL evidence
-#        if: always()
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: ab-${{ env.ARTIFACT_NAME }}-4-2-pg
-#          path: |
-#            pg-4.2-home_1.txt
-#            pg-4.2-home_2.txt
-#            pg-4.2-home_3.txt
-#            pg-4.2-home_4.txt
-#            pg-4.2-home_5.txt
-#            pg-4.2-list_1.txt
-#            pg-4.2-list_2.txt
-#            pg-4.2-list_3.txt
-#            pg-4.2-list_4.txt
-#            pg-4.2-list_5.txt
+      - name: Upload ECCUBE 4.2 - PGSQL evidence
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: ab-${{ env.ARTIFACT_NAME }}-4-2-pg
+          path: |
+            pg-4.2-home_1.txt
+            pg-4.2-home_2.txt
+            pg-4.2-home_3.txt
+            pg-4.2-home_4.txt
+            pg-4.2-home_5.txt
+            pg-4.2-list_1.txt
+            pg-4.2-list_2.txt
+            pg-4.2-list_3.txt
+            pg-4.2-list_4.txt
+            pg-4.2-list_5.txt
     outputs:
       home_avg: ${{ steps.ec-four-two-pg-hp.outputs.home_avg }}
       list_avg: ${{ steps.ec-four-two-pg-list.outputs.list_avg }}
