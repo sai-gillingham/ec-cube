@@ -98,7 +98,7 @@ jobs:
       - name: Start Load EC-CUBE on 4.2
         run: |
           sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
-          docker-compose -f docker-compose.yml -f docker-compose.bench.pgsql.yml up -d --wait
+          docker-compose -f docker-compose.yml -f docker-compose.bench.pgsql.yml up -d
       - name: Wait 2 minutes for the database to load, (as I do not know the databases active state)
         run: sleep 60s
         shell: bash
@@ -275,7 +275,7 @@ jobs:
       - name: Start Load MySQL Only 4.2
         run: |
           sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
-          docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml up -d --wait
+          docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml up -d
       - id: ec-four-two-my-hp
         name: Request home page
         run: |
@@ -666,7 +666,7 @@ jobs:
       - name: Start Load EC-CUBE on 4.2
         run: |
           sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
-          docker-compose -f docker-compose.yml -f docker-compose.mysql.yml up -d --wait
+          docker-compose -f docker-compose.yml -f docker-compose.mysql.yml up -d
       - name: Wait for 30 seconds for the database to load, (because MySQL is slow to initialize)
         run: sleep 30s
         shell: bash
