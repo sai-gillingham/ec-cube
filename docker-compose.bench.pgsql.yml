@@ -6,9 +6,6 @@ volumes:
 
 services:
   ec-cube:
-    depends_on:
-      postgres:
-        condition: service_healthy
     environment:
       DATABASE_URL: "postgres://dbuser:secret@postgres/eccubedb"
       DATABASE_SERVER_VERSION: 14

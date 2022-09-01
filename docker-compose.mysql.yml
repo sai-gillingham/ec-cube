@@ -28,6 +28,7 @@ services:
     networks:
       - backend
     healthcheck:
-      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
-      timeout: 20s
+      test: mysqladmin ping
+      interval: 3s
+      timeout: 3s
       retries: 50
