@@ -530,14 +530,14 @@ jobs:
         run: sleep 120s
       - id: ec-four-two-pg-hp
         name: Request home page
+        #  wget -q -O visible_home_html.html http://localhost:8080
         run: |
           sudo apt-get install apache2-utils
-          sudo wget -q -O visible_home_html.html http://localhost:8080
-          sudo ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.2-home_1.txt
-          sudo ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.2-home_2.txt
-          sudo ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.2-home_3.txt
-          sudo ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.2-home_4.txt
-          sudo ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.2-home_5.txt
+          ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.2-home_1.txt
+          ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.2-home_2.txt
+          ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.2-home_3.txt
+          ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.2-home_4.txt
+          ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.2-home_5.txt
           export PG_4_2_HOME_1="$(tail -n +23 pg-4.2-home_1.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
           export PG_4_2_HOME_2="$(tail -n +23 pg-4.2-home_2.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
           export PG_4_2_HOME_3="$(tail -n +23 pg-4.2-home_3.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
@@ -549,15 +549,15 @@ jobs:
           echo "::set-output name=home_avg::${RESULT}"
           echo $RESULT
       - id: ec-four-two-pg-list
+        #  wget -q -O visible_list_html.html http://localhost:8080/products/list
         name: Request list page
         run: |
           sudo apt-get install apache2-utils
-          sudo wget -q -O visible_list_html.html http://localhost:8080/products/list
-          sudo ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.2-list_1.txt
-          sudo ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.2-list_2.txt
-          sudo ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.2-list_3.txt
-          sudo ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.2-list_4.txt
-          sudo ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.2-list_5.txt
+          ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.2-list_1.txt
+          ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.2-list_2.txt
+          ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.2-list_3.txt
+          ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.2-list_4.txt
+          ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.2-list_5.txt
           export PG_4_2_LIST_1="$(tail -n +23 pg-4.2-list_1.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
           export PG_4_2_LIST_2="$(tail -n +23 pg-4.2-list_2.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
           export PG_4_2_LIST_3="$(tail -n +23 pg-4.2-list_3.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
