@@ -276,12 +276,6 @@ jobs:
         run: |
           sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
           docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml up -d
-      - name: Sleep for MySQL
-        run: sleep 120s
-        shell: bash
-      - name: Restart Load EC-CUBE to wait for MySQL
-        run: |
-          docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml up -d
       - id: ec-four-two-my-hp
         name: Request home page
         run: |
@@ -492,8 +486,6 @@ jobs:
         run: |
           sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
           docker compose -f docker-compose.yml -f docker-compose.pgsql.yml up -d --wait
-      - name: Wait 2 minutes for the database to load, (as I do not know the databases active state)
-        run: sleep 120s
       - id: ec-four-two-pg-hp
         name: Request home page
         run: |
