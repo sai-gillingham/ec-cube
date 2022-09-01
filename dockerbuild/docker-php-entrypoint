@@ -12,7 +12,15 @@ if [ ! -d /var/www/html/vendor/bin ]; then
 fi
 
 bin/console doctrine:query:sql 'select * from dtb_base_info' > /dev/null 2>&1 || (
+    if [ -z ${DATABASE_URL} ]; then
+        cp .env.dist .env
+    fi
     composer run-script installer-scripts
+    find ${APACHE_DOCUMENT_ROOT} \( -path ${APACHE_DOCUMENT_ROOT}/vendor -prune \) -or -print0 \
+        | xargs -0 chown www-data:www-data
+    find ${APACHE_DOCUMENT_ROOT} \( -path ${APACHE_DOCUMENT_ROOT}/vendor -prune \) -or \( -type d -print0 \) \
+      | xargs -0 chmod g+s
+    composer run-script auto-scripts
 )
 find ${APACHE_DOCUMENT_ROOT} \( -path ${APACHE_DOCUMENT_ROOT}/vendor -prune \) -or -print0 \
     | xargs -0 chown www-data:www-data
