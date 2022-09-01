@@ -11,16 +11,16 @@ if [ ! -d /var/www/html/vendor/bin ]; then
     chown -R www-data: vendor
 fi
 
-bin/console doctrine:query:sql 'select * from dtb_base_info' > /dev/null 2>&1 || (
-    composer run-script installer-scripts
-
-)
-cp .env.dist .env
-composer run-script auto-scripts
-find ${APACHE_DOCUMENT_ROOT} \( -path ${APACHE_DOCUMENT_ROOT}/vendor -prune \) -or -print0 \
-    | xargs -0 chown www-data:www-data
-find ${APACHE_DOCUMENT_ROOT} \( -path ${APACHE_DOCUMENT_ROOT}/vendor -prune \) -or \( -type d -print0 \) \
-  | xargs -0 chmod g+s
+#bin/console doctrine:query:sql 'select * from dtb_base_info' > /dev/null 2>&1 || (
+#    composer run-script installer-scripts
+#
+#)
+#cp .env.dist .env
+#composer run-script auto-scripts
+#find ${APACHE_DOCUMENT_ROOT} \( -path ${APACHE_DOCUMENT_ROOT}/vendor -prune \) -or -print0 \
+#    | xargs -0 chown www-data:www-data
+#find ${APACHE_DOCUMENT_ROOT} \( -path ${APACHE_DOCUMENT_ROOT}/vendor -prune \) -or \( -type d -print0 \) \
+#  | xargs -0 chmod g+s
 
 echo "PassEnv APP_ENV APP_DEBUG TRUSTED_PROXIES TRUSTED_HOSTS" > /etc/apache2/conf-enabled/eccube_env.conf
 
