@@ -180,7 +180,7 @@ jobs:
       - name: Start Load EC-CUBE on 4.1
         run: |
           sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
-          docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml up -d
+          docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml up -d mysql
       - name: Sleep for MySQL
         run: sleep 120s
         shell: bash
@@ -275,7 +275,7 @@ jobs:
       - name: Start Load MySQL Only 4.2
         run: |
           sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
-          docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml up -d
+          docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml up -d mysql
       - name: Sleep for MySQL
         run: sleep 120s
         shell: bash
