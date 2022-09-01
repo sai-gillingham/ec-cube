@@ -187,6 +187,9 @@ jobs:
       - name: Restart Load EC-CUBE to wait for MySQL
         run: |
           docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml up -d
+      - name: Sleep for MySQL
+        run: sleep 30s
+        shell: bash
       - id: ec-four-one-my-hp
         name: Request home page
         run: |
