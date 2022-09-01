@@ -338,7 +338,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: ab-${{ env.ARTIFACT_NAME }}-4-2-mysql-docker-logs
+          name: ab-${{ env.ARTIFACT_NAME }}-4-2-1man-mysql-docker-logs
           path: |
             logs
       - name: Upload ECCUBE 4.2 - MYSQL evidence
