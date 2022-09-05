@@ -2,7 +2,7 @@ monolog:
     handlers:
         e_user_deprecated_filter:
             type: filter
-            accepted_levels: ['info', 'warning']
+            accepted_levels: ['info']
             channels: ['php']
             handler: blackhole
             bubble: false
