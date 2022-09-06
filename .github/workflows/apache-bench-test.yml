@@ -17,6 +17,7 @@ jobs:
       - name: Download 4.2 Apache Bench Data
         run: |
           mkdir .github/workflows/pgsql
+          sudo chmod 777 .github/workflows/pgsql
           curl -LJO https://raw.githubusercontent.com/sai-gillingham/ec-cube/feature/ab_testing/docker-compose.bench.pgsql.yml -o docker-compose.bench.pgsql.yml
           if [ ! -f docker-compose.bench.pgsql.yml ]; then
             echo "docker-compose.bench.pgsql.yml File not found!"
@@ -205,6 +206,7 @@ jobs:
       - name: Download 4.2 Apache Bench Data
         run: |
           mkdir .github/workflows/mysql
+          sudo chmod 777 .github/workflows/mysql
           curl -LJO https://raw.githubusercontent.com/sai-gillingham/ec-cube/feature/ab_testing/docker-compose.bench.mysql.yml -o docker-compose.bench.mysql.yml
           if [ ! -f docker-compose.bench.mysql.yml ]; then
             echo "docker-compose.bench.mysql.yml File not found!"
