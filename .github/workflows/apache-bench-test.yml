@@ -110,6 +110,8 @@ jobs:
     outputs:
       home_avg: ${{ steps.ec-four-one-pg-hp.outputs.home_avg }}
       list_avg: ${{ steps.ec-four-one-pg-list.outputs.list_avg }}
+      home_rps_avg: ${{ steps.ec-four-one-pg-hp.outputs.home_rps_avg }}
+      list_rps_avg: ${{ steps.ec-four-one-pg-list.outputs.list_rps_avg }}
   load-test-4-2-pg:
     name: EC-CUBE 4.2 for Postgresql - 10,000 Products
     runs-on: ubuntu-latest
@@ -193,6 +195,8 @@ jobs:
     outputs:
       home_avg: ${{ steps.ec-four-two-pg-hp.outputs.home_avg }}
       list_avg: ${{ steps.ec-four-two-pg-list.outputs.list_avg }}
+      home_rps_avg: ${{ steps.ec-four-two-pg-hp.outputs.home_rps_avg }}
+      list_rps_avg: ${{ steps.ec-four-two-pg-list.outputs.list_rps_avg }}
   load-test-4-1-mysql:
     name: EC-CUBE 4.1 for MySQL - 10,000 Products
     runs-on: ubuntu-latest
@@ -304,6 +308,8 @@ jobs:
     outputs:
       home_avg: ${{ steps.ec-four-one-my-hp.outputs.home_avg }}
       list_avg: ${{ steps.ec-four-one-my-list.outputs.list_avg }}
+      home_rps_avg: ${{ steps.ec-four-one-my-hp.outputs.home_rps_avg }}
+      list_rps_avg: ${{ steps.ec-four-one-my-list.outputs.list_rps_avg }}
   load-test-4-2-mysql:
     name: EC-CUBE 4.2 for MySQL - 10,000 Products
     runs-on: ubuntu-latest
@@ -394,6 +400,8 @@ jobs:
     outputs:
       home_avg: ${{ steps.ec-four-two-my-hp.outputs.home_avg }}
       list_avg: ${{ steps.ec-four-two-my-list.outputs.list_avg }}
+      home_rps_avg: ${{ steps.ec-four-two-my-hp.outputs.home_rps_avg }}
+      list_rps_avg: ${{ steps.ec-four-two-my-list.outputs.list_rps_avg }}
 
   calculate-total-result-products:
     name: Total Calculation Result - 10,000 Products
@@ -492,6 +500,9 @@ jobs:
     outputs:
       home_avg: ${{ steps.ec-four-one-pg-hp.outputs.home_avg }}
       list_avg: ${{ steps.ec-four-one-pg-list.outputs.list_avg }}
+      home_rps_avg: ${{ steps.ec-four-one-pg-hp.outputs.home_rps_avg }}
+      list_rps_avg: ${{ steps.ec-four-one-pg-list.outputs.list_rps_avg }}
+
   load-test-4-2-pg-base:
     name: Base EC-CUBE 4.2 for Postgresql - Base
     runs-on: ubuntu-latest
@@ -576,6 +587,8 @@ jobs:
     outputs:
       home_avg: ${{ steps.ec-four-two-pg-hp.outputs.home_avg }}
       list_avg: ${{ steps.ec-four-two-pg-list.outputs.list_avg }}
+      home_rps_avg: ${{ steps.ec-four-two-pg-hp.outputs.home_rps_avg }}
+      list_rps_avg: ${{ steps.ec-four-two-pg-list.outputs.list_rps_avg }}
   load-test-4-1-mysql-base:
     name: Base EC-CUBE 4.1 for MySQL - Base
     runs-on: ubuntu-latest
@@ -659,6 +672,8 @@ jobs:
     outputs:
       home_avg: ${{ steps.ec-four-one-my-hp.outputs.home_avg }}
       list_avg: ${{ steps.ec-four-one-my-list.outputs.list_avg }}
+      home_rps_avg: ${{ steps.ec-four-one-my-hp.outputs.home_rps_avg }}
+      list_rps_avg: ${{ steps.ec-four-one-my-list.outputs.list_rps_avg }}
   load-test-4-2-mysql-base:
     name: Base EC-CUBE 4.2 for MySQL - Base
     runs-on: ubuntu-latest
@@ -743,6 +758,8 @@ jobs:
     outputs:
       home_avg: ${{ steps.ec-four-two-my-hp.outputs.home_avg }}
       list_avg: ${{ steps.ec-four-two-my-list.outputs.list_avg }}
+      home_rps_avg: ${{ steps.ec-four-two-my-hp.outputs.home_rps_avg }}
+      list_rps_avg: ${{ steps.ec-four-two-my-list.outputs.list_rps_avg }}
   calculate-total-result-base:
     name: Total Calculation Result - Base
     runs-on: ubuntu-latest
