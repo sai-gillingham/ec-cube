@@ -484,7 +484,7 @@ jobs:
         # Upload Evidence
       - name: Drop PGSQL ECCUBE for 4.1
         run: |
-          docker-compose -f docker-compose.yml -f docker-compose.bench.pgsql.yml down -v
+          docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml down -v
       - env:
           GROUP: ${{ matrix.group }}
         if: always()
@@ -568,7 +568,7 @@ jobs:
         # Upload Evidence
       - name: Drop PGSQL ECCUBE for 4.2
         run: |
-          docker-compose -f docker-compose.yml -f docker-compose.bench.pgsql.yml down -v
+          docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml down -v
       - env:
           GROUP: ${{ matrix.group }}
         if: always()
@@ -651,7 +651,7 @@ jobs:
           echo "REQUESTS PER SECOND AVG: ${RPS_RESULT}"
       - name: Drop MYSQL ECCUBE for 4.1
         run: |
-          docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml down -v
+          docker-compose -f docker-compose.yml -f docker-compose.mysql.yml down -v
       - env:
           GROUP: ${{ matrix.group }}
         if: always()
@@ -733,7 +733,7 @@ jobs:
           echo "REQUESTS PER SECOND AVG: ${RPS_RESULT}"
       - name: Drop MYSQL ECCUBE for 4.2
         run: |
-          docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml down -v
+          docker-compose -f docker-compose.yml -f docker-compose.mysql.yml down -v
       # Upload Evidence
       ## FINALISE
       - env:
