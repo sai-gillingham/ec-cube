@@ -14,6 +14,14 @@ jobs:
         uses: actions/checkout@master
         with:
           ref: "4.1"
+      - name: Download 4.2 Apache Bench Data
+        run: |
+          curl -LJO https://raw.githubusercontent.com/sai-gillingham/ec-cube/feature/ab_testing/docker-compose.bench.mysql.yml -o docker-compose.bench.mysql.yml
+          curl -LJO https://raw.githubusercontent.com/sai-gillingham/ec-cube/feature/ab_testing/docker-compose.bench.pgsql.yml -o docker-compose.bench.pgsql.yml
+          curl -LJO https://raw.githubusercontent.com/sai-gillingham/ec-cube/feature/ab_testing/.github/workflows/mysql/mysql_localhost-2022_07_06_19_15_00-dump.sql -o .github/workflows/mysql/mysql_localhost-2022_07_06_19_15_00-dump.sql
+          curl -LJO https://raw.githubusercontent.com/sai-gillingham/ec-cube/feature/ab_testing/.github/workflows/mysql/DockerFile -o .github/workflows/mysql/DockerFile
+          curl -LJO https://raw.githubusercontent.com/sai-gillingham/ec-cube/feature/ab_testing/.github/workflows/pgsql/eccubedb_localhost-2022_06_30_17_25_15-dump.sql -o .github/workflows/pgsql/eccubedb_localhost-2022_06_30_17_25_15-dump.sql
+          curl -LJO https://raw.githubusercontent.com/sai-gillingham/ec-cube/feature/ab_testing/.github/workflows/pgsql/DockerFile -o .github/workflows/pgsql/DockerFile
       - name: Start Load EC-CUBE
         run: |
           sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
@@ -181,6 +189,14 @@ jobs:
         uses: actions/checkout@master
         with:
           ref: "4.1"
+      - name: Download 4.2 Apache Bench Data
+        run: |
+          curl -LJO https://raw.githubusercontent.com/sai-gillingham/ec-cube/feature/ab_testing/docker-compose.bench.mysql.yml -o docker-compose.bench.mysql.yml
+          curl -LJO https://raw.githubusercontent.com/sai-gillingham/ec-cube/feature/ab_testing/docker-compose.bench.pgsql.yml -o docker-compose.bench.pgsql.yml
+          curl -LJO https://raw.githubusercontent.com/sai-gillingham/ec-cube/feature/ab_testing/.github/workflows/mysql/mysql_localhost-2022_07_06_19_15_00-dump.sql -o .github/workflows/mysql/mysql_localhost-2022_07_06_19_15_00-dump.sql
+          curl -LJO https://raw.githubusercontent.com/sai-gillingham/ec-cube/feature/ab_testing/.github/workflows/mysql/DockerFile -o .github/workflows/mysql/DockerFile
+          curl -LJO https://raw.githubusercontent.com/sai-gillingham/ec-cube/feature/ab_testing/.github/workflows/pgsql/eccubedb_localhost-2022_06_30_17_25_15-dump.sql -o .github/workflows/pgsql/eccubedb_localhost-2022_06_30_17_25_15-dump.sql
+          curl -LJO https://raw.githubusercontent.com/sai-gillingham/ec-cube/feature/ab_testing/.github/workflows/pgsql/DockerFile -o .github/workflows/pgsql/DockerFile
       - name: Start Load EC-CUBE on 4.1
         run: |
           sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
