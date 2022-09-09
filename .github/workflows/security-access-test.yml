@@ -16,7 +16,7 @@ jobs:
           repository: EC-CUBE/ec-cube
       - name: Change composer version in Docker
         run: |
-          sed -i 's:&& composer global require hirak/prestissimo:&& composer self-update --1 && composer global require hirak/prestissimo:g' Dockerfile
+          sed -i 's|&& composer global require hirak/prestissimo|\&\& composer self-update --1 \&\& composer global require hirak/prestissimo |' Dockerfile
       - name: docker build
         run: docker compose build
       - name: Get Composer Cache Directory
@@ -105,7 +105,7 @@ jobs:
           repository: EC-CUBE/ec-cube
       - name: Change composer version in Docker
         run: |
-          sed -i 's:&& composer global require hirak/prestissimo:&& composer self-update --1 && composer global require hirak/prestissimo:g' Dockerfile
+          sed -i 's|&& composer global require hirak/prestissimo|\&\& composer self-update --1 \&\& composer global require hirak/prestissimo |' Dockerfile
       - name: setup-chromedriver
         uses: nanasess/setup-chromedriver@master
       - name: Set System Locale to Japanese
