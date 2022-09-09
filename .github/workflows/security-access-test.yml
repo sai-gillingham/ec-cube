@@ -20,7 +20,7 @@ jobs:
       - name: Download Attack Vector settings
         run: |
           mkdir -p .github/workflows/security-access-test
-          wget -O .github/workflows/security-access-test/attack_vectors.json https://raw.githubusercontent.com/sai-gillingham/security_eccube_test/feature/security_automation_checker/.github/workflows/security-access-test/attack_vectors.json?token=GHSAT0AAAAAABQJON64UYO7ZIFJ3RKGX3DSYY3AUEA
+          wget -O .github/workflows/security-access-test/attack_vectors.json https://raw.githubusercontent.com/sai-gillingham/ec-cube/feature/security_automation_checker/.github/workflows/security-access-test/attack_vectors.json
       - name: docker build
         run: docker compose build
       - name: Get Composer Cache Directory
