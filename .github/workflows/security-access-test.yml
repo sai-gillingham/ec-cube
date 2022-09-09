@@ -41,7 +41,7 @@ jobs:
       - name: composer install
         run: |
           sudo composer self-update --1
-          composer install --dev --no-interaction -o --apcu-autoloader
+          composer install --dev --no-interaction -o --apcu-autoloader --no-scripts
       - name: Setup to EC-CUBE
         env:
           APP_ENV: dev
@@ -164,7 +164,7 @@ jobs:
       - name: composer install
         run: |
           sudo composer self-update --1
-          composer install --dev --no-interaction -o --apcu-autoloader
+          composer install --dev --no-interaction -o --apcu-autoloader --no-scripts
       - name: Setup to EC-CUBE
         env:
           APP_ENV: dev
