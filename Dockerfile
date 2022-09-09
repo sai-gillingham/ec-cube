@@ -61,7 +61,7 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 COPY dockerbuild/php.ini $PHP_INI_DIR/conf.d/
 COPY dockerbuild/docker-php-entrypoint /usr/local/bin/
 
-RUN curl -sS https://getcomposer.org/installer && composer self-update --1 && composer global require hirak/prestissimo  \
+RUN curl -sS https://getcomposer.org/installer \
   | php \
   && mv composer.phar /usr/bin/composer
 
