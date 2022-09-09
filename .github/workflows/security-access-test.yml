@@ -16,7 +16,7 @@ jobs:
           repository: EC-CUBE/ec-cube
       - name: Change composer version
         run: |
-          composer self-update --1
+          sudo composer self-update --1
       - name: docker build
         run: docker compose build
       - name: Get Composer Cache Directory
@@ -105,7 +105,7 @@ jobs:
           repository: EC-CUBE/ec-cube
       - name: Change composer version
         run: |
-          composer self-update --1
+          sudo composer self-update --1
       - name: setup-chromedriver
         uses: nanasess/setup-chromedriver@master
       - name: Set System Locale to Japanese
