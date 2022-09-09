@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@master
+        with:
+          ref: '4.0.5'
       - name: docker build
         run: docker compose build
       - name: Get Composer Cache Directory
@@ -26,7 +28,7 @@ jobs:
       - name: Setup PHP
         uses: nanasess/setup-php@master
         with:
-          php-version: 8.1
+          php-version: 7.3
       - name: composer install
         run: composer install --dev --no-interaction -o --apcu-autoloader
       - name: Setup to EC-CUBE
@@ -94,6 +96,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@master
+        with:
+          ref: '4.0.5'
       - name: setup-chromedriver
         uses: nanasess/setup-chromedriver@master
       - name: Set System Locale to Japanese
