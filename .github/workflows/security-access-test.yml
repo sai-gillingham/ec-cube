@@ -34,7 +34,9 @@ jobs:
         with:
           php-version: 7.3
       - name: composer install
-        run: composer install --dev --no-interaction -o --apcu-autoloader
+        run: |
+          sudo composer composer self-update --1
+          composer install --dev --no-interaction -o --apcu-autoloader
       - name: Setup to EC-CUBE
         env:
           APP_ENV: dev
@@ -149,7 +151,9 @@ jobs:
         with:
           php-version: 7.3
       - name: composer install
-        run: composer install --dev --no-interaction -o --apcu-autoloader
+        run: |
+          sudo composer composer self-update --1
+          composer install --dev --no-interaction -o --apcu-autoloader
       - name: Setup to EC-CUBE
         env:
           APP_ENV: dev
