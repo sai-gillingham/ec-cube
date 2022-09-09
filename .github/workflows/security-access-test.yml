@@ -16,6 +16,7 @@ jobs:
           repository: EC-CUBE/ec-cube
       - name: Change composer version in Docker
         run: |
+          echo DATABASE_URL=postgres://dbuser:secret@postgres/eccubedb >> .env
           sed -i 's|&& composer global require hirak/prestissimo|\&\& composer self-update --1 \&\& composer global require hirak/prestissimo |' Dockerfile
       - name: Download Attack Vector settings
         run: |
@@ -48,6 +49,11 @@ jobs:
           DATABASE_SERVER_VERSION: 14
         run: |
           docker compose -f docker-compose.yml up -d --wait
+      - name: Install EC-CUBE
+        run: |
+          sleep(20)
+          docker-compose exec -u www-data ec-cube bin/console eccube:install
+          docker-compose exec ec-cube composer run-script compile
       - name: Confirm safe pages exist and viewable without error
         run: |
           jq -r ".safe[]" .github/workflows/security-access-test/attack_vectors.json | while read -r i; do
@@ -111,6 +117,7 @@ jobs:
           repository: EC-CUBE/ec-cube
       - name: Change composer version in Docker
         run: |
+          echo DATABASE_URL=postgres://dbuser:secret@postgres/eccubedb >> .env
           sed -i 's|&& composer global require hirak/prestissimo|\&\& composer self-update --1 \&\& composer global require hirak/prestissimo |' Dockerfile
       - name: setup-chromedriver
         uses: nanasess/setup-chromedriver@master
@@ -165,6 +172,11 @@ jobs:
           DATABASE_SERVER_VERSION: 14
         run: |
           docker compose -f docker-compose.yml up -d --wait
+      - name: Install EC-CUBE
+        run: |
+          sleep(20)
+          docker-compose exec -u www-data ec-cube bin/console eccube:install
+          docker-compose exec ec-cube composer run-script compile
       - name: Inject docker database url into .env
         run: |
           echo 'DATABASE_URL=postgres://dbuser:secret@127.0.0.1:15432/eccubedb' >> .env
