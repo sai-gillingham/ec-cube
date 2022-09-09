@@ -16,7 +16,7 @@ jobs:
           repository: EC-CUBE/ec-cube
       - name: Change composer version in Docker
         run: |
-          echo DATABASE_URL=postgres://dbuser:secret@postgres/eccubedb >> .env
+          echo DATABASE_URL=postgres://dbuser:secret@127.0.0.1:15432/eccubedb >> .env
           sed -i 's|&& composer global require hirak/prestissimo|\&\& composer self-update --1 \&\& composer global require hirak/prestissimo |' Dockerfile
       - name: Download Attack Vector settings
         run: |
@@ -117,7 +117,7 @@ jobs:
           repository: EC-CUBE/ec-cube
       - name: Change composer version in Docker
         run: |
-          echo DATABASE_URL=postgres://dbuser:secret@postgres/eccubedb >> .env
+          echo DATABASE_URL=postgres://dbuser:secret@127.0.0.1:15432/eccubedb >> .env
           sed -i 's|&& composer global require hirak/prestissimo|\&\& composer self-update --1 \&\& composer global require hirak/prestissimo |' Dockerfile
       - name: setup-chromedriver
         uses: nanasess/setup-chromedriver@master
