@@ -48,10 +48,12 @@ jobs:
           DATABASE_URL: postgres://dbuser:secret@127.0.0.1:15432/eccubedb
           DATABASE_SERVER_VERSION: 14
         run: |
+          echo 'DATABASE_URL=postgres://dbuser:secret@postgres/eccubedb' >> .env
           docker compose -f docker-compose.yml up -d --wait
       - name: Install EC-CUBE
         run: |
           sleep 20
+          echo 'DATABASE_URL=postgres://dbuser:secret@postgres/eccubedb' >> .env
           docker-compose exec -T ec-cube composer run-script compile
       - name: Confirm safe pages exist and viewable without error
         run: |
@@ -170,10 +172,12 @@ jobs:
           DATABASE_URL: postgres://dbuser:secret@127.0.0.1:15432/eccubedb
           DATABASE_SERVER_VERSION: 14
         run: |
+          echo 'DATABASE_URL=postgres://dbuser:secret@postgres/eccubedb' >> .env
           docker compose -f docker-compose.yml up -d --wait
       - name: Install EC-CUBE
         run: |
           sleep 20
+          echo 'DATABASE_URL=postgres://dbuser:secret@postgres/eccubedb' >> .env
           docker-compose -T exec ec-cube composer run-script compile
       - name: Inject docker database url into .env
         run: |
