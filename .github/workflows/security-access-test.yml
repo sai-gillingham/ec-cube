@@ -120,6 +120,10 @@ jobs:
         run: |
           echo DATABASE_URL=postgres://dbuser:secret@127.0.0.1:15432/eccubedb >> .env
           sed -i 's|&& composer global require hirak/prestissimo|\&\& composer self-update --1 \&\& composer global require hirak/prestissimo |' Dockerfile
+          mkdir -p codeception/acceptance/security
+          wget -O codeception/acceptance/security/SO01CRSFSecurityCest.php https://raw.githubusercontent.com/sai-gillingham/ec-cube/feature/security_automation_checker/codeception/acceptance/security/SO01CRSFSecurityCest.php
+          wget -O codeception/acceptance/security/SO02JavascriptInjectionSecurityCest.php https://raw.githubusercontent.com/sai-gillingham/ec-cube/feature/security_automation_checker/codeception/acceptance/security/SO02JavascriptInjectionSecurityCest.php
+          wget -O codeception/acceptance/security/SO03SystemFileVulnerabilitySecurityCest.php https://raw.githubusercontent.com/sai-gillingham/ec-cube/feature/security_automation_checker/codeception/acceptance/security/SO03SystemFileVulnerabilitySecurityCest.php
       - name: setup-chromedriver
         uses: nanasess/setup-chromedriver@master
       - name: Set System Locale to Japanese
