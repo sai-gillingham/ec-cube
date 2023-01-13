@@ -464,6 +464,8 @@ jobs:
           docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml down -v
       - name: Checkout 4.1 Branch (MYSQL)
         uses: actions/checkout@master
+        with:
+          ref: "4.1"
       - name: Wait for 30 seconds for the database to load, (because MySQL is slow to initialize)
         run: sleep 30s
         shell: bash
