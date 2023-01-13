@@ -203,8 +203,7 @@ jobs:
       - name: Sleep for MySQL
         run: sleep 30s
         shell: bash
-      - id: ec-four-one-my-hp
-        name: Request home page  -  MySQL -  4.1 - 10000 PRODUCTS
+      - name: Request home page  -  MySQL -  4.1 - 10000 PRODUCTS
         run: |
           sudo apt-get install apache2-utils
           ab -n 100 -c 10 -l http://localhost:8080/ > mysql-4.1-home_1.txt
@@ -229,8 +228,7 @@ jobs:
           export MSQL_41_10000_HOME_RPS_RESULT=$(echo "scale=4; 1.0 * $RPS_SUM / $COUNT" | bc -l)
           echo "TIME PER REQUEST AVG: ${MSQL_41_10000_HOME_RESULT}"
           echo "REQUESTS PER SECOND AVG: ${MSQL_41_10000_HOME_RPS_RESULT}"
-      - id: ec-four-one-my-list
-        name: Request list page -  MySQL - 4.1 - 10000 PRODUCTS
+      - name: Request list page -  MySQL - 4.1 - 10000 PRODUCTS
         run: |
           sudo apt-get install apache2-utils
           ab -n 100 -c 10 -l http://localhost:8080/products/list > mysql-4.1-list_1.txt
@@ -280,8 +278,7 @@ jobs:
       - name: Sleep for MySQL
         run: sleep 30s
         shell: bash
-      - id: ec-four-two-my-hp
-        name: Request home page -  MySQL - 4.2 - 10000 PRODUCTS
+      - name: Request home page -  MySQL - 4.2 - 10000 PRODUCTS
         run: |
           sudo apt-get install apache2-utils
           ab -n 100 -c 10 -l http://localhost:8080/ > mysql-4.2-home_1.txt
@@ -306,8 +303,7 @@ jobs:
           export MSQL_42_10000_HOME_RPS_RESULT=$(echo "scale=4; 1.0 * $RPS_SUM / $COUNT" | bc -l)
           echo "TIME PER REQUEST AVG: ${MSQL_42_10000_HOME_RESULT}"
           echo "REQUESTS PER SECOND AVG: ${MSQL_42_10000_HOME_RPS_RESULT}"
-      - id: ec-four-two-my-list
-        name: Request list page -  MySQL - 4.2 - 10000 PRODUCTS
+      - name: Request list page -  MySQL - 4.2 - 10000 PRODUCTS
         run: |
           sudo apt-get install apache2-utils
           ab -n 100 -c 10 -l http://localhost:8080/products/list > mysql-4.2-list_1.txt
@@ -345,8 +341,7 @@ jobs:
           docker compose -f docker-compose.yml -f docker-compose.pgsql.yml up -d --wait
       - name: Wait 2 minutes for the database to load, (as I do not know the databases active state)
         run: sleep 60s
-      - id: ec-four-one-pg-hp
-        name: Request home page - Postgres 4.1 BASE INSTALL
+      - name: Request home page - Postgres 4.1 BASE INSTALL
         run: |
           sudo apt-get install apache2-utils
           wget -q -O visible_home_html.html http://localhost:8080
@@ -372,8 +367,7 @@ jobs:
           export PSQL_41_BASE_HOME_RPS_RESULT=$(echo "scale=4; 1.0 * $RPS_SUM / $COUNT" | bc -l)
           echo "TIME PER REQUEST AVG: ${PSQL_41_BASE_HOME_RESULT}"
           echo "REQUESTS PER SECOND AVG: ${PSQL_41_BASE_HOME_RPS_RESULT}"
-      - id: ec-four-one-pg-list
-        name: Request list page - Postgres 4.1 BASE INSTALL
+      - name: Request list page - Postgres 4.1 BASE INSTALL
         run: |
           sudo apt-get install apache2-utils
           wget -q -O visible_list_html.html http://localhost:8080/products/list
@@ -413,8 +407,7 @@ jobs:
          docker compose -f docker-compose.yml -f docker-compose.pgsql.yml up -d --wait
       - name: Wait 2 minutes for the database to load, (as I do not know the databases active state)
         run: sleep 120s
-      - id: ec-four-two-pg-hp
-        name: Request home page - Postgres 4.2 BASE INSTALL
+      - name: Request home page - Postgres 4.2 BASE INSTALL
         run: |
           sudo apt-get install apache2-utils
           wget -q -O visible_home_html.html http://localhost:8080
@@ -474,8 +467,7 @@ jobs:
       - name: Wait for 30 seconds for the database to load, (because MySQL is slow to initialize)
         run: sleep 30s
         shell: bash
-      - id: ec-four-one-my-hp
-        name: Request home page
+      - name: Request home page
         run: |
           sudo apt-get install apache2-utils
           ab -n 100 -c 10 -l http://localhost:8080/ > mysql-4.1-home_1.txt
@@ -500,8 +492,7 @@ jobs:
           export MSQL_41_BASE_HOME_RPS_RESULT=$(echo "scale=4; 1.0 * $RPS_SUM / $COUNT" | bc -l)
           echo "TIME PER REQUEST AVG: ${MSQL_41_BASE_HOME_RESULT}"
           echo "REQUESTS PER SECOND AVG: ${MSQL_41_BASE_HOME_RPS_RESULT}"
-      - id: ec-four-one-my-list
-        name: Request list page
+      - name: Request list page
         run: |
           sudo apt-get install apache2-utils
           ab -n 100 -c 10 -l http://localhost:8080/products/list > mysql-4.1-list_1.txt
@@ -541,8 +532,7 @@ jobs:
       - name: Wait for 30 seconds for the database to load, (because MySQL is slow to initialize)
         run: sleep 30s
         shell: bash
-      - id: ec-four-two-my-hp
-        name: Request home page
+      - name: Request home page
         run: |
           sudo apt-get install apache2-utils
           ab -n 100 -c 10 -l http://localhost:8080/ > mysql-4.2-home_1.txt
@@ -567,8 +557,7 @@ jobs:
           export MSQL_42_BASE_HOME_RPS_RESULT=$(echo "scale=4; 1.0 * $RPS_SUM / $COUNT" | bc -l)
           echo "TIME PER REQUEST AVG: ${MSQL_42_BASE_HOME_RESULT}"
           echo "REQUESTS PER SECOND AVG: ${MSQL_42_BASE_HOME_RPS_RESULT}"
-      - id: ec-four-two-my-list
-        name: Request list page
+      - name: Request list page
         run: |
           sudo apt-get install apache2-utils
           ab -n 100 -c 10 -l http://localhost:8080/products/list > mysql-4.2-list_1.txt
