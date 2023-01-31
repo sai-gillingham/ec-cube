@@ -133,7 +133,7 @@ jobs:
       ## 発生するため \DAMA\DoctrineTestBundle\PHPUnit\PHPUnitListener を削除する
       ## see https://github.com/dmaicher/doctrine-test-bundle/issues/58#issuecomment-391081408
       - run: sed -e '/DoctrineTestBundle/d' phpunit.xml.dist > phpunit.xml
-        if: ${{ matrix.db == 'mysql' }}
+        if: ${{ matrix.db == 'mysql5' || matrix.db == 'mysql8' }}
       - name: PHPUnit
         env:
           APP_ENV: 'test'
