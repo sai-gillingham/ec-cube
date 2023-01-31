@@ -297,7 +297,7 @@ class EA06ContentsManagementCest
 
         // html5のバリデーションエラーで画面遷移しないはず
         $I->seeInCurrentUrl('/admin/content/layout/new');
-//        $I->cantSee('入力されていません。');
+        $I->cantSee('入力されていません。');
 
         // レイアウト名を入力して登録
         LayoutEditPage::at($I)
@@ -344,7 +344,7 @@ class EA06ContentsManagementCest
         // レイアウトの削除
         LayoutManagePage::go($I)->削除($layoutName);
         $I->see('削除しました', LayoutManagePage::$登録完了メッセージ);
-//        $I->cantSee($layoutName, '.contentsArea');
+        $I->cantSee($layoutName, '.contentsArea');
     }
 
     public function contentsmanagement_検索未使用ブロック(AcceptanceTester $I)
