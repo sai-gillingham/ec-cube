@@ -65,7 +65,7 @@ jobs:
           - 5433:5432
         # needed because the postgres container does not provide a healthcheck
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-      mysql:
+      mysql5:
         image: mysql:5.7
         env:
           MYSQL_ROOT_PASSWORD: password
