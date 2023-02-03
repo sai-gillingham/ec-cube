@@ -13,22 +13,22 @@ modules:
         - WebDriver
         - Asserts
         - MailCatcher
-        - REST:
-              depends: PhpBrowser
-              url: '%BASE_URL%'
-              shortDebugResponse: 300 # only the first 300 characters of the response
-        - Symfony:
-              part: SERVICES
-              app_path: "/src/Eccube/"
-              em_service: 'doctrine.orm.entity_manager'
-              kernel_class: 'Eccube\Kernel'
-        - Doctrine2:
-              depends: Symfony
+#        - REST:
+#              depends: PhpBrowser
+#              url: '%BASE_URL%'
+#              shortDebugResponse: 300 # only the first 300 characters of the response
+#        - Symfony:
+#              part: SERVICES
+#              app_path: "/src/Eccube/"
+#              em_service: 'doctrine.orm.entity_manager'
+#              kernel_class: 'Eccube\Kernel'
+#        - Doctrine2:
+#              depends: Symfony
     config:
         WebDriver:
             host: '%WEB_DRIVER_HOST%'
             port: '%WEB_DRIVER_PORT%'
-            url: '%BASE_URL%'
+            url: '%BASE_URL%'    # ÉeÉXÉgëŒè€ÇÃurl
             window_size: 1680x3000
             wait: 10
             capabilities:
@@ -37,8 +37,7 @@ modules:
         MailCatcher:
             url: '%MAILCATCHER_HOST%'
             port: 1080
-step_decorators:
-    - \Codeception\Step\Retry
+
 env:
     default:
         modules:
@@ -71,10 +70,8 @@ env:
                     browser: chrome
                     capabilities:
                         chromeOptions:
-                            args: [ "--lang=ja_JP" ]
                             prefs:
                                 download.default_directory: '%PWD%/codeception/_support/_downloads'
-                                intl.accept_languages: "ja_JP"
     chrome-headless:
         modules:
             config:
@@ -82,6 +79,6 @@ env:
                     browser: chrome
                     capabilities:
                         chromeOptions:
-                            args: [ "--headless", "--disable-gpu" ]
+                            args: ["--headless", "--disable-gpu"]
                             prefs:
                                 download.default_directory: '%PWD%/codeception/_support/_downloads'
