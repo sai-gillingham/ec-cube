@@ -13,22 +13,11 @@ modules:
         - WebDriver
         - Asserts
         - MailCatcher
-#        - REST:
-#              depends: PhpBrowser
-#              url: '%BASE_URL%'
-#              shortDebugResponse: 300 # only the first 300 characters of the response
-#        - Symfony:
-#              part: SERVICES
-#              app_path: "/src/Eccube/"
-#              em_service: 'doctrine.orm.entity_manager'
-#              kernel_class: 'Eccube\Kernel'
-#        - Doctrine2:
-#              depends: Symfony
     config:
         WebDriver:
             host: '%WEB_DRIVER_HOST%'
             port: '%WEB_DRIVER_PORT%'
-            url: '%BASE_URL%'    # ÉeÉXÉgëŒè€ÇÃurl
+            url: '%BASE_URL%'    # „ÉÜ„Çπ„ÉàÂØæË±°„ÅÆurl
             window_size: 1680x3000
             wait: 10
             capabilities:
