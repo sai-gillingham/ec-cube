@@ -184,7 +184,8 @@ class ProductRepository extends AbstractRepository
         $config = $this->eccubeConfig;
         if (!empty($searchData['orderby']) && $searchData['orderby']->getId() == $config['eccube_product_order_price_lower']) {
             // @see http://doctrine-orm.readthedocs.org/en/latest/reference/dql-doctrine-query-language.html
-            $qb->addSelect('MIN(pc.price02 * (1 + (tr.tax_rate/100))) as HIDDEN price02_min');
+            $qb->addSelect('MIN((pc.price02  * (100 + tr.tax_rate)) / 100) as HIDDEN price02_min');
+            //$qb->addSelect('MIN(pc.price02 * (1 + ((case when tr.tax_rate IS NULL then 0 else tr.tax_rate end)/100))) as HIDDEN price02_min');
             $qb->innerJoin('p.ProductClasses', 'pc');
             $qb->leftJoin('pc.TaxRule', 'tr');
             $qb->andWhere('pc.visible = true');
@@ -193,7 +194,7 @@ class ProductRepository extends AbstractRepository
             $qb->addOrderBy('p.id', 'DESC');
         // 価格高い順
         } elseif (!empty($searchData['orderby']) && $searchData['orderby']->getId() == $config['eccube_product_order_price_higher']) {
-            $qb->addSelect('MAX(pc.price02 * (1 + (tr.tax_rate/100))) as HIDDEN price02_max');
+            $qb->addSelect('MAX((pc.price02  * (100 + tr.tax_rate)) / 100) as HIDDEN price02_max');
             $qb->innerJoin('p.ProductClasses', 'pc');
             $qb->leftJoin('pc.TaxRule', 'tr');
             $qb->andWhere('pc.visible = true');
