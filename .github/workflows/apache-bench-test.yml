@@ -85,11 +85,11 @@ jobs:
           ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.1-list_3.txt
           ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.1-list_4.txt
           ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.1-list_5.txt
-          export PG_4_1_LIST_1="$(tail -n +23 pg-4.1-list_1.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_1_LIST_2="$(tail -n +23 pg-4.1-list_2.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_1_LIST_3="$(tail -n +23 pg-4.1-list_3.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_1_LIST_4="$(tail -n +23 pg-4.1-list_4.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_1_LIST_5="$(tail -n +23 pg-4.1-list_5.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_1_LIST_1="$(tail -n +23 pg-4.1-list_1.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_1_LIST_2="$(tail -n +23 pg-4.1-list_2.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_1_LIST_3="$(tail -n +23 pg-4.1-list_3.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_1_LIST_4="$(tail -n +23 pg-4.1-list_4.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_1_LIST_5="$(tail -n +23 pg-4.1-list_5.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
           export PG_4_1_LIST_RPS_1="$(tail -n +20 pg-4.1-list_1.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export PG_4_1_LIST_RPS_2="$(tail -n +20 pg-4.1-list_2.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export PG_4_1_LIST_RPS_3="$(tail -n +20 pg-4.1-list_3.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
@@ -153,11 +153,11 @@ jobs:
           ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.2-home_3.txt
           ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.2-home_4.txt
           ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.2-home_5.txt
-          export PG_4_2_HOME_1="$(tail -n +23 pg-4.2-home_1.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_2_HOME_2="$(tail -n +23 pg-4.2-home_2.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_2_HOME_3="$(tail -n +23 pg-4.2-home_3.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_2_HOME_4="$(tail -n +23 pg-4.2-home_4.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_2_HOME_5="$(tail -n +23 pg-4.2-home_5.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_2_HOME_1="$(tail -n +23 pg-4.2-home_1.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_2_HOME_2="$(tail -n +23 pg-4.2-home_2.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_2_HOME_3="$(tail -n +23 pg-4.2-home_3.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_2_HOME_4="$(tail -n +23 pg-4.2-home_4.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_2_HOME_5="$(tail -n +23 pg-4.2-home_5.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
           export PG_4_2_HOME_RPS_1="$(tail -n +20 pg-4.2-home_1.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export PG_4_2_HOME_RPS_2="$(tail -n +20 pg-4.2-home_2.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export PG_4_2_HOME_RPS_3="$(tail -n +20 pg-4.2-home_3.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
@@ -180,11 +180,11 @@ jobs:
           ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.2-list_3.txt
           ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.2-list_4.txt
           ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.2-list_5.txt
-          export PG_4_2_LIST_1="$(tail -n +23 pg-4.2-list_1.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_2_LIST_2="$(tail -n +23 pg-4.2-list_2.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_2_LIST_3="$(tail -n +23 pg-4.2-list_3.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_2_LIST_4="$(tail -n +23 pg-4.2-list_4.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_2_LIST_5="$(tail -n +23 pg-4.2-list_5.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_2_LIST_1="$(tail -n +23 pg-4.2-list_1.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_2_LIST_2="$(tail -n +23 pg-4.2-list_2.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_2_LIST_3="$(tail -n +23 pg-4.2-list_3.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_2_LIST_4="$(tail -n +23 pg-4.2-list_4.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_2_LIST_5="$(tail -n +23 pg-4.2-list_5.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
           export PG_4_2_LIST_RPS_1="$(tail -n +20 pg-4.2-list_1.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export PG_4_2_LIST_RPS_2="$(tail -n +20 pg-4.2-list_2.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export PG_4_2_LIST_RPS_3="$(tail -n +20 pg-4.2-list_3.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
@@ -255,11 +255,11 @@ jobs:
           ab -n 100 -c 10 -l http://localhost:8080/ > mysql-4.1-home_3.txt
           ab -n 100 -c 10 -l http://localhost:8080/ > mysql-4.1-home_4.txt
           ab -n 100 -c 10 -l http://localhost:8080/ > mysql-4.1-home_5.txt
-          export MY_4_1_HOME_1="$(tail -n +23 mysql-4.1-home_1.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_1_HOME_2="$(tail -n +23 mysql-4.1-home_2.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_1_HOME_3="$(tail -n +23 mysql-4.1-home_3.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_1_HOME_4="$(tail -n +23 mysql-4.1-home_4.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_1_HOME_5="$(tail -n +23 mysql-4.1-home_5.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_1_HOME_1="$(tail -n +23 mysql-4.1-home_1.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_1_HOME_2="$(tail -n +23 mysql-4.1-home_2.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_1_HOME_3="$(tail -n +23 mysql-4.1-home_3.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_1_HOME_4="$(tail -n +23 mysql-4.1-home_4.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_1_HOME_5="$(tail -n +23 mysql-4.1-home_5.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
           export MY_4_1_HOME_RPS_1="$(tail -n +20 mysql-4.1-home_1.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export MY_4_1_HOME_RPS_2="$(tail -n +20 mysql-4.1-home_2.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export MY_4_1_HOME_RPS_3="$(tail -n +20 mysql-4.1-home_3.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
@@ -282,11 +282,11 @@ jobs:
           ab -n 100 -c 10 -l http://localhost:8080/products/list > mysql-4.1-list_3.txt
           ab -n 100 -c 10 -l http://localhost:8080/products/list > mysql-4.1-list_4.txt
           ab -n 100 -c 10 -l http://localhost:8080/products/list > mysql-4.1-list_5.txt
-          export MY_4_1_LIST_1="$(tail -n +23 mysql-4.1-list_1.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_1_LIST_2="$(tail -n +23 mysql-4.1-list_2.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_1_LIST_3="$(tail -n +23 mysql-4.1-list_3.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_1_LIST_4="$(tail -n +23 mysql-4.1-list_4.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_1_LIST_5="$(tail -n +23 mysql-4.1-list_5.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_1_LIST_1="$(tail -n +23 mysql-4.1-list_1.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_1_LIST_2="$(tail -n +23 mysql-4.1-list_2.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_1_LIST_3="$(tail -n +23 mysql-4.1-list_3.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_1_LIST_4="$(tail -n +23 mysql-4.1-list_4.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_1_LIST_5="$(tail -n +23 mysql-4.1-list_5.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
           export MY_4_1_LIST_RPS_1="$(tail -n +20 mysql-4.1-list_1.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export MY_4_1_LIST_RPS_2="$(tail -n +20 mysql-4.1-list_2.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export MY_4_1_LIST_RPS_3="$(tail -n +20 mysql-4.1-list_3.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
@@ -352,11 +352,11 @@ jobs:
           ab -n 100 -c 10 -l http://localhost:8080/ > mysql-4.2-home_3.txt
           ab -n 100 -c 10 -l http://localhost:8080/ > mysql-4.2-home_4.txt
           ab -n 100 -c 10 -l http://localhost:8080/ > mysql-4.2-home_5.txt
-          export MY_4_2_HOME_1="$(tail -n +23 mysql-4.2-home_1.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_2_HOME_2="$(tail -n +23 mysql-4.2-home_2.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_2_HOME_3="$(tail -n +23 mysql-4.2-home_3.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_2_HOME_4="$(tail -n +23 mysql-4.2-home_4.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_2_HOME_5="$(tail -n +23 mysql-4.2-home_5.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_2_HOME_1="$(tail -n +23 mysql-4.2-home_1.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_2_HOME_2="$(tail -n +23 mysql-4.2-home_2.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_2_HOME_3="$(tail -n +23 mysql-4.2-home_3.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_2_HOME_4="$(tail -n +23 mysql-4.2-home_4.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_2_HOME_5="$(tail -n +23 mysql-4.2-home_5.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
           export MY_4_2_HOME_RPS_1="$(tail -n +20 mysql-4.2-home_1.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export MY_4_2_HOME_RPS_2="$(tail -n +20 mysql-4.2-home_2.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export MY_4_2_HOME_RPS_3="$(tail -n +20 mysql-4.2-home_3.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
@@ -379,11 +379,11 @@ jobs:
           ab -n 100 -c 10 -l http://localhost:8080/products/list > mysql-4.2-list_3.txt
           ab -n 100 -c 10 -l http://localhost:8080/products/list > mysql-4.2-list_4.txt
           ab -n 100 -c 10 -l http://localhost:8080/products/list > mysql-4.2-list_5.txt
-          export MY_4_2_LIST_1="$(tail -n +23 mysql-4.2-list_1.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_2_LIST_2="$(tail -n +23 mysql-4.2-list_2.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_2_LIST_3="$(tail -n +23 mysql-4.2-list_3.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_2_LIST_4="$(tail -n +23 mysql-4.2-list_4.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_2_LIST_5="$(tail -n +23 mysql-4.2-list_5.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_2_LIST_1="$(tail -n +23 mysql-4.2-list_1.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_2_LIST_2="$(tail -n +23 mysql-4.2-list_2.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_2_LIST_3="$(tail -n +23 mysql-4.2-list_3.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_2_LIST_4="$(tail -n +23 mysql-4.2-list_4.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_2_LIST_5="$(tail -n +23 mysql-4.2-list_5.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
           export MY_4_2_LIST_RPS_1="$(tail -n +20 mysql-4.2-list_1.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export MY_4_2_LIST_RPS_2="$(tail -n +20 mysql-4.2-list_2.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export MY_4_2_LIST_RPS_3="$(tail -n +20 mysql-4.2-list_3.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
@@ -420,11 +420,11 @@ jobs:
           ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.1-home_3.txt
           ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.1-home_4.txt
           ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.1-home_5.txt
-          export PG_4_1_HOME_1="$(tail -n +23 pg-4.1-home_1.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_1_HOME_2="$(tail -n +23 pg-4.1-home_2.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_1_HOME_3="$(tail -n +23 pg-4.1-home_3.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_1_HOME_4="$(tail -n +23 pg-4.1-home_4.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_1_HOME_5="$(tail -n +23 pg-4.1-home_5.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_1_HOME_1="$(tail -n +23 pg-4.1-home_1.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_1_HOME_2="$(tail -n +23 pg-4.1-home_2.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_1_HOME_3="$(tail -n +23 pg-4.1-home_3.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_1_HOME_4="$(tail -n +23 pg-4.1-home_4.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_1_HOME_5="$(tail -n +23 pg-4.1-home_5.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
           export PG_4_1_HOME_RPS_1="$(tail -n +20 pg-4.1-home_1.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export PG_4_1_HOME_RPS_2="$(tail -n +20 pg-4.1-home_2.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export PG_4_1_HOME_RPS_3="$(tail -n +20 pg-4.1-home_3.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
@@ -448,11 +448,11 @@ jobs:
           ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.1-list_3.txt
           ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.1-list_4.txt
           ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.1-list_5.txt
-          export PG_4_1_LIST_1="$(tail -n +23 pg-4.1-list_1.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_1_LIST_2="$(tail -n +23 pg-4.1-list_2.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_1_LIST_3="$(tail -n +23 pg-4.1-list_3.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_1_LIST_4="$(tail -n +23 pg-4.1-list_4.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_1_LIST_5="$(tail -n +23 pg-4.1-list_5.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_1_LIST_1="$(tail -n +23 pg-4.1-list_1.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_1_LIST_2="$(tail -n +23 pg-4.1-list_2.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_1_LIST_3="$(tail -n +23 pg-4.1-list_3.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_1_LIST_4="$(tail -n +23 pg-4.1-list_4.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_1_LIST_5="$(tail -n +23 pg-4.1-list_5.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
           export PG_4_1_LIST_RPS_1="$(tail -n +20 pg-4.1-list_1.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export PG_4_1_LIST_RPS_2="$(tail -n +20 pg-4.1-list_2.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export PG_4_1_LIST_RPS_3="$(tail -n +20 pg-4.1-list_3.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
@@ -490,11 +490,11 @@ jobs:
           ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.2-home_3.txt
           ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.2-home_4.txt
           ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.2-home_5.txt
-          export PG_4_2_HOME_1="$(tail -n +23 pg-4.2-home_1.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_2_HOME_2="$(tail -n +23 pg-4.2-home_2.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_2_HOME_3="$(tail -n +23 pg-4.2-home_3.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_2_HOME_4="$(tail -n +23 pg-4.2-home_4.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_2_HOME_5="$(tail -n +23 pg-4.2-home_5.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_2_HOME_1="$(tail -n +23 pg-4.2-home_1.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_2_HOME_2="$(tail -n +23 pg-4.2-home_2.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_2_HOME_3="$(tail -n +23 pg-4.2-home_3.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_2_HOME_4="$(tail -n +23 pg-4.2-home_4.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_2_HOME_5="$(tail -n +23 pg-4.2-home_5.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
           export PG_4_2_HOME_RPS_1="$(tail -n +20 pg-4.2-home_1.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export PG_4_2_HOME_RPS_2="$(tail -n +20 pg-4.2-home_2.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export PG_4_2_HOME_RPS_3="$(tail -n +20 pg-4.2-home_3.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
@@ -518,11 +518,11 @@ jobs:
           ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.2-list_3.txt
           ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.2-list_4.txt
           ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.2-list_5.txt
-          export PG_4_2_LIST_1="$(tail -n +23 pg-4.2-list_1.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_2_LIST_2="$(tail -n +23 pg-4.2-list_2.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_2_LIST_3="$(tail -n +23 pg-4.2-list_3.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_2_LIST_4="$(tail -n +23 pg-4.2-list_4.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_2_LIST_5="$(tail -n +23 pg-4.2-list_5.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_2_LIST_1="$(tail -n +23 pg-4.2-list_1.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_2_LIST_2="$(tail -n +23 pg-4.2-list_2.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_2_LIST_3="$(tail -n +23 pg-4.2-list_3.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_2_LIST_4="$(tail -n +23 pg-4.2-list_4.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export PG_4_2_LIST_5="$(tail -n +23 pg-4.2-list_5.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
           export PG_4_2_LIST_RPS_1="$(tail -n +20 pg-4.2-list_1.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export PG_4_2_LIST_RPS_2="$(tail -n +20 pg-4.2-list_2.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export PG_4_2_LIST_RPS_3="$(tail -n +20 pg-4.2-list_3.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
@@ -559,11 +559,11 @@ jobs:
           ab -n 100 -c 10 -l http://localhost:8080/ > mysql-4.1-home_3.txt
           ab -n 100 -c 10 -l http://localhost:8080/ > mysql-4.1-home_4.txt
           ab -n 100 -c 10 -l http://localhost:8080/ > mysql-4.1-home_5.txt
-          export MY_4_1_HOME_1="$(tail -n +23 mysql-4.1-home_1.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_1_HOME_2="$(tail -n +23 mysql-4.1-home_2.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_1_HOME_3="$(tail -n +23 mysql-4.1-home_3.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_1_HOME_4="$(tail -n +23 mysql-4.1-home_4.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_1_HOME_5="$(tail -n +23 mysql-4.1-home_5.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_1_HOME_1="$(tail -n +23 mysql-4.1-home_1.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_1_HOME_2="$(tail -n +23 mysql-4.1-home_2.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_1_HOME_3="$(tail -n +23 mysql-4.1-home_3.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_1_HOME_4="$(tail -n +23 mysql-4.1-home_4.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_1_HOME_5="$(tail -n +23 mysql-4.1-home_5.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
           export MY_4_1_HOME_RPS_1="$(tail -n +20 mysql-4.1-home_1.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export MY_4_1_HOME_RPS_2="$(tail -n +20 mysql-4.1-home_2.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export MY_4_1_HOME_RPS_3="$(tail -n +20 mysql-4.1-home_3.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
@@ -586,11 +586,11 @@ jobs:
           ab -n 100 -c 10 -l http://localhost:8080/products/list > mysql-4.1-list_3.txt
           ab -n 100 -c 10 -l http://localhost:8080/products/list > mysql-4.1-list_4.txt
           ab -n 100 -c 10 -l http://localhost:8080/products/list > mysql-4.1-list_5.txt
-          export MY_4_1_LIST_1="$(tail -n +23 mysql-4.1-list_1.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_1_LIST_2="$(tail -n +23 mysql-4.1-list_2.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_1_LIST_3="$(tail -n +23 mysql-4.1-list_3.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_1_LIST_4="$(tail -n +23 mysql-4.1-list_4.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_1_LIST_5="$(tail -n +23 mysql-4.1-list_5.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_1_LIST_1="$(tail -n +23 mysql-4.1-list_1.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_1_LIST_2="$(tail -n +23 mysql-4.1-list_2.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_1_LIST_3="$(tail -n +23 mysql-4.1-list_3.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_1_LIST_4="$(tail -n +23 mysql-4.1-list_4.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_1_LIST_5="$(tail -n +23 mysql-4.1-list_5.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
           export MY_4_1_LIST_RPS_1="$(tail -n +20 mysql-4.1-list_1.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export MY_4_1_LIST_RPS_2="$(tail -n +20 mysql-4.1-list_2.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export MY_4_1_LIST_RPS_3="$(tail -n +20 mysql-4.1-list_3.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
@@ -628,11 +628,11 @@ jobs:
           ab -n 100 -c 10 -l http://localhost:8080/ > mysql-4.2-home_3.txt
           ab -n 100 -c 10 -l http://localhost:8080/ > mysql-4.2-home_4.txt
           ab -n 100 -c 10 -l http://localhost:8080/ > mysql-4.2-home_5.txt
-          export MY_4_2_HOME_1="$(tail -n +23 mysql-4.2-home_1.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_2_HOME_2="$(tail -n +23 mysql-4.2-home_2.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_2_HOME_3="$(tail -n +23 mysql-4.2-home_3.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_2_HOME_4="$(tail -n +23 mysql-4.2-home_4.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_2_HOME_5="$(tail -n +23 mysql-4.2-home_5.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_2_HOME_1="$(tail -n +23 mysql-4.2-home_1.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_2_HOME_2="$(tail -n +23 mysql-4.2-home_2.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_2_HOME_3="$(tail -n +23 mysql-4.2-home_3.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_2_HOME_4="$(tail -n +23 mysql-4.2-home_4.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_2_HOME_5="$(tail -n +23 mysql-4.2-home_5.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
           export MY_4_2_HOME_RPS_1="$(tail -n +20 mysql-4.2-home_1.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export MY_4_2_HOME_RPS_2="$(tail -n +20 mysql-4.2-home_2.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export MY_4_2_HOME_RPS_3="$(tail -n +20 mysql-4.2-home_3.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
@@ -655,11 +655,11 @@ jobs:
           ab -n 100 -c 10 -l http://localhost:8080/products/list > mysql-4.2-list_3.txt
           ab -n 100 -c 10 -l http://localhost:8080/products/list > mysql-4.2-list_4.txt
           ab -n 100 -c 10 -l http://localhost:8080/products/list > mysql-4.2-list_5.txt
-          export MY_4_2_LIST_1="$(tail -n +23 mysql-4.2-list_1.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_2_LIST_2="$(tail -n +23 mysql-4.2-list_2.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_2_LIST_3="$(tail -n +23 mysql-4.2-list_3.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_2_LIST_4="$(tail -n +23 mysql-4.2-list_4.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
-          export MY_4_2_LIST_5="$(tail -n +23 mysql-4.2-list_5.txt | grep -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_2_LIST_1="$(tail -n +23 mysql-4.2-list_1.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_2_LIST_2="$(tail -n +23 mysql-4.2-list_2.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_2_LIST_3="$(tail -n +23 mysql-4.2-list_3.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_2_LIST_4="$(tail -n +23 mysql-4.2-list_4.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+          export MY_4_2_LIST_5="$(tail -n +23 mysql-4.2-list_5.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
           export MY_4_2_LIST_RPS_1="$(tail -n +20 mysql-4.2-list_1.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export MY_4_2_LIST_RPS_2="$(tail -n +20 mysql-4.2-list_2.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export MY_4_2_LIST_RPS_3="$(tail -n +20 mysql-4.2-list_3.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
