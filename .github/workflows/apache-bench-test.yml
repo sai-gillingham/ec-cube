@@ -61,6 +61,11 @@ jobs:
           export PG_4_1_HOME_RPS_3="$(tail -n +20 pg-4.1-home_3.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export PG_4_1_HOME_RPS_4="$(tail -n +20 pg-4.1-home_4.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export PG_4_1_HOME_RPS_5="$(tail -n +20 pg-4.1-home_5.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
+          echo "PG_4_1_HOME_1=${PG_4_1_HOME_1}"
+          echo "PG_4_1_HOME_2=${PG_4_1_HOME_2}"
+          echo "PG_4_1_HOME_3=${PG_4_1_HOME_3}"
+          echo "PG_4_1_HOME_4=${PG_4_1_HOME_4}"
+          echo "PG_4_1_HOME_5=${PG_4_1_HOME_5}"
           SUM=$(echo "$PG_4_1_HOME_1 + $PG_4_1_HOME_2 + $PG_4_1_HOME_3 + $PG_4_1_HOME_4 + $PG_4_1_HOME_5" | bc -l)
           RPS_SUM=$(echo "$PG_4_1_HOME_RPS_1 + $PG_4_1_HOME_RPS_2 + $PG_4_1_HOME_RPS_3 + $PG_4_1_HOME_RPS_4 + $PG_4_1_HOME_RPS_5" | bc -l)
           COUNT=5
