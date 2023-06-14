@@ -51,11 +51,11 @@ jobs:
           ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.1-home_3.txt
           ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.1-home_4.txt
           ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.1-home_5.txt
-          export PG_4_1_HOME_1="$(tail -n +23 pg-4.1-home_1.txt | grep -o -P '(?<=:).*(?=\[ms\]) (mean)')"
-          export PG_4_1_HOME_2="$(tail -n +23 pg-4.1-home_2.txt | grep -o -P '(?<=:).*(?=\[ms\]) (mean)')"
-          export PG_4_1_HOME_3="$(tail -n +23 pg-4.1-home_3.txt | grep -o -P '(?<=:).*(?=\[ms\]) (mean)')"
-          export PG_4_1_HOME_4="$(tail -n +23 pg-4.1-home_4.txt | grep -o -P '(?<=:).*(?=\[ms\]) (mean)')"
-          export PG_4_1_HOME_5="$(tail -n +23 pg-4.1-home_5.txt | grep -o -P '(?<=:).*(?=\[ms\]) (mean)')"
+          export PG_4_1_HOME_1="$(tail -n +23 pg-4.1-home_1.txt | grep -o -P -m 1 '(?<=:).*(?=\[ms\])')"
+          export PG_4_1_HOME_2="$(tail -n +23 pg-4.1-home_2.txt | grep -o -P -m 1 '(?<=:).*(?=\[ms\])')"
+          export PG_4_1_HOME_3="$(tail -n +23 pg-4.1-home_3.txt | grep -o -P -m 1 '(?<=:).*(?=\[ms\])')"
+          export PG_4_1_HOME_4="$(tail -n +23 pg-4.1-home_4.txt | grep -o -P -m 1 '(?<=:).*(?=\[ms\])')"
+          export PG_4_1_HOME_5="$(tail -n +23 pg-4.1-home_5.txt | grep -o -P -m 1 '(?<=:).*(?=\[ms\])')"
           export PG_4_1_HOME_RPS_1="$(tail -n +20 pg-4.1-home_1.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export PG_4_1_HOME_RPS_2="$(tail -n +20 pg-4.1-home_2.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
           export PG_4_1_HOME_RPS_3="$(tail -n +20 pg-4.1-home_3.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
