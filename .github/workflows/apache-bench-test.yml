@@ -64,7 +64,7 @@ jobs:
           SUM=$(echo "$PG_4_1_HOME_1 + $PG_4_1_HOME_2 + $PG_4_1_HOME_3 + $PG_4_1_HOME_4 + $PG_4_1_HOME_5" | bc -l)
           RPS_SUM=$(echo "$PG_4_1_HOME_RPS_1 + $PG_4_1_HOME_RPS_2 + $PG_4_1_HOME_RPS_3 + $PG_4_1_HOME_RPS_4 + $PG_4_1_HOME_RPS_5" | bc -l)
           COUNT=5
-          export PG_41_10000_HOME_RESULT=$(echo "scale=4; 1.0 * $SUM / $COUNT" | bc -l | tr -d '\n')
+          export PG_41_10000_HOME_RESULT=$(echo "scale=4; 1.0 * $SUM / $COUNT" | tr -d '\n' | bc -l)
           export PG_41_10000_HOME_RPS_RESULT=$(echo "scale=4; 1.0 * $RPS_SUM / $COUNT" | bc -l)
           echo "TIME PER REQUEST AVG: ${PG_41_10000_HOME_RESULT}"
           echo "REQUESTS PER SECOND AVG: ${PG_41_10000_HOME_RPS_RESULT}"
