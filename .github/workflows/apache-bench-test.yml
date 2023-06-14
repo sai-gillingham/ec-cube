@@ -68,9 +68,7 @@ jobs:
           export PG_41_10000_HOME_RPS_RESULT=$(echo "scale=4; 1.0 * $RPS_SUM / $COUNT" | bc -l)
           echo "TIME PER REQUEST AVG: ${PG_41_10000_HOME_RESULT}"
           echo "REQUESTS PER SECOND AVG: ${PG_41_10000_HOME_RPS_RESULT}"
-          echo "PG_41_10000_HOME_RESULT<<EOF" >> $GITHUB_ENV
-          echo "${PG_41_10000_HOME_RESULT}" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
+          echo "PG_41_10000_HOME_RESULT=${PG_41_10000_HOME_RESULT|tr -d '\n'}" >> $GITHUB_ENV
           echo "PG_41_10000_HOME_RPS_RESULT=${PG_41_10000_HOME_RPS_RESULT}" >> $GITHUB_ENV
       - name: Request list page- Postgres 4.2 10000 PRODUCTS
         run: |
