@@ -10,11 +10,11 @@ jobs:
     steps:
       # POSTGRES SQL
       ## 4.1
-      - name: Checkout 4.2 Branch (POSTGRES)
+      - name: Checkout 4.2.1 Branch (POSTGRES)
         uses: actions/checkout@master
         with:
-          ref: "4.2"
-      - name: Download 4.2 Apache Bench Data
+          ref: "4.2.1"
+      - name: Download 4.2.1 Apache Bench Data
         run: |
           mkdir .github/workflows/pgsql
           sudo chmod 777 .github/workflows/pgsql
@@ -43,7 +43,7 @@ jobs:
       - name: Wait 2 minutes for the database to load, (as I do not know the databases active state)
         run: sleep 120s
         shell: bash
-      - name: Request home page - Postgres 4.2 10000 PRODUCTS
+      - name: Request home page - Postgres 4.2.1 10000 PRODUCTS
         run: |
           sudo apt-get install apache2-utils
           ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.1-home_1.txt
@@ -78,7 +78,7 @@ jobs:
           echo "REQUESTS PER SECOND AVG: ${PG_41_10000_HOME_RPS_RESULT}"
           echo "PG_41_10000_HOME_RESULT=${PG_41_10000_HOME_RESULT}" >> $GITHUB_ENV
           echo "PG_41_10000_HOME_RPS_RESULT=${PG_41_10000_HOME_RPS_RESULT}" >> $GITHUB_ENV
-      - name: Request list page- Postgres 4.2 10000 PRODUCTS
+      - name: Request list page- Postgres 4.2.1 10000 PRODUCTS
         run: |
           ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.1-list_1.txt
           ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.1-list_2.txt
@@ -105,18 +105,18 @@ jobs:
           echo "PG_41_10000_LIST_RESULT=${PG_41_10000_LIST_RESULT}" >> $GITHUB_ENV
           echo "PG_41_10000_LIST_RPS_RESULT=${PG_41_10000_LIST_RPS_RESULT}" >> $GITHUB_ENV
         # Upload Evidence
-      - name: Print 4.2 Average Results to CSV
+      - name: Print 4.2.1 Average Results to CSV
         run: |
-          echo "4.2 POSTGRES 100000 _ ${PG_41_10000_HOME_RESULT}, ${PG_41_10000_HOME_RPS_RESULT}, ${PG_41_10000_LIST_RESULT}, ${PG_41_10000_LIST_RPS_RESULT}"
-      - name: Drop PGSQL ECCUBE for 4.2
+          echo "4.2.1 POSTGRES 100000 _ ${PG_41_10000_HOME_RESULT}, ${PG_41_10000_HOME_RPS_RESULT}, ${PG_41_10000_LIST_RESULT}, ${PG_41_10000_LIST_RPS_RESULT}"
+      - name: Drop PGSQL ECCUBE for 4.2.1
         run: |
           docker-compose -f docker-compose.yml -f docker-compose.bench.pgsql.yml down -v
-      ## 4.2
+      ## 4.2.2
       - name: Checkout 4.2.2-20230606 Branch (POSTGRES)
         uses: actions/checkout@master
         with:
           ref: "4.2.2-20230606"
-      - name: Download 4.2 Apache Bench Data
+      - name: Download 4.2.2-20230606 Apache Bench Data
         run: |
           mkdir .github/workflows/pgsql
           sudo chmod 777 .github/workflows/pgsql
@@ -202,17 +202,17 @@ jobs:
         # Upload Evidence
       - name: Print 4.2.2-20230606 Average Results to Screen
         run: |
-          echo "4.2 POSTGRES 100000 _ ${PG_42_10000_HOME_RESULT}, ${PG_42_10000_HOME_RPS_RESULT}, ${PG_42_10000_LIST_RESULT}, ${PG_42_10000_LIST_RPS_RESULT}"
+          echo "4.2.2-20230606 POSTGRES 100000 _ ${PG_42_10000_HOME_RESULT}, ${PG_42_10000_HOME_RPS_RESULT}, ${PG_42_10000_LIST_RESULT}, ${PG_42_10000_LIST_RPS_RESULT}"
       - name: Drop PGSQL ECCUBE for 4.2.2-20230606
         run: |
           docker-compose -f docker-compose.yml -f docker-compose.bench.pgsql.yml down -v
       ## MYSQL
       # 4.1
-      - name: Checkout 4.2 Branch (MYSQL)
+      - name: Checkout 4.2.1 Branch (MYSQL)
         uses: actions/checkout@master
         with:
-          ref: "4.2"
-      - name: Download 4.2 Apache Bench Data
+          ref: "4.2.1 "
+      - name: Download 4.2.1 Apache Bench Data
         run: |
           mkdir .github/workflows/mysql
           sudo chmod 777 .github/workflows/mysql
@@ -234,7 +234,7 @@ jobs:
           else
             echo ".github/workflows/mysql/Dockerfile File found!"
           fi
-      - name: Start Load EC-CUBE on 4.2
+      - name: Start Load EC-CUBE on 4.2.1
         run: |
           sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
           docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml up -d
@@ -247,7 +247,7 @@ jobs:
       - name: Sleep for MySQL
         run: sleep 30s
         shell: bash
-      - name: Request home page  -  MySQL -  4.2 - 10000 PRODUCTS
+      - name: Request home page  -  MySQL -  4.2.1  - 10000 PRODUCTS
         run: |
           sudo apt-get install apache2-utils
           ab -n 100 -c 10 -l http://localhost:8080/ > mysql-4.1-home_1.txt
@@ -274,7 +274,7 @@ jobs:
           echo "REQUESTS PER SECOND AVG: ${MSQL_41_10000_HOME_RPS_RESULT}"
            echo "MSQL_41_10000_HOME_RESULT=${MSQL_41_10000_HOME_RESULT}" >> $GITHUB_ENV
            echo "MSQL_41_10000_HOME_RPS_RESULT=${MSQL_41_10000_HOME_RPS_RESULT}" >> $GITHUB_ENV
-      - name: Request list page -  MySQL - 4.2 - 10000 PRODUCTS
+      - name: Request list page -  MySQL - 4.2.1  - 10000 PRODUCTS
         run: |
           sudo apt-get install apache2-utils
           ab -n 100 -c 10 -l http://localhost:8080/products/list > mysql-4.1-list_1.txt
@@ -301,7 +301,7 @@ jobs:
           echo "REQUESTS PER SECOND AVG: ${MSQL_41_10000_LIST_RPS_RESULT}"
            echo "MSQL_41_10000_LIST_RESULT=${MSQL_41_10000_LIST_RESULT}" >> $GITHUB_ENV
            echo "MSQL_41_10000_LIST_RPS_RESULT=${MSQL_41_10000_LIST_RPS_RESULT}" >> $GITHUB_ENV
-      - name: Drop MYSQL ECCUBE for 4.2
+      - name: Drop MYSQL ECCUBE for 4.2.1
         run: |
           docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml down -v
       # 4.2
@@ -309,7 +309,7 @@ jobs:
         uses: actions/checkout@master
         with:
           ref: "4.2.2-20230606"
-      - name: Download 4.2 Apache Bench Data
+      - name: Download 4.2.2-20230606 Apache Bench Data
         run: |
           mkdir .github/workflows/mysql
           sudo chmod 777 .github/workflows/mysql
@@ -401,17 +401,17 @@ jobs:
       - name: Drop MYSQL ECCUBE for 4.2.2-20230606
         run: |
           docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml down -v
-      - name: Checkout 4.2 Branch (POSTGRES)
+      - name: Checkout 4.2.1  Branch (POSTGRES)
         uses: actions/checkout@master
         with:
-          ref: "4.2"
+          ref: "4.2.1"
       - name: Setup to EC-CUBE
         run: |
           sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
           docker compose -f docker-compose.yml -f docker-compose.pgsql.yml up -d --wait
       - name: Wait 2 minutes for the database to load, (as I do not know the databases active state)
         run: sleep 60s
-      - name: Request home page - Postgres 4.2 BASE INSTALL
+      - name: Request home page - Postgres 4.2.1  BASE INSTALL
         run: |
           sudo apt-get install apache2-utils
           wget -q -O visible_home_html.html http://localhost:8080
@@ -439,7 +439,7 @@ jobs:
           echo "REQUESTS PER SECOND AVG: ${PSQL_41_BASE_HOME_RPS_RESULT}"
            echo "PSQL_41_BASE_HOME_RESULT=${PSQL_41_BASE_HOME_RESULT}" >> $GITHUB_ENV
            echo "PSQL_41_BASE_HOME_RPS_RESULT=${PSQL_41_BASE_HOME_RPS_RESULT}" >> $GITHUB_ENV
-      - name: Request list page - Postgres 4.2 BASE INSTALL
+      - name: Request list page - Postgres 4.2.1  BASE INSTALL
         run: |
           sudo apt-get install apache2-utils
           wget -q -O visible_list_html.html http://localhost:8080/products/list
@@ -468,7 +468,7 @@ jobs:
            echo "PSQL_41_BASE_LIST_RESULT=${PSQL_41_BASE_LIST_RESULT}" >> $GITHUB_ENV
            echo "PSQL_41_BASE_LIST_RPS_RESULT=${PSQL_41_BASE_LIST_RPS_RESULT}" >> $GITHUB_ENV
         # Upload Evidence
-      - name: Drop PGSQL ECCUBE for 4.2
+      - name: Drop PGSQL ECCUBE for 4.2.1
         run: |
           docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml down -v
       - name: Checkout 4.2.2-20230606 Branch (POSTGRES)
@@ -540,11 +540,11 @@ jobs:
       - name: Drop PGSQL ECCUBE for 4.2.2-20230606
         run: |
           docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml down -v
-      - name: Checkout 4.2 Branch (MYSQL)
+      - name: Checkout 4.2.1  Branch (MYSQL)
         uses: actions/checkout@master
         with:
-          ref: "4.2"
-      - name: Start Load EC-CUBE on 4.2
+          ref: "4.2.1 "
+      - name: Start Load EC-CUBE on 4.2.1
         run: |
           sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
           docker-compose -f docker-compose.yml -f docker-compose.mysql.yml up -d
@@ -605,7 +605,7 @@ jobs:
           echo "REQUESTS PER SECOND AVG: ${MSQL_41_BASE_LIST_RPS_RESULT}"
            echo "MSQL_41_BASE_LIST_RESULT=${MSQL_41_BASE_LIST_RESULT}" >> $GITHUB_ENV
            echo "MSQL_41_BASE_LIST_RPS_RESULT=${MSQL_41_BASE_LIST_RPS_RESULT}" >> $GITHUB_ENV
-      - name: Drop MYSQL ECCUBE for 4.2
+      - name: Drop MYSQL ECCUBE for 4.2.1
         run: |
           docker-compose -f docker-compose.yml -f docker-compose.mysql.yml down -v
       # 4.2
@@ -679,7 +679,7 @@ jobs:
           docker-compose -f docker-compose.yml -f docker-compose.mysql.yml down -v
       - name: Bundle All Average Results to CSV
         run: |
-          echo "Pattern, DB, Page, 4.2 - TIME PER REQUEST, 4.2.2-20230606 - TIME PER REQUEST, 4.2 - REQUESTS PER SECOND,4.2.2-20230606 - REQUESTS PER SECOND" >> total.csv
+          echo "Pattern, DB, Page, 4.2.1 - TIME PER REQUEST, 4.2.2-20230606 - TIME PER REQUEST, 4.2.1 - REQUESTS PER SECOND,4.2.2-20230606 - REQUESTS PER SECOND" >> total.csv
           echo "Base Install Result, PGSQL, TOP, ${PSQL_41_BASE_HOME_RESULT}, ${PSQL_42_BASE_HOME_RESULT}, ${PSQL_41_BASE_HOME_RPS_RESULT}, ${PSQL_42_BASE_HOME_RPS_RESULT}" >> total.csv
           echo "Base Install Result, PGSQL, LIST, ${PSQL_41_BASE_LIST_RESULT}, ${PSQL_42_BASE_LIST_RESULT}, ${PSQL_41_BASE_LIST_RPS_RESULT}, ${PSQL_42_BASE_LIST_RPS_RESULT}" >> total.csv
           echo "Base Install Result, MYSQL, TOP,  ${MSQL_41_BASE_HOME_RESULT}, ${MSQL_42_BASE_HOME_RESULT}, ${MSQL_41_BASE_HOME_RPS_RESULT},  ${MSQL_42_BASE_HOME_RPS_RESULT}" >> total.csv
