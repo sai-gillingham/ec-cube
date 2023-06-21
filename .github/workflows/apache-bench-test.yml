@@ -39,6 +39,10 @@ jobs:
       - name: Start Load EC-CUBE
         run: |
           sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
+          sed -i '31d' docker-compose.yml
+          sed -i '32d' docker-compose.yml
+          sed -i '33d' docker-compose.yml
+          sed -i '31 a     - ".:/var/www/html"' docker-compose.yml
           docker-compose -f docker-compose.yml -f docker-compose.bench.pgsql.yml up -d
       - name: Wait 2 minutes for the database to load, (as I do not know the databases active state)
         run: sleep 120s
