@@ -6,7 +6,7 @@ on:
 jobs:
   load-test:
     name: Apache bench (HTTP load speed) testing for EC-CUBE
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       # POSTGRES SQL
       ## 4.1
