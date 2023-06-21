@@ -39,7 +39,7 @@ jobs:
       - name: Start Load EC-CUBE
         run: |
           sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
-          docker-compose -f docker-compose.yml -f docker-compose.bench.pgsql.yml up -d
+          docker compose -f docker-compose.yml -f docker-compose.bench.pgsql.yml up -d
       - name: Wait 2 minutes for the database to load, (as I do not know the databases active state)
         run: sleep 120s
         shell: bash
@@ -122,7 +122,7 @@ jobs:
           echo "4.2.1 POSTGRES 100000 _ ${PG_41_10000_HOME_RESULT}, ${PG_41_10000_HOME_RPS_RESULT}, ${PG_41_10000_LIST_RESULT}, ${PG_41_10000_LIST_RPS_RESULT}"
 #      - name: Drop PGSQL ECCUBE for 4.2.1
 #        run: |
-#          docker-compose -f docker-compose.yml -f docker-compose.bench.pgsql.yml down -v
+#          docker compose -f docker-compose.yml -f docker-compose.bench.pgsql.yml down -v
 #      ## 4.2.2
 #      - name: Checkout 4.2.2-20230606 Branch (POSTGRES)
 #        uses: actions/checkout@master
@@ -153,7 +153,7 @@ jobs:
 #      - name: Start Load EC-CUBE on 4.2.2-20230606
 #        run: |
 #          sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
-#          docker-compose -f docker-compose.yml -f docker-compose.bench.pgsql.yml up -d
+#          docker compose -f docker-compose.yml -f docker-compose.bench.pgsql.yml up -d
 #      - name: Wait 2 minutes for the database to load, (as I do not know the databases active state)
 #        run: sleep 60s
 #        shell: bash
@@ -217,7 +217,7 @@ jobs:
 #          echo "4.2.2-20230606 POSTGRES 100000 _ ${PG_42_10000_HOME_RESULT}, ${PG_42_10000_HOME_RPS_RESULT}, ${PG_42_10000_LIST_RESULT}, ${PG_42_10000_LIST_RPS_RESULT}"
 #      - name: Drop PGSQL ECCUBE for 4.2.2-20230606
 #        run: |
-#          docker-compose -f docker-compose.yml -f docker-compose.bench.pgsql.yml down -v
+#          docker compose -f docker-compose.yml -f docker-compose.bench.pgsql.yml down -v
 #      ## MYSQL
 #      # 4.1
 #      - name: Checkout 4.2.1 Branch (MYSQL)
@@ -249,13 +249,13 @@ jobs:
 #      - name: Start Load EC-CUBE on 4.2.1
 #        run: |
 #          sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
-#          docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml up -d
+#          docker compose -f docker-compose.yml -f docker-compose.bench.mysql.yml up -d
 #      - name: Sleep for MySQL
 #        run: sleep 240s
 #        shell: bash
 #      - name: Restart Load EC-CUBE to wait for MySQL
 #        run: |
-#          docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml up -d
+#          docker compose -f docker-compose.yml -f docker-compose.bench.mysql.yml up -d
 #      - name: Sleep for MySQL
 #        run: sleep 30s
 #        shell: bash
@@ -315,7 +315,7 @@ jobs:
 #           echo "MSQL_41_10000_LIST_RPS_RESULT=${MSQL_41_10000_LIST_RPS_RESULT}" >> $GITHUB_ENV
 #      - name: Drop MYSQL ECCUBE for 4.2.1
 #        run: |
-#          docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml down -v
+#          docker compose -f docker-compose.yml -f docker-compose.bench.mysql.yml down -v
 #      # 4.2
 #      - name: Checkout 4.2.2-20230606 Branch  (MYSQL)
 #        uses: actions/checkout@master
@@ -346,13 +346,13 @@ jobs:
 #      - name: Start Load MySQL Only 4.2.2-20230606
 #        run: |
 #          sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
-#          docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml up -d
+#          docker compose -f docker-compose.yml -f docker-compose.bench.mysql.yml up -d
 #      - name: Sleep for MySQL
 #        run: sleep 120s
 #        shell: bash
 #      - name: Restart Load EC-CUBE to wait for MySQL
 #        run: |
-#          docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml up -d
+#          docker compose -f docker-compose.yml -f docker-compose.bench.mysql.yml up -d
 #      - name: Sleep for MySQL
 #        run: sleep 30s
 #        shell: bash
@@ -412,7 +412,7 @@ jobs:
 #           echo "MSQL_42_10000_LIST_RPS_RESULT=${MSQL_42_10000_LIST_RPS_RESULT}" >> $GITHUB_ENV
 #      - name: Drop MYSQL ECCUBE for 4.2.2-20230606
 #        run: |
-#          docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml down -v
+#          docker compose -f docker-compose.yml -f docker-compose.bench.mysql.yml down -v
 #      - name: Checkout 4.2.1  Branch (POSTGRES)
 #        uses: actions/checkout@master
 #        with:
@@ -488,7 +488,7 @@ jobs:
 #        # Upload Evidence
 #      - name: Drop PGSQL ECCUBE for 4.2.1
 #        run: |
-#          docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml down -v
+#          docker compose -f docker-compose.yml -f docker-compose.pgsql.yml down -v
 #      - name: Checkout 4.2.2-20230606 Branch (POSTGRES)
 #        uses: actions/checkout@master
 #        with:
@@ -557,7 +557,7 @@ jobs:
 #           echo "PSQL_42_BASE_LIST_RPS_RESULT=${PSQL_42_BASE_LIST_RPS_RESULT}" >> $GITHUB_ENV
 #      - name: Drop PGSQL ECCUBE for 4.2.2-20230606
 #        run: |
-#          docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml down -v
+#          docker compose -f docker-compose.yml -f docker-compose.pgsql.yml down -v
 #      - name: Checkout 4.2.1  Branch (MYSQL)
 #        uses: actions/checkout@master
 #        with:
@@ -565,7 +565,7 @@ jobs:
 #      - name: Start Load EC-CUBE on 4.2.1
 #        run: |
 #          sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
-#          docker-compose -f docker-compose.yml -f docker-compose.mysql.yml up -d
+#          docker compose -f docker-compose.yml -f docker-compose.mysql.yml up -d
 #      - name: Wait for 30 seconds for the database to load, (because MySQL is slow to initialize)
 #        run: sleep 30s
 #        shell: bash
@@ -625,7 +625,7 @@ jobs:
 #           echo "MSQL_41_BASE_LIST_RPS_RESULT=${MSQL_41_BASE_LIST_RPS_RESULT}" >> $GITHUB_ENV
 #      - name: Drop MYSQL ECCUBE for 4.2.1
 #        run: |
-#          docker-compose -f docker-compose.yml -f docker-compose.mysql.yml down -v
+#          docker compose -f docker-compose.yml -f docker-compose.mysql.yml down -v
 #      # 4.2
 #      - name: Checkout 4.2.2-20230606 Branch  (MYSQL)
 #        uses: actions/checkout@master
@@ -634,7 +634,7 @@ jobs:
 #      - name: Start Load EC-CUBE on 4.2.2-20230606
 #        run: |
 #          sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
-#          docker-compose -f docker-compose.yml -f docker-compose.mysql.yml up -d
+#          docker compose -f docker-compose.yml -f docker-compose.mysql.yml up -d
 #      - name: Wait for 30 seconds for the database to load, (because MySQL is slow to initialize)
 #        run: sleep 30s
 #        shell: bash
@@ -694,7 +694,7 @@ jobs:
 #           echo "MSQL_42_BASE_LIST_RPS_RESULT=${MSQL_42_BASE_LIST_RPS_RESULT}" >> $GITHUB_ENV
 #      - name: Drop MYSQL ECCUBE for 4.2.2-20230606
 #        run: |
-#          docker-compose -f docker-compose.yml -f docker-compose.mysql.yml down -v
+#          docker compose -f docker-compose.yml -f docker-compose.mysql.yml down -v
       - name: Bundle All Average Results to CSV
         run: |
           echo "Pattern, DB, Page, 4.2.1 - TIME PER REQUEST, 4.2.2-20230606 - TIME PER REQUEST, 4.2.1 - REQUESTS PER SECOND,4.2.2-20230606 - REQUESTS PER SECOND" >> total.csv
