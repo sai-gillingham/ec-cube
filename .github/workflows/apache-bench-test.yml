@@ -120,9 +120,9 @@ jobs:
       - name: Print 4.2.1 Average Results to CSV
         run: |
           echo "4.2.1 POSTGRES 100000 _ ${PG_41_10000_HOME_RESULT}, ${PG_41_10000_HOME_RPS_RESULT}, ${PG_41_10000_LIST_RESULT}, ${PG_41_10000_LIST_RPS_RESULT}"
-      - name: Drop PGSQL ECCUBE for 4.2.1
-        run: |
-          docker-compose -f docker-compose.yml -f docker-compose.bench.pgsql.yml down -v
+#      - name: Drop PGSQL ECCUBE for 4.2.1
+#        run: |
+#          docker-compose -f docker-compose.yml -f docker-compose.bench.pgsql.yml down -v
 #      ## 4.2.2
 #      - name: Checkout 4.2.2-20230606 Branch (POSTGRES)
 #        uses: actions/checkout@master
@@ -413,82 +413,82 @@ jobs:
 #      - name: Drop MYSQL ECCUBE for 4.2.2-20230606
 #        run: |
 #          docker-compose -f docker-compose.yml -f docker-compose.bench.mysql.yml down -v
-      - name: Checkout 4.2.1  Branch (POSTGRES)
-        uses: actions/checkout@master
-        with:
-          ref: "4.2.1"
-      - name: Setup to EC-CUBE
-        run: |
-          sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
-          docker compose -f docker-compose.yml -f docker-compose.pgsql.yml up -d --wait
-      - name: Wait 2 minutes for the database to load, (as I do not know the databases active state)
-        run: sleep 60s
-      - name: Request home page - Postgres 4.2.1  BASE INSTALL
-        run: |
-          sudo apt-get install apache2-utils
-          wget -q -O visible_home_html.html http://localhost:8080
-          ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.1-home_1.txt
-          ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.1-home_2.txt
-          ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.1-home_3.txt
-          ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.1-home_4.txt
-          ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.1-home_5.txt
-          export PG_4_1_HOME_1="$(tail -n +23 pg-4.1-home_1.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_1_HOME_2="$(tail -n +23 pg-4.1-home_2.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_1_HOME_3="$(tail -n +23 pg-4.1-home_3.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_1_HOME_4="$(tail -n +23 pg-4.1-home_4.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_1_HOME_5="$(tail -n +23 pg-4.1-home_5.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_1_HOME_RPS_1="$(tail -n +20 pg-4.1-home_1.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
-          export PG_4_1_HOME_RPS_2="$(tail -n +20 pg-4.1-home_2.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
-          export PG_4_1_HOME_RPS_3="$(tail -n +20 pg-4.1-home_3.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
-          export PG_4_1_HOME_RPS_4="$(tail -n +20 pg-4.1-home_4.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
-          export PG_4_1_HOME_RPS_5="$(tail -n +20 pg-4.1-home_5.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
-          SUM=$(echo "$PG_4_1_HOME_1 + $PG_4_1_HOME_2 + $PG_4_1_HOME_3 + $PG_4_1_HOME_4 + $PG_4_1_HOME_5" | bc -l)
-          RPS_SUM=$(echo "$PG_4_1_HOME_RPS_1 + $PG_4_1_HOME_RPS_2 + $PG_4_1_HOME_RPS_3 + $PG_4_1_HOME_RPS_4 + $PG_4_1_HOME_RPS_5" | bc -l)
-          COUNT=5
-          export PSQL_41_BASE_HOME_RESULT=$(echo "scale=4; 1.0 * $SUM / $COUNT" | bc -l)
-          export PSQL_41_BASE_HOME_RPS_RESULT=$(echo "scale=4; 1.0 * $RPS_SUM / $COUNT" | bc -l)
-          echo "TIME PER REQUEST AVG: ${PSQL_41_BASE_HOME_RESULT}"
-          echo "REQUESTS PER SECOND AVG: ${PSQL_41_BASE_HOME_RPS_RESULT}"
-           echo "PSQL_41_BASE_HOME_RESULT=${PSQL_41_BASE_HOME_RESULT}" >> $GITHUB_ENV
-           echo "PSQL_41_BASE_HOME_RPS_RESULT=${PSQL_41_BASE_HOME_RPS_RESULT}" >> $GITHUB_ENV
-      - name: Request list page - Postgres 4.2.1  BASE INSTALL
-        run: |
-          sudo apt-get install apache2-utils
-          wget -q -O visible_list_html.html http://localhost:8080/products/list
-          ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.1-list_1.txt
-          ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.1-list_2.txt
-          ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.1-list_3.txt
-          ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.1-list_4.txt
-          ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.1-list_5.txt
-          export PG_4_1_LIST_1="$(tail -n +23 pg-4.1-list_1.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_1_LIST_2="$(tail -n +23 pg-4.1-list_2.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_1_LIST_3="$(tail -n +23 pg-4.1-list_3.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_1_LIST_4="$(tail -n +23 pg-4.1-list_4.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_1_LIST_5="$(tail -n +23 pg-4.1-list_5.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
-          export PG_4_1_LIST_RPS_1="$(tail -n +20 pg-4.1-list_1.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
-          export PG_4_1_LIST_RPS_2="$(tail -n +20 pg-4.1-list_2.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
-          export PG_4_1_LIST_RPS_3="$(tail -n +20 pg-4.1-list_3.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
-          export PG_4_1_LIST_RPS_4="$(tail -n +20 pg-4.1-list_4.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
-          export PG_4_1_LIST_RPS_5="$(tail -n +20 pg-4.1-list_5.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
-          SUM=$(echo "$PG_4_1_LIST_1 + $PG_4_1_LIST_2 + $PG_4_1_LIST_3 + $PG_4_1_LIST_4 + $PG_4_1_LIST_5" | bc -l)
-          RPS_SUM=$(echo "$PG_4_1_LIST_RPS_1 + $PG_4_1_LIST_RPS_2 + $PG_4_1_LIST_RPS_3 + $PG_4_1_LIST_RPS_4 + $PG_4_1_LIST_RPS_5" | bc -l)
-          COUNT=5
-          export PSQL_41_BASE_LIST_RESULT=$(echo "scale=4; 1.0 * $SUM / $COUNT" | bc -l)
-          export PSQL_41_BASE_LIST_RPS_RESULT=$(echo "scale=4; 1.0 * $RPS_SUM / $COUNT" | bc -l)
-          echo "TIME PER REQUEST AVG: ${PSQL_41_BASE_LIST_RESULT}"
-          echo "REQUESTS PER SECOND AVG: ${PSQL_41_BASE_LIST_RPS_RESULT}"
-           echo "PSQL_41_BASE_LIST_RESULT=${PSQL_41_BASE_LIST_RESULT}" >> $GITHUB_ENV
-           echo "PSQL_41_BASE_LIST_RPS_RESULT=${PSQL_41_BASE_LIST_RPS_RESULT}" >> $GITHUB_ENV
-      - name: Upload complete evidence (ALL)
-        if: always()
-        uses: actions/upload-artifact@v2
-        with:
-          name: ab-4.2.1-BASEP_${{ env.ARTIFACT_NAME }}-complete
-          path: pg-4.1-*
-        # Upload Evidence
-      - name: Drop PGSQL ECCUBE for 4.2.1
-        run: |
-          docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml down -v
+#      - name: Checkout 4.2.1  Branch (POSTGRES)
+#        uses: actions/checkout@master
+#        with:
+#          ref: "4.2.1"
+#      - name: Setup to EC-CUBE
+#        run: |
+#          sed -i 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml
+#          docker compose -f docker-compose.yml -f docker-compose.pgsql.yml up -d --wait
+#      - name: Wait 2 minutes for the database to load, (as I do not know the databases active state)
+#        run: sleep 60s
+#      - name: Request home page - Postgres 4.2.1  BASE INSTALL
+#        run: |
+#          sudo apt-get install apache2-utils
+#          wget -q -O visible_home_html.html http://localhost:8080
+#          ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.1-home_1.txt
+#          ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.1-home_2.txt
+#          ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.1-home_3.txt
+#          ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.1-home_4.txt
+#          ab -n 100 -c 10 -l http://localhost:8080/ > pg-4.1-home_5.txt
+#          export PG_4_1_HOME_1="$(tail -n +23 pg-4.1-home_1.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+#          export PG_4_1_HOME_2="$(tail -n +23 pg-4.1-home_2.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+#          export PG_4_1_HOME_3="$(tail -n +23 pg-4.1-home_3.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+#          export PG_4_1_HOME_4="$(tail -n +23 pg-4.1-home_4.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+#          export PG_4_1_HOME_5="$(tail -n +23 pg-4.1-home_5.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+#          export PG_4_1_HOME_RPS_1="$(tail -n +20 pg-4.1-home_1.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
+#          export PG_4_1_HOME_RPS_2="$(tail -n +20 pg-4.1-home_2.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
+#          export PG_4_1_HOME_RPS_3="$(tail -n +20 pg-4.1-home_3.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
+#          export PG_4_1_HOME_RPS_4="$(tail -n +20 pg-4.1-home_4.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
+#          export PG_4_1_HOME_RPS_5="$(tail -n +20 pg-4.1-home_5.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
+#          SUM=$(echo "$PG_4_1_HOME_1 + $PG_4_1_HOME_2 + $PG_4_1_HOME_3 + $PG_4_1_HOME_4 + $PG_4_1_HOME_5" | bc -l)
+#          RPS_SUM=$(echo "$PG_4_1_HOME_RPS_1 + $PG_4_1_HOME_RPS_2 + $PG_4_1_HOME_RPS_3 + $PG_4_1_HOME_RPS_4 + $PG_4_1_HOME_RPS_5" | bc -l)
+#          COUNT=5
+#          export PSQL_41_BASE_HOME_RESULT=$(echo "scale=4; 1.0 * $SUM / $COUNT" | bc -l)
+#          export PSQL_41_BASE_HOME_RPS_RESULT=$(echo "scale=4; 1.0 * $RPS_SUM / $COUNT" | bc -l)
+#          echo "TIME PER REQUEST AVG: ${PSQL_41_BASE_HOME_RESULT}"
+#          echo "REQUESTS PER SECOND AVG: ${PSQL_41_BASE_HOME_RPS_RESULT}"
+#           echo "PSQL_41_BASE_HOME_RESULT=${PSQL_41_BASE_HOME_RESULT}" >> $GITHUB_ENV
+#           echo "PSQL_41_BASE_HOME_RPS_RESULT=${PSQL_41_BASE_HOME_RPS_RESULT}" >> $GITHUB_ENV
+#      - name: Request list page - Postgres 4.2.1  BASE INSTALL
+#        run: |
+#          sudo apt-get install apache2-utils
+#          wget -q -O visible_list_html.html http://localhost:8080/products/list
+#          ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.1-list_1.txt
+#          ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.1-list_2.txt
+#          ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.1-list_3.txt
+#          ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.1-list_4.txt
+#          ab -n 100 -c 10 -l http://localhost:8080/products/list > pg-4.1-list_5.txt
+#          export PG_4_1_LIST_1="$(tail -n +23 pg-4.1-list_1.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+#          export PG_4_1_LIST_2="$(tail -n +23 pg-4.1-list_2.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+#          export PG_4_1_LIST_3="$(tail -n +23 pg-4.1-list_3.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+#          export PG_4_1_LIST_4="$(tail -n +23 pg-4.1-list_4.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+#          export PG_4_1_LIST_5="$(tail -n +23 pg-4.1-list_5.txt | grep -m 1 -o -P '(?<=:).*(?=\[ms\])')"
+#          export PG_4_1_LIST_RPS_1="$(tail -n +20 pg-4.1-list_1.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
+#          export PG_4_1_LIST_RPS_2="$(tail -n +20 pg-4.1-list_2.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
+#          export PG_4_1_LIST_RPS_3="$(tail -n +20 pg-4.1-list_3.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
+#          export PG_4_1_LIST_RPS_4="$(tail -n +20 pg-4.1-list_4.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
+#          export PG_4_1_LIST_RPS_5="$(tail -n +20 pg-4.1-list_5.txt | grep -o -P '(?<=Requests per second:).*(?=\[#/sec\])')"
+#          SUM=$(echo "$PG_4_1_LIST_1 + $PG_4_1_LIST_2 + $PG_4_1_LIST_3 + $PG_4_1_LIST_4 + $PG_4_1_LIST_5" | bc -l)
+#          RPS_SUM=$(echo "$PG_4_1_LIST_RPS_1 + $PG_4_1_LIST_RPS_2 + $PG_4_1_LIST_RPS_3 + $PG_4_1_LIST_RPS_4 + $PG_4_1_LIST_RPS_5" | bc -l)
+#          COUNT=5
+#          export PSQL_41_BASE_LIST_RESULT=$(echo "scale=4; 1.0 * $SUM / $COUNT" | bc -l)
+#          export PSQL_41_BASE_LIST_RPS_RESULT=$(echo "scale=4; 1.0 * $RPS_SUM / $COUNT" | bc -l)
+#          echo "TIME PER REQUEST AVG: ${PSQL_41_BASE_LIST_RESULT}"
+#          echo "REQUESTS PER SECOND AVG: ${PSQL_41_BASE_LIST_RPS_RESULT}"
+#           echo "PSQL_41_BASE_LIST_RESULT=${PSQL_41_BASE_LIST_RESULT}" >> $GITHUB_ENV
+#           echo "PSQL_41_BASE_LIST_RPS_RESULT=${PSQL_41_BASE_LIST_RPS_RESULT}" >> $GITHUB_ENV
+#      - name: Upload complete evidence (ALL)
+#        if: always()
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: ab-4.2.1-BASEP_${{ env.ARTIFACT_NAME }}-complete
+#          path: pg-4.1-*
+#        # Upload Evidence
+#      - name: Drop PGSQL ECCUBE for 4.2.1
+#        run: |
+#          docker-compose -f docker-compose.yml -f docker-compose.pgsql.yml down -v
 #      - name: Checkout 4.2.2-20230606 Branch (POSTGRES)
 #        uses: actions/checkout@master
 #        with:
