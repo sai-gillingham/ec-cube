@@ -110,6 +110,12 @@ jobs:
         with:
           name: ab-4.2.1-10000P_${{ env.ARTIFACT_NAME }}-complete
           path: pg-4.1-*
+      - name: Error Log
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: ab-4.2.1-ERROR_${{ env.ARTIFACT_NAME }}-complete
+          path: var/log/prod/
         # Upload Evidence
       - name: Print 4.2.1 Average Results to CSV
         run: |
