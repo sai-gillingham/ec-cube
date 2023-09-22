@@ -68,6 +68,7 @@ env:
                     browser: chrome
                     capabilities:
                         chromeOptions:
-                            args: ["--headless", "--disable-gpu"]
+                            # クリスさんのおかけでheadlessが動くようになりました
+                            args: ["--headless", "--disable-gpu"、 "--no-sandbox", "--disable-dev-shm-usage"]]
                             prefs:
                                 download.default_directory: '%PWD%/codeception/_support/_downloads'
