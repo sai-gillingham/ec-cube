@@ -27,6 +27,8 @@ services:
           memory: 16G
   chrome:
     image: selenium/standalone-chrome
+    volumes:
+      - ./codeception/_support/_downloads:/var/www/html/codeception/_support/_downloads
     networks:
       - backend
     deploy:

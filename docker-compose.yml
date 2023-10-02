@@ -32,7 +32,7 @@ services:
     environment:
       # EC-CUBE environments
       APP_ENV: "dev"
-      APP_DEBUG: 1
+      APP_DEBUG: 0
       DATABASE_URL: "sqlite:///var/eccube.db"
       DATABASE_SERVER_VERSION: 3
       DATABASE_CHARSET: 'utf8'
