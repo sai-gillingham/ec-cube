@@ -17,6 +17,7 @@ use Doctrine\DBAL\Exception\DriverException;
 use Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException;
 use Doctrine\Persistence\ManagerRegistry as RegistryInterface;
 use Eccube\Entity\Member;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * MemberRepository
@@ -84,7 +85,7 @@ class MemberRepository extends AbstractRepository
     /**
      * 管理ユーザを登録します.
      *
-     * @param Member $Member
+     * @param Member|UserInterface $Member
      */
     public function save($Member)
     {

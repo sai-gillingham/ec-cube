@@ -277,7 +277,7 @@ class OrderType extends AbstractType
     {
         /** @var Order $Order */
         $Order = $event->getData();
-        if (null === $Order) {
+        if ($Order === null) {
             return;
         }
         $OrderItems = $Order->getItems();

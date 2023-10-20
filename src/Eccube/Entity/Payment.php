@@ -52,14 +52,14 @@ if (!class_exists('\Eccube\Entity\Payment')) {
         private $method;
 
         /**
-         * @var string|null
+         * @var float|null
          *
          * @ORM\Column(name="charge", type="decimal", precision=12, scale=2, nullable=true, options={"unsigned":true,"default":0})
          */
         private $charge = 0;
 
         /**
-         * @var string|null
+         * @var float|null
          *
          * @ORM\Column(name="rule_max", type="decimal", precision=12, scale=2, nullable=true, options={"unsigned":true})
          */
@@ -87,7 +87,7 @@ if (!class_exists('\Eccube\Entity\Payment')) {
         private $payment_image;
 
         /**
-         * @var string|null
+         * @var float|null
          *
          * @ORM\Column(name="rule_min", type="decimal", precision=12, scale=2, nullable=true, options={"unsigned":true})
          */
@@ -183,7 +183,7 @@ if (!class_exists('\Eccube\Entity\Payment')) {
         /**
          * Set charge.
          *
-         * @param string|null $charge
+         * @param float|null $charge
          *
          * @return Payment
          */
@@ -197,7 +197,7 @@ if (!class_exists('\Eccube\Entity\Payment')) {
         /**
          * Get charge.
          *
-         * @return string|null
+         * @return float|null
          */
         public function getCharge()
         {
@@ -207,7 +207,7 @@ if (!class_exists('\Eccube\Entity\Payment')) {
         /**
          * Set ruleMax.
          *
-         * @param string|null $ruleMax
+         * @param float|null $ruleMax
          *
          * @return Payment
          */
@@ -221,7 +221,7 @@ if (!class_exists('\Eccube\Entity\Payment')) {
         /**
          * Get ruleMax.
          *
-         * @return string|null
+         * @return float|null
          */
         public function getRuleMax()
         {
@@ -303,7 +303,7 @@ if (!class_exists('\Eccube\Entity\Payment')) {
         /**
          * Set ruleMin.
          *
-         * @param string|null $ruleMin
+         * @param float|null $ruleMin
          *
          * @return Payment
          */
@@ -317,7 +317,7 @@ if (!class_exists('\Eccube\Entity\Payment')) {
         /**
          * Get ruleMin.
          *
-         * @return string|null
+         * @return float|null
          */
         public function getRuleMin()
         {

@@ -110,7 +110,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
          *
          * 不課税, 非課税の値引明細は税率ごとに按分する.
          *
-         * @return int[]
+         * @return float[]
          */
         public function getTotalByTaxRate()
         {
@@ -134,7 +134,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
          *
          * 不課税, 非課税の値引明細は税率ごとに按分する.
          *
-         * @return int[]
+         * @return float[]
          */
         public function getTaxByTaxRate()
         {
@@ -436,7 +436,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         private $subtotal = 0;
 
         /**
-         * @var string
+         * @var float
          *
          * @ORM\Column(name="discount", type="decimal", precision=12, scale=2, options={"unsigned":true,"default":0})
          */
@@ -1103,7 +1103,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * Set discount.
          *
-         * @param string $discount
+         * @param float $discount
          *
          * @return Order
          */
@@ -1117,7 +1117,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * Get discount.
          *
-         * @return string
+         * @return float
          * @deprecated 4.0.3 から値引きは課税値引きと 非課税・不課税の値引きの2種に分かれる. 課税値引きについてはgetTaxableDiscountを利用してください.
          *
          */

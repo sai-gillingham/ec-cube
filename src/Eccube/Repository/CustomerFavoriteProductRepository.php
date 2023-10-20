@@ -16,6 +16,7 @@ namespace Eccube\Repository;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry as RegistryInterface;
 use Eccube\Entity\CustomerFavoriteProduct;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * CustomerFavoriteProductRepository
@@ -31,10 +32,10 @@ class CustomerFavoriteProductRepository extends AbstractRepository
     }
 
     /**
-     * @param \Eccube\Entity\Customer $Customer
+     * @param \Eccube\Entity\Customer|UserInterface  $Customer
      * @param \Eccube\Entity\Product  $Product
      */
-    public function addFavorite(\Eccube\Entity\Customer $Customer, \Eccube\Entity\Product $Product)
+    public function addFavorite(UserInterface $Customer, \Eccube\Entity\Product $Product)
     {
         if ($this->isFavorite($Customer, $Product)) {
             return;
