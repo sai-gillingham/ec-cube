@@ -173,7 +173,7 @@ class CustomerRepository extends AbstractRepository
                 ->setParameter('sexs', $sexs);
         }
 
-        if (!empty($searchData['birth_month']) && $searchData['birth_month']) {
+        if (!empty($searchData['birth_month'])) {
             $qb
                 ->andWhere('EXTRACT(MONTH FROM c.birth) = :birth_month')
                 ->setParameter('birth_month', $searchData['birth_month']);

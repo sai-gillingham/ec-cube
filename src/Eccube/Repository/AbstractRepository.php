@@ -16,11 +16,12 @@ namespace Eccube\Repository;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\DBAL\DBALException;
 use Eccube\Entity\AbstractEntity;
+use Eccube\Common\EccubeConfig;
 
 abstract class AbstractRepository extends ServiceEntityRepository
 {
     /**
-     * @var array
+     * @var EccubeConfig
      */
     protected $eccubeConfig;
 

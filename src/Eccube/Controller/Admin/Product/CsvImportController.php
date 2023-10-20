@@ -45,6 +45,7 @@ use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
@@ -363,7 +364,7 @@ class CsvImportController extends AbstractCsvImportController
                         // 商品規格が存在しなければ新規登録
                         /** @var ProductClass[] $ProductClasses */
                         $ProductClasses = $Product->getProductClasses();
-                        if ($ProductClasses->count() < 1) {
+                        if (count($ProductClasses) < 1) {
                             // 規格分類1(ID)がセットされていると規格なし商品、規格あり商品を作成
                             $ProductClassOrg = $this->createProductClass($row, $Product, $data, $headerByKey);
                             if ($this->BaseInfo->isOptionProductDeliveryFee()) {
@@ -874,7 +875,7 @@ class CsvImportController extends AbstractCsvImportController
      * @param array $headers
      * @param bool $rollback
      *
-     * @return array
+     * @return JsonResponse | array<mixed>
      *
      * @throws \Doctrine\DBAL\ConnectionException
      */
@@ -1148,7 +1149,7 @@ class CsvImportController extends AbstractCsvImportController
             // 在庫数が設定されていなければエラー
             if (isset($row[$headerByKey['stock']]) && StringUtil::isNotBlank($row[$headerByKey['stock']])) {
                 $stock = str_replace(',', '', $row[$headerByKey['stock']]);
-                if (preg_match('/^\d+$/', $stock) && $stock >= 0) {
+                if (preg_match('/^\d+$/', $stock) && (int)$stock >= 0) {
                     $ProductClass->setStock($stock);
                 } else {
                     $message = trans('admin.common.csv_invalid_greater_than_zero', ['%line%' => $line, '%name%' => $headerByKey['stock']]);
