@@ -16,6 +16,7 @@ namespace Eccube\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
+use Eccube\Entity\Master\OrderStatus;
 use Eccube\Entity\Master\RoundingType;
 use Eccube\Entity\Master\TaxType;
 use Eccube\Service\Calculator\OrderItemCollection;
@@ -1834,11 +1835,11 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * Set orderStatus.
          *
-         * @param \Eccube\Entity\Master\OrderStatus|object|null $orderStatus
+         * @param OrderStatus|null $orderStatus
          *
          * @return Order
          */
-        public function setOrderStatus(Master\OrderStatus $orderStatus = null)
+        public function setOrderStatus(OrderStatus $orderStatus = null)
         {
             $this->OrderStatus = $orderStatus;
 
