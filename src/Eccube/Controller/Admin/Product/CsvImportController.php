@@ -13,6 +13,7 @@
 
 namespace Eccube\Controller\Admin\Product;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException;
 use Eccube\Common\Constant;
 use Eccube\Controller\Admin\AbstractCsvImportController;
@@ -362,9 +363,9 @@ class CsvImportController extends AbstractCsvImportController
                         $this->createProductTag($row, $Product, $data, $headerByKey);
 
                         // 商品規格が存在しなければ新規登録
-                        /** @var ProductClass[] $ProductClasses */
+                        /** @var ProductClass[]|Collection $ProductClasses */
                         $ProductClasses = $Product->getProductClasses();
-                        if (count($ProductClasses) < 1) {
+                        if ($ProductClasses->count() < 1) {
                             // 規格分類1(ID)がセットされていると規格なし商品、規格あり商品を作成
                             $ProductClassOrg = $this->createProductClass($row, $Product, $data, $headerByKey);
                             if ($this->BaseInfo->isOptionProductDeliveryFee()) {
