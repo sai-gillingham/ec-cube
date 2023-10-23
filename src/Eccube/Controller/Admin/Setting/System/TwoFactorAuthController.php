@@ -14,6 +14,7 @@
 namespace Eccube\Controller\Admin\Setting\System;
 
 use Eccube\Controller\AbstractController;
+use Eccube\Entity\Member;
 use Eccube\Form\Type\Admin\TwoFactorAuthType;
 use Eccube\Repository\MemberRepository;
 use Eccube\Service\TwoFactorAuthService;
@@ -70,6 +71,7 @@ class TwoFactorAuthController extends AbstractController
      */
     public function auth(Request $request)
     {
+        /** @var Member $Member */
         $Member = $this->getUser();
 
         if (!$this->twoFactorAuthService->isEnabled() || $this->twoFactorAuthService->isAuth($Member)) {
@@ -143,6 +145,7 @@ class TwoFactorAuthController extends AbstractController
     private function createResponse(Request $request)
     {
         $error = null;
+        /** @var Member $Member */
         $Member = $this->getUser();
         $builder = $this->formFactory->createBuilder(TwoFactorAuthType::class);
         $form = null;

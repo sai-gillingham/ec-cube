@@ -74,7 +74,7 @@ class LogListener implements EventSubscriberInterface
     }
 
     /**
-     * @param ResponseEvent $event
+     * @param RequestEvent $event
      */
     public function onKernelRequest(RequestEvent $event)
     {
@@ -112,7 +112,7 @@ class LogListener implements EventSubscriberInterface
     }
 
     /**
-     * @param FilterResponseEvent $event
+     * @param ResponseEvent $event
      */
     public function onKernelResponse(ResponseEvent $event)
     {

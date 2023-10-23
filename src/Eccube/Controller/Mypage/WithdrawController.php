@@ -14,6 +14,7 @@
 namespace Eccube\Controller\Mypage;
 
 use Eccube\Controller\AbstractController;
+use Eccube\Entity\Customer;
 use Eccube\Entity\Master\CustomerStatus;
 use Eccube\Event\EccubeEvents;
 use Eccube\Event\EventArgs;
@@ -126,7 +127,7 @@ class WithdrawController extends AbstractController
                 case 'complete':
                     log_info('退会処理開始');
 
-                    /* @var $Customer \Eccube\Entity\Customer */
+                    /** @var Customer $Customer */
                     $Customer = $this->getUser();
                     $email = $Customer->getEmail();
 
