@@ -22,17 +22,15 @@ services:
     ### ローカルでビルドする場合は以下のコマンドを使用します
     ## docker build -t ec-cube --no-cache --pull --build-arg TAG=8.1-apache .
     ## docker tag ec-cube ghcr.io/ec-cube/ec-cube-php:8.1-apache
-#    image: ${REGISTRY:-ghcr.io}/${IMAGE_NAME:-ec-cube/ec-cube-php}:${TAG:-8.1-apache}
-    build:
-      context: .
+    image: ${REGISTRY:-ghcr.io}/${IMAGE_NAME:-ec-cube/ec-cube-php}:${TAG:-8.1-apache}
     ports:
       - 8080:80
       - 4430:443
     volumes:
       ### 同期対象からコストの重いフォルダを除外 #####################
-      - ".:/var/www/html"
-#      - "vendor:/var/www/html/vendor"
-#      - "node_modules:/var/www/html/node_modules"
+      - "var:/var/www/html/var"
+      - "vendor:/var/www/html/vendor"
+      - "node_modules:/var/www/html/node_modules"
     environment:
       # EC-CUBE environments
       APP_ENV: "dev"
