@@ -1,0 +1,39 @@
+version: "3"
+
+volumes:
+  mailcatcher-data:
+    driver: local
+
+services:
+  codeception:
+    build: ./codeception/docker
+    environment:
+      APP_ENV: "codeception"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - chrome
+      - ec-cube
+    links:
+      - chrome
+      - ec-cube
+    networks:
+      - backend
+    deploy:
+      resources:
+        limits:
+          memory: 16G
+        reservations:
+          memory: 16G
+  chrome:
+    image: selenium/standalone-chrome
+    volumes:
+      - ./codeception/_support/_downloads:/var/www/html/codeception/_support/_downloads
+    networks:
+      - backend
+    deploy:
+      resources:
+        limits:
+          memory: 16G
+        reservations:
+          memory: 16G
