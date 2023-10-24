@@ -22,17 +22,20 @@ services:
     ### ローカルでビルドする場合は以下のコマンドを使用します
     ## docker build -t ec-cube --no-cache --pull --build-arg TAG=8.1-apache .
     ## docker tag ec-cube ghcr.io/ec-cube/ec-cube-php:8.1-apache
-    image: ${REGISTRY:-ghcr.io}/${IMAGE_NAME:-ec-cube/ec-cube-php}:${TAG:-8.1-apache}
+    # image: ${REGISTRY:-ghcr.io}/${IMAGE_NAME:-ec-cube/ec-cube-php}:${TAG:-8.1-apache}
+    build:
+      context: .
     ports:
       - 8080:80
       - 4430:443
     volumes:
       ### 同期対象からコストの重いフォルダを除外 #####################
       - ".:/var/www/html"
+      # - "./var/coverage:/opt/coverage"
     environment:
       # EC-CUBE environments
       APP_ENV: "dev"
-      APP_DEBUG: 0
+      APP_DEBUG: 1
       DATABASE_URL: "sqlite:///var/eccube.db"
       DATABASE_SERVER_VERSION: 3
       DATABASE_CHARSET: 'utf8'

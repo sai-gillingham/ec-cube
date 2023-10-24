@@ -136,6 +136,17 @@ class CustomerRepositoryTest extends EccubeTestCase
 
         self::assertEquals($Customer, $actual[0]);
     }
+
+    public function testGetQueryBuilderBySearchDataByBirthMonth()
+    {
+        $Customer = $this->createCustomer('20231024@example.com');
+        $birthday = new \DateTime('now');
+        $Customer->setBirth($birthday);
+        $actual = $this->customerRepo->getQueryBuilderBySearchData(['birth_month' => 10])
+            ->getQuery()
+            ->getResult();
+        self::assertEquals($Customer->getBirth()->format('m'),$actual[0]->getBirth()->format('m'));
+    }
 }
 
 class DummyCustomer implements UserInterface
