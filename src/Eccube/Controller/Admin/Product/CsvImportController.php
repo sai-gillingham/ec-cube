@@ -1170,7 +1170,7 @@ class CsvImportController extends AbstractCsvImportController
 
         if (isset($row[$headerByKey['sale_limit']]) && StringUtil::isNotBlank($row[$headerByKey['sale_limit']])) {
             $saleLimit = str_replace(',', '', $row[$headerByKey['sale_limit']]);
-            if (preg_match('/^\d+$/', $saleLimit) && $saleLimit >= 0) {
+            if (preg_match('/^\d+$/', $saleLimit) && (float)$saleLimit >= 0) {
                 $ProductClass->setSaleLimit($saleLimit);
             } else {
                 $message = trans('admin.common.csv_invalid_greater_than_zero', ['%line%' => $line, '%name%' => $headerByKey['sale_limit']]);
@@ -1333,7 +1333,7 @@ class CsvImportController extends AbstractCsvImportController
                 $this->addErrors($message);
             } else {
                 $stock = str_replace(',', '', $row[$headerByKey['stock']]);
-                if (preg_match('/^\d+$/', $stock) && $stock >= 0) {
+                if (preg_match('/^\d+$/', $stock) && (int)$stock >= 0) {
                     $ProductClass->setStock($row[$headerByKey['stock']]);
                 } else {
                     $message = trans('admin.common.csv_invalid_greater_than_zero', ['%line%' => $line, '%name%' => $headerByKey['stock']]);
@@ -1351,7 +1351,7 @@ class CsvImportController extends AbstractCsvImportController
         if (isset($row[$headerByKey['sale_limit']])) {
             if ($row[$headerByKey['sale_limit']] != '') {
                 $saleLimit = str_replace(',', '', $row[$headerByKey['sale_limit']]);
-                if (preg_match('/^\d+$/', $saleLimit) && $saleLimit >= 0) {
+                if (preg_match('/^\d+$/', $saleLimit) && (float)$saleLimit >= 0) {
                     $ProductClass->setSaleLimit($saleLimit);
                 } else {
                     $message = trans('admin.common.csv_invalid_greater_than_zero', ['%line%' => $line, '%name%' => $headerByKey['sale_limit']]);

@@ -13,8 +13,8 @@
 
 namespace Eccube\Form\Type\Admin;
 
-use Doctrine\Common\Persistence\Mapping\Driver\MappingDriver;
-use Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain;
+use Doctrine\Bundle\DoctrineBundle\Mapping\MappingDriver;
+use Doctrine\Persistence\Mapping\Driver\MappingDriverChain;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Eccube\Entity\Master\CustomerOrderStatus;
@@ -51,9 +51,10 @@ class MasterdataType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $masterdata = [];
-
+        /** @var MappingDriver $mappingDriver */
+        $mappingDriver = $this->entityManager->getConfiguration()->getMetadataDriverImpl();
         /** @var MappingDriverChain $driverChain */
-        $driverChain = $this->entityManager->getConfiguration()->getMetadataDriverImpl()->getDriver();
+        $driverChain = $mappingDriver->getDriver();
         /** @var MappingDriver[] $drivers */
         $drivers = $driverChain->getDrivers();
 
