@@ -41,6 +41,7 @@ services:
       DATABASE_CHARSET: 'utf8'
       MAILER_DSN: "smtp://mailcatcher:1025"
       ECCUBE_AUTH_MAGIC: "<change.me>"
+
       # TRUSTED_HOSTS: '^127.0.0.1$$,^localhost$$'
       # ECCUBE_LOCALE: "ja"
       # ECCUBE_TIMEZONE: "Asia/Tokyo"
@@ -58,6 +59,8 @@ services:
       # ECCUBE_ADMIN_PASS: "password"
     networks:
       - backend
+    extra_hosts:
+      - host.docker.internal:host-gateway
 
   ### Mailcatcher ##################################
   mailcatcher:
