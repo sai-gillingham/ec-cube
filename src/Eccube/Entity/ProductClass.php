@@ -196,7 +196,7 @@ if (!class_exists('\Eccube\Entity\ProductClass')) {
         private $stock_unlimited = false;
 
         /**
-         * @var string|null
+         * @var float|null
          *
          * @ORM\Column(name="sale_limit", type="decimal", precision=10, scale=0, nullable=true, options={"unsigned":true})
          */
@@ -422,7 +422,7 @@ if (!class_exists('\Eccube\Entity\ProductClass')) {
         /**
          * Set saleLimit.
          *
-         * @param string|null $saleLimit
+         * @param string|float|null $saleLimit
          *
          * @return ProductClass
          */
@@ -436,7 +436,7 @@ if (!class_exists('\Eccube\Entity\ProductClass')) {
         /**
          * Get saleLimit.
          *
-         * @return string|null
+         * @return float|null
          */
         public function getSaleLimit()
         {
