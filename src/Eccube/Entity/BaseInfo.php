@@ -257,21 +257,21 @@ if (!class_exists('\Eccube\Entity\BaseInfo')) {
         private $option_point = true;
 
         /**
-         * @var string
+         * @var string|null
          *
          * @ORM\Column(name="basic_point_rate", type="decimal", precision=10, scale=0, options={"unsigned":true, "default":1}, nullable=true)
          */
         private $basic_point_rate = '1';
 
         /**
-         * @var string
+         * @var string|null
          *
          * @ORM\Column(name="point_conversion_rate", type="decimal", precision=10, scale=0, options={"unsigned":true, "default":1}, nullable=true)
          */
         private $point_conversion_rate = '1';
 
         /**
-         * @var \Eccube\Entity\Master\Country
+         * @var \Eccube\Entity\Master\Country|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\Country")
          * @ORM\JoinColumns({
@@ -282,7 +282,7 @@ if (!class_exists('\Eccube\Entity\BaseInfo')) {
         private $Country;
 
         /**
-         * @var \Eccube\Entity\Master\Pref
+         * @var \Eccube\Entity\Master\Pref|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\Pref")
          * @ORM\JoinColumns({

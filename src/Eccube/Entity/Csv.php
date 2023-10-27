@@ -93,7 +93,7 @@ if (!class_exists('\Eccube\Entity\Csv')) {
         private $update_date;
 
         /**
-         * @var \Eccube\Entity\Master\CsvType
+         * @var \Eccube\Entity\Master\CsvType|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\CsvType")
          * @ORM\JoinColumns({
@@ -103,7 +103,7 @@ if (!class_exists('\Eccube\Entity\Csv')) {
         private $CsvType;
 
         /**
-         * @var \Eccube\Entity\Member
+         * @var \Eccube\Entity\Member|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Member")
          * @ORM\JoinColumns({

@@ -45,7 +45,7 @@ if (!class_exists('\Eccube\Entity\ClassName')) {
         private $id;
 
         /**
-         * @var string
+         * @var string|null
          *
          * @ORM\Column(name="backend_name", type="string", length=255, nullable=true)
          */
@@ -80,7 +80,7 @@ if (!class_exists('\Eccube\Entity\ClassName')) {
         private $update_date;
 
         /**
-         * @var \Doctrine\Common\Collections\Collection
+         * @var \Doctrine\Common\Collections\Collection<int,ClassCategory>
          *
          * @ORM\OneToMany(targetEntity="Eccube\Entity\ClassCategory", mappedBy="ClassName")
          * @ORM\OrderBy({
@@ -90,7 +90,7 @@ if (!class_exists('\Eccube\Entity\ClassName')) {
         private $ClassCategories;
 
         /**
-         * @var \Eccube\Entity\Member
+         * @var \Eccube\Entity\Member|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Member")
          * @ORM\JoinColumns({
@@ -266,7 +266,7 @@ if (!class_exists('\Eccube\Entity\ClassName')) {
         /**
          * Get classCategories.
          *
-         * @return \Doctrine\Common\Collections\Collection
+         * @return \Doctrine\Common\Collections\Collection<int,ClassCategory>
          */
         public function getClassCategories()
         {

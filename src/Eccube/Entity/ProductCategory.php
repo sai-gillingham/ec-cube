@@ -46,7 +46,7 @@ if (!class_exists('\Eccube\Entity\ProductCategory')) {
         private $category_id;
 
         /**
-         * @var \Eccube\Entity\Product
+         * @var \Eccube\Entity\Product|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Product", inversedBy="ProductCategories")
          * @ORM\JoinColumns({
@@ -56,7 +56,7 @@ if (!class_exists('\Eccube\Entity\ProductCategory')) {
         private $Product;
 
         /**
-         * @var \Eccube\Entity\Category
+         * @var \Eccube\Entity\Category|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Category", inversedBy="ProductCategories")
          * @ORM\JoinColumns({

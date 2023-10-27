@@ -62,7 +62,7 @@ if (!class_exists('\Eccube\Entity\BlockPosition')) {
         private $block_row;
 
         /**
-         * @var \Eccube\Entity\Block
+         * @var \Eccube\Entity\Block|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Block", inversedBy="BlockPositions")
          * @ORM\JoinColumns({
@@ -72,7 +72,7 @@ if (!class_exists('\Eccube\Entity\BlockPosition')) {
         private $Block;
 
         /**
-         * @var \Eccube\Entity\Layout
+         * @var \Eccube\Entity\Layout|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Layout", inversedBy="BlockPositions")
          * @ORM\JoinColumns({

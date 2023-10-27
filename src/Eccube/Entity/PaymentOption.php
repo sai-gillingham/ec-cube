@@ -46,7 +46,7 @@ if (!class_exists('\Eccube\Entity\PaymentOption')) {
         private $payment_id;
 
         /**
-         * @var \Eccube\Entity\Delivery
+         * @var \Eccube\Entity\Delivery|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Delivery", inversedBy="PaymentOptions")
          * @ORM\JoinColumns({
@@ -56,7 +56,7 @@ if (!class_exists('\Eccube\Entity\PaymentOption')) {
         private $Delivery;
 
         /**
-         * @var \Eccube\Entity\Payment
+         * @var \Eccube\Entity\Payment|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Payment", inversedBy="PaymentOptions")
          * @ORM\JoinColumns({

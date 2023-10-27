@@ -86,7 +86,7 @@ if (!class_exists('\Eccube\Entity\Template')) {
         private $update_date;
 
         /**
-         * @var \Eccube\Entity\Master\DeviceType
+         * @var \Eccube\Entity\Master\DeviceType|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\DeviceType")
          * @ORM\JoinColumns({

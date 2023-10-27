@@ -101,7 +101,7 @@ if (!class_exists('\Eccube\Entity\Payment')) {
         private $method_class;
 
         /**
-         * @var int
+         * @var boolean
          *
          * @ORM\Column(name="visible", type="boolean", options={"default":true})
          */
@@ -122,14 +122,14 @@ if (!class_exists('\Eccube\Entity\Payment')) {
         private $update_date;
 
         /**
-         * @var \Doctrine\Common\Collections\Collection
+         * @var \Doctrine\Common\Collections\Collection<int,PaymentOption>
          *
          * @ORM\OneToMany(targetEntity="Eccube\Entity\PaymentOption", mappedBy="Payment")
          */
         private $PaymentOptions;
 
         /**
-         * @var \Eccube\Entity\Member
+         * @var \Eccube\Entity\Member|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Member")
          * @ORM\JoinColumns({
@@ -445,7 +445,7 @@ if (!class_exists('\Eccube\Entity\Payment')) {
         /**
          * Get paymentOptions.
          *
-         * @return \Doctrine\Common\Collections\Collection
+         * @return \Doctrine\Common\Collections\Collection<int,PaymentOption>
          */
         public function getPaymentOptions()
         {

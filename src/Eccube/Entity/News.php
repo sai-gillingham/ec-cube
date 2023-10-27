@@ -102,7 +102,7 @@ if (!class_exists('\Eccube\Entity\News')) {
         private $visible;
 
         /**
-         * @var \Eccube\Entity\Member
+         * @var \Eccube\Entity\Member|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Member")
          * @ORM\JoinColumns({
