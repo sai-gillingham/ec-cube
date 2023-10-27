@@ -1,2 +1,9 @@
 parameters:
-  level: 1
+  level: 0
+  doctrine:
+    objectManagerLoader: tests/object-manager.php
+    ormRepositoryClass: Eccube\Repository\AbstractRepository
+  errorFormat: json
+services:
+  errorFormatter.csv:
+    class: Eccube\Service\Command\CsvErrorFormatter
