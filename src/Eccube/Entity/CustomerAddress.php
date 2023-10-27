@@ -96,14 +96,14 @@ if (!class_exists('\Eccube\Entity\CustomerAddress')) {
         private $id;
 
         /**
-         * @var string|null
+         * @var string
          *
          * @ORM\Column(name="name01", type="string", length=255)
          */
         private $name01;
 
         /**
-         * @var string|null
+         * @var string
          *
          * @ORM\Column(name="name02", type="string", length=255)
          */
@@ -173,7 +173,7 @@ if (!class_exists('\Eccube\Entity\CustomerAddress')) {
         private $update_date;
 
         /**
-         * @var \Eccube\Entity\Customer
+         * @var \Eccube\Entity\Customer|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Customer", inversedBy="CustomerAddresses")
          * @ORM\JoinColumns({
@@ -183,7 +183,7 @@ if (!class_exists('\Eccube\Entity\CustomerAddress')) {
         private $Customer;
 
         /**
-         * @var \Eccube\Entity\Master\Country
+         * @var \Eccube\Entity\Master\Country|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\Country")
          * @ORM\JoinColumns({
@@ -193,7 +193,7 @@ if (!class_exists('\Eccube\Entity\CustomerAddress')) {
         private $Country;
 
         /**
-         * @var \Eccube\Entity\Master\Pref
+         * @var \Eccube\Entity\Master\Pref|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\Pref")
          * @ORM\JoinColumns({

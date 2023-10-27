@@ -59,7 +59,7 @@ if (!class_exists('\Eccube\Entity\ProductTag')) {
         private $create_date;
 
         /**
-         * @var \Eccube\Entity\Product
+         * @var \Eccube\Entity\Product|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Product", inversedBy="ProductTag")
          * @ORM\JoinColumns({
@@ -69,7 +69,7 @@ if (!class_exists('\Eccube\Entity\ProductTag')) {
         private $Product;
 
         /**
-         * @var \Eccube\Entity\Tag
+         * @var \Eccube\Entity\Tag|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Tag", inversedBy="ProductTag")
          * @ORM\JoinColumns({
@@ -79,7 +79,7 @@ if (!class_exists('\Eccube\Entity\ProductTag')) {
         private $Tag;
 
         /**
-         * @var \Eccube\Entity\Member
+         * @var \Eccube\Entity\Member|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Member")
          * @ORM\JoinColumns({

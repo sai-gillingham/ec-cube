@@ -230,7 +230,7 @@ class TemplateController extends AbstractController
             /** @var \Eccube\Entity\Template $Template */
             $Template = $form->getData();
 
-            $TemplateExists = $this->templateRepository->findBy(['code' => $Template->getCode()]);
+            $TemplateExists = $this->templateRepository->findByCode($Template->getCode());
 
             // テンプレートコードの重複チェック.
             if ($TemplateExists) {

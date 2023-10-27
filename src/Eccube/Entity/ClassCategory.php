@@ -45,7 +45,7 @@ if (!class_exists('\Eccube\Entity\ClassCategory')) {
         private $id;
 
         /**
-         * @var string
+         * @var string|null
          *
          * @ORM\Column(name="backend_name", type="string", length=255, nullable=true)
          */
@@ -87,7 +87,7 @@ if (!class_exists('\Eccube\Entity\ClassCategory')) {
         private $update_date;
 
         /**
-         * @var \Eccube\Entity\ClassName
+         * @var \Eccube\Entity\ClassName|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\ClassName", inversedBy="ClassCategories")
          * @ORM\JoinColumns({
@@ -97,7 +97,7 @@ if (!class_exists('\Eccube\Entity\ClassCategory')) {
         private $ClassName;
 
         /**
-         * @var \Eccube\Entity\Member
+         * @var \Eccube\Entity\Member|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Member")
          * @ORM\JoinColumns({

@@ -51,7 +51,7 @@ if (!class_exists('\Eccube\Entity\CustomerFavoriteProduct')) {
         private $update_date;
 
         /**
-         * @var \Eccube\Entity\Customer
+         * @var \Eccube\Entity\Customer|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Customer", inversedBy="CustomerFavoriteProducts")
          * @ORM\JoinColumns({
@@ -61,7 +61,7 @@ if (!class_exists('\Eccube\Entity\CustomerFavoriteProduct')) {
         private $Customer;
 
         /**
-         * @var \Eccube\Entity\Product
+         * @var \Eccube\Entity\Product|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Product", inversedBy="CustomerFavoriteProducts")
          * @ORM\JoinColumns({

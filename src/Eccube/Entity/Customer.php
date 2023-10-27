@@ -124,7 +124,7 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         private $plain_password;
 
         /**
-         * @var string|null
+         * @var string
          *
          * @ORM\Column(name="password", type="string", length=255)
          */
@@ -215,14 +215,14 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         private $update_date;
 
         /**
-         * @var \Doctrine\Common\Collections\Collection
+         * @var \Doctrine\Common\Collections\Collection<int,CustomerFavoriteProduct>
          *
          * @ORM\OneToMany(targetEntity="Eccube\Entity\CustomerFavoriteProduct", mappedBy="Customer", cascade={"remove"})
          */
         private $CustomerFavoriteProducts;
 
         /**
-         * @var \Doctrine\Common\Collections\Collection
+         * @var \Doctrine\Common\Collections\Collection<int,CustomerAddress>
          *
          * @ORM\OneToMany(targetEntity="Eccube\Entity\CustomerAddress", mappedBy="Customer", cascade={"remove"})
          * @ORM\OrderBy({
@@ -232,14 +232,14 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         private $CustomerAddresses;
 
         /**
-         * @var \Doctrine\Common\Collections\Collection
+         * @var \Doctrine\Common\Collections\Collection<int,Order>
          *
          * @ORM\OneToMany(targetEntity="Eccube\Entity\Order", mappedBy="Customer")
          */
         private $Orders;
 
         /**
-         * @var \Eccube\Entity\Master\CustomerStatus
+         * @var \Eccube\Entity\Master\CustomerStatus|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\CustomerStatus")
          * @ORM\JoinColumns({
@@ -249,7 +249,7 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         private $Status;
 
         /**
-         * @var \Eccube\Entity\Master\Sex
+         * @var \Eccube\Entity\Master\Sex|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\Sex")
          * @ORM\JoinColumns({
@@ -259,7 +259,7 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         private $Sex;
 
         /**
-         * @var \Eccube\Entity\Master\Job
+         * @var \Eccube\Entity\Master\Job|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\Job")
          * @ORM\JoinColumns({
@@ -269,7 +269,7 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         private $Job;
 
         /**
-         * @var \Eccube\Entity\Master\Country
+         * @var \Eccube\Entity\Master\Country|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\Country")
          * @ORM\JoinColumns({
@@ -279,7 +279,7 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         private $Country;
 
         /**
-         * @var \Eccube\Entity\Master\Pref
+         * @var \Eccube\Entity\Master\Pref|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\Pref")
          * @ORM\JoinColumns({
@@ -953,7 +953,7 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         /**
          * Get customerFavoriteProducts.
          *
-         * @return \Doctrine\Common\Collections\Collection
+         * @return \Doctrine\Common\Collections\Collection<int,CustomerFavoriteProduct>
          */
         public function getCustomerFavoriteProducts()
         {
@@ -989,7 +989,7 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         /**
          * Get customerAddresses.
          *
-         * @return \Doctrine\Common\Collections\Collection
+         * @return \Doctrine\Common\Collections\Collection<int,CustomerAddress>
          */
         public function getCustomerAddresses()
         {
@@ -1025,7 +1025,7 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         /**
          * Get orders.
          *
-         * @return \Doctrine\Common\Collections\Collection
+         * @return \Doctrine\Common\Collections\Collection<int,Order>
          */
         public function getOrders()
         {

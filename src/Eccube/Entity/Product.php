@@ -509,21 +509,21 @@ if (!class_exists('\Eccube\Entity\Product')) {
         private $update_date;
 
         /**
-         * @var \Doctrine\Common\Collections\Collection
+         * @var \Doctrine\Common\Collections\Collection<int,ProductCategory>
          *
          * @ORM\OneToMany(targetEntity="Eccube\Entity\ProductCategory", mappedBy="Product", cascade={"persist","remove"})
          */
         private $ProductCategories;
 
         /**
-         * @var \Doctrine\Common\Collections\Collection
+         * @var \Doctrine\Common\Collections\Collection<int,ProductClass>
          *
          * @ORM\OneToMany(targetEntity="Eccube\Entity\ProductClass", mappedBy="Product", cascade={"persist","remove"})
          */
         private $ProductClasses;
 
         /**
-         * @var \Doctrine\Common\Collections\Collection
+         * @var \Doctrine\Common\Collections\Collection<int,ProductImage>
          *
          * @ORM\OneToMany(targetEntity="Eccube\Entity\ProductImage", mappedBy="Product", cascade={"remove"})
          * @ORM\OrderBy({
@@ -533,21 +533,21 @@ if (!class_exists('\Eccube\Entity\Product')) {
         private $ProductImage;
 
         /**
-         * @var \Doctrine\Common\Collections\Collection
+         * @var \Doctrine\Common\Collections\Collection<int,ProductTag>
          *
          * @ORM\OneToMany(targetEntity="Eccube\Entity\ProductTag", mappedBy="Product", cascade={"remove"})
          */
         private $ProductTag;
 
         /**
-         * @var \Doctrine\Common\Collections\Collection
+         * @var \Doctrine\Common\Collections\Collection<int,CustomerFavoriteProduct>
          *
          * @ORM\OneToMany(targetEntity="Eccube\Entity\CustomerFavoriteProduct", mappedBy="Product")
          */
         private $CustomerFavoriteProducts;
 
         /**
-         * @var \Eccube\Entity\Member
+         * @var \Eccube\Entity\Member|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Member")
          * @ORM\JoinColumns({
@@ -557,7 +557,7 @@ if (!class_exists('\Eccube\Entity\Product')) {
         private $Creator;
 
         /**
-         * @var \Eccube\Entity\Master\ProductStatus
+         * @var \Eccube\Entity\Master\ProductStatus|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\ProductStatus")
          * @ORM\JoinColumns({
@@ -854,7 +854,7 @@ if (!class_exists('\Eccube\Entity\Product')) {
         /**
          * Get productCategories.
          *
-         * @return \Doctrine\Common\Collections\Collection
+         * @return \Doctrine\Common\Collections\Collection<int,ProductCategory>
          */
         public function getProductCategories()
         {
@@ -890,7 +890,7 @@ if (!class_exists('\Eccube\Entity\Product')) {
         /**
          * Get productClasses.
          *
-         * @return \Doctrine\Common\Collections\Collection
+         * @return \Doctrine\Common\Collections\Collection<int,ProductClass>
          */
         public function getProductClasses()
         {
@@ -926,7 +926,7 @@ if (!class_exists('\Eccube\Entity\Product')) {
         /**
          * Get productImage.
          *
-         * @return \Doctrine\Common\Collections\Collection
+         * @return \Doctrine\Common\Collections\Collection<int,ProductImage>
          */
         public function getProductImage()
         {
@@ -962,7 +962,7 @@ if (!class_exists('\Eccube\Entity\Product')) {
         /**
          * Get productTag.
          *
-         * @return \Doctrine\Common\Collections\Collection
+         * @return \Doctrine\Common\Collections\Collection<int,ProductTag>
          */
         public function getProductTag()
         {
@@ -1019,7 +1019,7 @@ if (!class_exists('\Eccube\Entity\Product')) {
         /**
          * Get customerFavoriteProducts.
          *
-         * @return \Doctrine\Common\Collections\Collection
+         * @return \Doctrine\Common\Collections\Collection<int,CustomerFavoriteProduct>
          */
         public function getCustomerFavoriteProducts()
         {

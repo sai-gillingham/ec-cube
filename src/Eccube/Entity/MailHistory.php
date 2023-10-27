@@ -73,7 +73,7 @@ if (!class_exists('\Eccube\Entity\MailHistory')) {
         private $mail_html_body;
 
         /**
-         * @var \Eccube\Entity\Order
+         * @var \Eccube\Entity\Order|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Order", inversedBy="MailHistories")
          * @ORM\JoinColumns({
@@ -83,7 +83,7 @@ if (!class_exists('\Eccube\Entity\MailHistory')) {
         private $Order;
 
         /**
-         * @var \Eccube\Entity\Member
+         * @var \Eccube\Entity\Member|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Member")
          * @ORM\JoinColumns({

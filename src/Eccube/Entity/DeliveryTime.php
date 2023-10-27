@@ -49,7 +49,7 @@ if (!class_exists('\Eccube\Entity\DeliveryTime')) {
         private $delivery_time;
 
         /**
-         * @var \Eccube\Entity\Delivery
+         * @var \Eccube\Entity\Delivery|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Delivery", inversedBy="DeliveryTimes")
          * @ORM\JoinColumns({

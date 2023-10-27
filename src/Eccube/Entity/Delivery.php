@@ -101,21 +101,21 @@ if (!class_exists('\Eccube\Entity\Delivery')) {
         private $update_date;
 
         /**
-         * @var \Doctrine\Common\Collections\Collection
+         * @var \Doctrine\Common\Collections\Collection<int,PaymentOption>
          *
          * @ORM\OneToMany(targetEntity="Eccube\Entity\PaymentOption", mappedBy="Delivery", cascade={"persist","remove"})
          */
         private $PaymentOptions;
 
         /**
-         * @var \Doctrine\Common\Collections\Collection
+         * @var \Doctrine\Common\Collections\Collection<int,DeliveryFee>
          *
          * @ORM\OneToMany(targetEntity="Eccube\Entity\DeliveryFee", mappedBy="Delivery", cascade={"persist","remove"})
          */
         private $DeliveryFees;
 
         /**
-         * @var \Doctrine\Common\Collections\Collection
+         * @var \Doctrine\Common\Collections\Collection<int,DeliveryTime>
          *
          * @ORM\OneToMany(targetEntity="Eccube\Entity\DeliveryTime", mappedBy="Delivery", cascade={"persist","remove"})
          * @ORM\OrderBy({
@@ -125,7 +125,7 @@ if (!class_exists('\Eccube\Entity\Delivery')) {
         private $DeliveryTimes;
 
         /**
-         * @var \Eccube\Entity\Member
+         * @var \Eccube\Entity\Member|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Member")
          * @ORM\JoinColumns({
@@ -135,7 +135,7 @@ if (!class_exists('\Eccube\Entity\Delivery')) {
         private $Creator;
 
         /**
-         * @var \Eccube\Entity\Master\SaleType
+         * @var \Eccube\Entity\Master\SaleType|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\SaleType")
          * @ORM\JoinColumns({
@@ -361,7 +361,7 @@ if (!class_exists('\Eccube\Entity\Delivery')) {
         /**
          * Get paymentOptions.
          *
-         * @return \Doctrine\Common\Collections\Collection
+         * @return \Doctrine\Common\Collections\Collection<int, PaymentOption>
          */
         public function getPaymentOptions()
         {
@@ -397,7 +397,7 @@ if (!class_exists('\Eccube\Entity\Delivery')) {
         /**
          * Get deliveryFees.
          *
-         * @return \Doctrine\Common\Collections\Collection
+         * @return \Doctrine\Common\Collections\Collection<int,DeliveryFee>
          */
         public function getDeliveryFees()
         {
@@ -433,7 +433,7 @@ if (!class_exists('\Eccube\Entity\Delivery')) {
         /**
          * Get deliveryTimes.
          *
-         * @return \Doctrine\Common\Collections\Collection
+         * @return \Doctrine\Common\Collections\Collection<int,DeliveryTime>
          */
         public function getDeliveryTimes()
         {

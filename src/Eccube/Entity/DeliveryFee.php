@@ -44,7 +44,7 @@ if (!class_exists('\Eccube\Entity\DeliveryFee')) {
         private $fee;
 
         /**
-         * @var \Eccube\Entity\Delivery
+         * @var \Eccube\Entity\Delivery|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Delivery", inversedBy="DeliveryFees")
          * @ORM\JoinColumns({
@@ -54,7 +54,7 @@ if (!class_exists('\Eccube\Entity\DeliveryFee')) {
         private $Delivery;
 
         /**
-         * @var \Eccube\Entity\Master\Pref
+         * @var \Eccube\Entity\Master\Pref|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\Pref")
          * @ORM\JoinColumns({

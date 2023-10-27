@@ -39,21 +39,21 @@ if (!class_exists('\Eccube\Entity\CartItem')) {
         private $id;
 
         /**
-         * @var string
+         * @var string|float
          *
          * @ORM\Column(name="price", type="decimal", precision=12, scale=2, options={"default":0})
          */
         private $price = 0;
 
         /**
-         * @var string
+         * @var string|float
          *
          * @ORM\Column(name="quantity", type="decimal", precision=10, scale=0, options={"default":0})
          */
         private $quantity = 0;
 
         /**
-         * @var \Eccube\Entity\ProductClass
+         * @var \Eccube\Entity\ProductClass|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\ProductClass")
          * @ORM\JoinColumns({
@@ -63,7 +63,7 @@ if (!class_exists('\Eccube\Entity\CartItem')) {
         private $ProductClass;
 
         /**
-         * @var \Eccube\Entity\Cart
+         * @var \Eccube\Entity\Cart|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Cart", inversedBy="CartItems", cascade={"persist"})
          * @ORM\JoinColumns({

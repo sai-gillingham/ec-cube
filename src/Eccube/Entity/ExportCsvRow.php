@@ -17,12 +17,12 @@ if (!class_exists('\Eccube\Entity\ExportCsvRow')) {
     class ExportCsvRow extends \Eccube\Entity\AbstractEntity
     {
         /**
-         * @var \Doctrine\Common\Collections\Collection
+         * @var array<int,string|null>
          */
         private $row = [];
 
         /**
-         * @var string
+         * @var string|null
          */
         private $data = null;
 
@@ -56,6 +56,8 @@ if (!class_exists('\Eccube\Entity\ExportCsvRow')) {
 
         /**
          * Push data
+         *
+         * @return void
          */
         public function pushData()
         {
@@ -66,7 +68,7 @@ if (!class_exists('\Eccube\Entity\ExportCsvRow')) {
         /**
          * Get row
          *
-         * @return \Doctrine\Common\Collections\Collection
+         * @return array<int,string|null>
          */
         public function getRow()
         {

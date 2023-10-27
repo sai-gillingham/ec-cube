@@ -90,7 +90,7 @@ if (!class_exists('\Eccube\Entity\ProductStock')) {
         private $update_date;
 
         /**
-         * @var \Eccube\Entity\ProductClass
+         * @var \Eccube\Entity\ProductClass|null
          *
          * @ORM\OneToOne(targetEntity="Eccube\Entity\ProductClass", inversedBy="ProductStock")
          * @ORM\JoinColumns({
@@ -100,7 +100,7 @@ if (!class_exists('\Eccube\Entity\ProductStock')) {
         private $ProductClass;
 
         /**
-         * @var \Eccube\Entity\Member
+         * @var \Eccube\Entity\Member|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Member")
          * @ORM\JoinColumns({

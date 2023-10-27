@@ -58,7 +58,7 @@ if (!class_exists('\Eccube\Entity\AuthorityRole')) {
         private $update_date;
 
         /**
-         * @var \Eccube\Entity\Master\Authority
+         * @var \Eccube\Entity\Master\Authority|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\Authority")
          * @ORM\JoinColumns({
@@ -68,7 +68,7 @@ if (!class_exists('\Eccube\Entity\AuthorityRole')) {
         private $Authority;
 
         /**
-         * @var \Eccube\Entity\Member
+         * @var \Eccube\Entity\Member|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Member")
          * @ORM\JoinColumns({

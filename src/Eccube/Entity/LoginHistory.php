@@ -38,13 +38,13 @@ if (!class_exists('\Eccube\Entity\LoginHistory')) {
         private $id;
 
         /**
-         * @var string
+         * @var string|null
          * @ORM\Column(type="text",nullable=true)
          */
         private $user_name;
 
         /**
-         * @var string
+         * @var string|null
          * @ORM\Column(type="text",nullable=true)
          */
         private $client_ip;
@@ -73,7 +73,7 @@ if (!class_exists('\Eccube\Entity\LoginHistory')) {
         private $Status;
 
         /**
-         * @var Member
+         * @var Member|null
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Member")
          * @ORM\JoinColumns({
          *   @ORM\JoinColumn(name="member_id", referencedColumnName="id", onDelete="SET NULL")

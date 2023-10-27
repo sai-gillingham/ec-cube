@@ -80,7 +80,7 @@ if (!class_exists('\Eccube\Entity\MailTemplate')) {
         private $update_date;
 
         /**
-         * @var \Eccube\Entity\Member
+         * @var \Eccube\Entity\Member|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Member")
          * @ORM\JoinColumns({
