@@ -53,7 +53,7 @@ if (!class_exists('\Eccube\Entity\PageLayout')) {
         private $sort_no;
 
         /**
-         * @var \Eccube\Entity\Page
+         * @var \Eccube\Entity\Page|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Page", inversedBy="PageLayouts")
          * @ORM\JoinColumns({
@@ -63,7 +63,7 @@ if (!class_exists('\Eccube\Entity\PageLayout')) {
         private $Page;
 
         /**
-         * @var \Eccube\Entity\Layout
+         * @var \Eccube\Entity\Layout|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Layout", inversedBy="PageLayouts")
          * @ORM\JoinColumns({

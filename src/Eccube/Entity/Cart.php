@@ -47,14 +47,14 @@ if (!class_exists('\Eccube\Entity\Cart')) {
         private $id;
 
         /**
-         * @var string
+         * @var string|null
          *
          * @ORM\Column(name="cart_key", type="string", nullable=true)
          */
         private $cart_key;
 
         /**
-         * @var \Eccube\Entity\Customer
+         * @var \Eccube\Entity\Customer|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Customer")
          * @ORM\JoinColumns({
@@ -69,7 +69,7 @@ if (!class_exists('\Eccube\Entity\Cart')) {
         private $lock = false;
 
         /**
-         * @var \Doctrine\Common\Collections\Collection|CartItem[]
+         * @var \Doctrine\Common\Collections\Collection<int,CartItem>
          *
          * @ORM\OneToMany(targetEntity="Eccube\Entity\CartItem", mappedBy="Cart", cascade={"persist"})
          * @ORM\OrderBy({"id" = "ASC"})
@@ -84,7 +84,7 @@ if (!class_exists('\Eccube\Entity\Cart')) {
         private $pre_order_id = null;
 
         /**
-         * @var string
+         * @var string|float
          *
          * @ORM\Column(name="total_price", type="decimal", precision=12, scale=2, options={"unsigned":true,"default":0})
          */
@@ -151,6 +151,8 @@ if (!class_exists('\Eccube\Entity\Cart')) {
 
         /**
          * @param string $cartKey
+         *
+         * @return Cart
          */
         public function setCartKey(string $cartKey)
         {
@@ -192,7 +194,7 @@ if (!class_exists('\Eccube\Entity\Cart')) {
         }
 
         /**
-         * @param  integer             $pre_order_id
+         * @param  string|integer $pre_order_id
          *
          * @return \Eccube\Entity\Cart
          */
@@ -226,7 +228,7 @@ if (!class_exists('\Eccube\Entity\Cart')) {
         }
 
         /**
-         * @return ArrayCollection|CartItem[]
+         * @return \Doctrine\Common\Collections\Collection<int,CartItem>
          */
         public function getCartItems()
         {
@@ -256,7 +258,7 @@ if (!class_exists('\Eccube\Entity\Cart')) {
         /**
          * Set total.
          *
-         * @param integer $total_price
+         * @param float|string|integer $total_price
          *
          * @return Cart
          */

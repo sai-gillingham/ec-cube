@@ -84,14 +84,14 @@ if (!class_exists('\Eccube\Entity\Block')) {
         private $update_date;
 
         /**
-         * @var \Doctrine\Common\Collections\Collection
+         * @var \Doctrine\Common\Collections\Collection<int,BlockPosition>
          *
          * @ORM\OneToMany(targetEntity="Eccube\Entity\BlockPosition", mappedBy="Block", cascade={"persist","remove"})
          */
         private $BlockPositions;
 
         /**
-         * @var \Eccube\Entity\Master\DeviceType
+         * @var \Eccube\Entity\Master\DeviceType|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\DeviceType")
          * @ORM\JoinColumns({
@@ -294,6 +294,8 @@ if (!class_exists('\Eccube\Entity\Block')) {
          * Remove blockPosition
          *
          * @param \Eccube\Entity\BlockPosition $blockPosition
+         *
+         * @return void
          */
         public function removeBlockPosition(BlockPosition $blockPosition)
         {
@@ -303,7 +305,7 @@ if (!class_exists('\Eccube\Entity\Block')) {
         /**
          * Get blockPositions
          *
-         * @return \Doctrine\Common\Collections\Collection
+         * @return \Doctrine\Common\Collections\Collection<int,BlockPosition>
          */
         public function getBlockPositions()
         {

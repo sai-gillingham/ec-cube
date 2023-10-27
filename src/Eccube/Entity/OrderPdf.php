@@ -41,49 +41,49 @@ if (!class_exists('\Eccube\Entity\OrderPdf')) {
         private $member_id;
 
         /**
-         * @var string
+         * @var string|null
          *
          * @ORM\Column(name="title", type="string", nullable=true)
          */
         private $title;
 
         /**
-         * @var string
+         * @var string|null
          *
          * @ORM\Column(name="message1", type="string", nullable=true)
          */
         private $message1;
 
         /**
-         * @var string
+         * @var string|null
          *
          * @ORM\Column(name="message2", type="string", nullable=true)
          */
         private $message2;
 
         /**
-         * @var string
+         * @var string|null
          *
          * @ORM\Column(name="message3", type="string", nullable=true)
          */
         private $message3;
 
         /**
-         * @var string
+         * @var string|null
          *
          * @ORM\Column(name="note1", type="string", nullable=true)
          */
         private $note1;
 
         /**
-         * @var string
+         * @var string|null
          *
          * @ORM\Column(name="note2", type="string", nullable=true)
          */
         private $note2;
 
         /**
-         * @var string
+         * @var string|null
          *
          * @ORM\Column(name="note3", type="string", nullable=true)
          */

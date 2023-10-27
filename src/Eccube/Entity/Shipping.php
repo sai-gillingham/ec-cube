@@ -69,14 +69,14 @@ if (!class_exists('\Eccube\Entity\Shipping')) {
         private $name02;
 
         /**
-         * @var string
+         * @var string|null
          *
          * @ORM\Column(name="kana01", type="string", length=255, nullable=true)
          */
         private $kana01;
 
         /**
-         * @var string
+         * @var string|null
          *
          * @ORM\Column(name="kana02", type="string", length=255, nullable=true)
          */
@@ -125,7 +125,7 @@ if (!class_exists('\Eccube\Entity\Shipping')) {
         private $shipping_delivery_name;
 
         /**
-         * @var int
+         * @var int|null
          *
          * @ORM\Column(name="time_id", type="integer", options={"unsigned":true}, nullable=true)
          */
@@ -157,14 +157,14 @@ if (!class_exists('\Eccube\Entity\Shipping')) {
         private $shipping_date;
 
         /**
-         * @var string
+         * @var string|null
          *
          * @ORM\Column(name="tracking_number", type="string", length=255, nullable=true)
          */
         private $tracking_number;
 
         /**
-         * @var string
+         * @var string|null
          *
          * @ORM\Column(name="note", type="string", length=4000, nullable=true)
          */
@@ -199,7 +199,7 @@ if (!class_exists('\Eccube\Entity\Shipping')) {
         private $mail_send_date;
 
         /**
-         * @var \Eccube\Entity\Order
+         * @var \Eccube\Entity\Order|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Order", inversedBy="Shippings", cascade={"persist"})
          * @ORM\JoinColumns({
@@ -209,14 +209,14 @@ if (!class_exists('\Eccube\Entity\Shipping')) {
         private $Order;
 
         /**
-         * @var \Doctrine\Common\Collections\Collection
+         * @var \Doctrine\Common\Collections\Collection<int,OrderItem>
          *
          * @ORM\OneToMany(targetEntity="Eccube\Entity\OrderItem", mappedBy="Shipping", cascade={"persist"})
          */
         private $OrderItems;
 
         /**
-         * @var \Eccube\Entity\Master\Country
+         * @var \Eccube\Entity\Master\Country|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\Country")
          * @ORM\JoinColumns({
@@ -226,7 +226,7 @@ if (!class_exists('\Eccube\Entity\Shipping')) {
         private $Country;
 
         /**
-         * @var \Eccube\Entity\Master\Pref
+         * @var \Eccube\Entity\Master\Pref|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\Pref")
          * @ORM\JoinColumns({
@@ -236,7 +236,7 @@ if (!class_exists('\Eccube\Entity\Shipping')) {
         private $Pref;
 
         /**
-         * @var \Eccube\Entity\Delivery
+         * @var \Eccube\Entity\Delivery|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Delivery")
          * @ORM\JoinColumns({
@@ -251,7 +251,7 @@ if (!class_exists('\Eccube\Entity\Shipping')) {
         private $ProductClassOfTemp;
 
         /**
-         * @var \Eccube\Entity\Member
+         * @var \Eccube\Entity\Member|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Member")
          * @ORM\JoinColumns({
@@ -761,7 +761,7 @@ if (!class_exists('\Eccube\Entity\Shipping')) {
         /**
          * Get orderItems.
          *
-         * @return \Doctrine\Common\Collections\Collection
+         * @return \Doctrine\Common\Collections\Collection<int,OrderItem>
          */
         public function getOrderItems()
         {

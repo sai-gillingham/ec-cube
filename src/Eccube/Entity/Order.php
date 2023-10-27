@@ -353,14 +353,14 @@ if (!class_exists('\Eccube\Entity\Order')) {
         private $message;
 
         /**
-         * @var string|null
+         * @var string
          *
          * @ORM\Column(name="name01", type="string", length=255)
          */
         private $name01;
 
         /**
-         * @var string|null
+         * @var string
          *
          * @ORM\Column(name="name02", type="string", length=255)
          */
@@ -430,35 +430,35 @@ if (!class_exists('\Eccube\Entity\Order')) {
         private $birth;
 
         /**
-         * @var string
+         * @var float|string
          *
          * @ORM\Column(name="subtotal", type="decimal", precision=12, scale=2, options={"unsigned":true,"default":0})
          */
         private $subtotal = 0;
 
         /**
-         * @var float
+         * @var float|string
          *
          * @ORM\Column(name="discount", type="decimal", precision=12, scale=2, options={"unsigned":true,"default":0})
          */
         private $discount = 0;
 
         /**
-         * @var string
+         * @var float|string
          *
          * @ORM\Column(name="delivery_fee_total", type="decimal", precision=12, scale=2, options={"unsigned":true,"default":0})
          */
         private $delivery_fee_total = 0;
 
         /**
-         * @var string
+         * @var float|string
          *
          * @ORM\Column(name="charge", type="decimal", precision=12, scale=2, options={"unsigned":true,"default":0})
          */
         private $charge = 0;
 
         /**
-         * @var string
+         * @var float|string
          *
          * @ORM\Column(name="tax", type="decimal", precision=12, scale=2, options={"unsigned":true,"default":0})
          *
@@ -467,14 +467,14 @@ if (!class_exists('\Eccube\Entity\Order')) {
         private $tax = 0;
 
         /**
-         * @var string
+         * @var float|string
          *
          * @ORM\Column(name="total", type="decimal", precision=12, scale=2, options={"unsigned":true,"default":0})
          */
         private $total = 0;
 
         /**
-         * @var string
+         * @var float|string
          *
          * @ORM\Column(name="payment_total", type="decimal", precision=12, scale=2, options={"unsigned":true,"default":0})
          */
@@ -555,21 +555,21 @@ if (!class_exists('\Eccube\Entity\Order')) {
         private $complete_mail_message;
 
         /**
-         * @var \Doctrine\Common\Collections\Collection|OrderItem[]
+         * @var \Doctrine\Common\Collections\Collection<int,OrderItem>
          *
          * @ORM\OneToMany(targetEntity="Eccube\Entity\OrderItem", mappedBy="Order", cascade={"persist","remove"})
          */
         private $OrderItems;
 
         /**
-         * @var \Doctrine\Common\Collections\Collection|Shipping[]
+         * @var \Doctrine\Common\Collections\Collection<int,Shipping>
          *
          * @ORM\OneToMany(targetEntity="Eccube\Entity\Shipping", mappedBy="Order", cascade={"persist","remove"})
          */
         private $Shippings;
 
         /**
-         * @var \Doctrine\Common\Collections\Collection
+         * @var \Doctrine\Common\Collections\Collection<int,MailHistory>
          *
          * @ORM\OneToMany(targetEntity="Eccube\Entity\MailHistory", mappedBy="Order", cascade={"remove"})
          * @ORM\OrderBy({
@@ -579,7 +579,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         private $MailHistories;
 
         /**
-         * @var \Eccube\Entity\Customer
+         * @var \Eccube\Entity\Customer|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Customer", inversedBy="Orders")
          * @ORM\JoinColumns({
@@ -589,7 +589,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         private $Customer;
 
         /**
-         * @var \Eccube\Entity\Master\Country
+         * @var \Eccube\Entity\Master\Country|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\Country")
          * @ORM\JoinColumns({
@@ -599,7 +599,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         private $Country;
 
         /**
-         * @var \Eccube\Entity\Master\Pref
+         * @var \Eccube\Entity\Master\Pref|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\Pref")
          * @ORM\JoinColumns({
@@ -609,7 +609,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         private $Pref;
 
         /**
-         * @var \Eccube\Entity\Master\Sex
+         * @var \Eccube\Entity\Master\Sex|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\Sex")
          * @ORM\JoinColumns({
@@ -619,7 +619,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         private $Sex;
 
         /**
-         * @var \Eccube\Entity\Master\Job
+         * @var \Eccube\Entity\Master\Job|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\Job")
          * @ORM\JoinColumns({
@@ -629,7 +629,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         private $Job;
 
         /**
-         * @var \Eccube\Entity\Payment
+         * @var \Eccube\Entity\Payment|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Payment")
          * @ORM\JoinColumns({
@@ -639,7 +639,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         private $Payment;
 
         /**
-         * @var \Eccube\Entity\Master\DeviceType
+         * @var \Eccube\Entity\Master\DeviceType|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\DeviceType")
          * @ORM\JoinColumns({
@@ -651,7 +651,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * OrderStatusより先にプロパティを定義しておかないとセットされなくなる
          *
-         * @var \Eccube\Entity\Master\CustomerOrderStatus
+         * @var \Eccube\Entity\Master\CustomerOrderStatus|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\CustomerOrderStatus")
          * @ORM\JoinColumns({
@@ -663,7 +663,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * OrderStatusより先にプロパティを定義しておかないとセットされなくなる
          *
-         * @var \Eccube\Entity\Master\OrderStatusColor
+         * @var \Eccube\Entity\Master\OrderStatusColor|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\OrderStatusColor")
          * @ORM\JoinColumns({
@@ -673,7 +673,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         private $OrderStatusColor;
 
         /**
-         * @var \Eccube\Entity\Master\OrderStatus
+         * @var \Eccube\Entity\Master\OrderStatus|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\OrderStatus")
          * @ORM\JoinColumns({
@@ -1080,7 +1080,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * Set subtotal.
          *
-         * @param string $subtotal
+         * @param float|int|string $subtotal
          *
          * @return Order
          */
@@ -1130,7 +1130,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * Set deliveryFeeTotal.
          *
-         * @param string $deliveryFeeTotal
+         * @param float|int|string $deliveryFeeTotal
          *
          * @return Order
          */
@@ -1144,7 +1144,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * Get deliveryFeeTotal.
          *
-         * @return string
+         * @return float|int|string
          */
         public function getDeliveryFeeTotal()
         {
@@ -1154,7 +1154,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * Set charge.
          *
-         * @param string $charge
+         * @param float|int|string $charge
          *
          * @return Order
          */
@@ -1178,7 +1178,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * Set tax.
          *
-         * @param string $tax
+         * @param float|int|string $tax
          *
          * @return Order
          *
@@ -1206,7 +1206,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * Set total.
          *
-         * @param string $total
+         * @param float|int|string $total
          *
          * @return Order
          */
@@ -1220,7 +1220,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * Get total.
          *
-         * @return string
+         * @return float|int|string
          */
         public function getTotal()
         {
@@ -1230,7 +1230,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * Set paymentTotal.
          *
-         * @param string $paymentTotal
+         * @param float|int|string $paymentTotal
          *
          * @return Order
          */
@@ -1462,7 +1462,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * @param string|null $complete_mail_message
          *
-         * @return
+         * @return $this
          */
         public function setCompleteMailMessage($complete_mail_message = null)
         {
@@ -1474,7 +1474,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * @param string|null $complete_mail_message
          *
-         * @return
+         * @return $this
          */
         public function appendCompleteMailMessage($complete_mail_message = null)
         {
@@ -1524,7 +1524,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * Get orderItems.
          *
-         * @return \Doctrine\Common\Collections\Collection|OrderItem[]
+         * @return \Doctrine\Common\Collections\Collection<int,OrderItem>
          */
         public function getOrderItems()
         {
@@ -1570,7 +1570,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * Get shippings.
          *
-         * @return \Doctrine\Common\Collections\Collection|\Eccube\Entity\Shipping[]
+         * @return \Doctrine\Common\Collections\Collection<int,Shipping>
          */
         public function getShippings()
         {
@@ -1858,6 +1858,8 @@ if (!class_exists('\Eccube\Entity\Order')) {
 
         /**
          * @param ItemInterface $item
+         *
+         * @return void
          */
         public function addItem(ItemInterface $item)
         {

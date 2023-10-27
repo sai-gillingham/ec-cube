@@ -52,7 +52,7 @@ if (!class_exists('\Eccube\Entity\Calendar')) {
         private $id;
 
         /**
-         * @var string
+         * @var string|null
          *
          * @ORM\Column(name="title", type="string", length=255, nullable=true)
          */

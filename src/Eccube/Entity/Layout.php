@@ -222,7 +222,7 @@ if (!class_exists('\Eccube\Entity\Layout')) {
         private $id;
 
         /**
-         * @var string
+         * @var string|null
          *
          * @ORM\Column(name="layout_name", type="string", length=255, nullable=true)
          */
@@ -243,14 +243,14 @@ if (!class_exists('\Eccube\Entity\Layout')) {
         private $update_date;
 
         /**
-         * @var \Doctrine\Common\Collections\Collection
+         * @var \Doctrine\Common\Collections\Collection<int,BlockPosition>
          *
          * @ORM\OneToMany(targetEntity="Eccube\Entity\BlockPosition", mappedBy="Layout", cascade={"persist","remove"})
          */
         private $BlockPositions;
 
         /**
-         * @var \Doctrine\Common\Collections\Collection
+         * @var \Doctrine\Common\Collections\Collection<int,PageLayout>
          *
          * @ORM\OneToMany(targetEntity="Eccube\Entity\PageLayout", mappedBy="Layout", cascade={"persist","remove"})
          * @ORM\OrderBy({"sort_no" = "ASC"})
@@ -258,7 +258,7 @@ if (!class_exists('\Eccube\Entity\Layout')) {
         private $PageLayouts;
 
         /**
-         * @var \Eccube\Entity\Master\DeviceType
+         * @var \Eccube\Entity\Master\DeviceType|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\DeviceType")
          * @ORM\JoinColumns({
@@ -376,6 +376,8 @@ if (!class_exists('\Eccube\Entity\Layout')) {
          * Remove blockPosition
          *
          * @param \Eccube\Entity\BlockPosition $blockPosition
+         *
+         * @return void
          */
         public function removeBlockPosition(BlockPosition $blockPosition)
         {
@@ -385,7 +387,7 @@ if (!class_exists('\Eccube\Entity\Layout')) {
         /**
          * Get blockPositions
          *
-         * @return \Doctrine\Common\Collections\Collection
+         * @return \Doctrine\Common\Collections\Collection<int, BlockPosition>
          */
         public function getBlockPositions()
         {
@@ -410,6 +412,8 @@ if (!class_exists('\Eccube\Entity\Layout')) {
          * Remove pageLayoutLayout
          *
          * @param \Eccube\Entity\PageLayout $PageLayout
+         *
+         * @return void
          */
         public function removePageLayout(PageLayout $PageLayout)
         {
@@ -419,7 +423,7 @@ if (!class_exists('\Eccube\Entity\Layout')) {
         /**
          * Get pageLayoutLayouts
          *
-         * @return \Doctrine\Common\Collections\Collection
+         * @return \Doctrine\Common\Collections\Collection<int, PageLayout>
          */
         public function getPageLayouts()
         {
@@ -443,7 +447,7 @@ if (!class_exists('\Eccube\Entity\Layout')) {
         /**
          * Get deviceType
          *
-         * @return \Eccube\Entity\Master\DeviceType
+         * @return \Eccube\Entity\Master\DeviceType|null
          */
         public function getDeviceType()
         {

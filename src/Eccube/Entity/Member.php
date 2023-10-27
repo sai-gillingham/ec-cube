@@ -114,7 +114,7 @@ if (!class_exists('\Eccube\Entity\Member')) {
         private $password;
 
         /**
-         * @var string
+         * @var string|null
          *
          * @ORM\Column(name="salt", type="string", length=255, nullable=true)
          */
@@ -128,7 +128,7 @@ if (!class_exists('\Eccube\Entity\Member')) {
         private $sort_no;
 
         /**
-         * @var string
+         * @var string|null
          *
          * @ORM\Column(name="two_factor_auth_key",type="string",length=255,nullable=true,options={"fixed":false})
          */
@@ -137,7 +137,7 @@ if (!class_exists('\Eccube\Entity\Member')) {
         /**
          * @ORM\Column(name="two_factor_auth_enabled",type="boolean",nullable=false,options={"default":false})
          *
-         * @var integer
+         * @var boolean
          */
         private $two_factor_auth_enabled = false;
 
@@ -163,7 +163,7 @@ if (!class_exists('\Eccube\Entity\Member')) {
         private $login_date;
 
         /**
-         * @var \Eccube\Entity\Master\Work
+         * @var \Eccube\Entity\Master\Work|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\Work")
          * @ORM\JoinColumns({
@@ -173,7 +173,7 @@ if (!class_exists('\Eccube\Entity\Member')) {
         private $Work;
 
         /**
-         * @var \Eccube\Entity\Master\Authority
+         * @var \Eccube\Entity\Master\Authority|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\Authority")
          * @ORM\JoinColumns({
@@ -183,7 +183,7 @@ if (!class_exists('\Eccube\Entity\Member')) {
         private $Authority;
 
         /**
-         * @var \Eccube\Entity\Member
+         * @var \Eccube\Entity\Member|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Member")
          * @ORM\JoinColumns({

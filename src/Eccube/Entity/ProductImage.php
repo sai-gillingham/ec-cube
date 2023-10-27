@@ -66,7 +66,7 @@ if (!class_exists('\Eccube\Entity\ProductImage')) {
         private $create_date;
 
         /**
-         * @var \Eccube\Entity\Product
+         * @var \Eccube\Entity\Product|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Product", inversedBy="ProductImage")
          * @ORM\JoinColumns({
@@ -76,7 +76,7 @@ if (!class_exists('\Eccube\Entity\ProductImage')) {
         private $Product;
 
         /**
-         * @var \Eccube\Entity\Member
+         * @var \Eccube\Entity\Member|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Member")
          * @ORM\JoinColumns({

@@ -81,14 +81,14 @@ if (!class_exists('\Eccube\Entity\TaxRule')) {
         private $id;
 
         /**
-         * @var string
+         * @var float|int|string
          *
          * @ORM\Column(name="tax_rate", type="decimal", precision=10, scale=0, options={"unsigned":true,"default":0})
          */
         private $tax_rate = 0;
 
         /**
-         * @var string
+         * @var float|int|string
          *
          * @ORM\Column(name="tax_adjust", type="decimal", precision=10, scale=0, options={"unsigned":true,"default":0})
          */
@@ -116,7 +116,7 @@ if (!class_exists('\Eccube\Entity\TaxRule')) {
         private $update_date;
 
         /**
-         * @var \Eccube\Entity\ProductClass
+         * @var \Eccube\Entity\ProductClass|null
          *
          * @ORM\OneToOne(targetEntity="Eccube\Entity\ProductClass", inversedBy="TaxRule")
          * @ORM\JoinColumns({
@@ -126,7 +126,7 @@ if (!class_exists('\Eccube\Entity\TaxRule')) {
         private $ProductClass;
 
         /**
-         * @var \Eccube\Entity\Member
+         * @var \Eccube\Entity\Member|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Member")
          * @ORM\JoinColumns({
@@ -136,7 +136,7 @@ if (!class_exists('\Eccube\Entity\TaxRule')) {
         private $Creator;
 
         /**
-         * @var \Eccube\Entity\Master\Country
+         * @var \Eccube\Entity\Master\Country|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\Country")
          * @ORM\JoinColumns({
@@ -146,7 +146,7 @@ if (!class_exists('\Eccube\Entity\TaxRule')) {
         private $Country;
 
         /**
-         * @var \Eccube\Entity\Master\Pref
+         * @var \Eccube\Entity\Master\Pref|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\Pref")
          * @ORM\JoinColumns({
@@ -156,7 +156,7 @@ if (!class_exists('\Eccube\Entity\TaxRule')) {
         private $Pref;
 
         /**
-         * @var \Eccube\Entity\Product
+         * @var \Eccube\Entity\Product|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Product")
          * @ORM\JoinColumns({
@@ -166,7 +166,7 @@ if (!class_exists('\Eccube\Entity\TaxRule')) {
         private $Product;
 
         /**
-         * @var \Eccube\Entity\Master\RoundingType
+         * @var \Eccube\Entity\Master\RoundingType|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\RoundingType")
          * @ORM\JoinColumns({

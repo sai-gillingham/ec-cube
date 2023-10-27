@@ -52,14 +52,14 @@ if (!class_exists('\Eccube\Entity\Payment')) {
         private $method;
 
         /**
-         * @var float|null
+         * @var float|string|null
          *
          * @ORM\Column(name="charge", type="decimal", precision=12, scale=2, nullable=true, options={"unsigned":true,"default":0})
          */
         private $charge = 0;
 
         /**
-         * @var float|null
+         * @var float|string|null
          *
          * @ORM\Column(name="rule_max", type="decimal", precision=12, scale=2, nullable=true, options={"unsigned":true})
          */
@@ -87,7 +87,7 @@ if (!class_exists('\Eccube\Entity\Payment')) {
         private $payment_image;
 
         /**
-         * @var float|null
+         * @var float|string|null
          *
          * @ORM\Column(name="rule_min", type="decimal", precision=12, scale=2, nullable=true, options={"unsigned":true})
          */
@@ -101,7 +101,7 @@ if (!class_exists('\Eccube\Entity\Payment')) {
         private $method_class;
 
         /**
-         * @var int
+         * @var boolean
          *
          * @ORM\Column(name="visible", type="boolean", options={"default":true})
          */
@@ -122,14 +122,14 @@ if (!class_exists('\Eccube\Entity\Payment')) {
         private $update_date;
 
         /**
-         * @var \Doctrine\Common\Collections\Collection
+         * @var \Doctrine\Common\Collections\Collection<int,PaymentOption>
          *
          * @ORM\OneToMany(targetEntity="Eccube\Entity\PaymentOption", mappedBy="Payment")
          */
         private $PaymentOptions;
 
         /**
-         * @var \Eccube\Entity\Member
+         * @var \Eccube\Entity\Member|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Member")
          * @ORM\JoinColumns({
@@ -445,7 +445,7 @@ if (!class_exists('\Eccube\Entity\Payment')) {
         /**
          * Get paymentOptions.
          *
-         * @return \Doctrine\Common\Collections\Collection
+         * @return \Doctrine\Common\Collections\Collection<int,PaymentOption>
          */
         public function getPaymentOptions()
         {

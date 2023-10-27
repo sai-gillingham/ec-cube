@@ -1,4 +1,4 @@
-ARG TAG=7.4-apache-bullseye
+ARG TAG=8.1-apache-bullseye
 FROM php:${TAG}
 
 ENV APACHE_DOCUMENT_ROOT /var/www/html
@@ -32,8 +32,8 @@ RUN apt update \
   && echo "en_US.UTF-8 UTF-8" >/etc/locale.gen \
   && locale-gen \
   ;
-RUN pecl search xdebug-2.9.8 \
-    && pecl install xdebug-2.9.8
+RUN pecl search xdebug-3.1.6\
+    && pecl install xdebug-3.1.6
 
 RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
   && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
