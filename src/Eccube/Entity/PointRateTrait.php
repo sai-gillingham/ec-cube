@@ -29,7 +29,7 @@ trait PointRateTrait
      *
      * @param string|null $pointRate
      *
-     * @return OrderItem
+     * @return $this
      */
     public function setPointRate($pointRate)
     {
