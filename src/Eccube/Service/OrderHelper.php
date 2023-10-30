@@ -369,7 +369,7 @@ class OrderHelper
     }
 
     /**
-     * @param Collection|ArrayCollection|CartItem[] $CartItems
+     * @param Collection|ArrayCollection|CartItem[]|array $CartItems
      *
      * @return OrderItem[]
      */

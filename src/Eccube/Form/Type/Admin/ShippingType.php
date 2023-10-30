@@ -223,7 +223,7 @@ class ShippingType extends AbstractType
                 'data' => true,
             ])
             ->addEventListener(FormEvents::POST_SET_DATA, function (FormEvent $event) {
-                /** @var \Eccube\Entity\Shipping $data */
+                /** @var \Eccube\Entity\Shipping|null $data */
                 $data = $event->getData();
                 /** @var \Symfony\Component\Form\Form $form */
                 $form = $event->getForm();

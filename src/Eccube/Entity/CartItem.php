@@ -53,7 +53,7 @@ if (!class_exists('\Eccube\Entity\CartItem')) {
         private $quantity = 0;
 
         /**
-         * @var \Eccube\Entity\ProductClass
+         * @var \Eccube\Entity\ProductClass|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\ProductClass")
          * @ORM\JoinColumns({
@@ -224,7 +224,7 @@ if (!class_exists('\Eccube\Entity\CartItem')) {
         }
 
         /**
-         * @return ProductClass
+         * @return ProductClass|null
          */
         public function getProductClass()
         {

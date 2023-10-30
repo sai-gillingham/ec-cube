@@ -101,7 +101,7 @@ if (!class_exists('\Eccube\Entity\Payment')) {
         private $method_class;
 
         /**
-         * @var int
+         * @var boolean
          *
          * @ORM\Column(name="visible", type="boolean", options={"default":true})
          */
@@ -349,7 +349,7 @@ if (!class_exists('\Eccube\Entity\Payment')) {
         }
 
         /**
-         * @return integer
+         * @return boolean
          */
         public function isVisible()
         {

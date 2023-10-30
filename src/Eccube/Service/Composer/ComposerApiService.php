@@ -258,7 +258,7 @@ class ComposerApiService implements ComposerServiceInterface
      * Run get config information
      *
      * @param string $key
-     * @param null $value
+     * @param null|array $value
      *
      * @return array|mixed
      *

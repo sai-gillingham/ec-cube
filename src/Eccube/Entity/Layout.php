@@ -443,7 +443,7 @@ if (!class_exists('\Eccube\Entity\Layout')) {
         /**
          * Get deviceType
          *
-         * @return \Eccube\Entity\Master\DeviceType
+         * @return \Eccube\Entity\Master\DeviceType|null
          */
         public function getDeviceType()
         {

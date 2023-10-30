@@ -69,7 +69,7 @@ if (!class_exists('\Eccube\Entity\ProductTag')) {
         private $Product;
 
         /**
-         * @var \Eccube\Entity\Tag
+         * @var \Eccube\Entity\Tag|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Tag", inversedBy="ProductTag")
          * @ORM\JoinColumns({
@@ -151,7 +151,7 @@ if (!class_exists('\Eccube\Entity\ProductTag')) {
          *
          * @param \Eccube\Entity\Tag|null $tag
          *
-         * @return ProductTag
+         * @return ProductTag|null
          */
         public function setTag(Tag $tag = null)
         {

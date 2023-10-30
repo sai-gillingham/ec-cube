@@ -293,7 +293,7 @@ if (!class_exists('\Eccube\Entity\ProductClass')) {
         private $SaleType;
 
         /**
-         * @var \Eccube\Entity\ClassCategory
+         * @var \Eccube\Entity\ClassCategory|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\ClassCategory")
          * @ORM\JoinColumns({
@@ -303,7 +303,7 @@ if (!class_exists('\Eccube\Entity\ProductClass')) {
         private $ClassCategory1;
 
         /**
-         * @var \Eccube\Entity\ClassCategory
+         * @var \Eccube\Entity\ClassCategory|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\ClassCategory")
          * @ORM\JoinColumns({

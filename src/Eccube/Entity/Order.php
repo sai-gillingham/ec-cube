@@ -733,7 +733,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * Get id.
          *
-         * @return int
+         * @return int|null
          */
         public function getId()
         {

@@ -179,7 +179,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         private $class_category_name2;
 
         /**
-         * @var string
+         * @var string|null
          *
          * @ORM\Column(name="price", type="decimal", precision=12, scale=2, options={"default":0})
          */
@@ -295,7 +295,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         private $TaxType;
 
         /**
-         * @var \Eccube\Entity\Master\TaxDisplayType
+         * @var \Eccube\Entity\Master\TaxDisplayType|null
          *
          * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\TaxDisplayType")
          * @ORM\JoinColumns({
@@ -471,7 +471,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Set price.
          *
-         * @param string $price
+         * @param string|null $price
          *
          * @return OrderItem
          */
@@ -485,7 +485,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Get price.
          *
-         * @return string
+         * @return string|null
          */
         public function getPrice()
         {
@@ -766,7 +766,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         }
 
         /**
-         * @return RoundingType
+         * @return RoundingType|null
          */
         public function getRoundingType()
         {
@@ -800,7 +800,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Get taxType
          *
-         * @return \Eccube\Entity\Master\TaxType
+         * @return \Eccube\Entity\Master\TaxType|null
          */
         public function getTaxType()
         {
@@ -810,7 +810,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Set taxDisplayType
          *
-         * @param \Eccube\Entity\Master\TaxDisplayType $taxDisplayType
+         * @param \Eccube\Entity\Master\TaxDisplayType|null $taxDisplayType
          *
          * @return OrderItem
          */
@@ -824,7 +824,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Get taxDisplayType
          *
-         * @return \Eccube\Entity\Master\TaxDisplayType
+         * @return \Eccube\Entity\Master\TaxDisplayType|null
          */
         public function getTaxDisplayType()
         {
@@ -848,7 +848,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Get orderItemType
          *
-         * @return \Eccube\Entity\Master\OrderItemType
+         * @return \Eccube\Entity\Master\OrderItemType|null
          */
         public function getOrderItemType()
         {
