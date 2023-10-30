@@ -104,7 +104,7 @@ class InstallPluginController extends InstallController
             throw new NotFoundHttpException();
         }
 
-        /** @var Plugin $Plugin */
+        /** @var Plugin|null $Plugin */
         $Plugin = $this->entityManager->getRepository(Plugin::class)->findOneBy(['code' => $code]);
         $log = null;
         // プラグインが存在しない場合は無視する

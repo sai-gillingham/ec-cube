@@ -87,7 +87,7 @@ class NewsController extends AbstractController
      * @Template("@admin/Content/news_edit.twig")
      *
      * @param Request $request
-     * @param null $id
+     * @param int|null $id
      *
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */

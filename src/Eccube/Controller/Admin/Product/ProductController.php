@@ -295,11 +295,6 @@ class ProductController extends AbstractController
         }
 
         $data = [];
-        /** @var $Product ProductRepository */
-        if (!$Product) {
-            throw new NotFoundHttpException();
-        }
-
         if ($Product->hasProductClass()) {
             $class = $Product->getProductClasses();
             foreach ($class as $item) {
