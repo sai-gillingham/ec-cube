@@ -14,6 +14,8 @@
 namespace Eccube\Service;
 
 use Eccube\Common\EccubeConfig;
+use Eccube\Entity\Member;
+use Eccube\Security\Core\Encoder\PasswordEncoder;
 use RobThree\Auth\TwoFactorAuth;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Cookie;
@@ -110,7 +112,7 @@ class TwoFactorAuthService
     }
 
     /**
-     * @param Eccube\Entity\Member
+     * @param Member $Member
      *
      * @return boolean
      */
@@ -118,7 +120,9 @@ class TwoFactorAuthService
     {
         if (($json = $this->request->cookies->get($this->cookieName))) {
             $configs = json_decode($json);
-            $encodedString = $this->encoder->encodePassword($Member->getId().$Member->getTwoFactorAuthKey(), $Member->getSalt());
+            /** @var PasswordEncoder $encoder */
+            $encoder = $this->encoder;
+            $encodedString = $encoder->encodePassword($Member->getId().$Member->getTwoFactorAuthKey(), $Member->getSalt());
             if (
                 $configs
                 && isset($configs->{$Member->getId()})
@@ -138,13 +142,15 @@ class TwoFactorAuthService
     }
 
     /**
-     * @param Eccube\Entity\Member
+     * @param Member $Member
      *
      * @return Cookie
      */
     public function createAuthedCookie($Member)
     {
-        $encodedString = $this->encoder->encodePassword($Member->getId().$Member->getTwoFactorAuthKey(), $Member->getSalt());
+        /** @var  PasswordEncoder $encoder */
+        $encoder = $this->encoder;
+        $encodedString = $encoder->encodePassword($Member->getId().$Member->getTwoFactorAuthKey(), $Member->getSalt());
 
         $configs = json_decode('{}');
         if (($json = $this->request->cookies->get($this->cookieName))) {
@@ -171,8 +177,8 @@ class TwoFactorAuthService
     }
 
     /**
-     * @param Eccube\Entity\Member
-     * @param string
+     * @param string $authKey
+     * @param string $token
      *
      * @return boolean
      */

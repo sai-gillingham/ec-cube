@@ -34,7 +34,8 @@ class MemberProvider implements UserProviderInterface
     }
 
     /**
-     * @return UserInterface
+     * @param string $username
+     * @return Member
      *
      * @throws UserNotFoundException
      *

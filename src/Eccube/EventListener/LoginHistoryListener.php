@@ -103,6 +103,10 @@ class LoginHistoryListener implements EventSubscriberInterface
         }
     }
 
+    /**
+     * @param LoginFailureEvent $event
+     * @return void
+     */
     public function onAuthenticationFailure(LoginFailureEvent $event)
     {
         $request = $this->requestStack->getCurrentRequest();

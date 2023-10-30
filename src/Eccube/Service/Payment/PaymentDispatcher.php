@@ -108,7 +108,7 @@ class PaymentDispatcher
     /**
      * クエリパラメータの配列を設定します.
      *
-     * @param array
+     * @param array<mixed> $queryParameters
      *
      * @return PaymentDispatcher
      */
@@ -132,7 +132,7 @@ class PaymentDispatcher
     /**
      * パスパラメータの配列を設定します.
      *
-     * @param array
+     * @param array<mixed> $pathParameters
      *
      * @return PaymentDispatcher
      */

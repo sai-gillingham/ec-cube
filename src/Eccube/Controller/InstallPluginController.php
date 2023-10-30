@@ -55,7 +55,6 @@ class InstallPluginController extends InstallController
      * @Route("/install/plugins", name="install_plugins",  methods={"GET"})
      *
      * @param Request $request
-     * @param string $code
      *
      * @return JsonResponse
      */

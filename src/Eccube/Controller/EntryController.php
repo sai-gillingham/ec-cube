@@ -22,6 +22,7 @@ use Eccube\Repository\BaseInfoRepository;
 use Eccube\Repository\CustomerRepository;
 use Eccube\Repository\Master\CustomerStatusRepository;
 use Eccube\Repository\PageRepository;
+use Eccube\Security\Core\Encoder\PasswordEncoder;
 use Eccube\Service\CartService;
 use Eccube\Service\MailService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -131,10 +132,10 @@ class EntryController extends AbstractController
             return $this->redirectToRoute('mypage');
         }
 
-        /** @var $Customer \Eccube\Entity\Customer */
+        /** @var \Eccube\Entity\Customer $Customer */
         $Customer = $this->customerRepository->newCustomer();
 
-        /* @var $builder \Symfony\Component\Form\FormBuilderInterface */
+        /* @var \Symfony\Component\Form\FormBuilderInterface $builder  */
         $builder = $this->formFactory->createBuilder(EntryType::class, $Customer);
 
         $event = new EventArgs(
@@ -146,7 +147,7 @@ class EntryController extends AbstractController
         );
         $this->eventDispatcher->dispatch($event, EccubeEvents::FRONT_ENTRY_INDEX_INITIALIZE);
 
-        /* @var $form \Symfony\Component\Form\FormInterface */
+        /* @var \Symfony\Component\Form\FormInterface $form  */
         $form = $builder->getForm();
 
         $form->handleRequest($request);
@@ -167,7 +168,7 @@ class EntryController extends AbstractController
 
                 case 'complete':
                     log_info('会員登録開始');
-
+                    /** @var PasswordEncoder $encoder */
                     $encoder = $this->encoderFactory->getEncoder($Customer);
                     $salt = $encoder->createSalt();
                     $password = $encoder->encodePassword($Customer->getPlainPassword(), $salt);

@@ -1009,10 +1009,10 @@ class ProductController extends AbstractController
             $this->csvExportService->exportData(function ($entity, CsvExportService $csvService) use ($request) {
                 $Csvs = $csvService->getCsvs();
 
-                /** @var $Product \Eccube\Entity\Product */
+                /** @var \Eccube\Entity\Product $Product  */
                 $Product = $entity;
 
-                /** @var $ProductClasses \Eccube\Entity\ProductClass[] */
+                /** @var \Eccube\Entity\ProductClass[] $ProductClasses  */
                 $ProductClasses = $Product->getProductClasses();
 
                 foreach ($ProductClasses as $ProductClass) {

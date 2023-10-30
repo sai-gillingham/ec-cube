@@ -157,7 +157,7 @@ if (!class_exists('\Eccube\Entity\BaseInfo')) {
         private $message;
 
         /**
-         * @var string|null
+         * @var float|string|null
          *
          * @ORM\Column(name="delivery_free_amount", type="decimal", precision=12, scale=2, nullable=true, options={"unsigned":true})
          */
@@ -727,7 +727,7 @@ if (!class_exists('\Eccube\Entity\BaseInfo')) {
         /**
          * Get deliveryFreeAmount.
          *
-         * @return string|null
+         * @return float|string|null
          */
         public function getDeliveryFreeAmount()
         {

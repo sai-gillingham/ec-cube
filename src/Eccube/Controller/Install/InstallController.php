@@ -247,9 +247,8 @@ class InstallController extends AbstractController
      * @Route("/install/step3", name="install_step3", methods={"GET", "POST"})
      * @Template("step3.twig")
      *
-     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
+     * @return array<mixed>|\Symfony\Component\HttpFoundation\RedirectResponse
      *
-     * @throws \Doctrine\DBAL\DBALException
      * @throws \Exception
      */
     public function step3(Request $request)
@@ -1006,7 +1005,7 @@ class InstallController extends AbstractController
     }
 
     /**
-     * @param string
+     * @param string $adminAllowHosts
      *
      * @return string
      */

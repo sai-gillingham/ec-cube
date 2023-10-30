@@ -182,7 +182,7 @@ if (!class_exists('\Eccube\Entity\ProductClass')) {
         private $code;
 
         /**
-         * @var string|null
+         * @var float|string|null
          *
          * @ORM\Column(name="stock", type="decimal", precision=10, scale=0, nullable=true)
          */
@@ -388,7 +388,7 @@ if (!class_exists('\Eccube\Entity\ProductClass')) {
         /**
          * Get stock.
          *
-         * @return string|null
+         * @return float|string|null
          */
         public function getStock()
         {
@@ -508,7 +508,7 @@ if (!class_exists('\Eccube\Entity\ProductClass')) {
         /**
          * Get deliveryFee.
          *
-         * @return string|null
+         * @return float|string|null
          */
         public function getDeliveryFee()
         {

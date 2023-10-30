@@ -60,7 +60,8 @@ class ClassCategoryRepository extends AbstractRepository
     /**
      * 規格カテゴリを登録します.
      *
-     * @param $ClassCategory
+     * @param ClassCategory $ClassCategory
+     * @return void
      */
     public function save($ClassCategory)
     {

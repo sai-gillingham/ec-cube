@@ -34,7 +34,8 @@ class CustomerProvider implements UserProviderInterface
     }
 
     /**
-     * @return UserInterface
+     * @param string $username
+     * @return Customer
      *
      * @throws UserNotFoundException
      *

@@ -16,6 +16,7 @@ namespace Eccube\Repository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
 use Doctrine\Persistence\ManagerRegistry as RegistryInterface;
+use Eccube\Entity\Customer;
 use Eccube\Entity\MailHistory;
 
 /**
@@ -37,7 +38,7 @@ class MailHistoryRepository extends AbstractRepository
     }
 
     /**
-     * @param \Eccube\Entity\Customer
+     * @param Customer $Customer
      * @param integer $id
      * @expectedException \Exception|NoResultException|NonUniqueResultException
      */
