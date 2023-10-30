@@ -24,7 +24,7 @@ class EventArgs extends GenericEvent
      */
     private $request;
     /**
-     * @var Response
+     * @var Response|null
      */
     private $response;
 
@@ -65,7 +65,7 @@ class EventArgs extends GenericEvent
     }
 
     /**
-     * @return Response
+     * @return Response|null
      */
     public function getResponse()
     {

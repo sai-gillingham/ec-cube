@@ -217,8 +217,7 @@ if (!class_exists('\Eccube\Entity\CartItem')) {
         {
             $this->ProductClass = $ProductClass;
 
-            $this->product_class_id = is_object($ProductClass) ?
-            $ProductClass->getId() : null;
+            $this->product_class_id = $ProductClass->getId();
 
             return $this;
         }

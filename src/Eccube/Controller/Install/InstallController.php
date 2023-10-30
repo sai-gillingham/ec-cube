@@ -884,7 +884,7 @@ class InstallController extends AbstractController
             $row = $stmt->executeQuery();
             $this->encoder->setAuthMagic($data['auth_magic']);
             $password = $this->encoder->encodePassword($data['login_pass'], $salt);
-            if ($row) {
+            if ($row->fetchOne() === true) {
                 // 同一の管理者IDであればパスワードのみ更新
                 $sth = $conn->prepare('UPDATE dtb_member set password = :password, salt = :salt, update_date = current_timestamp WHERE login_id = :login_id;');
                 $sth->execute([

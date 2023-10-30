@@ -28,7 +28,7 @@ interface PaymentMethodInterface
      *
      * 主にクレジットカードの有効性チェック等を実装します.
      *
-     * @return PaymentResult
+     * @return PaymentResult|null
      */
     public function verify();
 

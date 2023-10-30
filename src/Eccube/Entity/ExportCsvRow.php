@@ -22,7 +22,7 @@ if (!class_exists('\Eccube\Entity\ExportCsvRow')) {
         private $row = [];
 
         /**
-         * @var string
+         * @var string|null
          */
         private $data = null;
 
