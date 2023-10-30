@@ -237,6 +237,8 @@ if (!class_exists('\Eccube\Entity\Cart')) {
 
         /**
          * Alias of getCartItems()
+         *
+         * @return ItemCollection<int,CartItem>
          */
         public function getItems()
         {
@@ -270,7 +272,7 @@ if (!class_exists('\Eccube\Entity\Cart')) {
         }
 
         /**
-         * @return string
+         * @return float|string
          */
         public function getTotalPrice()
         {

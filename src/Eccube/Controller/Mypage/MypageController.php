@@ -320,6 +320,7 @@ class MypageController extends AbstractController
         if (!$this->BaseInfo->isOptionFavoriteProduct()) {
             throw new NotFoundHttpException();
         }
+        /** @var Customer $Customer */
         $Customer = $this->getUser();
 
         // paginator
@@ -354,7 +355,7 @@ class MypageController extends AbstractController
     public function delete(Request $request, Product $Product)
     {
         $this->isTokenValid();
-
+        /** @var Customer $Customer */
         $Customer = $this->getUser();
 
         log_info('お気に入り商品削除開始', [$Customer->getId(), $Product->getId()]);

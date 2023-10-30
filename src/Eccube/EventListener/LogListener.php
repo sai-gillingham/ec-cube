@@ -113,6 +113,8 @@ class LogListener implements EventSubscriberInterface
 
     /**
      * @param ResponseEvent $event
+     *
+     * @return void
      */
     public function onKernelResponse(ResponseEvent $event)
     {
@@ -125,7 +127,9 @@ class LogListener implements EventSubscriberInterface
     }
 
     /**
-     * @param PostResponseEvent $event
+     * @param TerminateEvent $event
+     *
+     * @return void
      */
     public function onKernelTerminate(TerminateEvent $event)
     {

@@ -22,6 +22,11 @@ use Eccube\Service\PurchaseFlow\PurchaseContext;
  */
 class CustomerPurchaseInfoProcessor extends AbstractPurchaseProcessor
 {
+    /**
+     * @param ItemHolderInterface $target
+     * @param PurchaseContext $context
+     * @return void
+     */
     public function commit(ItemHolderInterface $target, PurchaseContext $context)
     {
         if (!$target instanceof Order) {

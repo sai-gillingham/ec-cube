@@ -489,7 +489,7 @@ if (!class_exists('\Eccube\Entity\Member')) {
         /**
          * Set Work
          *
-         * @param \Eccube\Entity\Master\Work
+         * @param \Eccube\Entity\Master\Work $work
          *
          * @return Member
          */

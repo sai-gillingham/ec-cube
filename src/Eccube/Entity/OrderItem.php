@@ -35,7 +35,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Get price IncTax
          *
-         * @return string
+         * @return float|string
          */
         public function getPriceIncTax()
         {
@@ -56,7 +56,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         }
 
         /**
-         * @return integer
+         * @return integer|null
          */
         public function getOrderItemTypeId()
         {
@@ -471,7 +471,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Set price.
          *
-         * @param string $price
+         * @param float|int|string $price
          *
          * @return OrderItem
          */
@@ -495,7 +495,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Set quantity.
          *
-         * @param string $quantity
+         * @param float|int|string $quantity
          *
          * @return OrderItem
          */
@@ -509,7 +509,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Get quantity.
          *
-         * @return string
+         * @return float|string
          */
         public function getQuantity()
         {
@@ -525,7 +525,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         }
 
         /**
-         * @param string $tax
+         * @param float|int|string $tax
          *
          * @return $this
          */
@@ -539,7 +539,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Set taxRate.
          *
-         * @param string $taxRate
+         * @param float|int|string $taxRate
          *
          * @return OrderItem
          */
@@ -853,7 +853,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Get orderItemType
          *
-         * @return \Eccube\Entity\Master\OrderItemType
+         * @return \Eccube\Entity\Master\OrderItemType|null
          */
         public function getOrderItemType()
         {

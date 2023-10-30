@@ -20,6 +20,7 @@ use Eccube\Event\EventArgs;
 use Eccube\Form\Type\Front\EntryType;
 use Eccube\Repository\BaseInfoRepository;
 use Eccube\Repository\CustomerRepository;
+use Eccube\Security\Core\Encoder\PasswordEncoder;
 use Eccube\Service\MailService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
@@ -95,7 +96,7 @@ class ChangeController extends AbstractController
         );
         $this->eventDispatcher->dispatch($event, EccubeEvents::FRONT_MYPAGE_CHANGE_INDEX_INITIALIZE);
 
-        /* @var $form \Symfony\Component\Form\FormInterface */
+        /* @var \Symfony\Component\Form\FormInterface $form */
         $form = $builder->getForm();
         $form->handleRequest($request);
 
@@ -103,6 +104,7 @@ class ChangeController extends AbstractController
             log_info('会員編集開始');
 
             if ($Customer->getPlainPassword() !== $this->eccubeConfig['eccube_default_password']) {
+                /** @var PasswordEncoder $encoder */
                 $encoder = $this->encoderFactory->getEncoder($Customer);
                 if ($Customer->getSalt() === null) {
                     $Customer->setSalt($encoder->createSalt());

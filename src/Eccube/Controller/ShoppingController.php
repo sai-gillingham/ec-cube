@@ -149,6 +149,7 @@ class ShoppingController extends AbstractShoppingController
 
         // 受注の初期化.
         log_info('[注文手続] 受注の初期化処理を開始します.');
+        /** @var Customer $Customer */
         $Customer = $this->getUser() ? $this->getUser() : $this->orderHelper->getNonMember();
         $Order = $this->orderHelper->initializeOrder($Cart, $Customer);
 
@@ -752,10 +753,11 @@ class ShoppingController extends AbstractShoppingController
             return $this->redirectToRoute('shopping');
         }
 
-        /* @var $form \Symfony\Component\Form\FormInterface */
+        /* @var \Symfony\Component\Form\FormInterface $form  */
         $builder = $this->formFactory->createNamedBuilder('', CustomerLoginType::class);
 
         if ($this->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            /** @var Customer|null $Customer */
             $Customer = $this->getUser();
             if ($Customer) {
                 $builder->get('login_email')->setData($Customer->getEmail());

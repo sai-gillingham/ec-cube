@@ -22,6 +22,7 @@ use Eccube\Form\Type\Admin\CustomerType;
 use Eccube\Repository\CustomerRepository;
 use Eccube\Repository\Master\PageMaxRepository;
 use Eccube\Repository\OrderRepository;
+use Eccube\Security\Core\Encoder\PasswordEncoder;
 use Eccube\Util\StringUtil;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -140,6 +141,7 @@ class CustomerEditController extends AbstractController
 
             if ($Customer->getPlainPassword() !== $this->eccubeConfig['eccube_default_password']) {
                 if ($Customer->getSalt() === null) {
+                    /** @var PasswordEncoder $encoder */
                     $Customer->setSalt($encoder->createSalt());
                     $Customer->setSecretKey($this->customerRepository->getUniqueSecretKey());
                 }

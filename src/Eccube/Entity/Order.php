@@ -1244,7 +1244,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * Get paymentTotal.
          *
-         * @return string
+         * @return float|string
          */
         public function getPaymentTotal()
         {

@@ -13,6 +13,7 @@
 
 namespace Eccube\Security\Http\Authentication;
 
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
@@ -27,6 +28,7 @@ class EccubeAuthenticationFailureHandler extends DefaultAuthenticationFailureHan
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
         try {
+            /** @var RedirectResponse $response */
             $response = parent::onAuthenticationFailure($request, $exception);
         } catch (RouteNotFoundException $e) {
             throw new BadRequestHttpException($e->getMessage(), $e, $e->getCode());

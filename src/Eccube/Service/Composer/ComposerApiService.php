@@ -348,6 +348,7 @@ class ComposerApiService implements ComposerServiceInterface
 
         if ($useBufferedOutput) {
             ob_end_clean();
+            /** @var BufferedOutput $output */
             $log = $output->fetch();
             if ($exitCode) {
                 log_error($log);

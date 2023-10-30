@@ -466,7 +466,7 @@ class EditController extends AbstractController
                 ['wrap-queries' => true]
             );
 
-            /** @var $Customers \Eccube\Entity\Customer[] */
+            /** @var \Eccube\Entity\Customer[] $Customers  */
             $Customers = $pagination->getItems();
 
             if (empty($Customers)) {
@@ -519,7 +519,7 @@ class EditController extends AbstractController
         if ($request->isXmlHttpRequest() && $this->isTokenValid()) {
             log_debug('search customer by id start.');
 
-            /** @var $Customer \Eccube\Entity\Customer */
+            /** @var \Eccube\Entity\Customer $Customer  */
             $Customer = $this->customerRepository
                 ->find($request->get('id'));
 
@@ -625,7 +625,7 @@ class EditController extends AbstractController
                 ['wrap-queries' => true]
             );
 
-            /** @var $Products \Eccube\Entity\Product[] */
+            /** @var \Eccube\Entity\Product[] $Products */
             $Products = $pagination->getItems();
 
             if (empty($Products)) {
