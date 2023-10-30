@@ -52,7 +52,7 @@ if (!class_exists('\Eccube\Entity\ProductStock')) {
         /**
          * Get product_class_id
          *
-         * @return integer
+         * @return integer|null
          */
         public function getProductClassId()
         {

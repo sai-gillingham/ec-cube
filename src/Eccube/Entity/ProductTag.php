@@ -151,7 +151,7 @@ if (!class_exists('\Eccube\Entity\ProductTag')) {
          *
          * @param \Eccube\Entity\Tag|null $tag
          *
-         * @return ProductTag
+         * @return ProductTag|null
          */
         public function setTag(Tag $tag = null)
         {

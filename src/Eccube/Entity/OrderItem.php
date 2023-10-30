@@ -179,7 +179,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         private $class_category_name2;
 
         /**
-         * @var float|int|string
+         * @var float|int|string|null
          *
          * @ORM\Column(name="price", type="decimal", precision=12, scale=2, options={"default":0})
          */
@@ -471,7 +471,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Set price.
          *
-         * @param float|int|string $price
+         * @param float|int|string|null $price
          *
          * @return OrderItem
          */
@@ -485,7 +485,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Get price.
          *
-         * @return string|float|int
+         * @return string|float|int|null
          */
         public function getPrice()
         {
@@ -769,7 +769,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         }
 
         /**
-         * @return RoundingType
+         * @return RoundingType|null
          */
         public function getRoundingType()
         {
@@ -815,7 +815,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Set taxDisplayType
          *
-         * @param \Eccube\Entity\Master\TaxDisplayType $taxDisplayType
+         * @param \Eccube\Entity\Master\TaxDisplayType|null $taxDisplayType
          *
          * @return OrderItem
          */
@@ -829,7 +829,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Get taxDisplayType
          *
-         * @return \Eccube\Entity\Master\TaxDisplayType
+         * @return \Eccube\Entity\Master\TaxDisplayType|null
          */
         public function getTaxDisplayType()
         {

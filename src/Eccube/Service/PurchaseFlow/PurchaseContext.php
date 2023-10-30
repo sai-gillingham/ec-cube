@@ -46,7 +46,7 @@ class PurchaseContext extends \SplObjectStorage
     /**
      * PurchaseFlow実行前の{@link ItemHolderInterface}を取得.
      *
-     * @return ItemHolderInterface
+     * @return ItemHolderInterface|null
      */
     public function getOriginHolder()
     {
