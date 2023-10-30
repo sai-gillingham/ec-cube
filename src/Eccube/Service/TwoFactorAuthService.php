@@ -14,12 +14,14 @@
 namespace Eccube\Service;
 
 use Eccube\Common\EccubeConfig;
+use Eccube\Entity\Member;
 use RobThree\Auth\TwoFactorAuth;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
+use Symfony\Component\PasswordHasher\Hasher\PasswordHasherFactoryInterface;
+use Symfony\Component\Security\Core\Encoder\PasswordHasherEncoder;
 
 class TwoFactorAuthService
 {
@@ -44,7 +46,7 @@ class TwoFactorAuthService
     protected $eccubeConfig;
 
     /**
-     * @var EncoderFactoryInterface
+     * @var PasswordHasherFactoryInterface
      */
     protected $encoderFactory;
 
@@ -59,7 +61,7 @@ class TwoFactorAuthService
     protected $request;
 
     /**
-     * @var Encoder
+     * @var PasswordHasherEncoder
      */
     protected $encoder;
 
@@ -83,12 +85,12 @@ class TwoFactorAuthService
      *
      * @param ContainerInterface $container
      * @param EccubeConfig $eccubeConfig
-     * @param EncoderFactoryInterface $encoderFactory
+     * @param PasswordHasherFactoryInterface $encoderFactory
      */
     public function __construct(
         ContainerInterface $container,
         EccubeConfig $eccubeConfig,
-        EncoderFactoryInterface $encoderFactory,
+        PasswordHasherFactoryInterface $encoderFactory,
         RequestStack $requestStack
     ) {
         $this->container = $container;
@@ -96,7 +98,7 @@ class TwoFactorAuthService
         $this->encoderFactory = $encoderFactory;
         $this->requestStack = $requestStack;
         $this->request = $requestStack->getCurrentRequest();
-        $this->encoder = $this->encoderFactory->getEncoder('Eccube\\Entity\\Member');
+        $this->encoder = $this->encoderFactory->getPasswordHasher('Eccube\\Entity\\Member');
         $this->tfa = new TwoFactorAuth();
 
         if ($this->eccubeConfig->get('eccube_2fa_cookie_name')) {
@@ -110,7 +112,7 @@ class TwoFactorAuthService
     }
 
     /**
-     * @param Eccube\Entity\Member
+     * @param Member $Member
      *
      * @return boolean
      */
@@ -138,7 +140,7 @@ class TwoFactorAuthService
     }
 
     /**
-     * @param Eccube\Entity\Member
+     * @param Member $Member
      *
      * @return Cookie
      */
@@ -171,9 +173,8 @@ class TwoFactorAuthService
     }
 
     /**
-     * @param Eccube\Entity\Member
-     * @param string
-     *
+     * @param Member $authKey
+     * @param $token
      * @return boolean
      */
     public function verifyCode($authKey, $token)
