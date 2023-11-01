@@ -33,6 +33,15 @@ class TwigIncludeExtension extends AbstractExtension
         ];
     }
 
+    /**
+     * @param $context
+     * @param $template
+     * @param $variables
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function include_dispatch($context, $template, $variables = [])
     {
         if (!empty($variables)) {

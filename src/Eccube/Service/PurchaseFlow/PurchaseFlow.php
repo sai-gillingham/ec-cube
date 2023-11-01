@@ -312,6 +312,7 @@ class PurchaseFlow
 
     /**
      * @param ItemHolderInterface $itemHolder
+     * @return void
      */
     protected function calculateDiscount(ItemHolderInterface $itemHolder)
     {
@@ -328,6 +329,7 @@ class PurchaseFlow
 
     /**
      * @param ItemHolderInterface $itemHolder
+     * @return void
      */
     protected function calculateCharge(ItemHolderInterface $itemHolder)
     {
@@ -343,6 +345,7 @@ class PurchaseFlow
 
     /**
      * @param ItemHolderInterface $itemHolder
+     * @return void
      */
     protected function calculateTax(ItemHolderInterface $itemHolder)
     {
@@ -361,6 +364,7 @@ class PurchaseFlow
 
     /**
      * @param ItemHolderInterface $itemHolder
+     * @return void
      */
     protected function calculateAll(ItemHolderInterface $itemHolder)
     {
