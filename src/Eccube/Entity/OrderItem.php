@@ -509,7 +509,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Get quantity.
          *
-         * @return string
+         * @return string|float|int
          */
         public function getQuantity()
         {
