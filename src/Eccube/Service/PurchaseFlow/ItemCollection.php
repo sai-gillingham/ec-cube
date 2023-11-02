@@ -18,11 +18,22 @@ use Doctrine\Common\Collections\Collection;
 use Eccube\Entity\ItemInterface;
 use Eccube\Entity\Master\OrderItemType;
 use Eccube\Entity\Order;
+use Eccube\Entity\OrderItem;
 
+/**
+ * @extends ArrayCollection<int, ItemInterface>
+ */
 class ItemCollection extends ArrayCollection
 {
+    /**
+     * @var mixed|string
+     */
     protected $type;
 
+    /**
+     * @param array<int, ItemInterface>|Collection<int, ItemInterface> $Items
+     * @param null|string $type
+     */
     public function __construct($Items, $type = null)
     {
         $this->type = is_null($type) ? Order::class : $type;
@@ -33,11 +44,19 @@ class ItemCollection extends ArrayCollection
         parent::__construct($Items);
     }
 
+    /**
+     * @param \Closure $func
+     * @param null|mixed $initial
+     * @return mixed|null
+     */
     public function reduce(\Closure $func, $initial = null)
     {
         return array_reduce($this->toArray(), $func, $initial);
     }
 
+    /**
+     * @return Collection<int, ItemInterface>
+     */
     // 明細種別ごとに返すメソッド作る
     public function getProductClasses()
     {
@@ -47,6 +66,9 @@ class ItemCollection extends ArrayCollection
             });
     }
 
+    /**
+     * @return Collection<int, ItemInterface>
+     */
     public function getDeliveryFees()
     {
         return $this->filter(
@@ -55,6 +77,9 @@ class ItemCollection extends ArrayCollection
             });
     }
 
+    /**
+     * @return Collection<int, ItemInterface>
+     */
     public function getCharges()
     {
         return $this->filter(
@@ -63,6 +88,9 @@ class ItemCollection extends ArrayCollection
             });
     }
 
+    /**
+     * @return Collection<int, ItemInterface>
+     */
     public function getDiscounts()
     {
         return $this->filter(
@@ -75,6 +103,9 @@ class ItemCollection extends ArrayCollection
      * 同名の明細が存在するかどうか.
      *
      * TODO 暫定対応. 本来は明細種別でチェックする.
+     *
+     * @param string $productName
+     * @return bool
      */
     public function hasProductByName($productName)
     {
@@ -104,11 +135,17 @@ class ItemCollection extends ArrayCollection
         return !$filteredItems->isEmpty();
     }
 
+    /**
+     * @return mixed|string
+     */
     public function getType()
     {
         return $this->type;
     }
 
+    /**
+     * @return self
+     */
     public function sort()
     {
         $Items = $this->toArray();
