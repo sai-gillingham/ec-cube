@@ -18,13 +18,24 @@ use Eccube\Entity\ItemHolderInterface;
 
 /**
  * PurchaseFlowの実行中コンテキスト.
+ *
+ * @extends \SplObjectStorage<ItemHolderInterface, mixed>
  */
 class PurchaseContext extends \SplObjectStorage
 {
+    /**
+     * @var Customer|null 会員情報
+     */
     private $user;
 
+    /**
+     * @var ItemHolderInterface|null PurchaseFlow実行前の{@link ItemHolderInterface}
+     */
     private $originHolder;
 
+    /**
+     * @var string
+     */
     private $flowType;
 
     public const ORDER_FLOW = 'order';
@@ -42,7 +53,7 @@ class PurchaseContext extends \SplObjectStorage
     /**
      * PurchaseFlow実行前の{@link ItemHolderInterface}を取得.
      *
-     * @return ItemHolderInterface
+     * @return ItemHolderInterface|null
      */
     public function getOriginHolder()
     {
@@ -61,6 +72,7 @@ class PurchaseContext extends \SplObjectStorage
 
     /**
      * @param string $flowType
+     *
      * @return void
      */
     public function setFlowType($flowType)

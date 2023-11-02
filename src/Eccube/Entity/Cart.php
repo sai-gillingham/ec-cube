@@ -216,6 +216,16 @@ if (!class_exists('\Eccube\Entity\Cart')) {
         }
 
         /**
+         * カートの中に出荷データがないので、空のコレクションを返します。
+         *
+         * @return ArrayCollection
+         */
+        public function getShippings()
+        {
+            return new ArrayCollection();
+        }
+
+        /**
          * @return \Eccube\Entity\Cart
          */
         public function clearCartItems()
@@ -462,6 +472,26 @@ if (!class_exists('\Eccube\Entity\Cart')) {
         public function setTax($total)
         {
             // TODO quiet
+        }
+
+        /**
+         * 注文ではないので、nullを返します。
+         *
+         * @return null
+         */
+        public function getOrderStatus()
+        {
+            return null;
+        }
+
+        /**
+         * {@inheritdoc}
+         *
+         * @return ArrayCollection<\Eccube\Entity\OrderItem>
+         */
+        public function getProductOrderItems()
+        {
+            return new ArrayCollection();
         }
     }
 }

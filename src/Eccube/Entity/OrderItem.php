@@ -525,7 +525,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         }
 
         /**
-         * @param string $tax
+         * @param string|float $tax
          *
          * @return $this
          */
@@ -539,7 +539,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Set taxRate.
          *
-         * @param string $taxRate
+         * @param string|int $taxRate
          *
          * @return OrderItem
          */
@@ -577,7 +577,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Get taxAdjust.
          *
-         * @return string
+         * @return string|double|int
          */
         public function getTaxAdjust()
         {
@@ -766,7 +766,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         }
 
         /**
-         * @return RoundingType
+         * @return RoundingType|null
          */
         public function getRoundingType()
         {
@@ -800,7 +800,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Get taxType
          *
-         * @return \Eccube\Entity\Master\TaxType
+         * @return \Eccube\Entity\Master\TaxType|null
          */
         public function getTaxType()
         {
@@ -824,7 +824,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Get taxDisplayType
          *
-         * @return \Eccube\Entity\Master\TaxDisplayType
+         * @return \Eccube\Entity\Master\TaxDisplayType|null
          */
         public function getTaxDisplayType()
         {

@@ -13,6 +13,8 @@
 
 namespace Eccube\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 interface ItemHolderInterface
 {
     /**
@@ -110,4 +112,25 @@ interface ItemHolderInterface
      * @param ItemInterface $item
      */
     public function addItem(ItemInterface $item);
+
+    /**
+     * 出荷情報を追加します - 注文のみ
+     *
+     * @return ArrayCollection
+     */
+    public function getShippings();
+
+    /**
+     * 注文ステータスを返す - 注文のみ
+     *
+     * @return mixed
+     */
+    public function getOrderStatus();
+
+    /**
+     * 商品の受注明細を取得 - 注文のみ
+     *
+     * @return OrderItem[]
+     */
+    public function getProductOrderItems();
 }
