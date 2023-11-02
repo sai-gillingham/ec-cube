@@ -64,7 +64,7 @@ class PointHelper
     /**
      * ポイントを金額に変換する.
      *
-     * @param $point ポイント
+     * @param int $point ポイント
      *
      * @return float|int 金額
      *
@@ -81,7 +81,7 @@ class PointHelper
     /**
      * ポイントを値引き額に変換する. マイナス値を返す.
      *
-     * @param $point ポイント
+     * @param int $point ポイント
      *
      * @return float|int 金額
      *
@@ -96,7 +96,7 @@ class PointHelper
     /**
      * 金額をポイントに変換する.
      *
-     * @param $price
+     * @param float|int $price
      *
      * @return float ポイント
      *
@@ -114,7 +114,9 @@ class PointHelper
      * 明細追加処理.
      *
      * @param ItemHolderInterface $itemHolder
-     * @param integer $discount
+     * @param integer|string $discount
+     * @return void
+     * @throws \Exception
      */
     public function addPointDiscountItem(ItemHolderInterface $itemHolder, $discount)
     {
@@ -152,6 +154,7 @@ class PointHelper
      * 既存のポイント明細を削除する.
      *
      * @param ItemHolderInterface $itemHolder
+     * @return void
      */
     public function removePointDiscountItem(ItemHolderInterface $itemHolder)
     {
@@ -163,6 +166,11 @@ class PointHelper
         }
     }
 
+    /**
+     * @param ItemHolderInterface $itemHolder
+     * @param int $point
+     * @return void
+     */
     public function prepare(ItemHolderInterface $itemHolder, $point)
     {
         // ユーザの保有ポイントを減算
@@ -170,6 +178,11 @@ class PointHelper
         $Customer->setPoint($Customer->getPoint() - $point);
     }
 
+    /**
+     * @param ItemHolderInterface $itemHolder
+     * @param int $point
+     * @return void
+     */
     public function rollback(ItemHolderInterface $itemHolder, $point)
     {
         // 利用したポイントをユーザに戻す.
