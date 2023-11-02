@@ -133,4 +133,9 @@ interface ItemHolderInterface
      * @return OrderItem[]
      */
     public function getProductOrderItems();
+
+    /**
+     * @return Customer|null
+     */
+    public function getCustomer(): ?Customer;
 }

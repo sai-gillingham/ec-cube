@@ -69,4 +69,9 @@ interface ItemInterface
     public function getQuantity();
 
     public function setQuantity($quantity);
+
+    /**
+     * @param  integer|string  $price
+     */
+    public function setPrice($price);
 }
