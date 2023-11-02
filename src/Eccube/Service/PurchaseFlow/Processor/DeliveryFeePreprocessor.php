@@ -73,8 +73,9 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
     }
 
     /**
-     * @param ItemHolderInterface $itemHolder
-     * @param PurchaseContext $context
+     * @param ItemHolderInterface $itemHolder カート or 注文
+     * @param PurchaseContext $context 購入フローのコンテキスト
+     * @return void
      *
      * @throws \Doctrine\ORM\NoResultException
      */
@@ -84,6 +85,10 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
         $this->saveDeliveryFeeItem($itemHolder);
     }
 
+    /**
+     * @param ItemHolderInterface $itemHolder
+     * @return void
+     */
     private function removeDeliveryFeeItem(ItemHolderInterface $itemHolder)
     {
         foreach ($itemHolder->getShippings() as $Shipping) {
@@ -99,6 +104,7 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
 
     /**
      * @param ItemHolderInterface $itemHolder
+     * @return void
      *
      * @throws \Doctrine\ORM\NoResultException
      */

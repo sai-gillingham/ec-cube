@@ -18,7 +18,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 interface ItemHolderInterface
 {
     /**
-     * @return ItemInterface[]
+     * @return ArrayCollection<int, ItemInterface>|ItemInterface[]
      */
     public function getItems();
 

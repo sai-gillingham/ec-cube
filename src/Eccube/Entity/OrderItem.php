@@ -495,7 +495,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Set quantity.
          *
-         * @param string $quantity
+         * @param string|int $quantity
          *
          * @return OrderItem
          */
