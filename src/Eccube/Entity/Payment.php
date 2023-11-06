@@ -349,7 +349,7 @@ if (!class_exists('\Eccube\Entity\Payment')) {
         }
 
         /**
-         * @return integer
+         * @return boolean
          */
         public function isVisible()
         {
