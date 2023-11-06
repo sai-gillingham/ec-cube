@@ -37,6 +37,14 @@ use Eccube\Stream\Filter\SjisToUtf8EncodingFilter;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+
+/**
+ * @template TKey
+ *
+ * @template-covariant TValue
+ *
+ * @template-implements \Iterator<TKey, TValue>
+ */
 class CsvImportService implements \Iterator, \SeekableIterator, \Countable
 {
     public const DUPLICATE_HEADERS_INCREMENT = 1;
@@ -132,9 +140,9 @@ class CsvImportService implements \Iterator, \SeekableIterator, \Countable
      *
      * If a header row has been set, an associative array will be returned
      *
-     * @return array
+     * @return TValue
      */
-    public function current()
+    public function current(): mixed
     {
         // If the CSV has no column headers just return the line
         if (empty($this->columnHeaders)) {
@@ -217,8 +225,10 @@ class CsvImportService implements \Iterator, \SeekableIterator, \Countable
      * If a header row has been set, the pointer is set just below the header
      * row. That way, when you iterate over the rows, that header row is
      * skipped.
+     *
+     * @return void
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->file->rewind();
         if (null !== $this->headerRowNumber) {
@@ -229,7 +239,7 @@ class CsvImportService implements \Iterator, \SeekableIterator, \Countable
     /**
      * {@inheritdoc}
      */
-    public function count()
+    public function count(): int
     {
         if (null === $this->count) {
             $position = $this->key();
@@ -245,7 +255,7 @@ class CsvImportService implements \Iterator, \SeekableIterator, \Countable
     /**
      * {@inheritdoc}
      */
-    public function next()
+    public function next(): void
     {
         $this->file->next();
     }
@@ -253,7 +263,7 @@ class CsvImportService implements \Iterator, \SeekableIterator, \Countable
     /**
      * {@inheritdoc}
      */
-    public function valid()
+    public function valid(): bool
     {
         return $this->file->valid();
     }
@@ -261,7 +271,7 @@ class CsvImportService implements \Iterator, \SeekableIterator, \Countable
     /**
      * {@inheritdoc}
      */
-    public function key()
+    public function key(): mixed
     {
         return $this->file->key();
     }
@@ -269,7 +279,7 @@ class CsvImportService implements \Iterator, \SeekableIterator, \Countable
     /**
      * {@inheritdoc}
      */
-    public function seek($pointer)
+    public function seek($pointer): void
     {
         $this->file->seek($pointer);
     }
