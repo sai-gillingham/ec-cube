@@ -147,7 +147,7 @@ if (!class_exists('\Eccube\Entity\PageLayout')) {
         /**
          * Set pageLayout
          *
-         * @param \Eccube\Entity\Page $Page
+         * @param \Eccube\Entity\Page|null $Page
          *
          * @return PageLayout
          */
@@ -161,7 +161,7 @@ if (!class_exists('\Eccube\Entity\PageLayout')) {
         /**
          * Get pageLayout
          *
-         * @return Page
+         * @return Page|null
          */
         public function getPage()
         {
@@ -171,7 +171,7 @@ if (!class_exists('\Eccube\Entity\PageLayout')) {
         /**
          * Set layout
          *
-         * @param \Eccube\Entity\Layout $layout
+         * @param \Eccube\Entity\Layout|null$layout
          *
          * @return PageLayout
          */
@@ -185,7 +185,7 @@ if (!class_exists('\Eccube\Entity\PageLayout')) {
         /**
          * Get layout
          *
-         * @return \Eccube\Entity\Layout
+         * @return \Eccube\Entity\Layout|null
          */
         public function getLayout()
         {
