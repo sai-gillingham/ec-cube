@@ -119,7 +119,7 @@ if (!class_exists('\Eccube\Entity\ClassCategory')) {
         /**
          * Set backend_name.
          *
-         * @param string $backendName
+         * @param string|null $backendName
          *
          * @return ClassCategory
          */
@@ -133,7 +133,7 @@ if (!class_exists('\Eccube\Entity\ClassCategory')) {
         /**
          * Get backend_name.
          *
-         * @return string
+         * @return string|null
          */
         public function getBackendName()
         {
