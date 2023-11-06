@@ -639,11 +639,11 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         /**
          * Set password.
          *
-         * @param string|null $password
+         * @param string $password
          *
          * @return Customer
          */
-        public function setPassword($password = null)
+        public function setPassword($password)
         {
             $this->password = $password;
 
@@ -653,7 +653,7 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         /**
          * Get password.
          *
-         * @return string|null
+         * @return string
          */
         public function getPassword()
         {
