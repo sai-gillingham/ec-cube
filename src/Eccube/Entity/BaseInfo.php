@@ -1074,7 +1074,7 @@ if (!class_exists('\Eccube\Entity\BaseInfo')) {
         /**
          * Set pointConversionRate
          *
-         * @param string $pointConversionRate
+         * @param string|null $pointConversionRate
          *
          * @return BaseInfo
          */
@@ -1088,7 +1088,7 @@ if (!class_exists('\Eccube\Entity\BaseInfo')) {
         /**
          * Get pointConversionRate
          *
-         * @return string
+         * @return string|null
          */
         public function getPointConversionRate()
         {
@@ -1098,7 +1098,7 @@ if (!class_exists('\Eccube\Entity\BaseInfo')) {
         /**
          * Set basicPointRate
          *
-         * @param string $basicPointRate
+         * @param string|null $basicPointRate
          *
          * @return BaseInfo
          */
@@ -1112,7 +1112,7 @@ if (!class_exists('\Eccube\Entity\BaseInfo')) {
         /**
          * Get basicPointRate
          *
-         * @return string
+         * @return string|null
          */
         public function getBasicPointRate()
         {
