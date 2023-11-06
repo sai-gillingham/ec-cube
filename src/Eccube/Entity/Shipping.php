@@ -375,7 +375,7 @@ if (!class_exists('\Eccube\Entity\Shipping')) {
         /**
          * Set kana01.
          *
-         * @param string $kana01
+         * @param string|null $kana01
          *
          * @return Shipping
          */
@@ -389,7 +389,7 @@ if (!class_exists('\Eccube\Entity\Shipping')) {
         /**
          * Get kana01.
          *
-         * @return string
+         * @return string|null
          */
         public function getKana01()
         {
@@ -399,7 +399,7 @@ if (!class_exists('\Eccube\Entity\Shipping')) {
         /**
          * Set kana02.
          *
-         * @param string $kana02
+         * @param string|null $kana02
          *
          * @return Shipping
          */
@@ -413,7 +413,7 @@ if (!class_exists('\Eccube\Entity\Shipping')) {
         /**
          * Get kana02.
          *
-         * @return string
+         * @return string|null
          */
         public function getKana02()
         {
@@ -893,7 +893,7 @@ if (!class_exists('\Eccube\Entity\Shipping')) {
         /**
          * Get order.
          *
-         * @return Order
+         * @return Order|null
          */
         public function getOrder()
         {
@@ -903,7 +903,7 @@ if (!class_exists('\Eccube\Entity\Shipping')) {
         /**
          * Set trackingNumber
          *
-         * @param string $trackingNumber
+         * @param string|null $trackingNumber
          *
          * @return Shipping
          */
@@ -917,7 +917,7 @@ if (!class_exists('\Eccube\Entity\Shipping')) {
         /**
          * Get trackingNumber
          *
-         * @return string
+         * @return string|null
          */
         public function getTrackingNumber()
         {
@@ -961,7 +961,7 @@ if (!class_exists('\Eccube\Entity\Shipping')) {
         /**
          * Set timeId
          *
-         * @param integer $timeId
+         * @param integer|null $timeId
          *
          * @return Shipping
          */
@@ -975,7 +975,7 @@ if (!class_exists('\Eccube\Entity\Shipping')) {
         /**
          * Get timeId
          *
-         * @return integer
+         * @return integer|null
          */
         public function getTimeId()
         {
