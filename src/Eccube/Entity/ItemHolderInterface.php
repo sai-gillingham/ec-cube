@@ -110,4 +110,15 @@ interface ItemHolderInterface
      * @param ItemInterface $item
      */
     public function addItem(ItemInterface $item);
+
+    /**
+     * @param ItemInterface $item
+     */
+    public function removeItem(ItemInterface $item);
+    /**
+     * Get customer.
+     *
+     * @return Customer|null
+     */
+    public function getCustomer();
 }

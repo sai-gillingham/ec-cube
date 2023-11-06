@@ -263,7 +263,7 @@ class ShippingController extends AbstractController
                     log_error('出荷登録エラー', [$Order->getId(), $e]);
                     $this->addError('admin.flash.register_failed', 'admin');
                 }
-            } elseif ($request->get('mode') == 'register' && $form->getErrors(true)->count() > 0) {
+            } elseif ($request->get('mode') == 'register' && $form->getErrors(true)) {
                 $this->addError('admin.common.save_error', 'admin');
             }
         }

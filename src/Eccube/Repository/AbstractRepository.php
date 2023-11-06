@@ -15,13 +15,14 @@ namespace Eccube\Repository;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\DBAL\DBALException;
+use Doctrine\DBAL\Exception;
 use Eccube\Entity\AbstractEntity;
 use Eccube\Common\EccubeConfig;
 
 abstract class AbstractRepository extends ServiceEntityRepository
 {
     /**
-     * @var EccubeConfig
+     * @var array
      */
     protected $eccubeConfig;
 
@@ -59,7 +60,7 @@ abstract class AbstractRepository extends ServiceEntityRepository
      *
      * @return bool
      *
-     * @throws DBALException
+     * @throws Exception
      */
     protected function isPostgreSQL()
     {
@@ -71,7 +72,7 @@ abstract class AbstractRepository extends ServiceEntityRepository
      *
      * @return bool
      *
-     * @throws DBALException
+     * @throws Exception
      */
     protected function isMySQL()
     {

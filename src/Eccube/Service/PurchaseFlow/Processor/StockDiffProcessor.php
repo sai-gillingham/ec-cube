@@ -15,6 +15,8 @@ namespace Eccube\Service\PurchaseFlow\Processor;
 
 use Eccube\Entity\ItemHolderInterface;
 use Eccube\Entity\Master\OrderStatus;
+use Eccube\Entity\Order;
+use Eccube\Entity\OrderItem;
 use Eccube\Entity\ProductClass;
 use Eccube\Entity\ProductStock;
 use Eccube\Repository\ProductClassRepository;
@@ -54,8 +56,9 @@ class StockDiffProcessor extends ItemHolderValidator implements PurchaseProcesso
         if (is_null($context->getOriginHolder())) {
             return;
         }
-
+        /** @var Order $From */
         $From = $context->getOriginHolder();
+        /** @var Order $To */
         $To = $itemHolder;
         $diff = $this->getDiffOfQuantities($From, $To);
 

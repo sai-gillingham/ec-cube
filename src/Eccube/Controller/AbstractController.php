@@ -54,7 +54,7 @@ class AbstractController extends Controller
     protected $eventDispatcher;
 
     /**
-     * @var SessionInterface
+     * @var Session
      */
     protected $session;
 

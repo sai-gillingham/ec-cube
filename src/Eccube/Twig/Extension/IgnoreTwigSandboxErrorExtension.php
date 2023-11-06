@@ -68,6 +68,7 @@ class IgnoreTwigSandboxErrorExtension extends AbstractExtension
                 log_warning($e->getMessage(), ['exception' => $e]);
 
                 // 例外がスローされた場合、sandboxが効いた状態になってしまうため追加
+                /** @var SandboxExtension $sandbox */
                 $sandbox = $env->getExtension(SandboxExtension::class);
                 if (!$sandbox->isSandboxedGlobally()) {
                     $sandbox->disableSandbox();

@@ -54,9 +54,6 @@ class InstallerCommand extends Command
 
         /* env更新処理無名クラス */
         $this->envFileUpdater = new class() {
-            /**
-             * @var mixed $appEnv
-             */
             public $appEnv;
             public $appDebug;
             public $databaseUrl;

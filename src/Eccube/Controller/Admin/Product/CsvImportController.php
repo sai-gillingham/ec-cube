@@ -876,7 +876,7 @@ class CsvImportController extends AbstractCsvImportController
      * @param array $headers
      * @param bool $rollback
      *
-     * @return JsonResponse | array<mixed>
+     * @return array
      *
      * @throws \Doctrine\DBAL\ConnectionException
      */
@@ -1696,7 +1696,7 @@ class CsvImportController extends AbstractCsvImportController
      *
      * @param Request $request
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
     public function importCsv(Request $request, CsrfTokenManagerInterface $tokenManager)
     {

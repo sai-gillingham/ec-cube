@@ -85,7 +85,7 @@ class MemberRepository extends AbstractRepository
     /**
      * 管理ユーザを登録します.
      *
-     * @param Member|UserInterface $Member
+     * @param Member $Member
      */
     public function save($Member)
     {

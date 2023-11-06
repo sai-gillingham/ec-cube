@@ -58,6 +58,8 @@ services:
       # ECCUBE_ADMIN_PASS: "password"
     networks:
       - backend
+    extra_hosts:
+      - host.docker.internal:host-gateway
 
   ### Mailcatcher ##################################
   mailcatcher:

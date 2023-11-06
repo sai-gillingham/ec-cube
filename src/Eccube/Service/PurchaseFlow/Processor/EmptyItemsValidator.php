@@ -16,6 +16,7 @@ namespace Eccube\Service\PurchaseFlow\Processor;
 use Doctrine\ORM\EntityManagerInterface;
 use Eccube\Entity\ItemHolderInterface;
 use Eccube\Entity\Order;
+use Eccube\Entity\OrderItem;
 use Eccube\Service\PurchaseFlow\InvalidItemException;
 use Eccube\Service\PurchaseFlow\ItemHolderValidator;
 use Eccube\Service\PurchaseFlow\PurchaseContext;
@@ -49,8 +50,10 @@ class EmptyItemsValidator extends ItemHolderValidator
             if ($item->isProduct() && $item->getQuantity() <= 0) {
                 if ($itemHolder instanceof Order) {
                     foreach ($itemHolder->getShippings() as $Shipping) {
+                        /** @var OrderItem $item */
                         $Shipping->removeOrderItem($item);
                     }
+                    /** @var OrderItem $item */
                     $itemHolder->removeOrderItem($item);
                 } else {
                     $itemHolder->removeItem($item);

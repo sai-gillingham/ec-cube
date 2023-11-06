@@ -107,15 +107,14 @@ class OrderRepository extends AbstractRepository
      *         payment_total_start?:string|int,
      *         payment_total_end?:string|int,
      *         payment_product_name?:string,
-     *         shipping_mail?:Shipping::SHIPPING_MAIL_UNSENT|Shipping::SHIPPING_MAIL_SENT|ArrayCollection,
+     *         shipping_mail?:Shipping::SHIPPING_MAIL_UNSENT|Shipping::SHIPPING_MAIL_SENT,
      *         tracking_number?:string,
      *         shipping_delivery_datetime_start?:\DateTime,
      *         shipping_delivery_datetime_end?:\DateTime,
      *         shipping_delivery_date_start?:\DateTime,
      *         shipping_delivery_date_end?:\DateTime,
      *         sortkey?:string,
-     *         sorttype?:string,
-     *         buy_product_name?:string
+     *         sorttype?:string
      *     } $searchData
      *
      * @return QueryBuilder
@@ -175,7 +174,7 @@ class OrderRepository extends AbstractRepository
 
         // status
         $filterStatus = false;
-        if (!empty($searchData['status']) && count($searchData['status']) > 0) {
+        if (!empty($searchData['status']) && count($searchData['status'])) {
             $qb
                 ->andWhere($qb->expr()->in('o.OrderStatus', ':status'))
                 ->setParameter('status', $searchData['status']);
@@ -234,7 +233,7 @@ class OrderRepository extends AbstractRepository
         }
 
         // payment
-        if (!empty($searchData['payment']) && count($searchData['payment']) > 0) {
+        if (!empty($searchData['payment']) && count($searchData['payment'])) {
             $payments = [];
             foreach ($searchData['payment'] as $payment) {
                 $payments[] = $payment->getId();
@@ -246,24 +245,24 @@ class OrderRepository extends AbstractRepository
         }
 
         // oreder_date
-        if (!empty($searchData['order_datetime_start'])) {
+        if (!empty($searchData['order_datetime_start']) && $searchData['order_datetime_start']) {
             $date = $searchData['order_datetime_start'];
             $qb
                 ->andWhere('o.order_date >= :order_date_start')
                 ->setParameter('order_date_start', $date);
-        } elseif (!empty($searchData['order_date_start'])) {
+        } elseif (!empty($searchData['order_date_start']) && $searchData['order_date_start']) {
             $date = $searchData['order_date_start'];
             $qb
                 ->andWhere('o.order_date >= :order_date_start')
                 ->setParameter('order_date_start', $date);
         }
 
-        if (!empty($searchData['order_datetime_end'])) {
+        if (!empty($searchData['order_datetime_end']) && $searchData['order_datetime_end']) {
             $date = $searchData['order_datetime_end'];
             $qb
                 ->andWhere('o.order_date < :order_date_end')
                 ->setParameter('order_date_end', $date);
-        } elseif (!empty($searchData['order_date_end'])) {
+        } elseif (!empty($searchData['order_date_end']) && $searchData['order_date_end']) {
             $date = clone $searchData['order_date_end'];
             $date = $date
                 ->modify('+1 days');
@@ -273,24 +272,24 @@ class OrderRepository extends AbstractRepository
         }
 
         // payment_date
-        if (!empty($searchData['payment_datetime_start'])) {
+        if (!empty($searchData['payment_datetime_start']) && $searchData['payment_datetime_start']) {
             $date = $searchData['payment_datetime_start'];
             $qb
                 ->andWhere('o.payment_date >= :payment_date_start')
                 ->setParameter('payment_date_start', $date);
-        } elseif (!empty($searchData['payment_date_start'])) {
+        } elseif (!empty($searchData['payment_date_start']) && $searchData['payment_date_start']) {
             $date = $searchData['payment_date_start'];
             $qb
                 ->andWhere('o.payment_date >= :payment_date_start')
                 ->setParameter('payment_date_start', $date);
         }
 
-        if (!empty($searchData['payment_datetime_end'])) {
+        if (!empty($searchData['payment_datetime_end']) && $searchData['payment_datetime_end']) {
             $date = $searchData['payment_datetime_end'];
             $qb
                 ->andWhere('o.payment_date < :payment_date_end')
                 ->setParameter('payment_date_end', $date);
-        } elseif (!empty($searchData['payment_date_end'])) {
+        } elseif (!empty($searchData['payment_date_end']) && $searchData['payment_date_end']) {
             $date = clone $searchData['payment_date_end'];
             $date = $date
                 ->modify('+1 days');
@@ -300,24 +299,24 @@ class OrderRepository extends AbstractRepository
         }
 
         // update_date
-        if (!empty($searchData['update_datetime_start'])) {
+        if (!empty($searchData['update_datetime_start']) && $searchData['update_datetime_start']) {
             $date = $searchData['update_datetime_start'];
             $qb
                 ->andWhere('o.update_date >= :update_date_start')
                 ->setParameter('update_date_start', $date);
-        } elseif (!empty($searchData['update_date_start'])) {
+        } elseif (!empty($searchData['update_date_start']) && $searchData['update_date_start']) {
             $date = $searchData['update_date_start'];
             $qb
                 ->andWhere('o.update_date >= :update_date_start')
                 ->setParameter('update_date_start', $date);
         }
 
-        if (!empty($searchData['update_datetime_end'])) {
+        if (!empty($searchData['update_datetime_end']) && $searchData['update_datetime_end']) {
             $date = $searchData['update_datetime_end'];
             $qb
                 ->andWhere('o.update_date < :update_date_end')
                 ->setParameter('update_date_end', $date);
-        } elseif (!empty($searchData['update_date_end'])) {
+        } elseif (!empty($searchData['update_date_end']) && $searchData['update_date_end']) {
             $date = clone $searchData['update_date_end'];
             $date = $date
                 ->modify('+1 days');
@@ -346,9 +345,8 @@ class OrderRepository extends AbstractRepository
         }
 
         // 発送メール送信/未送信.
-        if (isset($searchData['shipping_mail']) && count($searchData['shipping_mail']) > 0) {
+        if (isset($searchData['shipping_mail']) && $count = count($searchData['shipping_mail'])) {
             // 送信済/未送信両方にチェックされている場合は検索条件に追加しない
-            $count = count($searchData['shipping_mail']);
             if ($count < 2) {
                 $checked = current($searchData['shipping_mail']);
                 if ($checked == Shipping::SHIPPING_MAIL_UNSENT) {
@@ -371,24 +369,24 @@ class OrderRepository extends AbstractRepository
         }
 
         // お届け予定日(Shipping.delivery_date)
-        if (!empty($searchData['shipping_delivery_datetime_start'])) {
+        if (!empty($searchData['shipping_delivery_datetime_start']) && $searchData['shipping_delivery_datetime_start']) {
             $date = $searchData['shipping_delivery_datetime_start'];
             $qb
                 ->andWhere('s.shipping_delivery_date >= :shipping_delivery_date_start')
                 ->setParameter('shipping_delivery_date_start', $date);
-        } elseif (!empty($searchData['shipping_delivery_date_start'])) {
+        } elseif (!empty($searchData['shipping_delivery_date_start']) && $searchData['shipping_delivery_date_start']) {
             $date = $searchData['shipping_delivery_date_start'];
             $qb
                 ->andWhere('s.shipping_delivery_date >= :shipping_delivery_date_start')
                 ->setParameter('shipping_delivery_date_start', $date);
         }
 
-        if (!empty($searchData['shipping_delivery_datetime_end'])) {
+        if (!empty($searchData['shipping_delivery_datetime_end']) && $searchData['shipping_delivery_datetime_end']) {
             $date = $searchData['shipping_delivery_datetime_end'];
             $qb
                 ->andWhere('s.shipping_delivery_date < :shipping_delivery_date_end')
                 ->setParameter('shipping_delivery_date_end', $date);
-        } elseif (!empty($searchData['shipping_delivery_date_end'])) {
+        } elseif (!empty($searchData['shipping_delivery_date_end']) && $searchData['shipping_delivery_date_end']) {
             $date = clone $searchData['shipping_delivery_date_end'];
             $date = $date
                 ->modify('+1 days');

@@ -114,10 +114,10 @@ class PointHelper
     /**
      * 明細追加処理.
      *
-     * @param ItemHolderInterface $itemHolder
+     * @param Order $itemHolder
      * @param integer $discount
      */
-    public function addPointDiscountItem(ItemHolderInterface $itemHolder, $discount)
+    public function addPointDiscountItem(Order $itemHolder, $discount)
     {
         $DiscountType = $this->entityManager->find(OrderItemType::class, OrderItemType::POINT);
         $TaxInclude = $this->entityManager->find(TaxDisplayType::class, TaxDisplayType::INCLUDED);
@@ -152,9 +152,9 @@ class PointHelper
     /**
      * 既存のポイント明細を削除する.
      *
-     * @param ItemHolderInterface $itemHolder
+     * @param Order $itemHolder
      */
-    public function removePointDiscountItem(ItemHolderInterface $itemHolder)
+    public function removePointDiscountItem(Order $itemHolder)
     {
         foreach ($itemHolder->getItems() as $item) {
             if ($item->getProcessorName() == PointProcessor::class) {
@@ -164,14 +164,14 @@ class PointHelper
         }
     }
 
-    public function prepare(ItemHolderInterface $itemHolder, $point)
+    public function prepare(Order $itemHolder, $point)
     {
         // ユーザの保有ポイントを減算
         $Customer = $itemHolder->getCustomer();
         $Customer->setPoint($Customer->getPoint() - $point);
     }
 
-    public function rollback(ItemHolderInterface $itemHolder, $point)
+    public function rollback(Order $itemHolder, $point)
     {
         // 利用したポイントをユーザに戻す.
         $Customer = $itemHolder->getCustomer();

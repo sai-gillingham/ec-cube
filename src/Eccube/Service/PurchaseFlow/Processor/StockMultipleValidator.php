@@ -14,6 +14,7 @@
 namespace Eccube\Service\PurchaseFlow\Processor;
 
 use Eccube\Entity\ItemHolderInterface;
+use Eccube\Entity\Order;
 use Eccube\Entity\ProductClass;
 use Eccube\Entity\Shipping;
 use Eccube\Repository\ProductClassRepository;
@@ -46,8 +47,10 @@ class StockMultipleValidator extends ItemHolderValidator
     public function validate(ItemHolderInterface $itemHolder, PurchaseContext $context)
     {
         $OrderItemsByProductClass = [];
+        /** @var Order $Order */
+        $Order = $itemHolder;
         /** @var Shipping $Shipping */
-        foreach ($itemHolder->getShippings() as $Shipping) {
+        foreach ($Order->getShippings() as $Shipping) {
             foreach ($Shipping->getOrderItems() as $Item) {
                 if ($Item->isProduct()) {
                     $id = $Item->getProductClass()->getId();

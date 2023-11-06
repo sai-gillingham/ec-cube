@@ -69,4 +69,12 @@ interface ItemInterface
     public function getQuantity();
 
     public function setQuantity($quantity);
+    public function getId();
+    public function getPointRate();
+    /**
+     * @param float|int|string $price
+     *
+     * @return $this
+    */
+    public function setPrice($price);
 }

@@ -275,7 +275,7 @@ class OrderType extends AbstractType
      */
     public function sortOrderItems(FormEvent $event)
     {
-        /** @var Order|null $Order */
+        /** @var Order $Order */
         $Order = $event->getData();
         if (null === $Order) {
             return;
