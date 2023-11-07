@@ -78,4 +78,9 @@ interface ItemInterface
      * @return $this
     */
     public function setPrice($price);
+
+    /**
+     * @return mixed
+     */
+    public function getPriceIncTax();
 }
