@@ -142,7 +142,7 @@ if (!class_exists('\Eccube\Entity\Cart')) {
         }
 
         /**
-         * @return string
+         * @return string|null
          */
         public function getCartKey()
         {
@@ -361,7 +361,7 @@ if (!class_exists('\Eccube\Entity\Cart')) {
         }
 
         /**
-         * @param Customer $Customer
+         * @param Customer|null $Customer
          */
         public function setCustomer(Customer $Customer = null)
         {

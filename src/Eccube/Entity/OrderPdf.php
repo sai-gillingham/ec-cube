@@ -131,7 +131,7 @@ if (!class_exists('\Eccube\Entity\OrderPdf')) {
         }
 
         /**
-         * @return string
+         * @return string|null
          */
         public function getTitle()
         {
@@ -139,7 +139,7 @@ if (!class_exists('\Eccube\Entity\OrderPdf')) {
         }
 
         /**
-         * @param $title
+         * @param string|null $title
          *
          * @return $this
          */
@@ -151,7 +151,7 @@ if (!class_exists('\Eccube\Entity\OrderPdf')) {
         }
 
         /**
-         * @return string
+         * @return string|null
          */
         public function getMessage1()
         {
@@ -159,7 +159,7 @@ if (!class_exists('\Eccube\Entity\OrderPdf')) {
         }
 
         /**
-         * @param $message1
+         * @param string|null $message1
          *
          * @return $this
          */
@@ -171,7 +171,7 @@ if (!class_exists('\Eccube\Entity\OrderPdf')) {
         }
 
         /**
-         * @return string
+         * @return string|null
          */
         public function getMessage2()
         {
@@ -179,7 +179,7 @@ if (!class_exists('\Eccube\Entity\OrderPdf')) {
         }
 
         /**
-         * @param $message2
+         * @param string|null $message2
          *
          * @return $this
          */
@@ -191,7 +191,7 @@ if (!class_exists('\Eccube\Entity\OrderPdf')) {
         }
 
         /**
-         * @return string
+         * @return string|null
          */
         public function getMessage3()
         {
@@ -199,7 +199,7 @@ if (!class_exists('\Eccube\Entity\OrderPdf')) {
         }
 
         /**
-         * @param $message3
+         * @param $message3|null
          *
          * @return $this
          */
@@ -211,7 +211,7 @@ if (!class_exists('\Eccube\Entity\OrderPdf')) {
         }
 
         /**
-         * @return string
+         * @return string|null
          */
         public function getNote1()
         {
@@ -219,7 +219,7 @@ if (!class_exists('\Eccube\Entity\OrderPdf')) {
         }
 
         /**
-         * @param $note1
+         * @param string|null $note1
          *
          * @return $this
          */
@@ -231,7 +231,7 @@ if (!class_exists('\Eccube\Entity\OrderPdf')) {
         }
 
         /**
-         * @return string
+         * @return string|null
          */
         public function getNote2()
         {
@@ -239,7 +239,7 @@ if (!class_exists('\Eccube\Entity\OrderPdf')) {
         }
 
         /**
-         * @param $note2
+         * @param string|null $note2
          *
          * @return $this
          */
@@ -251,7 +251,7 @@ if (!class_exists('\Eccube\Entity\OrderPdf')) {
         }
 
         /**
-         * @return string
+         * @return string|null
          */
         public function getNote3()
         {
@@ -259,7 +259,7 @@ if (!class_exists('\Eccube\Entity\OrderPdf')) {
         }
 
         /**
-         * @param $note3
+         * @param string|null $note3
          *
          * @return $this
          */

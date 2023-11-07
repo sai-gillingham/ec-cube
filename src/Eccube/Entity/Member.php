@@ -321,7 +321,7 @@ if (!class_exists('\Eccube\Entity\Member')) {
         /**
          * Set salt.
          *
-         * @param string $salt
+         * @param string|null $salt
          *
          * @return Member
          */
@@ -335,7 +335,7 @@ if (!class_exists('\Eccube\Entity\Member')) {
         /**
          * Get salt.
          *
-         * @return string
+         * @return string|null
          */
         public function getSalt()
         {
@@ -369,7 +369,7 @@ if (!class_exists('\Eccube\Entity\Member')) {
         /**
          * Set twoFactorAuthKey.
          *
-         * @param string $two_factor_auth_key
+         * @param string|null $two_factor_auth_key
          *
          * @return Member
          */
@@ -383,7 +383,7 @@ if (!class_exists('\Eccube\Entity\Member')) {
         /**
          * Get twoFactorAuthKey.
          *
-         * @return string
+         * @return string|null
          */
         public function getTwoFactorAuthKey()
         {
@@ -489,7 +489,7 @@ if (!class_exists('\Eccube\Entity\Member')) {
         /**
          * Set Work
          *
-         * @param \Eccube\Entity\Master\Work $work
+         * @param \Eccube\Entity\Master\Work|null $work
          *
          * @return Member
          */

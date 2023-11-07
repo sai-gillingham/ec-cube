@@ -430,35 +430,35 @@ if (!class_exists('\Eccube\Entity\Order')) {
         private $birth;
 
         /**
-         * @var float|string
+         * @var float|string|int
          *
          * @ORM\Column(name="subtotal", type="decimal", precision=12, scale=2, options={"unsigned":true,"default":0})
          */
         private $subtotal = 0;
 
         /**
-         * @var float|string
+         * @var float|string|int
          *
          * @ORM\Column(name="discount", type="decimal", precision=12, scale=2, options={"unsigned":true,"default":0})
          */
         private $discount = 0;
 
         /**
-         * @var float|string
+         * @var float|string|int
          *
          * @ORM\Column(name="delivery_fee_total", type="decimal", precision=12, scale=2, options={"unsigned":true,"default":0})
          */
         private $delivery_fee_total = 0;
 
         /**
-         * @var float|string
+         * @var float|string|int
          *
          * @ORM\Column(name="charge", type="decimal", precision=12, scale=2, options={"unsigned":true,"default":0})
          */
         private $charge = 0;
 
         /**
-         * @var float|string
+         * @var float|string|int
          *
          * @ORM\Column(name="tax", type="decimal", precision=12, scale=2, options={"unsigned":true,"default":0})
          *
@@ -467,14 +467,14 @@ if (!class_exists('\Eccube\Entity\Order')) {
         private $tax = 0;
 
         /**
-         * @var float|string
+         * @var float|string|int
          *
          * @ORM\Column(name="total", type="decimal", precision=12, scale=2, options={"unsigned":true,"default":0})
          */
         private $total = 0;
 
         /**
-         * @var float|string
+         * @var float|string|int
          *
          * @ORM\Column(name="payment_total", type="decimal", precision=12, scale=2, options={"unsigned":true,"default":0})
          */
@@ -816,11 +816,11 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * Set name01.
          *
-         * @param string|null $name01
+         * @param string $name01
          *
          * @return Order
          */
-        public function setName01($name01 = null)
+        public function setName01($name01)
         {
             $this->name01 = $name01;
 
@@ -830,7 +830,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * Get name01.
          *
-         * @return string|null
+         * @return string
          */
         public function getName01()
         {
@@ -840,11 +840,11 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * Set name02.
          *
-         * @param string|null $name02
+         * @param string $name02
          *
          * @return Order
          */
-        public function setName02($name02 = null)
+        public function setName02($name02)
         {
             $this->name02 = $name02;
 
@@ -854,7 +854,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * Get name02.
          *
-         * @return string|null
+         * @return string
          */
         public function getName02()
         {
@@ -1094,7 +1094,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * Get subtotal.
          *
-         * @return string
+         * @return string|int|float
          */
         public function getSubtotal()
         {
@@ -1104,7 +1104,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * Set discount.
          *
-         * @param float $discount
+         * @param string|float|int $discount
          *
          * @return Order
          */
@@ -1118,7 +1118,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * Get discount.
          *
-         * @return float
+         * @return string|int|float
          * @deprecated 4.0.3 から値引きは課税値引きと 非課税・不課税の値引きの2種に分かれる. 課税値引きについてはgetTaxableDiscountを利用してください.
          *
          */
@@ -1168,7 +1168,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * Get charge.
          *
-         * @return string
+         * @return string|float|int
          */
         public function getCharge()
         {
@@ -1194,7 +1194,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * Get tax.
          *
-         * @return string
+         * @return string|float|int
          *
          * @deprecated 明細ごとに集計した税額と差異が発生する場合があるため非推奨
          */
@@ -1244,7 +1244,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * Get paymentTotal.
          *
-         * @return float|string
+         * @return float|string|int|float
          */
         public function getPaymentTotal()
         {

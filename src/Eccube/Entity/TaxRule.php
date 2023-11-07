@@ -188,7 +188,7 @@ if (!class_exists('\Eccube\Entity\TaxRule')) {
         /**
          * Set taxRate.
          *
-         * @param string $taxRate
+         * @param string|int|float $taxRate
          *
          * @return TaxRule
          */
@@ -202,7 +202,7 @@ if (!class_exists('\Eccube\Entity\TaxRule')) {
         /**
          * Get taxRate.
          *
-         * @return string
+         * @return string|int|float
          */
         public function getTaxRate()
         {
@@ -212,7 +212,7 @@ if (!class_exists('\Eccube\Entity\TaxRule')) {
         /**
          * Set taxAdjust.
          *
-         * @param string $taxAdjust
+         * @param float|int|string $taxAdjust
          *
          * @return TaxRule
          */
@@ -226,7 +226,7 @@ if (!class_exists('\Eccube\Entity\TaxRule')) {
         /**
          * Get taxAdjust.
          *
-         * @return string
+         * @return float|int|string
          */
         public function getTaxAdjust()
         {
@@ -427,6 +427,8 @@ if (!class_exists('\Eccube\Entity\TaxRule')) {
 
         /**
          * Set roundingType.
+         *
+         * @param \Eccube\Entity\Master\RoundingType|null $RoundingType
          *
          * @return TaxRule
          */

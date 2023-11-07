@@ -35,7 +35,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Get price IncTax
          *
-         * @return float|string
+         * @return float|string|int
          */
         public function getPriceIncTax()
         {
@@ -48,7 +48,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         }
 
         /**
-         * @return integer
+         * @return integer|float
          */
         public function getTotalPrice()
         {
@@ -485,7 +485,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Get price.
          *
-         * @return string
+         * @return string|float|int
          */
         public function getPrice()
         {
@@ -509,7 +509,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Get quantity.
          *
-         * @return float|string
+         * @return float|string|int
          */
         public function getQuantity()
         {
@@ -553,7 +553,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Get taxRate.
          *
-         * @return string
+         * @return string|int|float
          */
         public function getTaxRate()
         {
@@ -563,7 +563,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Set taxAdjust.
          *
-         * @param string $tax_adjust
+         * @param string|int|float $tax_adjust
          *
          * @return OrderItem
          */
@@ -577,7 +577,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Get taxAdjust.
          *
-         * @return string
+         * @return string|int|float
          */
         public function getTaxAdjust()
         {

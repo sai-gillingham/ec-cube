@@ -289,7 +289,7 @@ if (!class_exists('\Eccube\Entity\Layout')) {
         /**
          * Set name
          *
-         * @param string $name
+         * @param string|null $name
          *
          * @return Layout
          */
@@ -303,7 +303,7 @@ if (!class_exists('\Eccube\Entity\Layout')) {
         /**
          * Get name
          *
-         * @return string
+         * @return string|null
          */
         public function getName()
         {
