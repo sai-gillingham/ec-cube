@@ -247,7 +247,7 @@ class InstallController extends AbstractController
      * @Route("/install/step3", name="install_step3", methods={"GET", "POST"})
      * @Template("step3.twig")
      *
-     * @return array<mixed>|\Symfony\Component\HttpFoundation\RedirectResponse
+     * @return array<string, mixed>|\Symfony\Component\HttpFoundation\RedirectResponse
      *
      * @throws \Exception
      */
