@@ -15,7 +15,6 @@ namespace Eccube\Service\PurchaseFlow;
 
 use Eccube\Entity\Customer;
 use Eccube\Entity\ItemHolderInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * PurchaseFlowの実行中コンテキスト.
