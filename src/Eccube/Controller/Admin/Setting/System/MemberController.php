@@ -20,7 +20,6 @@ use Eccube\Event\EccubeEvents;
 use Eccube\Event\EventArgs;
 use Eccube\Form\Type\Admin\MemberType;
 use Eccube\Repository\MemberRepository;
-use Eccube\Security\Core\Encoder\PasswordEncoder;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -108,7 +107,7 @@ class MemberController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var PasswordEncoder $encoder */
+            /** @var \Eccube\Security\Core\Encoder\PasswordEncoder $encoder */
             $encoder = $this->encoderFactory->getEncoder($Member);
             $salt = $encoder->createSalt();
             $password = $Member->getPlainPassword();
