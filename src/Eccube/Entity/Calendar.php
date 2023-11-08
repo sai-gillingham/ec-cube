@@ -92,7 +92,7 @@ if (!class_exists('\Eccube\Entity\Calendar')) {
         /**
          * Set title.
          *
-         * @param string $title
+         * @param string|null $title
          *
          * @return Calendar
          */
@@ -106,7 +106,7 @@ if (!class_exists('\Eccube\Entity\Calendar')) {
         /**
          * Get title.
          *
-         * @return string
+         * @return string|null
          */
         public function getTitle()
         {

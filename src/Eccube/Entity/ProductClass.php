@@ -203,7 +203,7 @@ if (!class_exists('\Eccube\Entity\ProductClass')) {
         private $sale_limit;
 
         /**
-         * @var float|string|null
+         * @var int|float|string|null
          *
          * @ORM\Column(name="price01", type="decimal", precision=12, scale=2, nullable=true)
          */
@@ -217,7 +217,7 @@ if (!class_exists('\Eccube\Entity\ProductClass')) {
         private $price02;
 
         /**
-         * @var float|string|null
+         * @var int|float|string|null
          *
          * @ORM\Column(name="delivery_fee", type="decimal", precision=12, scale=2, nullable=true, options={"unsigned":true})
          */
@@ -422,7 +422,7 @@ if (!class_exists('\Eccube\Entity\ProductClass')) {
         /**
          * Set saleLimit.
          *
-         * @param string|float|null $saleLimit
+         * @param float|string|null $saleLimit
          *
          * @return ProductClass
          */
@@ -436,7 +436,7 @@ if (!class_exists('\Eccube\Entity\ProductClass')) {
         /**
          * Get saleLimit.
          *
-         * @return float|null
+         * @return float|string|null
          */
         public function getSaleLimit()
         {
@@ -446,7 +446,7 @@ if (!class_exists('\Eccube\Entity\ProductClass')) {
         /**
          * Set price01.
          *
-         * @param string|null $price01
+         * @param int|float|string|null $price01
          *
          * @return ProductClass
          */
@@ -460,7 +460,7 @@ if (!class_exists('\Eccube\Entity\ProductClass')) {
         /**
          * Get price01.
          *
-         * @return string|null
+         * @return int|float|string|null
          */
         public function getPrice01()
         {
@@ -470,7 +470,7 @@ if (!class_exists('\Eccube\Entity\ProductClass')) {
         /**
          * Set price02.
          *
-         * @param string $price02
+         * @param string|float|int $price02
          *
          * @return ProductClass
          */
@@ -484,7 +484,7 @@ if (!class_exists('\Eccube\Entity\ProductClass')) {
         /**
          * Get price02.
          *
-         * @return string
+         * @return string|float|int
          */
         public function getPrice02()
         {
@@ -494,7 +494,7 @@ if (!class_exists('\Eccube\Entity\ProductClass')) {
         /**
          * Set deliveryFee.
          *
-         * @param string|null $deliveryFee
+         * @param float|int|string|null $deliveryFee
          *
          * @return ProductClass
          */
@@ -508,7 +508,7 @@ if (!class_exists('\Eccube\Entity\ProductClass')) {
         /**
          * Get deliveryFee.
          *
-         * @return float|string|null
+         * @return float|int|string|null
          */
         public function getDeliveryFee()
         {
@@ -802,7 +802,7 @@ if (!class_exists('\Eccube\Entity\ProductClass')) {
         /**
          * Set pointRate
          *
-         * @param string $pointRate
+         * @param string|null $pointRate
          *
          * @return ProductClass
          */
@@ -816,7 +816,7 @@ if (!class_exists('\Eccube\Entity\ProductClass')) {
         /**
          * Get pointRate
          *
-         * @return string
+         * @return string|null
          */
         public function getPointRate()
         {

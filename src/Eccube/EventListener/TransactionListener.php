@@ -105,7 +105,9 @@ class TransactionListener implements EventSubscriberInterface
             return;
         }
 
-        if ($this->em->getConnection()->getNativeConnection()->inTransaction()) {
+        /** @var \PDO $nativeConnection */
+        $nativeConnection = $this->em->getConnection()->getNativeConnection();
+        if ($nativeConnection->inTransaction()) {
             if ($this->em->getConnection()->isRollbackOnly()) {
                 $this->em->rollback();
             }
@@ -129,7 +131,11 @@ class TransactionListener implements EventSubscriberInterface
 
             return;
         }
-        if ($this->em->getConnection()->getNativeConnection()->inTransaction()) {
+
+        /** @var \PDO $nativeConnection */
+        $nativeConnection = $this->em->getConnection()->getNativeConnection();
+
+        if ($nativeConnection->inTransaction()) {
             if ($this->em->getConnection()->isRollbackOnly()) {
                 $this->em->rollback();
                 log_debug('Rollback executed.');

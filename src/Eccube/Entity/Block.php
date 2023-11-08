@@ -315,7 +315,7 @@ if (!class_exists('\Eccube\Entity\Block')) {
         /**
          * Set deviceType
          *
-         * @param \Eccube\Entity\Master\DeviceType $deviceType
+         * @param \Eccube\Entity\Master\DeviceType|null $deviceType
          *
          * @return Block
          */
@@ -329,7 +329,7 @@ if (!class_exists('\Eccube\Entity\Block')) {
         /**
          * Get deviceType
          *
-         * @return \Eccube\Entity\Master\DeviceType
+         * @return \Eccube\Entity\Master\DeviceType|null
          */
         public function getDeviceType()
         {

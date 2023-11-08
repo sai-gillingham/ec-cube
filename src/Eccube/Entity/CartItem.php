@@ -39,7 +39,7 @@ if (!class_exists('\Eccube\Entity\CartItem')) {
         private $id;
 
         /**
-         * @var string|float
+         * @var string|float|int
          *
          * @ORM\Column(name="price", type="decimal", precision=12, scale=2, options={"default":0})
          */
@@ -93,7 +93,7 @@ if (!class_exists('\Eccube\Entity\CartItem')) {
         }
 
         /**
-         * @param  integer  $price
+         * @param  integer|string|float  $price
          *
          * @return CartItem
          */
@@ -105,7 +105,7 @@ if (!class_exists('\Eccube\Entity\CartItem')) {
         }
 
         /**
-         * @return float|string
+         * @return float|string|int|float
          */
         public function getPrice()
         {
@@ -113,7 +113,7 @@ if (!class_exists('\Eccube\Entity\CartItem')) {
         }
 
         /**
-         * @param  integer  $quantity
+         * @param  integer|float|string  $quantity
          *
          * @return CartItem
          */
@@ -125,7 +125,7 @@ if (!class_exists('\Eccube\Entity\CartItem')) {
         }
 
         /**
-         * @return float|string
+         * @return float|string|float|integer
          */
         public function getQuantity()
         {
@@ -224,7 +224,7 @@ if (!class_exists('\Eccube\Entity\CartItem')) {
         }
 
         /**
-         * @return ProductClass
+         * @return ProductClass|null
          */
         public function getProductClass()
         {

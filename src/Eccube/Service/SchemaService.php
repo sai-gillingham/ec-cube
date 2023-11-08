@@ -16,11 +16,14 @@ namespace Eccube\Service;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Tools\SchemaTool;
+use Doctrine\Persistence\Mapping\Driver\MappingDriverChain;
 use Eccube\Doctrine\ORM\Mapping\Driver\NopAnnotationDriver;
 use Eccube\Doctrine\ORM\Mapping\Driver\ReloadSafeAnnotationDriver;
 use Eccube\Util\StringUtil;
+use Doctrine\DBAL;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
+use Doctrine\Bundle\DoctrineBundle\Mapping\MappingDriver;
 
 class SchemaService
 {
@@ -68,8 +71,15 @@ class SchemaService
         }
 
         try {
-            $chain = $this->entityManager->getConfiguration()->getMetadataDriverImpl()->getDriver();
-            $drivers = $chain->getDrivers();
+            /** @var MappingDriver $mappingDriver */
+            $mappingDriver = $this->entityManager->getConfiguration()->getMetadataDriverImpl();
+            /** @var MappingDriverChain $driverChain */
+            $driverChain = $mappingDriver->getDriver();
+            $drivers = $driverChain->getDrivers();
+            /**
+             * @var string $namespace
+             * @var ReloadSafeAnnotationDriver $oldDriver
+             */
             foreach ($drivers as $namespace => $oldDriver) {
                 if ('Eccube\Entity' === $namespace || preg_match('/^Plugin\\\\.*\\\\Entity$/', $namespace)) {
                     // Setup to AnnotationDriver
@@ -82,13 +92,13 @@ class SchemaService
                     $newDriver->setTraitProxiesDirectory($proxiesDirectory);
                     $newDriver->setNewProxyFiles($generatedFiles);
                     $newDriver->setOutputDir($outputDir);
-                    $chain->addDriver($newDriver, $namespace);
+                    $driverChain->addDriver($newDriver, $namespace);
                 }
 
                 if ($this->pluginContext->isUninstall()) {
                     foreach ($this->pluginContext->getExtraEntityNamespaces() as $extraEntityNamespace) {
                         if ($extraEntityNamespace === $namespace) {
-                            $chain->addDriver(new NopAnnotationDriver(new AnnotationReader()), $namespace);
+                            $driverChain->addDriver(new NopAnnotationDriver(new AnnotationReader()), $namespace);
                         }
                     }
                 }
@@ -134,8 +144,11 @@ class SchemaService
      */
     public function dropTable($targetNamespace)
     {
-        $chain = $this->entityManager->getConfiguration()->getMetadataDriverImpl()->getDriver();
-        $drivers = $chain->getDrivers();
+        /** @var MappingDriver $mappingDriver */
+        $mappingDriver = $this->entityManager->getConfiguration()->getMetadataDriverImpl();
+        /** @var MappingDriverChain $driverChain */
+        $driverChain = $mappingDriver->getDriver();
+        $drivers = $driverChain->getDrivers();
 
         $dropMetas = [];
         foreach ($drivers as $namespace => $driver) {

@@ -13,10 +13,12 @@
 
 namespace Eccube\Entity;
 
+use Eccube\Service\PurchaseFlow\ItemCollection;
+
 interface ItemHolderInterface
 {
     /**
-     * @return ItemInterface[]
+     * @return ItemCollection<int, CartItem>|ItemCollection<int, OrderItem>
      */
     public function getItems();
 
@@ -110,11 +112,6 @@ interface ItemHolderInterface
      * @param ItemInterface $item
      */
     public function addItem(ItemInterface $item);
-
-    /**
-     * @param ItemInterface $item
-     */
-    public function removeItem(ItemInterface $item);
     /**
      * Get customer.
      *

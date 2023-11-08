@@ -94,7 +94,7 @@ if (!class_exists('\Eccube\Entity\LoginHistory')) {
         /**
          * Set user_name
          *
-         * @param string $userName
+         * @param string|null $userName
          *
          * @return LoginHistory
          */
@@ -108,7 +108,7 @@ if (!class_exists('\Eccube\Entity\LoginHistory')) {
         /**
          * Get user_name
          *
-         * @return string
+         * @return string|null
          */
         public function getUserName()
         {
@@ -138,7 +138,7 @@ if (!class_exists('\Eccube\Entity\LoginHistory')) {
         /**
          * Set client_ip
          *
-         * @param string $clientIp
+         * @param string|null $clientIp
          *
          * @return LoginHistory
          */
@@ -152,7 +152,7 @@ if (!class_exists('\Eccube\Entity\LoginHistory')) {
         /**
          * Get client_ip
          *
-         * @return string
+         * @return string|null
          */
         public function getClientIp()
         {
@@ -210,7 +210,7 @@ if (!class_exists('\Eccube\Entity\LoginHistory')) {
         /**
          * Set LoginUser
          *
-         * @param Member $loginUser
+         * @param Member|null $loginUser
          *
          * @return LoginHistory
          */
@@ -224,7 +224,7 @@ if (!class_exists('\Eccube\Entity\LoginHistory')) {
         /**
          * Get LoginUser
          *
-         * @return Member
+         * @return Member|null
          */
         public function getLoginUser()
         {

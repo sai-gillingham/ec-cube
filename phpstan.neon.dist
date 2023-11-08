@@ -1,8 +1,9 @@
 parameters:
-    level: 6
-    doctrine:
-        objectManagerLoader: tests/object-manager.php
-    ignoreErrors:
-        -
-            message: "#^Function twig_include not found\\.$#"
-            path: src/Eccube/Twig/Extension/IgnoreTwigSandboxErrorExtension.php
+  level: 0
+  excludePaths:
+    - 'var/*'
+    - 'vendor/*'
+  doctrine:
+    objectManagerLoader: tests/object-manager.php
+    ormRepositoryClass: Eccube\Repository\AbstractRepository
+  errorFormat: json

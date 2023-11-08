@@ -61,11 +61,12 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
      * @param DeliveryFeeRepository $deliveryFeeRepository
      */
     public function __construct(
-        BaseInfoRepository $baseInfoRepository,
+        BaseInfoRepository     $baseInfoRepository,
         EntityManagerInterface $entityManager,
-        TaxRuleRepository $taxRuleRepository,
-        DeliveryFeeRepository $deliveryFeeRepository
-    ) {
+        TaxRuleRepository      $taxRuleRepository,
+        DeliveryFeeRepository  $deliveryFeeRepository
+    )
+    {
         $this->BaseInfo = $baseInfoRepository->get();
         $this->entityManager = $entityManager;
         $this->taxRuleRepository = $taxRuleRepository;
@@ -80,20 +81,22 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
      */
     public function process(ItemHolderInterface $itemHolder, PurchaseContext $context)
     {
-        if($itemHolder instanceof Order){
+        if ($itemHolder instanceof Order) {
             $this->removeDeliveryFeeItem($itemHolder);
             $this->saveDeliveryFeeItem($itemHolder);
         }
     }
 
-    private function removeDeliveryFeeItem(Order $itemHolder)
+    private function removeDeliveryFeeItem(ItemHolderInterface $itemHolder)
     {
-        foreach ($itemHolder->getShippings() as $Shipping) {
-            foreach ($Shipping->getOrderItems() as $item) {
-                if ($item->getProcessorName() == DeliveryFeePreprocessor::class) {
-                    $Shipping->removeOrderItem($item);
-                    $itemHolder->removeOrderItem($item);
-                    $this->entityManager->remove($item);
+        if ($itemHolder instanceof Order) {
+            foreach ($itemHolder->getShippings() as $Shipping) {
+                foreach ($Shipping->getOrderItems() as $item) {
+                    if ($item->getProcessorName() == DeliveryFeePreprocessor::class) {
+                        $Shipping->removeOrderItem($item);
+                        $itemHolder->removeOrderItem($item);
+                        $this->entityManager->remove($item);
+                    }
                 }
             }
         }

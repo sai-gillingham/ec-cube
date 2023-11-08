@@ -215,11 +215,11 @@ if (!class_exists('\Eccube\Entity\CustomerAddress')) {
         /**
          * Set name01.
          *
-         * @param string|null $name01
+         * @param string $name01
          *
          * @return CustomerAddress
          */
-        public function setName01($name01 = null)
+        public function setName01($name01)
         {
             $this->name01 = $name01;
 
@@ -229,7 +229,7 @@ if (!class_exists('\Eccube\Entity\CustomerAddress')) {
         /**
          * Get name01.
          *
-         * @return string|null
+         * @return string
          */
         public function getName01()
         {
@@ -239,11 +239,11 @@ if (!class_exists('\Eccube\Entity\CustomerAddress')) {
         /**
          * Set name02.
          *
-         * @param string|null $name02
+         * @param string $name02
          *
          * @return CustomerAddress
          */
-        public function setName02($name02 = null)
+        public function setName02($name02)
         {
             $this->name02 = $name02;
 
@@ -253,7 +253,7 @@ if (!class_exists('\Eccube\Entity\CustomerAddress')) {
         /**
          * Get name02.
          *
-         * @return string|null
+         * @return string
          */
         public function getName02()
         {

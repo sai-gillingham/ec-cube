@@ -114,11 +114,16 @@ class PointHelper
     /**
      * 明細追加処理.
      *
-     * @param Order $itemHolder
+     * @param ItemHolderInterface $itemHolder
      * @param integer $discount
      */
-    public function addPointDiscountItem(Order $itemHolder, $discount)
+    public function addPointDiscountItem(ItemHolderInterface $itemHolder, $discount)
     {
+        // 注文明細以外は処理しない.
+        if ($itemHolder instanceof Order === false) {
+            return;
+        }
+
         $DiscountType = $this->entityManager->find(OrderItemType::class, OrderItemType::POINT);
         $TaxInclude = $this->entityManager->find(TaxDisplayType::class, TaxDisplayType::INCLUDED);
         $Taxation = $this->entityManager->find(TaxType::class, TaxType::NON_TAXABLE);
@@ -152,26 +157,28 @@ class PointHelper
     /**
      * 既存のポイント明細を削除する.
      *
-     * @param Order $itemHolder
+     * @param ItemHolderInterface $itemHolder
      */
-    public function removePointDiscountItem(Order $itemHolder)
+    public function removePointDiscountItem(ItemHolderInterface $itemHolder)
     {
-        foreach ($itemHolder->getItems() as $item) {
-            if ($item->getProcessorName() == PointProcessor::class) {
-                $itemHolder->removeOrderItem($item);
-                $this->entityManager->remove($item);
+        if ($itemHolder instanceof Order) {
+            foreach ($itemHolder->getItems() as $item) {
+                if ($item instanceof OrderItem && $item->getProcessorName() == PointProcessor::class) {
+                    $itemHolder->removeOrderItem($item);
+                    $this->entityManager->remove($item);
+                }
             }
         }
     }
 
-    public function prepare(Order $itemHolder, $point)
+    public function prepare(ItemHolderInterface $itemHolder, $point)
     {
         // ユーザの保有ポイントを減算
         $Customer = $itemHolder->getCustomer();
         $Customer->setPoint($Customer->getPoint() - $point);
     }
 
-    public function rollback(Order $itemHolder, $point)
+    public function rollback(ItemHolderInterface $itemHolder, $point)
     {
         // 利用したポイントをユーザに戻す.
         $Customer = $itemHolder->getCustomer();

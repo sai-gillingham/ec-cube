@@ -27,7 +27,7 @@ trait PointRateTrait
     /**
      * Set pointRate
      *
-     * @param string $pointRate
+     * @param string|null $pointRate
      *
      * @return OrderItem
      */
@@ -41,7 +41,7 @@ trait PointRateTrait
     /**
      * Get pointRate
      *
-     * @return string
+     * @return string|null
      */
     public function getPointRate()
     {

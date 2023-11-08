@@ -16,7 +16,6 @@ namespace Eccube\Service\PurchaseFlow\Processor;
 use Eccube\Entity\ItemHolderInterface;
 use Eccube\Entity\Master\OrderStatus;
 use Eccube\Entity\Order;
-use Eccube\Entity\OrderItem;
 use Eccube\Entity\ProductClass;
 use Eccube\Entity\ProductStock;
 use Eccube\Repository\ProductClassRepository;
@@ -84,7 +83,7 @@ class StockDiffProcessor extends ItemHolderValidator implements PurchaseProcesso
                 if ($stock + $toQuantity < 0) {
                     $this->throwInvalidItemException(trans('purchase_flow.over_stock', ['%name%' => $ProductClass->formattedProductName()]));
                 }
-                // ステータスをキャンセルから対応中に変更した場合
+            // ステータスをキャンセルから対応中に変更した場合
             } elseif ($To->getOrderStatus() && $To->getOrderStatus()->getId() == OrderStatus::IN_PROGRESS
                 && $From->getOrderStatus() && $From->getOrderStatus()->getId() == OrderStatus::CANCEL) {
                 if ($stock - $toQuantity < 0) {
