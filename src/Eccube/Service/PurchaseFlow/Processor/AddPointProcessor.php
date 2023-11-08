@@ -69,7 +69,7 @@ class AddPointProcessor extends ItemHolderPostValidator
         $basicPointRate = $this->BaseInfo->getBasicPointRate();
 
         // 明細ごとのポイントを集計
-        $totalPoint = array_reduce($itemHolder->getItems(),
+        $totalPoint = array_reduce($itemHolder->getItems()->toArray(),
             function ($carry, ItemInterface $item) use ($basicPointRate) {
 
                 $pointRate = $item->getPointRate() ? $item->getPointRate() : null;
