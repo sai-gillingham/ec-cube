@@ -18,7 +18,6 @@ use Doctrine\Common\Collections\Collection;
 use Eccube\Entity\ItemInterface;
 use Eccube\Entity\Master\OrderItemType;
 use Eccube\Entity\Order;
-use Eccube\Entity\OrderItem;
 
 class ItemCollection extends ArrayCollection
 {
@@ -81,7 +80,7 @@ class ItemCollection extends ArrayCollection
     {
         $OrderItems = $this->filter(
             function (ItemInterface $OrderItem) use ($productName) {
-                /** @var OrderItem $OrderItem */
+                /** @var \Eccube\Entity\OrderItem $OrderItem */
                 return $OrderItem->getProductName() == $productName;
             });
 
@@ -98,7 +97,7 @@ class ItemCollection extends ArrayCollection
     public function hasItemByOrderItemType($OrderItemType)
     {
         $filteredItems = $this->filter(function (ItemInterface $OrderItem) use ($OrderItemType) {
-            /** @var OrderItem $OrderItem */
+            /** @var \Eccube\Entity\OrderItem $OrderItem */
             return $OrderItem->getOrderItemType() && $OrderItem->getOrderItemType()->getId() == $OrderItemType->getId();
         });
 
