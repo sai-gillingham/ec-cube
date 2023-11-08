@@ -46,7 +46,8 @@ class SameSiteNoneCompatSessionHandler extends StrictSessionHandler
     /**
      * {@inheritdoc}
      */
-    public function open($savePath, $sessionName): bool
+    #[\ReturnTypeWillChange]
+    public function open($savePath, $sessionName)
     {
         $this->sessionName = $sessionName;
         // see https://github.com/symfony/symfony/blob/2adc85d49cbe14e346068fa7e9c2e1f08ab31de6/src/Symfony/Component/HttpFoundation/Session/Storage/Handler/AbstractSessionHandler.php#L35-L37
@@ -68,7 +69,8 @@ class SameSiteNoneCompatSessionHandler extends StrictSessionHandler
     /**
      * {@inheritdoc}
      */
-    public function updateTimestamp($sessionId, $data): bool
+    #[\ReturnTypeWillChange]
+    public function updateTimestamp($sessionId, $data)
     {
         return $this->write($sessionId, $data);
     }
@@ -86,7 +88,8 @@ class SameSiteNoneCompatSessionHandler extends StrictSessionHandler
      *
      * @see https://github.com/symfony/symfony/blob/2adc85d49cbe14e346068fa7e9c2e1f08ab31de6/src/Symfony/Component/HttpFoundation/Session/Storage/Handler/AbstractSessionHandler.php#L126-L167
      */
-    public function destroy($sessionId): bool
+    #[\ReturnTypeWillChange]
+    public function destroy($sessionId)
     {
         if (\PHP_VERSION_ID < 70000) {
             $this->prefetchData = null;
@@ -152,7 +155,8 @@ class SameSiteNoneCompatSessionHandler extends StrictSessionHandler
     /**
      * {@inheritdoc}
      */
-    public function close(): bool
+    #[\ReturnTypeWillChange]
+    public function close()
     {
         return $this->handler->close();
     }
@@ -160,7 +164,8 @@ class SameSiteNoneCompatSessionHandler extends StrictSessionHandler
     /**
      * @return false|int
      */
-    public function gc($maxlifetime): int|false
+    #[\ReturnTypeWillChange]
+    public function gc($maxlifetime)
     {
         return $this->handler->gc($maxlifetime);
     }
