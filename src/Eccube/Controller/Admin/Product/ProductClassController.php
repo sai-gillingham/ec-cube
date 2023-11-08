@@ -28,9 +28,7 @@ use Eccube\Repository\ProductRepository;
 use Eccube\Repository\TaxRuleRepository;
 use Eccube\Util\CacheUtil;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\Form\ClickableInterface;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
-use Symfony\Component\Form\SubmitButton;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
@@ -147,7 +145,7 @@ class ProductClassController extends AbstractController
                 $this->isTokenValid();
 
                 // 登録,更新ボタンが押下されたかどうか.
-                /** @var ClickableInterface $form['save'] */
+                /** @var \Symfony\Component\Form\ClickableInterface $form['save'] */
                 $isSave = $form['save']->isClicked();
 
                 // 規格名1/2から商品規格の組み合わせを生成する.
