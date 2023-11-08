@@ -46,10 +46,10 @@ class BlockPositionRepository extends AbstractRepository
     /**
      * レイアウトに紐づくブロックの個数分登録を行う
      *
-     * @param  array<mixed>|null $data
-     * @param  Block[] $Blocks
-     * @param  Block[]|null $UnusedBlocks
-     * @param  Layout|null $Layout
+     * @param  array<string, mixed> $data
+     * @param  array<int, Block> $Blocks
+     * @param  array<int, Block> $UnusedBlocks
+     * @param  Layout $Layout
      *
      * @return void
      */
