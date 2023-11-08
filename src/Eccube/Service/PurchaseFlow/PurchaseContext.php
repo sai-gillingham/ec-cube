@@ -36,9 +36,9 @@ class PurchaseContext extends \SplObjectStorage
 
     /**
      * @param ItemHolderInterface|null $originHolder
-     * @param UserInterface|Customer|null $user
+     * @param Customer|null $user
      */
-    public function __construct(ItemHolderInterface $originHolder = null, ?UserInterface $user = null)
+    public function __construct(ItemHolderInterface $originHolder = null, ?Customer $user = null)
     {
         $this->originHolder = $originHolder;
         $this->user = $user;
