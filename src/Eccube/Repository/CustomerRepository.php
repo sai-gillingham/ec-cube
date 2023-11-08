@@ -13,7 +13,6 @@
 
 namespace Eccube\Repository;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry as RegistryInterface;
