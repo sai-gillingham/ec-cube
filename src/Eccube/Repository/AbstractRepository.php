@@ -22,7 +22,7 @@ use Eccube\Common\EccubeConfig;
 abstract class AbstractRepository extends ServiceEntityRepository
 {
     /**
-     * @var array
+     * @var EccubeConfig
      */
     protected $eccubeConfig;
 

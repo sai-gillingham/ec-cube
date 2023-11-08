@@ -290,7 +290,7 @@ if (!class_exists('\Eccube\Entity\News')) {
         }
 
         /**
-         * @return integer
+         * @return boolean
          */
         public function isVisible()
         {

@@ -33,6 +33,7 @@ use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -276,7 +277,9 @@ class ProductController extends AbstractController
         if ($this->isGranted('ROLE_USER')) {
             $Customer = $this->getUser();
             $this->customerFavoriteProductRepository->addFavorite($Customer, $Product);
-            $this->session->getFlashBag()->set('product_detail.just_added_favorite', $Product->getId());
+            /** @var Session $session */
+            $session = $this->session;
+            $session->getFlashBag()->set('product_detail.just_added_favorite', $Product->getId());
 
             $event = new EventArgs(
                 [
@@ -291,7 +294,9 @@ class ProductController extends AbstractController
             // 非会員の場合、ログイン画面を表示
             //  ログイン後の画面遷移先を設定
             $this->setLoginTargetPath($this->generateUrl('product_add_favorite', ['id' => $Product->getId()], UrlGeneratorInterface::ABSOLUTE_URL));
-            $this->session->getFlashBag()->set('eccube.add.favorite', true);
+            /** @var Session $session */
+            $session = $this->session;
+            $session->getFlashBag()->set('eccube.add.favorite', true);
 
             $event = new EventArgs(
                 [

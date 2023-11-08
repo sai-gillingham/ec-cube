@@ -54,7 +54,7 @@ class AbstractController extends Controller
     protected $eventDispatcher;
 
     /**
-     * @var Session
+     * @var SessionInterface
      */
     protected $session;
 
@@ -86,10 +86,10 @@ class AbstractController extends Controller
     }
 
     /**
-     * @param Session $session
+     * @param SessionInterface $session
      * @required
      */
-    public function setSession(Session $session)
+    public function setSession(SessionInterface $session)
     {
         $this->session = $session;
     }
@@ -174,7 +174,9 @@ class AbstractController extends Controller
 
     public function clearMessage()
     {
-        $this->session->getFlashBag()->clear();
+        /** @var Session $session */
+        $session = $this->session;
+        $session->getFlashBag()->clear();
     }
 
     public function deleteMessage()
@@ -185,7 +187,9 @@ class AbstractController extends Controller
 
     public function hasMessage(string $type): bool
     {
-        return $this->session->getFlashBag()->has($type);
+        /** @var Session $session */
+        $session = $this->session;
+        return $session->getFlashBag()->has($type);
     }
 
     public function addFlashOnce(string $type, $message): void
@@ -204,7 +208,9 @@ class AbstractController extends Controller
             parent::addFlash($type, $message);
         } catch (\LogicException $e) {
             // fallback session
-            $this->session->getFlashBag()->add($type, $message);
+            /** @var Session $session */
+            $session = $this->session;
+            $session->getFlashBag()->add($type, $message);
         }
     }
 
@@ -214,9 +220,13 @@ class AbstractController extends Controller
     public function setLoginTargetPath($targetPath, $namespace = null)
     {
         if (is_null($namespace)) {
-            $this->session->getFlashBag()->set('eccube.login.target.path', $targetPath);
+            /** @var Session $session */
+            $session = $this->session;
+            $session->getFlashBag()->set('eccube.login.target.path', $targetPath);
         } else {
-            $this->session->getFlashBag()->set('eccube.'.$namespace.'.login.target.path', $targetPath);
+            /** @var Session $session */
+            $session = $this->session;
+            $session->getFlashBag()->set('eccube.'.$namespace.'.login.target.path', $targetPath);
         }
     }
 
