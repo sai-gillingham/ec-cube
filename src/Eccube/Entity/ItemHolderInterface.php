@@ -113,9 +113,9 @@ interface ItemHolderInterface
      */
     public function addItem(ItemInterface $item);
     /**
-     * Get customer.
+     * お客様情報を取得
      *
      * @return Customer|null
-     */
+    */
     public function getCustomer();
 }
