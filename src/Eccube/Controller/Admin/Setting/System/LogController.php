@@ -18,7 +18,6 @@ use Eccube\Event\EccubeEvents;
 use Eccube\Event\EventArgs;
 use Eccube\Form\Type\Admin\LogType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -29,7 +28,7 @@ class LogController extends AbstractController
      * @Route("/%eccube_admin_route%/setting/system/log", name="admin_setting_system_log", methods={"GET", "POST"})
      * @Template("@admin/Setting/System/log.twig")
      *
-     * @return array<mixed> | StreamedResponse
+     * @return array<string, mixed> | StreamedResponse
      */
     public function index(Request $request)
     {
@@ -68,7 +67,7 @@ class LogController extends AbstractController
         }
         $logDir = $this->getParameter('kernel.logs_dir').DIRECTORY_SEPARATOR.$this->getParameter('kernel.environment');
         $logFile = $logDir.'/'.$formData['files'];
-        /** @var Form $form  */
+        /** @var \Symfony\Component\Form\Form $form  */
         if ($form->getClickedButton() && $form->getClickedButton()->getName() === 'download' && $form->isValid()) {
             $bufferSize = 1024 * 50;
             $response = new StreamedResponse();
