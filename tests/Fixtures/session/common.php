@@ -163,7 +163,7 @@ class TestSessionHandler extends SameSiteNoneCompatSessionHandler
         return parent::destroy($sessionId);
     }
     #[\ReturnTypeWillChange]
-    public function close(): bool
+    public function close()
     {
         echo __FUNCTION__, "\n";
 
