@@ -17,7 +17,6 @@ use Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException;
 use Doctrine\ORM\QueryBuilder;
 use Eccube\Common\Constant;
 use Eccube\Controller\AbstractController;
-use Eccube\Entity\Customer;
 use Eccube\Entity\Master\CsvType;
 use Eccube\Event\EccubeEvents;
 use Eccube\Event\EventArgs;
@@ -305,7 +304,7 @@ class CustomerController extends AbstractController
             $this->csvExportService->exportData(function ($entity, $csvService) use ($request) {
                 $Csvs = $csvService->getCsvs();
 
-                /** @var Customer $Customer  */
+                /** @var \Eccube\Entity\Customer $Customer  */
                 $Customer = $entity;
 
                 $ExportCsvRow = new \Eccube\Entity\ExportCsvRow();
