@@ -630,6 +630,7 @@ class ProductController extends AbstractController
                 }
 
                 $this->entityManager->flush();
+
                 if (array_key_exists('product_image', $request->request->get('admin_product'))) {
                     $product_image = $request->request->get('admin_product')['product_image'];
                     foreach ($product_image as $sortNo => $filename) {
