@@ -14,7 +14,6 @@
 namespace Eccube\Controller;
 
 use Eccube\Entity\ItemHolderInterface;
-use Eccube\Entity\Order;
 use Eccube\Service\PurchaseFlow\PurchaseContext;
 use Eccube\Service\PurchaseFlow\PurchaseFlow;
 use Eccube\Service\PurchaseFlow\PurchaseFlowResult;
