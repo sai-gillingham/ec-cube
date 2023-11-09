@@ -56,7 +56,7 @@ class CsvExportService
     protected $entityManager;
 
     /**
-     * @var QueryBuilder;
+     * @var QueryBuilder|null
      */
     protected $qb;
 
@@ -66,12 +66,12 @@ class CsvExportService
     protected $eccubeConfig;
 
     /**
-     * @var CsvType
+     * @var CsvType|null
      */
     protected $CsvType;
 
     /**
-     * @var Csv[]
+     * @var Csv[]|null
      */
     protected $Csvs;
 

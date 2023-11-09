@@ -179,7 +179,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         private $class_category_name2;
 
         /**
-         * @var float|int|string|null
+         * @var float|int|string
          *
          * @ORM\Column(name="price", type="decimal", precision=12, scale=2, options={"default":0})
          */
@@ -471,7 +471,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Set price.
          *
-         * @param float|int|string|null $price
+         * @param float|int|string $price
          *
          * @return OrderItem
          */
@@ -485,7 +485,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Get price.
          *
-         * @return string|float|int|null
+         * @return string|float|int
          */
         public function getPrice()
         {

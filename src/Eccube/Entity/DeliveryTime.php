@@ -66,7 +66,7 @@ if (!class_exists('\Eccube\Entity\DeliveryTime')) {
         protected $sort_no;
 
         /**
-         * @var boolean|null
+         * @var boolean
          *
          * @ORM\Column(name="visible", type="boolean", options={"default":true})
          */
@@ -171,7 +171,7 @@ if (!class_exists('\Eccube\Entity\DeliveryTime')) {
         /**
          * Set visible
          *
-         * @param boolean|null $visible
+         * @param boolean $visible
          *
          * @return DeliveryTime
          */
@@ -185,7 +185,7 @@ if (!class_exists('\Eccube\Entity\DeliveryTime')) {
         /**
          * Is the visibility visible?
          *
-         * @return boolean|null
+         * @return boolean
          */
         public function isVisible()
         {

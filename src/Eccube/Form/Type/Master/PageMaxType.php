@@ -24,13 +24,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class PageMaxType extends AbstractType
 {
-    /** @var EntityManagerInterface */
-    private $entityManager;
-
-    public function __construct(EntityManagerInterface $entityManager)
-    {
-        $this->entityManager = $entityManager;
-    }
 
     /**
      * {@inheritdoc}

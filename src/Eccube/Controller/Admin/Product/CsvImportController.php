@@ -793,7 +793,7 @@ class CsvImportController extends AbstractCsvImportController
                                 return $this->renderWithError($form, $headers);
                             }
 
-                            /** @var Category $ParentCategory */
+                            /** @var Category|null $ParentCategory */
                             $ParentCategory = $this->categoryRepository->find($row[$headerByKey['parent_category_id']]);
                             if (!$ParentCategory) {
                                 $this->addErrors(($data->key() + 1).'行目の親カテゴリIDが存在しません。');
@@ -879,7 +879,7 @@ class CsvImportController extends AbstractCsvImportController
      * @param array $headers
      * @param bool $rollback
      *
-     * @return JsonResponse|array<mixed>
+     * @return \Symfony\Component\HttpFoundation\JsonResponse|array<mixed>
      *
      * @throws \Doctrine\DBAL\ConnectionException
      */

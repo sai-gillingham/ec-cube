@@ -175,7 +175,7 @@ if (!class_exists('\Eccube\Entity\Page')) {
         /**
          * Get id
          *
-         * @return integer
+         * @return integer|null
          */
         public function getId()
         {

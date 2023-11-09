@@ -79,7 +79,7 @@ class Extract extends FunctionNode
         $next = $lexer->glimpse();
         if (isset($next['type']) && $next['type'] === Lexer::T_STRING) {
             $upperType = strtoupper($lexer->lookahead['value']);
-            if ($lexer->lookahead['type'] === Lexer::T_IDENTIFIER || !in_array($upperType, $this->dateTimeTypes, true)) {
+            if ($lexer->lookahead['type'] !== Lexer::T_IDENTIFIER || !in_array($upperType, $this->dateTimeTypes, true)) {
                 $parser->syntaxError(implode('/', $this->dateTimeTypes));
             }
             $parser->match(Lexer::T_IDENTIFIER);
