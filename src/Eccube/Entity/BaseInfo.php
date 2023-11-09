@@ -785,7 +785,7 @@ if (!class_exists('\Eccube\Entity\BaseInfo')) {
         /**
          * Set optionNostockHidden.
          *
-         * @param integer $optionNostockHidden
+         * @param boolean $optionNostockHidden
          *
          * @return BaseInfo
          */

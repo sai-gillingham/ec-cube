@@ -26,7 +26,7 @@ $amount = [
     8 => 0,
     9 => 0,
 ];
-for ($i = 0; $i <= 9; $i++) {
+for ($i = 0; $i <= 3; $i++) {
     $str = file_get_contents(__DIR__.'/level_'.$i.'.json');
     $json = json_decode($str, true);
     $files = $json['files'];

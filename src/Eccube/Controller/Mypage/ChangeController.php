@@ -31,7 +31,7 @@ use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 class ChangeController extends AbstractController
 {
     /**
-     * @var TokenStorage
+     * @var TokenStorageInterface
      */
     protected $tokenStorage;
 
