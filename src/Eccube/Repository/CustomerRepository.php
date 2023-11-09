@@ -13,6 +13,7 @@
 
 namespace Eccube\Repository;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry as RegistryInterface;
@@ -106,7 +107,7 @@ class CustomerRepository extends AbstractRepository
      * @param array{
      *         multi?:string,
      *         pref?:Pref,
-     *         sex?:Sex[],
+     *         sex?:Sex[]|ArrayCollection,
      *         birth_month?:string|int,
      *         birth_start?:\DateTime,
      *         birth_end?:\DateTime,
@@ -127,7 +128,7 @@ class CustomerRepository extends AbstractRepository
      *         last_buy_datetime_end?:\DateTime,
      *         last_buy_start?:\DateTime,
      *         last_buy_end?:\DateTime,
-     *         customer_status?:CustomerStatus[],
+     *         customer_status?:CustomerStatus[]|ArrayCollection,
      *         buy_product_name?:string,
      *         sortkey?:string,
      *         sorttype?:string
@@ -155,7 +156,7 @@ class CustomerRepository extends AbstractRepository
         }
 
         // Pref
-        if (!empty($searchData['pref']) && $searchData['pref']) {
+        if (!empty($searchData['pref'])) {
             $qb
                 ->andWhere('c.Pref = :pref')
                 ->setParameter('pref', $searchData['pref']->getId());
@@ -173,19 +174,19 @@ class CustomerRepository extends AbstractRepository
                 ->setParameter('sexs', $sexs);
         }
 
-        if (!empty($searchData['birth_month']) && $searchData['birth_month']) {
+        if (!empty($searchData['birth_month'])) {
             $qb
                 ->andWhere('EXTRACT(MONTH FROM c.birth) = :birth_month')
                 ->setParameter('birth_month', $searchData['birth_month']);
         }
 
         // birth
-        if (!empty($searchData['birth_start']) && $searchData['birth_start']) {
+        if (!empty($searchData['birth_start'])) {
             $qb
                 ->andWhere('c.birth >= :birth_start')
                 ->setParameter('birth_start', $searchData['birth_start']);
         }
-        if (!empty($searchData['birth_end']) && $searchData['birth_end']) {
+        if (!empty($searchData['birth_end'])) {
             $date = clone $searchData['birth_end'];
             $date->modify('+1 days');
             $qb
@@ -226,7 +227,7 @@ class CustomerRepository extends AbstractRepository
         }
 
         // create_date
-        if (!empty($searchData['create_datetime_start']) && $searchData['create_datetime_start']) {
+        if (!empty($searchData['create_datetime_start'])) {
             $date = $searchData['create_datetime_start'];
             $qb
                 ->andWhere('c.create_date >= :create_date_start')
@@ -237,7 +238,7 @@ class CustomerRepository extends AbstractRepository
                 ->setParameter('create_date_start', $searchData['create_date_start']);
         }
 
-        if (!empty($searchData['create_datetime_end']) && $searchData['create_datetime_end']) {
+        if (!empty($searchData['create_datetime_end'])) {
             $date = $searchData['create_datetime_end'];
             $qb
                 ->andWhere('c.create_date < :create_date_end')
@@ -251,7 +252,7 @@ class CustomerRepository extends AbstractRepository
         }
 
         // update_date
-        if (!empty($searchData['update_datetime_start']) && $searchData['update_datetime_start']) {
+        if (!empty($searchData['update_datetime_start'])) {
             $date = $searchData['update_datetime_start'];
             $qb
                 ->andWhere('c.update_date >= :update_date_start')
@@ -262,7 +263,7 @@ class CustomerRepository extends AbstractRepository
                 ->setParameter('update_date_start', $searchData['update_date_start']);
         }
 
-        if (!empty($searchData['update_datetime_end']) && $searchData['update_datetime_end']) {
+        if (!empty($searchData['update_datetime_end'])) {
             $date = $searchData['update_datetime_end'];
             $qb
                 ->andWhere('c.update_date < :update_date_end')
@@ -276,7 +277,7 @@ class CustomerRepository extends AbstractRepository
         }
 
         // last_buy
-        if (!empty($searchData['last_buy_datetime_start']) && $searchData['last_buy_datetime_start']) {
+        if (!empty($searchData['last_buy_datetime_start'])) {
             $date = $searchData['last_buy_datetime_start'];
             $qb
                 ->andWhere('c.last_buy_date >= :last_buy_start')
@@ -287,7 +288,7 @@ class CustomerRepository extends AbstractRepository
                 ->setParameter('last_buy_start', $searchData['last_buy_start']);
         }
 
-        if (!empty($searchData['last_buy_datetime_end']) && $searchData['last_buy_datetime_end']) {
+        if (!empty($searchData['last_buy_datetime_end'])) {
             $date = $searchData['last_buy_datetime_end'];
             $qb
                 ->andWhere('c.last_buy_date < :last_buy_end')
