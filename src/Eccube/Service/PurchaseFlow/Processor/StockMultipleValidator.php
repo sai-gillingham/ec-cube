@@ -15,7 +15,6 @@ namespace Eccube\Service\PurchaseFlow\Processor;
 
 use Eccube\Entity\ItemHolderInterface;
 use Eccube\Entity\Order;
-use Eccube\Entity\ProductClass;
 use Eccube\Entity\Shipping;
 use Eccube\Repository\ProductClassRepository;
 use Eccube\Service\PurchaseFlow\ItemHolderValidator;
@@ -59,7 +58,7 @@ class StockMultipleValidator extends ItemHolderValidator
             }
 
             foreach ($OrderItemsByProductClass as $id => $Items) {
-                /** @var ProductClass $ProductClass */
+                /** @var \Eccube\Entity\ProductClass $ProductClass */
                 $ProductClass = $this->productClassRepository->find($id);
                 if ($ProductClass->isStockUnlimited()) {
                     continue;

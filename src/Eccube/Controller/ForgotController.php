@@ -18,7 +18,6 @@ use Eccube\Event\EventArgs;
 use Eccube\Form\Type\Front\ForgotType;
 use Eccube\Form\Type\Front\PasswordResetType;
 use Eccube\Repository\CustomerRepository;
-use Eccube\Security\Core\Encoder\PasswordEncoder;
 use Eccube\Service\MailService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
@@ -214,7 +213,7 @@ class ForgotController extends AbstractController
 
                 // 発行したパスワードの暗号化
                 if ($Customer->getSalt() === null) {
-                    /** @var PasswordEncoder $encoder */
+                    /** @var \Eccube\Security\Core\Encoder\PasswordEncoder $encoder */
                     $encoder = $this->encoderFactory->getEncoder($Customer);
                     $Customer->setSalt($encoder->createSalt());
                 }

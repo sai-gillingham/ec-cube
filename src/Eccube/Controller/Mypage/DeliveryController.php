@@ -15,7 +15,6 @@ namespace Eccube\Controller\Mypage;
 
 use Eccube\Controller\AbstractController;
 use Eccube\Entity\BaseInfo;
-use Eccube\Entity\Customer;
 use Eccube\Entity\CustomerAddress;
 use Eccube\Event\EccubeEvents;
 use Eccube\Event\EventArgs;
@@ -81,7 +80,7 @@ class DeliveryController extends AbstractController
      */
     public function edit(Request $request, $id = null)
     {
-        /** @var Customer $Customer */
+        /** @var \Eccube\Entity\Customer $Customer */
         $Customer = $this->getUser();
 
         // 配送先住所最大値判定
@@ -183,7 +182,7 @@ class DeliveryController extends AbstractController
         $this->isTokenValid();
 
         log_info('お届け先削除開始', [$CustomerAddress->getId()]);
-        /** @var Customer $Customer */
+        /** @var \Eccube\Entity\Customer $Customer */
         $Customer = $this->getUser();
 
         if ($Customer->getId() != $CustomerAddress->getCustomer()->getId()) {

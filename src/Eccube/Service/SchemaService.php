@@ -16,14 +16,11 @@ namespace Eccube\Service;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Tools\SchemaTool;
-use Doctrine\Persistence\Mapping\Driver\MappingDriverChain;
 use Eccube\Doctrine\ORM\Mapping\Driver\NopAnnotationDriver;
 use Eccube\Doctrine\ORM\Mapping\Driver\ReloadSafeAnnotationDriver;
 use Eccube\Util\StringUtil;
-use Doctrine\DBAL;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
-use Doctrine\Bundle\DoctrineBundle\Mapping\MappingDriver;
 
 class SchemaService
 {
@@ -55,7 +52,7 @@ class SchemaService
      * Metadata を出力する一時ディレクトリを指定しない場合は内部で生成し, コールバック関数実行後に削除されます.
      *
      * @param callable $callback Metadata を生成した後に実行されるコールバック関数
-     * @param array<mixed> $generatedFiles Proxy ファイルパスの配列
+     * @param array<int, string> $generatedFiles Proxy ファイルパスの配列
      * @param string $proxiesDirectory Proxy ファイルを格納したディレクトリ
      * @param string $outputDir Metadata の出力先ディレクトリ
      *
@@ -71,9 +68,9 @@ class SchemaService
         }
 
         try {
-            /** @var MappingDriver $mappingDriver */
+            /** @var \Doctrine\Bundle\DoctrineBundle\Mapping\MappingDriver $mappingDriver */
             $mappingDriver = $this->entityManager->getConfiguration()->getMetadataDriverImpl();
-            /** @var MappingDriverChain $driverChain */
+            /** @var \Doctrine\Persistence\Mapping\Driver\MappingDriverChain $driverChain */
             $driverChain = $mappingDriver->getDriver();
             $drivers = $driverChain->getDrivers();
             /**
@@ -122,7 +119,7 @@ class SchemaService
     /**
      * Doctrine Metadata を生成して UpdateSchema を実行する.
      *
-     * @param array<mixed> $generatedFiles Proxy ファイルパスの配列
+     * @param array<int, string> $generatedFiles Proxy ファイルパスの配列
      * @param string $proxiesDirectory Proxy ファイルを格納したディレクトリ
      * @param bool $saveMode UpdateSchema を即時実行する場合 true
      *
@@ -144,9 +141,9 @@ class SchemaService
      */
     public function dropTable($targetNamespace)
     {
-        /** @var MappingDriver $mappingDriver */
+        /** @var \Doctrine\Bundle\DoctrineBundle\Mapping\MappingDriver $mappingDriver */
         $mappingDriver = $this->entityManager->getConfiguration()->getMetadataDriverImpl();
-        /** @var MappingDriverChain $driverChain */
+        /** @var \Doctrine\Persistence\Mapping\Driver\MappingDriverChain $driverChain */
         $driverChain = $mappingDriver->getDriver();
         $drivers = $driverChain->getDrivers();
 

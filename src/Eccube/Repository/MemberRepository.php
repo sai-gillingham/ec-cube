@@ -17,7 +17,6 @@ use Doctrine\DBAL\Exception\DriverException;
 use Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException;
 use Doctrine\Persistence\ManagerRegistry as RegistryInterface;
 use Eccube\Entity\Member;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * MemberRepository

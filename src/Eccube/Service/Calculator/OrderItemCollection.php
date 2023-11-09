@@ -16,7 +16,6 @@ namespace Eccube\Service\Calculator;
 use Eccube\Entity\ItemInterface;
 use Eccube\Entity\Master\OrderItemType;
 use Eccube\Entity\Order;
-use Eccube\Entity\OrderItem;
 
 class OrderItemCollection extends \Doctrine\Common\Collections\ArrayCollection
 {
@@ -76,7 +75,7 @@ class OrderItemCollection extends \Doctrine\Common\Collections\ArrayCollection
     {
         $OrderItems = $this->filter(
             function (ItemInterface $OrderItem) use ($productName) {
-                /** @var OrderItem $OrderItem */
+                /** @var \Eccube\Entity\OrderItem $OrderItem */
                 return $OrderItem->getProductName() == $productName;
             });
 
@@ -93,7 +92,7 @@ class OrderItemCollection extends \Doctrine\Common\Collections\ArrayCollection
     public function hasItemByOrderItemType($OrderItemType)
     {
         $filteredItems = $this->filter(function (ItemInterface $OrderItem) use ($OrderItemType) {
-            /* @var OrderItem $OrderItem */
+            /** @var \Eccube\Entity\OrderItem $OrderItem */
             return $OrderItem->getOrderItemType() && $OrderItem->getOrderItemType()->getId() == $OrderItemType->getId();
         });
 

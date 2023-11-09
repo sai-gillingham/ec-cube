@@ -36,12 +36,12 @@ class PaymentDispatcher
     private $route;
 
     /**
-     * @var array
+     * @var array<string, string>
      */
     private $pathParameters = [];
 
     /**
-     * @var array
+     * @var array<string, string>
      */
     private $queryParameters = [];
 
@@ -98,7 +98,7 @@ class PaymentDispatcher
     /**
      * クエリパラメータの配列を返します.
      *
-     * @return array
+     * @return array<string, string>
      */
     public function getQueryParameters()
     {
@@ -108,7 +108,7 @@ class PaymentDispatcher
     /**
      * クエリパラメータの配列を設定します.
      *
-     * @param array<mixed> $queryParameters
+     * @param array<string, string> $queryParameters
      *
      * @return PaymentDispatcher
      */
@@ -122,7 +122,7 @@ class PaymentDispatcher
     /**
      * パスパラメータの配列を返します.
      *
-     * @return array
+     * @return array<string, string>
      */
     public function getPathParameters()
     {
@@ -132,7 +132,7 @@ class PaymentDispatcher
     /**
      * パスパラメータの配列を設定します.
      *
-     * @param array<mixed> $pathParameters
+     * @param array<string, string> $pathParameters
      *
      * @return PaymentDispatcher
      */

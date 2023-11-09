@@ -14,7 +14,6 @@
 namespace Eccube\Controller;
 
 use Eccube\Entity\BaseInfo;
-use Eccube\Entity\Customer;
 use Eccube\Entity\Master\ProductStatus;
 use Eccube\Entity\Product;
 use Eccube\Event\EccubeEvents;
@@ -434,7 +433,7 @@ class ProductController extends AbstractController
     /**
      * ページタイトルの設定
      *
-     * @param  array<mixed>|null $searchData
+     * @param  array<string, mixed>|null $searchData
      *
      * @return string
      */

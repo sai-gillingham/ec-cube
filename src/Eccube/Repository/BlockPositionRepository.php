@@ -14,9 +14,7 @@
 namespace Eccube\Repository;
 
 use Doctrine\Persistence\ManagerRegistry as RegistryInterface;
-use Eccube\Entity\Block;
 use Eccube\Entity\BlockPosition;
-use Eccube\Entity\Layout;
 
 /**
  * BlockPositionRepository
@@ -46,10 +44,10 @@ class BlockPositionRepository extends AbstractRepository
     /**
      * レイアウトに紐づくブロックの個数分登録を行う
      *
-     * @param  array<mixed>|null $data
-     * @param  Block[] $Blocks
-     * @param  Block[]|null $UnusedBlocks
-     * @param  Layout|null $Layout
+     * @param  array<string, mixed> $data
+     * @param  array<int, \Eccube\Entity\Block> $Blocks
+     * @param  array<int, \Eccube\Entity\Block> $UnusedBlocks
+     * @param  \Eccube\Entity\Layout $Layout
      *
      * @return void
      */

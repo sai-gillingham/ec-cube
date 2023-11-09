@@ -81,7 +81,7 @@ class ComposerProcessService implements ComposerServiceInterface
      *
      * @throws PluginException
      *
-     * @param array<mixed> $commands
+     * @param array<int, string> $commands
      */
     public function runCommand($commands, $output = null, $init = true)
     {

@@ -22,7 +22,6 @@ use Eccube\Repository\BaseInfoRepository;
 use Eccube\Repository\CustomerRepository;
 use Eccube\Repository\Master\CustomerStatusRepository;
 use Eccube\Repository\PageRepository;
-use Eccube\Security\Core\Encoder\PasswordEncoder;
 use Eccube\Service\CartService;
 use Eccube\Service\MailService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -168,7 +167,7 @@ class EntryController extends AbstractController
 
                 case 'complete':
                     log_info('会員登録開始');
-                    /** @var PasswordEncoder $encoder */
+                    /** @var \Eccube\Security\Core\Encoder\PasswordEncoder $encoder */
                     $encoder = $this->encoderFactory->getEncoder($Customer);
                     $salt = $encoder->createSalt();
                     $password = $encoder->encodePassword($Customer->getPlainPassword(), $salt);

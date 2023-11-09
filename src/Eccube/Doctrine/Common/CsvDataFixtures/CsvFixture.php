@@ -45,6 +45,7 @@ class CsvFixture implements FixtureInterface
      */
     public function load(ObjectManager $manager)
     {
+        // EntityManagerInterface 以外はスキップ
         if($manager instanceof EntityManagerInterface === false) {
             return;
         }

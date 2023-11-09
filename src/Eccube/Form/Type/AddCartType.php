@@ -192,7 +192,7 @@ class AddCartType extends AbstractType
     /**
      * validate
      *
-     * @param mixed $data
+     * @param array<string, mixed> $data
      * @param ExecutionContext $context
      * @return void
      */

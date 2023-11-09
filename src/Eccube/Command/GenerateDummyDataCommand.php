@@ -83,7 +83,6 @@ EOF
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $startTime = microtime(true);
         $locale = $input->getOption('with-locale');
         $notImage = $input->getOption('without-image');
         $numberOfProducts = $input->getOption('products');
@@ -94,7 +93,6 @@ EOF
         $Products = [];
 
         $faker = Faker::create($locale);
-        var_dump(microtime(true) - $startTime);
         for ($i = 0; $i < $numberOfCustomer; $i++) {
             $email = microtime(true).'.'.$faker->safeEmail;
             $Customer = $this->generator->createCustomer($email);

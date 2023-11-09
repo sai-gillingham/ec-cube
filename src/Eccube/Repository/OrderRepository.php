@@ -13,7 +13,6 @@
 
 namespace Eccube\Repository;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry as RegistryInterface;
@@ -84,14 +83,14 @@ class OrderRepository extends AbstractRepository
      *         order_id_start?:string|int,
      *         order_id_end?:string|int,
      *         multi?:string|int|null,
-     *         status?:OrderStatus[]|int[]|ArrayCollection,
+     *         status?:OrderStatus[]|int[]|\Doctrine\Common\Collections\ArrayCollection<int, OrderStatus>,
      *         company_name?:string,
      *         name?:string,
      *         kana?:string,
      *         email?:string,
      *         phone_number?:string,
-     *         sex?:Sex[]|ArrayCollection,
-     *         payment?:Payment[]|ArrayCollection,
+     *         sex?:Sex[]|\Doctrine\Common\Collections\ArrayCollection<int, Sex>,
+     *         payment?:Payment[]|\Doctrine\Common\Collections\ArrayCollection<int, Payment>,
      *         order_datetime_start?:\DateTime,
      *         order_datetime_end?:\DateTime,
      *         order_date_start?:\DateTime,
