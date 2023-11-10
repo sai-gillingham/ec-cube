@@ -38,7 +38,7 @@ RUN pecl search xdebug-3.1.6\
 RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
   && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
   && docker-php-ext-install -j$(nproc) zip gd mysqli pdo_mysql opcache intl pgsql pdo_pgsql \
-#  && docker-php-ext-enable xdebug \
+  && docker-php-ext-enable xdebug \
   ;
 
 RUN pecl install apcu && echo "extension=apcu.so" > /usr/local/etc/php/conf.d/apc.ini

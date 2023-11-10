@@ -81,7 +81,7 @@ class EditController extends AbstractController
     protected $customerRepository;
 
     /**
-     * @var SerializerInterface
+     * @var Serializer
      */
     protected $serializer;
 
