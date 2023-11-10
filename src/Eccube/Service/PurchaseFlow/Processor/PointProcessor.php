@@ -71,7 +71,7 @@ class PointProcessor implements DiscountProcessor, PurchaseProcessor
     public function addDiscountItem(ItemHolderInterface $itemHolder, PurchaseContext $context)
     {
         if (!$this->supports($itemHolder)) {
-            return null;
+            return;
         }
 
         /** @var Order $itemHolder */
