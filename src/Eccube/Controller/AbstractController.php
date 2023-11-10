@@ -86,10 +86,10 @@ class AbstractController extends Controller
     }
 
     /**
-     * @param Session $session
+     * @param SessionInterface $session
      * @required
      */
-    public function setSession(Session $session)
+    public function setSession(SessionInterface $session)
     {
         $this->session = $session;
     }
