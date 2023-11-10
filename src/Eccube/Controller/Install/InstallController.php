@@ -599,7 +599,7 @@ class InstallController extends AbstractController
     }
 
     /**
-     * @return string|null
+     * @return string
      */
     public function createDatabaseUrl(array $params)
     {

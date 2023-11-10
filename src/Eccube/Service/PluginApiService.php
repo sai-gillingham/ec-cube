@@ -92,7 +92,7 @@ class PluginApiService
     /**
      * Get master data: category
      *
-     * @return array|bool
+     * @return array
      */
     public function getCategory()
     {
@@ -265,7 +265,7 @@ class PluginApiService
      * @param string $url
      * @param array $data
      *
-     * @return bool
+     * @return array
      *
      * @throws PluginApiException
      */

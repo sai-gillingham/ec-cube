@@ -318,7 +318,7 @@ class ComposerApiService implements ComposerServiceInterface
      * @param OutputInterface|null $output
      * @param bool $init
      *
-     * @return string|null
+     * @return string
      *
      * @throws PluginException
      * @throws \Doctrine\ORM\NoResultException

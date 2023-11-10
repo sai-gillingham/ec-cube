@@ -56,7 +56,7 @@ class MailService
     protected $mailHistoryRepository;
 
     /**
-     * @var EventDispatcherInterface
+     * @var EventDispatcher
      */
     protected $eventDispatcher;
 

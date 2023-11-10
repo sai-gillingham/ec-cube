@@ -36,7 +36,7 @@ trait PointTrait
      *
      * @param string $addPoint
      *
-     * @return $this
+     * @return Order
      */
     public function setAddPoint($addPoint)
     {
@@ -48,7 +48,7 @@ trait PointTrait
     /**
      * Get addPoint
      *
-     * @return int|string
+     * @return string
      */
     public function getAddPoint()
     {
@@ -60,7 +60,7 @@ trait PointTrait
      *
      * @param string $usePoint
      *
-     * @return $this
+     * @return Order
      */
     public function setUsePoint($usePoint)
     {

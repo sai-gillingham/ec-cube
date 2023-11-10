@@ -123,7 +123,7 @@ class StringUtil
      *
      * @param string $value
      *
-     * @return string|null
+     * @return string
      */
     public static function characterEncoding($value, $encoding = ['UTF-8', 'SJIS', 'EUC-JP', 'ASCII', 'JIS', 'sjis-win'])
     {
@@ -293,7 +293,7 @@ class StringUtil
      *
      * @param $value
      *
-     * @return string|int|null
+     * @return string
      */
     public static function trimAll($value)
     {

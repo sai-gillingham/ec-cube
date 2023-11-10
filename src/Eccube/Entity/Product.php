@@ -262,7 +262,7 @@ if (!class_exists('\Eccube\Entity\Product')) {
         /**
          * Get Price01 min
          *
-         * @return integer|null
+         * @return integer
          */
         public function getPrice01Min()
         {
@@ -278,7 +278,7 @@ if (!class_exists('\Eccube\Entity\Product')) {
         /**
          * Get Price01 max
          *
-         * @return integer|null
+         * @return integer
          */
         public function getPrice01Max()
         {
@@ -444,7 +444,7 @@ if (!class_exists('\Eccube\Entity\Product')) {
         }
 
         /**
-         * @var integer|null
+         * @var integer
          *
          * @ORM\Column(name="id", type="integer", options={"unsigned":true})
          * @ORM\Id

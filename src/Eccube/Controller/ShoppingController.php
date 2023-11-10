@@ -870,8 +870,6 @@ class ShoppingController extends AbstractShoppingController
                     array_merge($dispatcher->getPathParameters(), $dispatcher->getQueryParameters()));
             }
         }
-
-        return null;
     }
 
     /**

@@ -166,7 +166,7 @@ if (!class_exists('\Eccube\Entity\ProductClass')) {
         }
 
         /**
-         * @var int|null
+         * @var int
          *
          * @ORM\Column(name="id", type="integer", options={"unsigned":true})
          * @ORM\Id

@@ -29,7 +29,6 @@ use Eccube\Util\CacheUtil;
 use Eccube\Util\FormUtil;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
@@ -117,7 +116,7 @@ class OwnerStoreController extends AbstractController
      * @param int $page_no
      * @param PaginatorInterface $paginator
      *
-     * @return array|RedirectResponse
+     * @return array
      */
     public function search(Request $request, PaginatorInterface $paginator, $page_no = null)
     {
@@ -221,7 +220,7 @@ class OwnerStoreController extends AbstractController
      *
      * @param Request $request
      *
-     * @return array|RedirectResponse
+     * @return array
      *
      * @throws \Eccube\Exception\PluginException
      */
@@ -455,7 +454,7 @@ class OwnerStoreController extends AbstractController
      *
      * @param Plugin $Plugin
      *
-     * @return array|RedirectResponse
+     * @return array
      */
     public function doUpdateConfirm(Plugin $Plugin)
     {

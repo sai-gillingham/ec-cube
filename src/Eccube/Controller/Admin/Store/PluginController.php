@@ -545,7 +545,7 @@ class PluginController extends AbstractController
      *
      * @param Request $request
      *
-     * @return array|RedirectResponse
+     * @return array
      */
     public function authenticationSetting(Request $request, CacheUtil $cacheUtil)
     {

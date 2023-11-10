@@ -38,7 +38,7 @@ class PluginService
     protected $eccubeConfig;
 
     /**
-     * @var EntityManagerInterface
+     * @var EntityManager
      */
     protected $entityManager;
 
