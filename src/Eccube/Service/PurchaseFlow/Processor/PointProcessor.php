@@ -67,6 +67,7 @@ class PointProcessor implements DiscountProcessor, PurchaseProcessor
 
     /**
      * {@inheritdoc}
+     *
      */
     public function addDiscountItem(ItemHolderInterface $itemHolder, PurchaseContext $context)
     {

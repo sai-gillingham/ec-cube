@@ -42,7 +42,7 @@ class WithdrawController extends AbstractController
     protected $customerStatusRepository;
 
     /**
-     * @var TokenStorage
+     * @var TokenStorageInterface
      */
     protected $tokenStorage;
 
