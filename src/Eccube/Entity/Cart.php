@@ -118,16 +118,6 @@ if (!class_exists('\Eccube\Entity\Cart')) {
          */
         private $update_date;
 
-        /**
-         * @var InvalidItemException[]
-         */
-        private $errors = [];
-
-        public function __wakeup()
-        {
-            $this->errors = [];
-        }
-
         public function __construct()
         {
             $this->CartItems = new ArrayCollection();

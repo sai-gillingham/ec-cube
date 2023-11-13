@@ -232,7 +232,7 @@ class EccubeExtension extends Extension implements PrependExtensionInterface
     protected function isConnected(Connection $conn)
     {
         try {
-            if (!$conn->executeQuery('select 1')) {
+            if (!is_object($conn->executeQuery('select 1'))) {
                 return false;
             }
         } catch (\Exception $e) {

@@ -164,7 +164,6 @@ class AddCartType extends AbstractType
             'data_class' => CartItem::class,
             'id_add_product_id' => true,
             'constraints' => [
-                // FIXME new Assert\Callback(array($this, 'validate')),
             ],
         ]);
     }
@@ -189,37 +188,4 @@ class AddCartType extends AbstractType
         return 'add_cart';
     }
 
-    /**
-     * validate
-     *
-     * @param array<string, mixed> $data
-     * @param ExecutionContext $context
-     * @return void
-     */
-    public function validate($data, ExecutionContext $context)
-    {
-        $context->getValidator()->validate($data['product_class_id'], [
-            new Assert\NotBlank(),
-        ], '[product_class_id]');
-        if ($this->Product->getClassName1()) {
-            $validator = $context->getValidator();
-            $validator->validate($data['classcategory_id1'], [
-                new Assert\NotBlank(),
-                new Assert\NotEqualTo([
-                    'value' => '__unselected',
-                    'message' => 'form_error.not_selected',
-                ]),
-            ], '[classcategory_id1]');
-        }
-        // 商品規格2初期状態(未選択)の場合の返却値は「NULL」で「__unselected」ではない
-        if ($this->Product->getClassName2()) {
-            $context->getValidator()->validate($data['classcategory_id2'], [
-                new Assert\NotBlank(),
-                new Assert\NotEqualTo([
-                    'value' => '__unselected',
-                    'message' => 'form_error.not_selected',
-                ]),
-            ], '[classcategory_id2]');
-        }
-    }
 }

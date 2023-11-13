@@ -28,9 +28,6 @@ class Cash implements PaymentMethodInterface
     /** @var Order */
     private $Order;
 
-    /** @var FormInterface */
-    private $form;
-
     /** @var PurchaseFlow */
     private $purchaseFlow;
 
@@ -76,8 +73,6 @@ class Cash implements PaymentMethodInterface
      */
     public function setFormType(FormInterface $form)
     {
-        $this->form = $form;
-
         return $this;
     }
 

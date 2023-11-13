@@ -22,14 +22,9 @@ class SameSiteNoneCompatSessionHandler extends StrictSessionHandler
 {
     /** @var \SessionHandlerInterface */
     private $handler;
-    /** @var bool */
-    private $doDestroy;
+
     /** @var string */
     private $sessionName;
-    /** @var string|null */
-    private $prefetchData;
-    /** @var string */
-    private $newSessionId;
 
     /**
      *  {@inheritdoc}
@@ -91,9 +86,7 @@ class SameSiteNoneCompatSessionHandler extends StrictSessionHandler
     #[\ReturnTypeWillChange]
     public function destroy($sessionId)
     {
-        if (\PHP_VERSION_ID < 70000) {
-            $this->prefetchData = null;
-        }
+
         if (!headers_sent() && filter_var(ini_get('session.use_cookies'), FILTER_VALIDATE_BOOLEAN)) {
             if (!$this->sessionName) {
                 throw new \LogicException(sprintf('Session name cannot be empty, did you forget to call "parent::open()" in "%s"?.', \get_class($this)));
@@ -139,7 +132,7 @@ class SameSiteNoneCompatSessionHandler extends StrictSessionHandler
             }
         }
 
-        return $this->newSessionId === $sessionId || $this->doDestroy($sessionId);
+        return $this->doDestroy($sessionId);
     }
 
     /**
@@ -147,8 +140,6 @@ class SameSiteNoneCompatSessionHandler extends StrictSessionHandler
      */
     protected function doDestroy($sessionId)
     {
-        $this->doDestroy = false;
-
         return $this->handler->destroy($sessionId);
     }
 

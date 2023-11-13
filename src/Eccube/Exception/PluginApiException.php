@@ -44,4 +44,23 @@ class PluginApiException extends \Exception
 
         return $message;
     }
+
+    public function __debugInfo()
+    {
+        return [
+            'curlInfo' => $this->curlInfo
+        ];
+    }
+
+    public function __serialize(): array
+    {
+        return [
+            'curlInfo' => $this->curlInfo
+        ];
+    }
+
+    public function __toString(): string
+    {
+        return parent::__toString().', CURL_INFO:'.json_encode($this->curlInfo ?? []);
+    }
 }
