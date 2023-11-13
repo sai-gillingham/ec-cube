@@ -46,7 +46,6 @@ use Symfony\Component\Finder\Finder;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -673,7 +672,7 @@ class CsvImportController extends AbstractCsvImportController
                     log_info('商品CSV登録完了');
                     if (!$this->isSplitCsv) {
                         $message = 'admin.common.csv_upload_complete';
-                        /** @var Session $session */
+                        /** @var \Symfony\Component\HttpFoundation\Session\Session $session */
                         $session = $this->session;
                         $session->getFlashBag()->add('eccube.admin.success', $message);
                     }
@@ -836,7 +835,7 @@ class CsvImportController extends AbstractCsvImportController
                     $this->entityManager->getConnection()->commit();
                     log_info('カテゴリCSV登録完了');
                     $message = 'admin.common.csv_upload_complete';
-                    /** @var Session $session */
+                    /** @var \Symfony\Component\HttpFoundation\Session\Session $session */
                     $session = $this->session;
                     $session->getFlashBag()->add('eccube.admin.success', $message);
 
