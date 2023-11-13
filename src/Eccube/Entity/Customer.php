@@ -159,14 +159,14 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         private $last_buy_date;
 
         /**
-         * @var float|string|null
+         * @var float|string|int|null
          *
          * @ORM\Column(name="buy_times", type="decimal", precision=10, scale=0, nullable=true, options={"unsigned":true,"default":0})
          */
         private $buy_times = 0;
 
         /**
-         * @var float|string|null
+         * @var float|string|int|null
          *
          * @ORM\Column(name="buy_total", type="decimal", precision=12, scale=2, nullable=true, options={"unsigned":true,"default":0})
          */

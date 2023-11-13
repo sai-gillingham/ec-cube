@@ -265,7 +265,7 @@ class PluginApiService
      * @param string $url
      * @param array $data
      *
-     * @return bool
+     * @return bool|string
      *
      * @throws PluginApiException
      */

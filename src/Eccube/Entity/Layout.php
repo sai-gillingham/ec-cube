@@ -123,7 +123,7 @@ if (!class_exists('\Eccube\Entity\Layout')) {
         /**
          * @param integer $targetId
          *
-         * @return BlockPosition[]|Collection<int,mixed>
+         * @return BlockPosition[]|Collection<int,BlockPosition>
          */
         public function getBlockPositionsByTargetId($targetId)
         {
