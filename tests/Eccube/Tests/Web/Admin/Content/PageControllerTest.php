@@ -276,4 +276,49 @@ class PageControllerTest extends AbstractAdminWebTestCase
             unlink($templatePath.'/'.$Page->getFileName().'.twig');
         }
     }
+
+    public function testUntestedAbstractControllerFunctions()
+    {
+        $client = $this->client;
+        $redirectUrl = $this->generateUrl('admin_content_page');
+        $faker = $this->getFaker();
+        $client->request('DELETE',
+            $this->generateUrl(
+                'admin_content_page_delete',
+                ['id' => 5999999999]
+            )
+        );
+
+        $actual = $this->client->getResponse()->isRedirect($redirectUrl);
+
+        $this->assertTrue($actual);
+
+        $templatePath = static::getContainer()->getParameter('eccube_theme_user_data_dir');
+
+        $name = $faker->word;
+        $source = $faker->realText();
+        $client->request(
+            'POST',
+            $this->generateUrl(
+                'admin_content_page_new'
+            ),
+            [
+                'main_edit' => [
+                    'name' => $name,
+                    'url' => $name,
+                    'file_name' => $name,
+                    'tpl_data' => $source,
+                    '_token' => 'dummy',
+                ],
+            ]
+        );
+
+        $this->assertTrue($client->getResponse()->isRedirection());
+        preg_match('|content/page/([0-9]+)/edit|', $client->getResponse()->headers->get('Location'), $matches);
+        $Page = $this->entityManager->getRepository(\Eccube\Entity\Page::class)->find($matches[1]);
+
+        $this->expected = $name;
+        $this->actual = $Page->getName();
+        $this->verify();
+    }
 }
