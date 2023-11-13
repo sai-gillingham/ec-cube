@@ -52,7 +52,7 @@ if (!class_exists('\Eccube\Entity\Payment')) {
         private $method;
 
         /**
-         * @var float|string|null
+         * @var float|string|int|null
          *
          * @ORM\Column(name="charge", type="decimal", precision=12, scale=2, nullable=true, options={"unsigned":true,"default":0})
          */

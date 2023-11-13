@@ -46,7 +46,7 @@ if (!class_exists('\Eccube\Entity\CartItem')) {
         private $price = 0;
 
         /**
-         * @var string|float
+         * @var string|float|int
          *
          * @ORM\Column(name="quantity", type="decimal", precision=10, scale=0, options={"default":0})
          */

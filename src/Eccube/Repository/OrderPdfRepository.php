@@ -34,7 +34,7 @@ class OrderPdfRepository extends AbstractRepository
     /**
      * Save admin history.
      *
-     * @param AbstractEntity|array<mixed> $arrData
+     * @param AbstractEntity $arrData
      *
      * @return bool
      */

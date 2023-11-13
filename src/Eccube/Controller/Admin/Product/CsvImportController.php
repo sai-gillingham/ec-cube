@@ -879,7 +879,7 @@ class CsvImportController extends AbstractCsvImportController
      * @param array $headers
      * @param bool $rollback
      *
-     * @return JsonResponse|array<mixed>
+     * @return \Symfony\Component\HttpFoundation\JsonResponse|array<string,mixed>
      *
      * @throws \Doctrine\DBAL\ConnectionException
      */
