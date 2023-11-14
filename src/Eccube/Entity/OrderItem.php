@@ -485,7 +485,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Get price.
          *
-         * @return string|float|int
+         * @return string|float|int|null
          */
         public function getPrice()
         {

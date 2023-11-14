@@ -809,7 +809,7 @@ class InstallController extends AbstractController
         $locale = env('ECCUBE_LOCALE', 'ja_JP');
         $locale = str_replace('_', '-', $locale);
         $locales = \Locale::parseLocale($locale);
-        $localeDir = empty($locales) ? 'ja' : $locales['language'];
+        $localeDir = (empty($locales) === true || array_key_exists('language', $locales) === false) ? 'ja' : $locales['language'];
 
         $loader = new \Eccube\Doctrine\Common\CsvDataFixtures\Loader();
         $loader->loadFromDirectory($this->getParameter('kernel.project_dir').'/src/Eccube/Resource/doctrine/import_csv/'.$localeDir);
@@ -883,7 +883,7 @@ class InstallController extends AbstractController
             $row = $stmt->executeQuery();
             $this->encoder->setAuthMagic($data['auth_magic']);
             $password = $this->encoder->encodePassword($data['login_pass'], $salt);
-            if ($row->fetchOne() === true) {
+            if ($row->fetchOne() !== false) {
                 // 同一の管理者IDであればパスワードのみ更新
                 $sth = $conn->prepare('UPDATE dtb_member set password = :password, salt = :salt, update_date = current_timestamp WHERE login_id = :login_id;');
                 $sth->execute([

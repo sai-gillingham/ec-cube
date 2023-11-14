@@ -105,7 +105,7 @@ if (!class_exists('\Eccube\Entity\CartItem')) {
         }
 
         /**
-         * @return float|string|int|float
+         * @return float|string|int
          */
         public function getPrice()
         {
