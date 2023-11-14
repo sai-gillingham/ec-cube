@@ -78,7 +78,7 @@ if (!class_exists('\Eccube\Entity\ProductClass')) {
         /**
          * Get price01 IncTax
          *
-         * @return string
+         * @return float|string
          */
         public function getPrice01IncTax()
         {
@@ -100,7 +100,7 @@ if (!class_exists('\Eccube\Entity\ProductClass')) {
         /**
          * Get price02 IncTax
          *
-         * @return string
+         * @return float|string
          */
         public function getPrice02IncTax()
         {

@@ -243,6 +243,7 @@ class ProductController extends AbstractController
 
         $is_favorite = false;
         if ($this->isGranted('ROLE_USER')) {
+            /** @var \Eccube\Entity\Customer $Customer */
             $Customer = $this->getUser();
             $is_favorite = $this->customerFavoriteProductRepository->isFavorite($Customer, $Product);
         }
@@ -274,11 +275,12 @@ class ProductController extends AbstractController
         $this->eventDispatcher->dispatch($event, EccubeEvents::FRONT_PRODUCT_FAVORITE_ADD_INITIALIZE);
 
         if ($this->isGranted('ROLE_USER')) {
+            /** @var \Eccube\Entity\Customer $Customer */
             $Customer = $this->getUser();
             $this->customerFavoriteProductRepository->addFavorite($Customer, $Product);
             /** @var Session $session */
             $session = $this->session;
-            $session->getFlashBag()->set('product_detail.just_added_favorite', $Product->getId());
+            $session->getFlashBag()->set('product_detail.just_added_favorite', (string)$Product->getId());
 
             $event = new EventArgs(
                 [
@@ -295,7 +297,7 @@ class ProductController extends AbstractController
             $this->setLoginTargetPath($this->generateUrl('product_add_favorite', ['id' => $Product->getId()], UrlGeneratorInterface::ABSOLUTE_URL));
             /** @var Session $session */
             $session = $this->session;
-            $session->getFlashBag()->set('eccube.add.favorite', true);
+            $session->getFlashBag()->set('eccube.add.favorite', "true");
 
             $event = new EventArgs(
                 [

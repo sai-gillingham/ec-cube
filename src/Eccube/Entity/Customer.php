@@ -759,7 +759,7 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         /**
          * Set buyTimes.
          *
-         * @param string|null $buyTimes
+         * @param float|string|int|null $buyTimes
          *
          * @return Customer
          */
@@ -783,7 +783,7 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         /**
          * Set buyTotal.
          *
-         * @param string|null $buyTotal
+         * @param float|string|int|null $buyTotal
          *
          * @return Customer
          */

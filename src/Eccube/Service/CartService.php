@@ -411,7 +411,7 @@ class CartService
     }
 
     /**
-     * @param  string $pre_order_id
+     * @param  string|null $pre_order_id
      *
      * @return \Eccube\Service\CartService
      */

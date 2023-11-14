@@ -302,7 +302,7 @@ class OrderType extends AbstractType
             return;
         }
 
-        /** @var ArrayCollection|OrderStatus[] $OrderStatuses */
+        /** @var OrderStatus[] $OrderStatuses */
         $OrderStatuses = $this->orderStatusRepository->findBy([], ['sort_no' => 'ASC']);
         $OrderStatuses = new ArrayCollection($OrderStatuses);
 

@@ -114,6 +114,7 @@ class TwoFactorAuthController extends AbstractController
      */
     public function set(Request $request)
     {
+        /** @var \Eccube\Entity\Member $Member */
         $Member = $this->getUser();
         if (!$this->twoFactorAuthService->isEnabled() || $this->twoFactorAuthService->isAuth($Member)) {
             return $this->redirectToRoute('admin_homepage');
@@ -129,6 +130,7 @@ class TwoFactorAuthController extends AbstractController
      */
     public function edit(Request $request)
     {
+        /** @var \Eccube\Entity\Member $Member */
         $Member = $this->getUser();
         if (!$this->twoFactorAuthService->isAuth($Member)) {
             return $this->redirectToRoute('admin_homepage');

@@ -144,6 +144,7 @@ class MypageController extends AbstractController
      */
     public function index(Request $request, PaginatorInterface $paginator)
     {
+        /** @var Customer $Customer */
         $Customer = $this->getUser();
 
         // 購入処理中/決済処理中ステータスの受注を非表示にする.

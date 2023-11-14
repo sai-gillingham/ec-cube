@@ -984,7 +984,7 @@ if (!class_exists('\Eccube\Entity\Product')) {
             }
 
             usort($tags, function (Tag $tag1, Tag $tag2) {
-                return $tag1->getSortNo() < $tag2->getSortNo();
+                return (int)($tag1->getSortNo() < $tag2->getSortNo());
             });
 
             return $tags;

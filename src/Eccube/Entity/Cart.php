@@ -184,7 +184,7 @@ if (!class_exists('\Eccube\Entity\Cart')) {
         }
 
         /**
-         * @param  string|integer $pre_order_id
+         * @param  string|integer|null $pre_order_id
          *
          * @return \Eccube\Entity\Cart
          */
@@ -303,7 +303,9 @@ if (!class_exists('\Eccube\Entity\Cart')) {
          */
         public function addItem(ItemInterface $item)
         {
-            $this->CartItems->add($item);
+            if($item instanceof CartItem) {
+                $this->CartItems->add($item);
+            }
         }
 
         /**
@@ -311,7 +313,9 @@ if (!class_exists('\Eccube\Entity\Cart')) {
          */
         public function removeItem(ItemInterface $item)
         {
-            $this->CartItems->removeElement($item);
+            if($item instanceof CartItem){
+                $this->CartItems->removeElement($item);
+            }
         }
 
         /**

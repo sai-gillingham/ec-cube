@@ -1863,7 +1863,9 @@ if (!class_exists('\Eccube\Entity\Order')) {
          */
         public function addItem(ItemInterface $item)
         {
-            $this->OrderItems->add($item);
+            if($item instanceof OrderItem){
+                $this->OrderItems->add($item);
+            }
         }
 
         public function getQuantity()
