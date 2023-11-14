@@ -171,7 +171,7 @@ if (!class_exists('\Eccube\Entity\DeliveryTime')) {
         /**
          * Set visible
          *
-         * @param boolean $visible
+         * @param boolean|null $visible
          *
          * @return DeliveryTime
          */
@@ -185,7 +185,7 @@ if (!class_exists('\Eccube\Entity\DeliveryTime')) {
         /**
          * Is the visibility visible?
          *
-         * @return boolean
+         * @return boolean|null
          */
         public function isVisible()
         {

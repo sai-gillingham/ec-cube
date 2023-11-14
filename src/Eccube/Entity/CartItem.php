@@ -125,7 +125,7 @@ if (!class_exists('\Eccube\Entity\CartItem')) {
         }
 
         /**
-         * @return float|string|float|integer
+         * @return float|string|integer
          */
         public function getQuantity()
         {
