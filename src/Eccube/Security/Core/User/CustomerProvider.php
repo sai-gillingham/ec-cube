@@ -34,9 +34,8 @@ class CustomerProvider implements UserProviderInterface
     }
 
     /**
-     * @return UserInterface
-     *
-     * @throws UserNotFoundException
+     * @param string $username
+     * @return Customer
      *
      * @deprecated since Symfony 5.3, use loadUserByIdentifier() instead
      */

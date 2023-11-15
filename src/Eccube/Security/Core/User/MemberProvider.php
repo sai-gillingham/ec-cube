@@ -34,9 +34,8 @@ class MemberProvider implements UserProviderInterface
     }
 
     /**
-     * @return UserInterface
-     *
-     * @throws UserNotFoundException
+     * @param string $username
+     * @return Member
      *
      * @deprecated since Symfony 5.3, use loadUserByIdentifier() instead
      */
