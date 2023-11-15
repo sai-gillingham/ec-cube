@@ -19,13 +19,24 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * PurchaseFlowの実行中コンテキスト.
+ *
+ * @extends \SplObjectStorage<ItemHolderInterface, mixed>
  */
 class PurchaseContext extends \SplObjectStorage
 {
+    /**
+     * @var Customer|null 会員情報
+     */
     private $user;
 
+    /**
+     * @var ItemHolderInterface|null PurchaseFlow実行前の{@link ItemHolderInterface}
+     */
     private $originHolder;
 
+    /**
+     * @var string
+     */
     private $flowType;
 
     public const ORDER_FLOW = 'order';
@@ -64,21 +75,35 @@ class PurchaseContext extends \SplObjectStorage
         return $this->user;
     }
 
+    /**
+     * @param string $flowType
+     *
+     * @return void
+     */
     public function setFlowType($flowType)
     {
         $this->flowType = $flowType;
     }
 
+    /**
+     * @return bool
+     */
     public function isOrderFlow()
     {
         return $this->flowType === self::ORDER_FLOW;
     }
 
+    /**
+     * @return bool
+     */
     public function isShoppingFlow()
     {
         return $this->flowType === self::SHOPPING_FLOW;
     }
 
+    /**
+     * @return bool
+     */
     public function isCartFlow()
     {
         return $this->flowType === self::CART_FLOW;

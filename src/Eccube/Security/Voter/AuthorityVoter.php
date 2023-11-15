@@ -47,6 +47,12 @@ class AuthorityVoter implements VoterInterface
         $this->eccubeConfig = $eccubeConfig;
     }
 
+    /**
+     * @param TokenInterface $token
+     * @param null|object $object
+     * @param array $attributes
+     * @return int
+     */
     public function vote(TokenInterface $token, $object, array $attributes)
     {
         $path = null;

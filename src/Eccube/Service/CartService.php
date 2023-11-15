@@ -182,6 +182,8 @@ class CartService
 
     /**
      * 会員が保持する永続化されたカートと、非会員時のカートをマージする.
+     *
+     * @return void
      */
     public function mergeFromPersistedCart()
     {
@@ -251,8 +253,8 @@ class CartService
     }
 
     /**
-     * @param $cartItems
-     * @param $allCartItems
+     * @param array<int, CartItem> $cartItems
+     * @param array<int, CartItem> $allCartItems
      *
      * @return array
      */
@@ -276,6 +278,10 @@ class CartService
         return $allCartItems;
     }
 
+    /**
+     * @param array<int, CartItem> $cartItems
+     * @return void
+     */
     protected function restoreCarts($cartItems)
     {
         foreach ($this->getCarts() as $Cart) {
@@ -324,8 +330,8 @@ class CartService
     /**
      * カートに商品を追加します.
      *
-     * @param $ProductClass ProductClass 商品規格
-     * @param $quantity int 数量
+     * @param ProductClass|int $ProductClass  商品規格
+     * @param int $quantity 数量
      *
      * @return bool 商品を追加できた場合はtrue
      */
@@ -361,6 +367,10 @@ class CartService
         return true;
     }
 
+    /**
+     * @param int|ProductClass $ProductClass
+     * @return bool
+     */
     public function removeProduct($ProductClass)
     {
         if (!$ProductClass instanceof ProductClass) {
@@ -392,6 +402,9 @@ class CartService
         return true;
     }
 
+    /**
+     * @return void
+     */
     public function save()
     {
         $cartKeys = [];
@@ -467,6 +480,7 @@ class CartService
 
     /**
      * @param CartItemComparator $cartItemComparator
+     * @return void
      */
     public function setCartItemComparator($cartItemComparator)
     {
@@ -477,6 +491,7 @@ class CartService
      * カートキーで指定したインデックスにあるカートを優先にする
      *
      * @param string $cartKey カートキー
+     * @return void
      */
     public function setPrimary($cartKey)
     {
@@ -497,6 +512,9 @@ class CartService
         $this->save();
     }
 
+    /**
+     * @return \Symfony\Component\Security\Core\User\UserInterface|void|null
+     */
     protected function getUser()
     {
         if (null === $token = $this->tokenStorage->getToken()) {
@@ -513,8 +531,11 @@ class CartService
 
     /**
      * @param string $allocatedId
+     * @param Customer|null $Customer
+     * @return string
+     *
      */
-    protected function createCartKey($allocatedId, Customer $Customer = null)
+    protected function createCartKey($allocatedId, ?Customer $Customer = null)
     {
         if ($Customer instanceof Customer) {
             return $Customer->getId().'_'.$allocatedId;

@@ -27,37 +27,37 @@ class PurchaseFlow
     protected $flowType;
 
     /**
-     * @var ArrayCollection|ItemPreprocessor[]
+     * @var ArrayCollection<int, ItemPreprocessor>|ItemPreprocessor[]
      */
     protected $itemPreprocessors;
 
     /**
-     * @var ArrayCollection|ItemHolderPreprocessor[]
+     * @var ArrayCollection<int, ItemHolderPreprocessor>|ItemHolderPreprocessor[]
      */
     protected $itemHolderPreprocessors;
 
     /**
-     * @var ArrayCollection|ItemValidator[]
+     * @var ArrayCollection<int, ItemValidator>|ItemValidator[]
      */
     protected $itemValidators;
 
     /**
-     * @var ArrayCollection|ItemHolderValidator[]
+     * @var ArrayCollection<int, ItemHolderValidator>|ItemHolderValidator[]
      */
     protected $itemHolderValidators;
 
     /**
-     * @var ArrayCollection|ItemHolderPostValidator[]
+     * @var ArrayCollection<int, ItemHolderPostValidator>|ItemHolderPostValidator[]
      */
     protected $itemHolderPostValidators;
 
     /**
-     * @var ArrayCollection|DiscountProcessor[]
+     * @var ArrayCollection<int, DiscountProcessor>|DiscountProcessor[]
      */
     protected $discountProcessors;
 
     /**
-     * @var ArrayCollection|PurchaseProcessor[]
+     * @var ArrayCollection<int, PurchaseProcessor>|PurchaseProcessor[]
      */
     protected $purchaseProcessors;
 
@@ -72,46 +72,83 @@ class PurchaseFlow
         $this->discountProcessors = new ArrayCollection();
     }
 
+    /**
+     * @param string $flowType
+     * @return void
+     */
     public function setFlowType($flowType)
     {
         $this->flowType = $flowType;
     }
 
+    /**
+     * @param ArrayCollection<int, PurchaseProcessor> $processors
+     * @return void
+     */
     public function setPurchaseProcessors(ArrayCollection $processors)
     {
         $this->purchaseProcessors = $processors;
     }
 
+    /**
+     * @param ArrayCollection<int, ItemValidator> $itemValidators
+     * @return void
+     */
     public function setItemValidators(ArrayCollection $itemValidators)
     {
         $this->itemValidators = $itemValidators;
     }
 
+    /**
+     * @param ArrayCollection<int, ItemHolderValidator> $itemHolderValidators
+     * @return void
+     */
     public function setItemHolderValidators(ArrayCollection $itemHolderValidators)
     {
         $this->itemHolderValidators = $itemHolderValidators;
     }
 
+    /**
+     * @param ArrayCollection<int, ItemPreprocessor> $itemPreprocessors
+     * @return void
+     */
     public function setItemPreprocessors(ArrayCollection $itemPreprocessors)
     {
         $this->itemPreprocessors = $itemPreprocessors;
     }
 
+    /**
+     * @param ArrayCollection<int, ItemHolderPreprocessor> $itemHolderPreprocessors
+     * @return void
+     */
     public function setItemHolderPreprocessors(ArrayCollection $itemHolderPreprocessors)
     {
         $this->itemHolderPreprocessors = $itemHolderPreprocessors;
     }
 
+    /**
+     * @param ArrayCollection<int, ItemHolderPostValidator> $itemHolderPostValidators
+     * @return void
+     */
     public function setItemHolderPostValidators(ArrayCollection $itemHolderPostValidators)
     {
         $this->itemHolderPostValidators = $itemHolderPostValidators;
     }
 
+    /**
+     * @param ArrayCollection<int, DiscountProcessor> $discountProcessors
+     * @return void
+     */
     public function setDiscountProcessors(ArrayCollection $discountProcessors)
     {
         $this->discountProcessors = $discountProcessors;
     }
 
+    /**
+     * @param ItemHolderInterface $itemHolder
+     * @param PurchaseContext $context
+     * @return PurchaseFlowResult
+     */
     public function validate(ItemHolderInterface $itemHolder, PurchaseContext $context)
     {
         $context->setFlowType($this->flowType);
@@ -182,7 +219,7 @@ class PurchaseFlow
      *
      * @param ItemHolderInterface $target
      * @param PurchaseContext $context
-     *
+     * @return void
      * @throws PurchaseException
      */
     public function prepare(ItemHolderInterface $target, PurchaseContext $context)
@@ -199,6 +236,7 @@ class PurchaseFlow
      *
      * @param ItemHolderInterface $target
      * @param PurchaseContext $context
+     * @return void
      *
      * @throws PurchaseException
      */
@@ -216,6 +254,7 @@ class PurchaseFlow
      *
      * @param ItemHolderInterface $target
      * @param PurchaseContext $context
+     * @return void
      */
     public function rollback(ItemHolderInterface $target, PurchaseContext $context)
     {
@@ -226,36 +265,64 @@ class PurchaseFlow
         }
     }
 
+    /**
+     * @param PurchaseProcessor $processor
+     * @return void
+     */
     public function addPurchaseProcessor(PurchaseProcessor $processor)
     {
         $this->purchaseProcessors[] = $processor;
     }
 
+    /**
+     * @param ItemHolderPreprocessor $holderPreprocessor
+     * @return void
+     */
     public function addItemHolderPreprocessor(ItemHolderPreprocessor $holderPreprocessor)
     {
         $this->itemHolderPreprocessors[] = $holderPreprocessor;
     }
 
+    /**
+     * @param ItemPreprocessor $itemPreprocessor
+     * @return void
+     */
     public function addItemPreprocessor(ItemPreprocessor $itemPreprocessor)
     {
         $this->itemPreprocessors[] = $itemPreprocessor;
     }
 
+    /**
+     * @param ItemValidator $itemValidator
+     * @return void
+     */
     public function addItemValidator(ItemValidator $itemValidator)
     {
         $this->itemValidators[] = $itemValidator;
     }
 
+    /**
+     * @param ItemHolderValidator $itemHolderValidator
+     * @return void
+     */
     public function addItemHolderValidator(ItemHolderValidator $itemHolderValidator)
     {
         $this->itemHolderValidators[] = $itemHolderValidator;
     }
 
+    /**
+     * @param ItemHolderPostValidator $itemHolderValidator
+     * @return void
+     */
     public function addItemHolderPostValidator(ItemHolderPostValidator $itemHolderValidator)
     {
         $this->itemHolderPostValidators[] = $itemHolderValidator;
     }
 
+    /**
+     * @param DiscountProcessor $discountProcessor
+     * @return void
+     */
     public function addDiscountProcessor(DiscountProcessor $discountProcessor)
     {
         $this->discountProcessors[] = $discountProcessor;
@@ -263,6 +330,7 @@ class PurchaseFlow
 
     /**
      * @param ItemHolderInterface $itemHolder
+     * @return void
      */
     protected function calculateTotal(ItemHolderInterface $itemHolder)
     {
@@ -279,6 +347,10 @@ class PurchaseFlow
         }
     }
 
+    /**
+     * @param ItemHolderInterface $itemHolder
+     * @return void
+     */
     protected function calculateSubTotal(ItemHolderInterface $itemHolder)
     {
         $total = $itemHolder->getItems()
@@ -297,6 +369,7 @@ class PurchaseFlow
 
     /**
      * @param ItemHolderInterface $itemHolder
+     * @return void
      */
     protected function calculateDeliveryFeeTotal(ItemHolderInterface $itemHolder)
     {
@@ -312,6 +385,7 @@ class PurchaseFlow
 
     /**
      * @param ItemHolderInterface $itemHolder
+     * @return void
      */
     protected function calculateDiscount(ItemHolderInterface $itemHolder)
     {
@@ -328,6 +402,7 @@ class PurchaseFlow
 
     /**
      * @param ItemHolderInterface $itemHolder
+     * @return void
      */
     protected function calculateCharge(ItemHolderInterface $itemHolder)
     {
@@ -343,6 +418,7 @@ class PurchaseFlow
 
     /**
      * @param ItemHolderInterface $itemHolder
+     * @return void
      */
     protected function calculateTax(ItemHolderInterface $itemHolder)
     {
@@ -361,6 +437,7 @@ class PurchaseFlow
 
     /**
      * @param ItemHolderInterface $itemHolder
+     * @return void
      */
     protected function calculateAll(ItemHolderInterface $itemHolder)
     {

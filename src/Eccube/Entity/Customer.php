@@ -1169,7 +1169,7 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         /**
          * Get point
          *
-         * @return string
+         * @return string|int
          */
         public function getPoint()
         {
