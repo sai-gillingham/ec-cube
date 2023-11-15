@@ -1,9 +1,11 @@
 parameters:
   level: 0
+  ignoreErrors:
+    - '#Call to an undefined method Symfony\\Component\\Config\\Definition\\Builder\\NodeDefinition::children\(\).#'
+  excludePaths:
+    - 'var/*'
+    - 'vendor/*'
   doctrine:
     objectManagerLoader: tests/object-manager.php
     ormRepositoryClass: Eccube\Repository\AbstractRepository
   errorFormat: json
-services:
-  errorFormatter.csv:
-    class: Eccube\Service\Command\CsvErrorFormatter
