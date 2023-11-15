@@ -19,7 +19,7 @@ abstract class WhereCustomizer implements QueryCustomizer
 {
     /**
      * @param QueryBuilder $builder
-     * @param array|null $params
+     * @param array $params
      * @param string $queryKey
      */
     final public function customize(QueryBuilder $builder, $params, $queryKey)

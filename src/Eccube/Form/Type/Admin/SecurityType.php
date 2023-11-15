@@ -144,7 +144,7 @@ class SecurityType extends AbstractType
                 $data = $form->getData();
 
                 // フロント画面のアクセス許可リストのvalidate
-                $ips = preg_split("/\R/", $data['front_allow_hosts'], null, PREG_SPLIT_NO_EMPTY);
+                $ips = preg_split("/\R/", $data['front_allow_hosts'], -1, PREG_SPLIT_NO_EMPTY);
 
                 foreach ($ips as $ip) {
                     // 適切なIPとビットマスクになっているか
@@ -160,7 +160,7 @@ class SecurityType extends AbstractType
                 }
 
                 // フロント画面のアクセス拒否リストのvalidate
-                $ips = preg_split("/\R/", $data['front_deny_hosts'], null, PREG_SPLIT_NO_EMPTY);
+                $ips = preg_split("/\R/", $data['front_deny_hosts'], -1, PREG_SPLIT_NO_EMPTY);
 
                 foreach ($ips as $ip) {
                     // 適切なIPとビットマスクになっているか
@@ -176,7 +176,7 @@ class SecurityType extends AbstractType
                 }
 
                 // 管理画面のアクセス許可リストのvalidate
-                $ips = preg_split("/\R/", $data['admin_allow_hosts'], null, PREG_SPLIT_NO_EMPTY);
+                $ips = preg_split("/\R/", $data['admin_allow_hosts'], -1, PREG_SPLIT_NO_EMPTY);
 
                 foreach ($ips as $ip) {
                     // 適切なIPとビットマスクになっているか
@@ -192,7 +192,7 @@ class SecurityType extends AbstractType
                 }
 
                 // 管理画面のアクセス拒否リストのvalidate
-                $ips = preg_split("/\R/", $data['admin_deny_hosts'], null, PREG_SPLIT_NO_EMPTY);
+                $ips = preg_split("/\R/", $data['admin_deny_hosts'], -1, PREG_SPLIT_NO_EMPTY);
 
                 foreach ($ips as $ip) {
                     // 適切なIPとビットマスクになっているか

@@ -29,6 +29,7 @@ class LogController extends AbstractController
      * @Template("@admin/Setting/System/log.twig")
      *
      * @return array<string, mixed> | StreamedResponse
+     * @throws \Exception
      */
     public function index(Request $request)
     {
@@ -69,9 +70,14 @@ class LogController extends AbstractController
         $logFile = $logDir.'/'.$formData['files'];
         /** @var \Symfony\Component\Form\Form $form  */
         if ($form->getClickedButton() && $form->getClickedButton()->getName() === 'download' && $form->isValid()) {
+            $fileSizeLogFile = filesize($logFile);
+            if($fileSizeLogFile === false){
+                throw new \Exception("ファイルサイズの取得に失敗しました。");
+            }
+
             $bufferSize = 1024 * 50;
             $response = new StreamedResponse();
-            $response->headers->set('Content-Length', (string)filesize($logFile));
+            $response->headers->set('Content-Length', (string)$fileSizeLogFile);
             $response->headers->set('Content-Disposition', 'attachment; filename='.basename($logFile));
             $response->headers->set('Content-Type', 'application/octet-stream');
             $response->setCallback(function () use ($logFile, $bufferSize) {

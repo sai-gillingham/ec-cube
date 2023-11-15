@@ -144,7 +144,7 @@ class Step3Type extends AbstractType
                 $form = $event->getForm();
                 $data = $form->getData();
 
-                $ips = preg_split("/\R/", $data['admin_allow_hosts'], null, PREG_SPLIT_NO_EMPTY);
+                $ips = preg_split("/\R/", $data['admin_allow_hosts'], -1, PREG_SPLIT_NO_EMPTY);
 
                 foreach ($ips as $ip) {
                     $errors = $this->validator->validate($ip, [
