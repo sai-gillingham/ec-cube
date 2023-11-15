@@ -54,20 +54,69 @@ class InstallerCommand extends Command
 
         /* env更新処理無名クラス */
         $this->envFileUpdater = new class() {
+            /**
+             * @var array<mixed>|false|string $appEnv
+             */
             public $appEnv;
+
+            /**
+             * @var array<mixed>|false|string $appDebug
+             */
             public $appDebug;
+
+            /**
+             * @var bool|float|int|null|string $databaseUrl
+             */
             public $databaseUrl;
+
+            /**
+             * @var false|mixed|string $serverVersion
+             */
             public $serverVersion;
+
+            /**
+             * @var string $databaseCharset
+             */
             public $databaseCharset;
+
+            /**
+             * @var null|string $mailerDsn
+             */
             public $mailerDsn;
+
+            /**
+             * @var string|null $authMagic
+             */
             public $authMagic;
+
+            /**
+             * @var string|null $adminRoute
+             */
             public $adminRoute;
+
+            /**
+             * @var string|null $templateCode
+             */
             public $templateCode;
+
+            /**
+             * @var string|null $locale
+             */
             public $locale;
+
+            /**
+             * @var string|null $trustedHosts
+             */
             public $trustedHosts;
 
+            /**
+             * @var string|null $envDir
+             */
             public $envDir;
 
+            /**
+             * @return array<string,mixed>
+             */
             private function getEnvParameters()
             {
                 return [
@@ -87,6 +136,8 @@ class InstallerCommand extends Command
 
             /**
              * envファイル更新処理
+             *
+             * @return void
              */
             public function updateEnvFile()
             {
@@ -105,12 +156,20 @@ class InstallerCommand extends Command
         };
     }
 
+    /**
+     * @return void
+     */
     protected function configure()
     {
         $this
             ->setDescription('Install EC-CUBE');
     }
 
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return void
+     */
     protected function interact(InputInterface $input, OutputInterface $output)
     {
         $this->io->title('EC-CUBE Installer Interactive Wizard');
@@ -209,6 +268,11 @@ class InstallerCommand extends Command
         $this->envFileUpdater->updateEnvFile();
     }
 
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return void
+     */
     protected function initialize(InputInterface $input, OutputInterface $output)
     {
         $this->io = new SymfonyStyle($input, $output);
@@ -263,6 +327,10 @@ class InstallerCommand extends Command
         return 0;
     }
 
+    /**
+     * @param string $databaseUrl
+     * @return string
+     */
     protected function getDatabaseName($databaseUrl)
     {
         if (0 === strpos($databaseUrl, 'sqlite')) {
@@ -278,6 +346,11 @@ class InstallerCommand extends Command
         throw new \LogicException(sprintf('Database Url %s is invalid.', $databaseUrl));
     }
 
+    /**
+     * @param string $databaseUrl
+     * @return false|mixed|string
+     * @throws \Doctrine\DBAL\Exception
+     */
     protected function getDatabaseServerVersion($databaseUrl)
     {
         try {
