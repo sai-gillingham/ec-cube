@@ -26,7 +26,7 @@ class CsrfTokenManagerMock implements CsrfTokenManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function getToken($tokenId)
+    public function getToken($tokenId): \Symfony\Component\Security\Csrf\CsrfToken
     {
         return new CsrfToken($tokenId, null);
     }
@@ -34,7 +34,7 @@ class CsrfTokenManagerMock implements CsrfTokenManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function refreshToken($tokenId)
+    public function refreshToken($tokenId): \Symfony\Component\Security\Csrf\CsrfToken
     {
         return new CsrfToken($tokenId, null);
     }
@@ -42,7 +42,7 @@ class CsrfTokenManagerMock implements CsrfTokenManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function removeToken($tokenId)
+    public function removeToken(string $tokenId): ?string
     {
         return null;
     }
@@ -50,7 +50,7 @@ class CsrfTokenManagerMock implements CsrfTokenManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function isTokenValid(CsrfToken $token)
+    public function isTokenValid(CsrfToken $token): bool
     {
         return true;
     }

@@ -125,7 +125,9 @@ class ProductControllerTest extends AbstractAdminWebTestCase
                 'delivery_duration' => '',
             ],
             'name' => $faker->word,
-            'product_image' => [],
+            'product_image' => [
+                0 => $this->entityManager->getRepository(ProductImage::class)->findOneBy([])->getFileName()
+            ],
             'description_detail' => $faker->realText,
             'description_list' => $faker->paragraph,
             'Category' => [],

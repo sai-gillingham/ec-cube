@@ -99,12 +99,14 @@ class CsvImportController extends AbstractCsvImportController
      * @param $errors
      * @return void
      */
-    protected function loadCsv($csv, &$errors)
+    protected function loadCsv(CsvImportService|bool $csv, &$errors)
     {
         $columnConfig = $this->getColumnConfig();
 
         if ($csv === false) {
             $errors[] = trans('admin.common.csv_invalid_format');
+
+            return;
         }
 
         // 必須カラムの確認
