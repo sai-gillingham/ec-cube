@@ -103,6 +103,18 @@ class CsvImportControllerTest extends AbstractAdminWebTestCase
         self::assertEquals($this->parseDate('2018-01-23'), $Shipping->getShippingDate());
     }
 
+    public function testInvalidCSV()
+    {
+        $controller = static::getContainer()->get(CsvImportController::class);
+        $rc = new \ReflectionClass(CsvImportController::class);
+        $method = $rc->getMethod('loadCsv');
+        $method->setAccessible(true);
+        $errors = [];
+        $result = $method->invokeArgs($controller, [false, &$errors]);
+
+        $this->assertNull($result);
+    }
+
     /**
      * @dataProvider loadCsvInvalidFormatProvider
      */

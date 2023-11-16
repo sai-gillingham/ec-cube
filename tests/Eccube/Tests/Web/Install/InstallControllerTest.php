@@ -22,6 +22,7 @@ use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
 
 /**
@@ -128,6 +129,49 @@ class InstallControllerTest extends AbstractWebTestCase
         $this->actual = $this->controller->step4($this->request);
         $this->assertTrue(is_array($this->actual));
         $this->assertInstanceOf(FormView::class, $this->actual['form']);
+    }
+
+    /**
+     * @group   DatabaseAltering
+     */
+    public function testStep5NoUpdateFalse()
+    {
+        $this->markAsRisky();
+        $this->markTestSkipped("データベースの初期化処理が含まれているためスキップ");
+        $databaseUrl = $this->getContainer()->get('parameter_bag')->get('eccube_database_url');
+        $dataParams = $this->controller->extractDatabaseUrl($databaseUrl);
+        $dataParams["auth_magic"] = null;
+        $dataParams['login_id'] = "admin";
+        $dataParams['login_pass'] = "password";
+        $dataParams['shop_name'] = "shop";
+        $dataParams['email'] = "test@test.co.jp";
+        $this->session->set("eccube.session.install",$dataParams);
+        $this->session->save();
+        $this->controller->setSession($this->session);
+        $this->request = Request::create($this->generateUrl('install_step5'),'POST',['install_step5'=> ['no_update' => false, '_token' => 'dummy']]);
+        $this->actual = $this->controller->step5($this->request);
+        $this->assertInstanceOf(FormView::class, $this->actual['form']);
+    }
+    /**
+     * @group   DatabaseAltering
+     */
+    public function testStep5NoUpdateTrue()
+    {
+        $this->markAsRisky();
+        $this->markTestSkipped("データベースの更新処理が含まれているためスキップ");
+        $databaseUrl = $this->getContainer()->get('parameter_bag')->get('eccube_database_url');
+        $dataParams = $this->controller->extractDatabaseUrl($databaseUrl);
+        $dataParams["authmagic"] = null;
+        $dataParams['login_id'] = "admin";
+        $dataParams['login_pass'] = "password";
+        $dataParams['shop_name'] = "shop";
+        $dataParams['email'] = "test@test.co.jp";
+        $this->session->set("eccube.session.install",$dataParams);
+        $this->session->save();
+        $this->controller->setSession($this->session);
+        $this->request = Request::create($this->generateUrl('install_step5'),'POST',['install_step5'=> ['no_update' => true, '_token' => 'dummy']]);
+        $this->actual = $this->controller->step5($this->request);
+        $this->assertNotNull($this->actual);
     }
 
     public function testComplete()

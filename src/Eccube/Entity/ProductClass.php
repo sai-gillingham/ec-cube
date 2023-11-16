@@ -29,6 +29,7 @@ if (!class_exists('\Eccube\Entity\ProductClass')) {
     {
         private $price01_inc_tax = null;
         private $price02_inc_tax = null;
+        /** @var float|int|string|bool */
         private $tax_rate = false;
 
         /**
@@ -124,7 +125,7 @@ if (!class_exists('\Eccube\Entity\ProductClass')) {
         /**
          * Set tax_rate
          *
-         * @param  string $tax_rate
+         * @param  float|int|string $tax_rate
          *
          * @return ProductClass
          */
@@ -138,7 +139,7 @@ if (!class_exists('\Eccube\Entity\ProductClass')) {
         /**
          * Get tax_rate
          *
-         * @return boolean
+         * @return float|int|string
          */
         public function getTaxRate()
         {
