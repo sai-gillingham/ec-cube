@@ -293,28 +293,6 @@ if (!class_exists('\Eccube\Entity\Shipping')) {
         }
 
         /**
-         * 個人情報をクリア.
-         *
-         * @return \Eccube\Entity\Shipping
-         */
-        public function clearCustomerAddress()
-        {
-            $this
-            ->setName01(null)
-            ->setName02(null)
-            ->setKana01(null)
-            ->setKana02(null)
-            ->setCompanyName(null)
-            ->setPhoneNumber(null)
-            ->setPostalCode(null)
-            ->setPref(null)
-            ->setAddr01(null)
-            ->setAddr02(null);
-
-            return $this;
-        }
-
-        /**
          * Get id.
          *
          * @return int
