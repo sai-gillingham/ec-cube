@@ -23,6 +23,8 @@ class LoadDataFixturesEccubeCommandTest extends EccubeTestCase
 
     public function testExecute()
     {
+        $this->markAsRisky();
+        $this->markTestSkipped("データベース初期化コマンドのためスキップ");
         $commandArg = [];
 
         /** @var LoadDataFixturesEccubeCommand $command */

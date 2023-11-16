@@ -40,7 +40,7 @@ class LogControllerTest extends AbstractAdminWebTestCase
 
         $logDir = static::getContainer()->getParameter('kernel.logs_dir');
 
-        $this->logTest = $logDir.'/'.$this->formData['files'];
+        $this->logTest = $logDir.'/test/'.$this->formData['files'];
 
         if (!file_exists($this->logTest)) {
             file_put_contents($this->logTest, 'test');
@@ -75,6 +75,20 @@ class LogControllerTest extends AbstractAdminWebTestCase
      */
     public function testSystemLogSubmit()
     {
+        $this->client->request(
+            'POST',
+            $this->generateUrl('admin_setting_system_log'),
+            ['admin_system_log' => $this->formData]
+        );
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+    }
+
+    /**
+     *
+     */
+    public function testSystemLogSubmitWithButton()
+    {
+        $this->formData["download"] = "";
         $this->client->request(
             'POST',
             $this->generateUrl('admin_setting_system_log'),

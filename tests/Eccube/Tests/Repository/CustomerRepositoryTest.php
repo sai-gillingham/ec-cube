@@ -139,10 +139,11 @@ class CustomerRepositoryTest extends EccubeTestCase
 
     public function testGetQueryBuilderBySearchDataByBirthMonth()
     {
-        $Customer = $this->createCustomer('20231024@example.com');
-        $birthday = new \DateTime('now');
+        $Customer = $this->createCustomer('20231124@example.com');
+        $birthday = new \DateTime('2023-11-24');
         $Customer->setBirth($birthday);
-        $actual = $this->customerRepo->getQueryBuilderBySearchData(['birth_month' => 10])
+        $this->entityManager->flush();
+        $actual = $this->customerRepo->getQueryBuilderBySearchData(['birth_month' => 11])
             ->getQuery()
             ->getResult();
         self::assertEquals($Customer->getBirth()->format('m'),$actual[0]->getBirth()->format('m'));
