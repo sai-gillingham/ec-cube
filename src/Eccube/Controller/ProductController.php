@@ -278,9 +278,6 @@ class ProductController extends AbstractController
             /** @var \Eccube\Entity\Customer $Customer */
             $Customer = $this->getUser();
             $this->customerFavoriteProductRepository->addFavorite($Customer, $Product);
-            /** @var Session $session */
-            $session = $this->session;
-            $session->getFlashBag()->set('product_detail.just_added_favorite', (string)$Product->getId());
 
             $event = new EventArgs(
                 [
@@ -295,9 +292,6 @@ class ProductController extends AbstractController
             // 非会員の場合、ログイン画面を表示
             //  ログイン後の画面遷移先を設定
             $this->setLoginTargetPath($this->generateUrl('product_add_favorite', ['id' => $Product->getId()], UrlGeneratorInterface::ABSOLUTE_URL));
-            /** @var Session $session */
-            $session = $this->session;
-            $session->getFlashBag()->set('eccube.add.favorite', "true");
 
             $event = new EventArgs(
                 [
