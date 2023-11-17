@@ -24,6 +24,11 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 class CustomerAddressType extends AbstractType
 {
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array<string, mixed> $options
+     * @return void
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         // 会員住所とお届け先住所をマージして選択肢を作成
@@ -52,6 +57,11 @@ class CustomerAddressType extends AbstractType
         ]);
     }
 
+    /**
+     * @param OptionsResolver $resolver
+     *
+     * @return void
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(['customer' => null, 'shipping' => null]);

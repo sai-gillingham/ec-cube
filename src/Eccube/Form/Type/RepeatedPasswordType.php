@@ -44,6 +44,10 @@ class RepeatedPasswordType extends AbstractType
 
     /**
      * {@inheritdoc}
+     *
+     * @param FormBuilderInterface $builder
+     *
+     * @return void
      */
     public function configureOptions(OptionsResolver $resolver)
     {

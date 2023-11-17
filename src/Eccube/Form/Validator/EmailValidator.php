@@ -30,6 +30,8 @@ class EmailValidator extends ConstraintValidator
 {
     /**
      * {@inheritdoc}
+     *
+     * @return void
      */
     public function validate($value, Constraint $constraint)
     {
