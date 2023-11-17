@@ -15,12 +15,17 @@ namespace Eccube\Exception;
 
 class PluginApiException extends \Exception
 {
+    /**
+     * @var mixed
+     */
     private $curlInfo;
 
     /**
      * PluginApiException constructor.
      *
-     * @param $curlInfo
+     * @param mixed $curlInfo
+     *
+     * @return void
      */
     public function __construct($curlInfo)
     {
@@ -28,6 +33,10 @@ class PluginApiException extends \Exception
         $this->curlInfo = $curlInfo;
     }
 
+    /**
+     * @param mixed $info
+     * @return string
+     */
     private static function getResponseErrorMessage($info)
     {
         if (!empty($info)) {

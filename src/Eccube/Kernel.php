@@ -110,6 +110,8 @@ class Kernel extends BaseKernel
      * {@inheritdoc}
      *
      * @see \Symfony\Component\HttpKernel\Kernel::boot()
+     *
+     * @return void
      */
     public function boot()
     {
@@ -144,6 +146,13 @@ class Kernel extends BaseKernel
         }
     }
 
+    /**
+     * @param ContainerBuilder $container
+     * @param LoaderInterface $loader
+     *
+     * @return void
+     * @throws \Exception
+     */
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader)
     {
         $confDir = $this->getProjectDir().'/app/config/eccube';
@@ -165,6 +174,12 @@ class Kernel extends BaseKernel
         $loader->load($dir.'/services_'.$this->environment.self::CONFIG_EXTS, 'glob');
     }
 
+    /**
+     * @param RouteCollectionBuilder $routes
+     *
+     * @return void
+     * @throws \Symfony\Component\Config\Exception\LoaderLoadException
+     */
     protected function configureRoutes(RouteCollectionBuilder $routes)
     {
         $container = $this->getContainer();
@@ -206,6 +221,11 @@ class Kernel extends BaseKernel
         }
     }
 
+    /**
+     * @param ContainerBuilder $container
+     *
+     * @return void
+     */
     protected function build(ContainerBuilder $container)
     {
         $this->addEntityExtensionPass($container);
@@ -264,6 +284,11 @@ class Kernel extends BaseKernel
         $container->addCompilerPass(new PurchaseFlowPass());
     }
 
+    /**
+     * @param ContainerBuilder $container
+     *
+     * @return void
+     */
     protected function addEntityExtensionPass(ContainerBuilder $container)
     {
         $projectDir = $container->getParameter('kernel.project_dir');
@@ -305,6 +330,9 @@ class Kernel extends BaseKernel
         }
     }
 
+    /**
+     * @return void
+     */
     protected function loadEntityProxies()
     {
         // see https://github.com/EC-CUBE/ec-cube/issues/4727

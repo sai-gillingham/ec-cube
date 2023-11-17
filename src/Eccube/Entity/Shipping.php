@@ -40,6 +40,9 @@ if (!class_exists('\Eccube\Entity\Shipping')) {
          */
         public const SHIPPING_MAIL_SENT = 2;
 
+        /**
+         * @return string
+         */
         public function getShippingMultipleDefaultName()
         {
             return $this->getName01().' '.$this->getPref()->getName().' '.$this->getAddr01().' '.$this->getAddr02();

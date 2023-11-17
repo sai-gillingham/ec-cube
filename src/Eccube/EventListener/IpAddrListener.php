@@ -38,6 +38,10 @@ class IpAddrListener implements EventSubscriberInterface
         $this->requestContext = $requestContext;
     }
 
+    /**
+     * @param RequestEvent $event
+     * @return void
+     */
     public function onKernelRequest(RequestEvent $event)
     {
         if (!$event->isMainRequest()) {
@@ -77,6 +81,11 @@ class IpAddrListener implements EventSubscriberInterface
         }
     }
 
+    /**
+     * @param mixed $hostList
+     * @param string|null $clientIp
+     * @return bool
+     */
     private function isClientIpInList($hostList, $clientIp)
     {
         log_debug('Host List: '. implode(',', $hostList));
@@ -89,6 +98,9 @@ class IpAddrListener implements EventSubscriberInterface
         return true;
     }
 
+    /**
+     * @return array<string,mixed>
+     */
     public static function getSubscribedEvents()
     {
         return [
