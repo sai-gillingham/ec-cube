@@ -200,6 +200,9 @@ if (!class_exists('\Eccube\Entity\CartItem')) {
             return false;
         }
 
+        /**
+         * @return Master\OrderItemType
+         */
         public function getOrderItemType()
         {
             // TODO OrderItemType::PRODUCT
@@ -254,6 +257,8 @@ if (!class_exists('\Eccube\Entity\CartItem')) {
 
         /**
          * @param Cart $Cart
+         *
+         * @return $this
          */
         public function setCart(Cart $Cart)
         {

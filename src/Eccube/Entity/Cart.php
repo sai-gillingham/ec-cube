@@ -271,6 +271,10 @@ if (!class_exists('\Eccube\Entity\Cart')) {
 
         /**
          * Alias of setTotalPrice.
+         *
+         * @param float|int|string $total
+         *
+         * @return Cart
          */
         public function setTotal($total)
         {
@@ -300,6 +304,8 @@ if (!class_exists('\Eccube\Entity\Cart')) {
 
         /**
          * @param ItemInterface $item
+         *
+         * @return void
          */
         public function addItem(ItemInterface $item)
         {
@@ -310,6 +316,8 @@ if (!class_exists('\Eccube\Entity\Cart')) {
 
         /**
          * @param ItemInterface $item
+         *
+         * @return void
          */
         public function removeItem(ItemInterface $item)
         {
@@ -330,6 +338,10 @@ if (!class_exists('\Eccube\Entity\Cart')) {
 
         /**
          * {@inheritdoc}
+         *
+         * @param float|int|string $total
+         *
+         * @return Cart
          */
         public function setDeliveryFeeTotal($total)
         {
@@ -356,6 +368,8 @@ if (!class_exists('\Eccube\Entity\Cart')) {
 
         /**
          * @param Customer|null $Customer
+         *
+         * @return Cart
          */
         public function setCustomer(Customer $Customer = null)
         {
@@ -438,6 +452,10 @@ if (!class_exists('\Eccube\Entity\Cart')) {
 
         /**
          * {@inheritdoc}
+         *
+         * @param int|float|string $total
+         *
+         * @return void
          */
         public function setDiscount($total)
         {
@@ -446,6 +464,10 @@ if (!class_exists('\Eccube\Entity\Cart')) {
 
         /**
          * {@inheritdoc}
+         *
+         * @param int|float|string $total
+         *
+         * @return void
          */
         public function setCharge($total)
         {
@@ -454,6 +476,10 @@ if (!class_exists('\Eccube\Entity\Cart')) {
 
         /**
          * {@inheritdoc}
+         *
+         * @param int|float|string $total
+         *
+         * @return void
          *
          * @deprecated
          */

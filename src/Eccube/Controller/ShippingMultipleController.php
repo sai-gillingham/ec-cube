@@ -113,6 +113,10 @@ class ShippingMultipleController extends AbstractShoppingController
      *
      * @Route("/shopping/shipping_multiple", name="shopping_shipping_multiple", methods={"GET", "POST"})
      * @Template("Shopping/shipping_multiple.twig")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|array<string,mixed>
      */
     public function index(Request $request)
     {
@@ -385,6 +389,10 @@ class ShippingMultipleController extends AbstractShoppingController
      *
      * @Route("/shopping/shipping_multiple_edit", name="shopping_shipping_multiple_edit", methods={"GET", "POST"})
      * @Template("Shopping/shipping_multiple_edit.twig")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|array<string,mixed>
      */
     public function shippingMultipleEdit(Request $request)
     {

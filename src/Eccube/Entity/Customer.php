@@ -120,6 +120,8 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         /**
          * @Assert\NotBlank()
          * @Assert\Length(max=4096)
+         *
+         * @var string|null
          */
         private $plain_password;
 
@@ -327,11 +329,18 @@ if (!class_exists('\Eccube\Entity\Customer')) {
 
         /**
          * {@inheritdoc}
+         *
+         * @return void
          */
         public function eraseCredentials()
         {
         }
 
+        /**
+         * @param ClassMetadata $metadata
+         *
+         * @return void
+         */
         // TODO: できればFormTypeで行いたい
         public static function loadValidatorMetadata(ClassMetadata $metadata)
         {

@@ -28,18 +28,57 @@ if (!class_exists('\Eccube\Entity\Product')) {
      */
     class Product extends \Eccube\Entity\AbstractEntity
     {
+        /**
+         * @var bool
+         */
         private $_calc = false;
+        /**
+         * @var array<mixed>
+         */
         private $stockFinds = [];
+        /**
+         * @var array<mixed>
+         */
         private $stocks = [];
+        /**
+         * @var array<mixed>
+         */
         private $stockUnlimiteds = [];
+        /**
+         * @var array<mixed>
+         */
         private $price01 = [];
+        /**
+         * @var array<mixed>
+         */
         private $price02 = [];
+        /**
+         * @var array<mixed>
+         */
         private $price01IncTaxs = [];
+        /**
+         * @var array<mixed>
+         */
         private $price02IncTaxs = [];
+        /**
+         * @var array<mixed>
+         */
         private $codes = [];
+        /**
+         * @var array<mixed>
+         */
         private $classCategories1 = [];
+        /**
+         * @var array<mixed>
+         */
         private $classCategories2 = [];
+        /**
+         * @var string
+         */
         private $className1;
+        /**
+         * @var string
+         */
         private $className2;
 
         /**
@@ -50,6 +89,9 @@ if (!class_exists('\Eccube\Entity\Product')) {
             return (string) $this->getName();
         }
 
+        /**
+         * @return void
+         */
         public function _calc()
         {
             if (!$this->_calc) {
@@ -158,7 +200,7 @@ if (!class_exists('\Eccube\Entity\Product')) {
         /**
          * Get getClassCategories1
          *
-         * @return array
+         * @return array<mixed>
          */
         public function getClassCategories1()
         {
@@ -167,6 +209,9 @@ if (!class_exists('\Eccube\Entity\Product')) {
             return $this->classCategories1;
         }
 
+        /**
+         * @return array<mixed>
+         */
         public function getClassCategories1AsFlip()
         {
             return array_flip($this->getClassCategories1());
@@ -175,7 +220,9 @@ if (!class_exists('\Eccube\Entity\Product')) {
         /**
          * Get getClassCategories2
          *
-         * @return array
+         * @param string $class_category1
+         *
+         * @return array<mixed>
          */
         public function getClassCategories2($class_category1)
         {
@@ -184,6 +231,10 @@ if (!class_exists('\Eccube\Entity\Product')) {
             return isset($this->classCategories2[$class_category1]) ? $this->classCategories2[$class_category1] : [];
         }
 
+        /**
+         * @param string $class_category1
+         * @return array<mixed>
+         */
         public function getClassCategories2AsFlip($class_category1)
         {
             return array_flip($this->getClassCategories2($class_category1));
@@ -413,6 +464,9 @@ if (!class_exists('\Eccube\Entity\Product')) {
             return count($codes) ? max($codes) : null;
         }
 
+        /**
+         * @return mixed|null
+         */
         public function getMainListImage()
         {
             $ProductImages = $this->getProductImage();
@@ -420,6 +474,9 @@ if (!class_exists('\Eccube\Entity\Product')) {
             return $ProductImages->isEmpty() ? null : $ProductImages[0];
         }
 
+        /**
+         * @return mixed|null
+         */
         public function getMainFileName()
         {
             if (count($this->ProductImage) > 0) {
@@ -429,6 +486,9 @@ if (!class_exists('\Eccube\Entity\Product')) {
             }
         }
 
+        /**
+         * @return bool
+         */
         public function hasProductClass()
         {
             foreach ($this->ProductClasses as $ProductClass) {
@@ -583,6 +643,9 @@ if (!class_exists('\Eccube\Entity\Product')) {
             $this->id = null;
         }
 
+        /**
+         * @return Product
+         */
         public function copy()
         {
             // コピー対象外

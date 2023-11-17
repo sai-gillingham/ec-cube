@@ -97,6 +97,11 @@ class MypageController extends AbstractController
      *
      * @Route("/mypage/login", name="mypage_login", methods={"GET", "POST"})
      * @Template("Mypage/login.twig")
+     *
+     * @param Request $request
+     * @param AuthenticationUtils $utils
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|array<string,mixed>
      */
     public function login(Request $request, AuthenticationUtils $utils)
     {
@@ -141,6 +146,11 @@ class MypageController extends AbstractController
      *
      * @Route("/mypage/", name="mypage", methods={"GET"})
      * @Template("Mypage/index.twig")
+     *
+     * @param Request $request
+     * @param PaginatorInterface $paginator
+     *
+     * @return array<string,mixed>
      */
     public function index(Request $request, PaginatorInterface $paginator)
     {
@@ -180,6 +190,11 @@ class MypageController extends AbstractController
      *
      * @Route("/mypage/history/{order_no}", name="mypage_history", methods={"GET"})
      * @Template("Mypage/history.twig")
+     *
+     * @param Request $request
+     * @param string|int $order_no
+     *
+     * @return array<string,mixed>
      */
     public function history(Request $request, $order_no)
     {
@@ -225,6 +240,12 @@ class MypageController extends AbstractController
      * 再購入を行う.
      *
      * @Route("/mypage/order/{order_no}", name="mypage_order", methods={"PUT"})
+     *
+     * @param Request $request
+     * @param int|string $order_no
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @throws NotFoundHttpException
      */
     public function order(Request $request, $order_no)
     {
@@ -315,6 +336,12 @@ class MypageController extends AbstractController
      *
      * @Route("/mypage/favorite", name="mypage_favorite", methods={"GET"})
      * @Template("Mypage/favorite.twig")
+     *
+     * @param Request $request
+     * @param PaginatorInterface $paginator
+     *
+     * @return array<string,mixed>
+     * @throws NotFoundHttpException
      */
     public function favorite(Request $request, PaginatorInterface $paginator)
     {
@@ -352,6 +379,12 @@ class MypageController extends AbstractController
      * お気に入り商品を削除する.
      *
      * @Route("/mypage/favorite/{id}/delete", name="mypage_favorite_delete", methods={"DELETE"}, requirements={"id" = "\d+"})
+     *
+     * @param Request $request
+     * @param Product $Product
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @throws BadRequestHttpException
      */
     public function delete(Request $request, Product $Product)
     {
