@@ -13,6 +13,8 @@
 
 namespace Eccube\Form\Type\Master;
 
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Eccube\Entity\Master\OrderStatus;
 use Eccube\Form\Type\MasterType;
 use Eccube\Repository\OrderRepository;
@@ -43,9 +45,11 @@ class OrderStatusType extends AbstractType
      *
      * @param FormView $view
      * @param FormInterface $form
-     * @param array<mixed> $options
+     * @param array<string, mixed> $options
      *
      * @return void
+     * @throws NoResultException
+     * @throws NonUniqueResultException
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
@@ -80,6 +84,8 @@ class OrderStatusType extends AbstractType
 
     /**
      * {@inheritdoc}
+     *
+     * @return string
      */
     public function getBlockPrefix()
     {
@@ -88,6 +94,8 @@ class OrderStatusType extends AbstractType
 
     /**
      * {@inheritdoc}
+     *
+     * @return string
      */
     public function getParent()
     {

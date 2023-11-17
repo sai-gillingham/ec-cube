@@ -44,7 +44,7 @@ class NameType extends AbstractType
      * {@inheritdoc}
      *
      * @param FormBuilderInterface $builder
-     * @param array<mixed> $options
+     * @param array<string, mixed> $options
      *
      * @return void
      */
@@ -89,7 +89,7 @@ class NameType extends AbstractType
      *
      * @param FormView $view
      * @param FormInterface $form
-     * @param array<mixed> $options
+     * @param array<string, mixed> $options
      *
      * @return void
      */

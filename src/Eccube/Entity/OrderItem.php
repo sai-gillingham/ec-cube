@@ -495,7 +495,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Set quantity.
          *
-         * @param float|int|string $quantity
+         * @param float|int|string|int $quantity
          *
          * @return OrderItem
          */
@@ -525,7 +525,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         }
 
         /**
-         * @param float|int|string $tax
+         * @param float|int|string|float $tax
          *
          * @return $this
          */
@@ -539,7 +539,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         /**
          * Set taxRate.
          *
-         * @param float|int|string $taxRate
+         * @param float|int|string|int $taxRate
          *
          * @return OrderItem
          */

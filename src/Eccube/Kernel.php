@@ -64,11 +64,17 @@ class Kernel extends BaseKernel
         $this->loadEntityProxies();
     }
 
+    /**
+     * @return string
+     */
     public function getCacheDir()
     {
         return $this->getProjectDir().'/var/cache/'.$this->environment;
     }
 
+    /**
+     * @return string
+     */
     public function getLogDir()
     {
         return $this->getProjectDir().'/var/log';

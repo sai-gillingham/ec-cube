@@ -157,6 +157,7 @@ class MypageController extends AbstractController
         /** @var Customer $Customer */
         $Customer = $this->getUser();
 
+
         // 購入処理中/決済処理中ステータスの受注を非表示にする.
         $this->entityManager
             ->getFilters()

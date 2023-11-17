@@ -74,8 +74,9 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
     }
 
     /**
-     * @param ItemHolderInterface $itemHolder
-     * @param PurchaseContext $context
+     * @param ItemHolderInterface $itemHolder カート or 注文
+     * @param PurchaseContext $context 購入フローのコンテキスト
+     * @return void
      *
      * @throws \Doctrine\ORM\NoResultException
      */
@@ -87,6 +88,10 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
         }
     }
 
+    /**
+     * @param ItemHolderInterface $itemHolder
+     * @return void
+     */
     private function removeDeliveryFeeItem(ItemHolderInterface $itemHolder)
     {
         if ($itemHolder instanceof Order) {
@@ -104,6 +109,7 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
 
     /**
      * @param ItemHolderInterface $itemHolder
+     * @return void
      *
      * @throws \Doctrine\ORM\NoResultException
      */

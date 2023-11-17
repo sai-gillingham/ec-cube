@@ -1637,7 +1637,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
          *
          * @return \Eccube\Entity\Customer|null
          */
-        public function getCustomer()
+        public function getCustomer(): ?Customer
         {
             return $this->Customer;
         }

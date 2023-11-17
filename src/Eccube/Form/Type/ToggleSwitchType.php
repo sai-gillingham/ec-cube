@@ -22,11 +22,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class ToggleSwitchType extends AbstractType
 {
     /**
-     * {@inheritDoc}
-     *
      * @param FormView $view
      * @param FormInterface $form
-     * @param array $options
+     * @param array<string, mixed> $options
      *
      * @return void
      */
@@ -52,6 +50,9 @@ class ToggleSwitchType extends AbstractType
         ]);
     }
 
+    /**
+     * @return string
+     */
     public function getParent()
     {
         return CheckboxType::class;

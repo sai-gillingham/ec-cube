@@ -43,6 +43,8 @@ class MasterType extends AbstractType
 
     /**
      * {@inheritdoc}
+     *
+     * @return string
      */
     public function getBlockPrefix()
     {
@@ -51,6 +53,8 @@ class MasterType extends AbstractType
 
     /**
      * {@inheritdoc}
+     *
+     * @return string
      */
     public function getParent()
     {

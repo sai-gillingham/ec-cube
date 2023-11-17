@@ -28,9 +28,8 @@ class SessionProcessor
     }
 
     /**
-     * @param array<string[]|mixed> $records
-     *
-     * @return array<string[]|mixed>
+     * @param array<string, array<string, mixed>> $records
+     * @return array<string, array<string, mixed>>
      */
     public function __invoke(array $records)
     {
