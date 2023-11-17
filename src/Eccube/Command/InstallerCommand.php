@@ -55,62 +55,62 @@ class InstallerCommand extends Command
         /* env更新処理無名クラス */
         $this->envFileUpdater = new class() {
             /**
-             * @var array<mixed>|false|string $appEnv
+             * @var array<mixed>|false|string
              */
             public $appEnv;
 
             /**
-             * @var array<mixed>|false|string $appDebug
+             * @var array<mixed>|false|string
              */
             public $appDebug;
 
             /**
-             * @var bool|float|int|null|string $databaseUrl
+             * @var bool|float|int|null|string
              */
             public $databaseUrl;
 
             /**
-             * @var false|mixed|string $serverVersion
+             * @var false|mixed|string
              */
             public $serverVersion;
 
             /**
-             * @var string $databaseCharset
+             * @var string
              */
             public $databaseCharset;
 
             /**
-             * @var null|string $mailerDsn
+             * @var null|string
              */
             public $mailerDsn;
 
             /**
-             * @var string|null $authMagic
+             * @var string|null
              */
             public $authMagic;
 
             /**
-             * @var string|null $adminRoute
+             * @var string|null
              */
             public $adminRoute;
 
             /**
-             * @var string|null $templateCode
+             * @var string|null
              */
             public $templateCode;
 
             /**
-             * @var string|null $locale
+             * @var string|null
              */
             public $locale;
 
             /**
-             * @var string|null $trustedHosts
+             * @var string|null
              */
             public $trustedHosts;
 
             /**
-             * @var string|null $envDir
+             * @var string|null
              */
             public $envDir;
 

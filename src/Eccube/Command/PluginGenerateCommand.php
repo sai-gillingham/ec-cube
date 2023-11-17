@@ -142,7 +142,7 @@ class PluginGenerateCommand extends Command
     /**
      * @param mixed $code
      *
-     * @return mixed
+     * @return string
      */
     public function validateCode($code)
     {
@@ -165,7 +165,7 @@ class PluginGenerateCommand extends Command
     }
 
     /**
-     * @param mixed $version
+     * @param string $version
      *
      * @return mixed
      */
@@ -201,7 +201,7 @@ class PluginGenerateCommand extends Command
 
     /**
      * @param string $pluginDir
-     * @param mixed $name
+     * @param string $name
      * @param mixed $code
      * @param mixed $version
      *
@@ -282,7 +282,7 @@ jobs:
 
     /**
      * @param string $pluginDir
-     * @param mixed $code
+     * @param string $code
      *
      * @return void
      */
@@ -312,7 +312,7 @@ EOL;
 
     /**
      * @param string $pluginDir
-     * @param mixed $code
+     * @param string $code
      *
      * @return void
      */
@@ -342,7 +342,7 @@ EOL;
 
     /**
      * @param string $pluginDir
-     * @param mixed $code
+     * @param string $code
      *
      * @return void
      */
@@ -372,7 +372,7 @@ EOL;
 
     /**
      * @param string $pluginDir
-     * @param mixed $code
+     * @param string $code
      *
      * @return void
      */
