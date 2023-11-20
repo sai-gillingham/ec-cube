@@ -236,7 +236,7 @@ class CartService
     }
 
     /**
-     * @param CartItem[] $cartItems
+     * @param CartItem[]|\Doctrine\Common\Collections\Collection<int,CartItem> $cartItems
      *
      * @return CartItem[]
      */

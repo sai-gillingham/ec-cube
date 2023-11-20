@@ -29,6 +29,8 @@ class Template extends \Twig\Template
      * {@inheritdoc}
      * @param array<string, AppVariable|BaseInfo|EccubeConfig|TraceableEventDispatcher|Layout|Page|string|boolean> $context
      * @param array<string, array<int, string|object>>  $blocks
+     *
+     * @return void
      * @throws \Twig\Error\LoaderError
      * @throws \Twig\Error\SyntaxError
      */
@@ -61,7 +63,7 @@ class Template extends \Twig\Template
     }
 
     /**
-     * @return array
+     * @return array<empty>
      */
     public function getDebugInfo()
     {
@@ -69,6 +71,11 @@ class Template extends \Twig\Template
         return [];
     }
 
+    /**
+     * @param array<mixed> $context
+     * @param array<mixed> $blocks
+     * @return void
+     */
     protected function doDisplay(array $context, array $blocks = [])
     {
         // Templateのキャッシュ作成時に動的に作成されるメソッド

@@ -19,13 +19,6 @@ use Eccube\Entity\AbstractEntity;
 /**
  * ECCUBE AbstractRepository
  *
- * @method AbstractEntity|null find($id, $lockMode = null, $lockVersion = null)
- * @method AbstractEntity|null findOneBy(array $criteria, array $orderBy = null)
- * @method AbstractEntity[]    findAll()
- *
- * @template T of AbstractEntity
- *
- * @extends ServiceEntityRepository<T>
  */
 abstract class AbstractRepository extends ServiceEntityRepository
 {

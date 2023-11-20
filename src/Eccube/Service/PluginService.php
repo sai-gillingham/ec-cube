@@ -859,7 +859,7 @@ class PluginService
      * Todo: need define dependency plugin mechanism
      *
      * @param array<string, string|int>|Plugin $plugin format as plugin from api
-     * @return array<int, string>
+     * @return array<mixed>
      *
      */
     public function getPluginRequired($plugin)

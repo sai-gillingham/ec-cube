@@ -210,7 +210,7 @@ if (!class_exists('\Eccube\Entity\Cart')) {
         /**
          * カートの中に出荷データがないので、空のコレクションを返します。
          *
-         * @return ArrayCollection
+         * @return ArrayCollection<empty>
          */
         public function getShippings()
         {
@@ -238,7 +238,7 @@ if (!class_exists('\Eccube\Entity\Cart')) {
         /**
          * Alias of getCartItems()
          *
-         * @return ItemCollection<int,CartItem>
+         * @return ItemCollection<int,\Eccube\Entity\ItemInterface>
          */
         public function getItems()
         {
@@ -511,7 +511,7 @@ if (!class_exists('\Eccube\Entity\Cart')) {
         /**
          * {@inheritdoc}
          *
-         * @return ArrayCollection<\Eccube\Entity\OrderItem>
+         * @return ArrayCollection<empty>
          */
         public function getProductOrderItems()
         {

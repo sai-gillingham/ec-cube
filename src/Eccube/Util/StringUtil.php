@@ -282,6 +282,7 @@ class StringUtil
 
     /**
      * @param mixed $value
+     * @param bool $greedy
      *
      * @return bool
      */

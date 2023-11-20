@@ -25,6 +25,9 @@ use Twig\TwigFunction;
 
 class TwigIncludeExtension extends AbstractExtension
 {
+    /**
+     * @var \Twig\Environment
+     */
     protected $twig;
 
     public function __construct(\Twig\Environment $twig)

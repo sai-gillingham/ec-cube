@@ -353,9 +353,9 @@ class PurchaseFlow
      */
     protected function calculateSubTotal(ItemHolderInterface $itemHolder)
     {
-        $total = $itemHolder->getItems()
-            ->getProductClasses()
-            ->reduce(function ($sum, ItemInterface $item) {
+        /** @var  \Eccube\Service\PurchaseFlow\ItemCollection $ProductClasses */
+        $ProductClasses = $itemHolder->getItems()->getProductClasses();
+        $total = $ProductClasses->reduce(function ($sum, ItemInterface $item) {
                 $sum += $item->getPriceIncTax() * $item->getQuantity();
 
                 return $sum;
@@ -373,9 +373,9 @@ class PurchaseFlow
      */
     protected function calculateDeliveryFeeTotal(ItemHolderInterface $itemHolder)
     {
-        $total = $itemHolder->getItems()
-            ->getDeliveryFees()
-            ->reduce(function ($sum, ItemInterface $item) {
+        /** @var  \Eccube\Service\PurchaseFlow\ItemCollection $ProductClasses */
+        $ProductClasses = $itemHolder->getItems()->getProductClasses();
+        $total = $ProductClasses->reduce(function ($sum, ItemInterface $item) {
                 $sum += $item->getPriceIncTax() * $item->getQuantity();
 
                 return $sum;
@@ -389,9 +389,9 @@ class PurchaseFlow
      */
     protected function calculateDiscount(ItemHolderInterface $itemHolder)
     {
-        $total = $itemHolder->getItems()
-            ->getDiscounts()
-            ->reduce(function ($sum, ItemInterface $item) {
+        /** @var  \Eccube\Service\PurchaseFlow\ItemCollection $ProductClasses */
+        $ProductClasses = $itemHolder->getItems()->getProductClasses();
+        $total = $ProductClasses->reduce(function ($sum, ItemInterface $item) {
                 $sum += $item->getPriceIncTax() * $item->getQuantity();
 
                 return $sum;
@@ -406,9 +406,9 @@ class PurchaseFlow
      */
     protected function calculateCharge(ItemHolderInterface $itemHolder)
     {
-        $total = $itemHolder->getItems()
-            ->getCharges()
-            ->reduce(function ($sum, ItemInterface $item) {
+        /** @var  \Eccube\Service\PurchaseFlow\ItemCollection $ProductClasses */
+        $ProductClasses = $itemHolder->getItems()->getProductClasses();
+        $total = $ProductClasses->reduce(function ($sum, ItemInterface $item) {
                 $sum += $item->getPriceIncTax() * $item->getQuantity();
 
                 return $sum;

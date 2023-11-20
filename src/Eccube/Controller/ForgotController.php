@@ -74,7 +74,7 @@ class ForgotController extends AbstractController
      * パスワードリマインダ.
      *
      * @Route("/forgot", name="forgot", methods={"GET", "POST"})
-     * @Template("Forgot/index.twig"
+     * @Template("Forgot/index.twig")
      *
      * @param Request $request
      *

@@ -742,7 +742,7 @@ if (!class_exists('\Eccube\Entity\Shipping')) {
         /**
          * Get orderItems.
          *
-         * @return \Doctrine\Common\Collections\Collection<int,OrderItem>
+         * @return ItemCollection
          */
         public function getOrderItems()
         {

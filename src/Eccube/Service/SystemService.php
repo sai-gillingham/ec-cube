@@ -206,6 +206,8 @@ class SystemService implements EventSubscriberInterface
      * KernelEvents::TERMINATE で解除のEventを設定し、メンテナンスモードを解除する
      *
      * @param string $mode
+     *
+     * @return void
      */
     public function disableMaintenance($mode = self::AUTO_MAINTENANCE)
     {
@@ -213,6 +215,11 @@ class SystemService implements EventSubscriberInterface
         $this->maintenanceMode = $mode;
     }
 
+    /**
+     * @param string $mode
+     * @param bool $force
+     * @return void
+     */
     public function disableMaintenanceNow($mode = self::AUTO_MAINTENANCE, bool $force = false): void
     {
         if (!$this->isMaintenanceMode()) {
