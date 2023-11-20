@@ -47,6 +47,7 @@ use Eccube\Stream\Filter\SjisToUtf8EncodingFilter;
  * @template-covariant TValue
  *
  * @template-implements \Iterator<TKey, TValue>
+ * @template-implements \SeekableIterator<Tkey,TValue>
  */
 class CsvImportService implements \Iterator, \SeekableIterator, \Countable
 {
@@ -314,7 +315,7 @@ class CsvImportService implements \Iterator, \SeekableIterator, \Countable
     /**
      * Get rows that have an invalid number of columns
      *
-     * @return array
+     * @return array<mixed>
      */
     public function getErrors()
     {
@@ -425,7 +426,7 @@ class CsvImportService implements \Iterator, \SeekableIterator, \Countable
      *
      * @param array<int, string> $line
      *
-     * @return array<int, string|array>
+     * @return array<mixed>
      */
     protected function mergeDuplicates(array $line)
     {

@@ -85,6 +85,10 @@ class BlockController extends AbstractController
      * @Route("/%eccube_admin_route%/content/block/{id}/edit", requirements={"id" = "\d+"}, name="admin_content_block_edit", methods={"GET", "POST"})
      * @Template("@admin/Content/block_edit.twig")
      *
+     * @param Request $request
+     * @param Environment $twig
+     * @param Filesystem $fs
+     * @param CacheUtil $cacheUtil
      * @param int|null $id
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|array<string,mixed>

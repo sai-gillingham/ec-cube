@@ -15,7 +15,7 @@ use Eccube\DependencyInjection\Facade\LoggerFacade;
 
 /**
  * @param string $message
- * @param array<string, mixed> $context
+ * @param array<mixed> $context
  * @return void
  * @throws Exception
  */
@@ -27,7 +27,7 @@ function log_emergency($message, array $context = [])
 
 /**
  * @param string $message
- * @param array<string, mixed> $context
+ * @param array<mixed> $context
  * @return void
  * @throws Exception
  */
@@ -39,7 +39,7 @@ function log_alert($message, array $context = [])
 
 /**
  * @param string $message
- * @param array<string, mixed> $context
+ * @param array<mixed> $context
  * @return void
  * @throws Exception
  */
@@ -51,7 +51,7 @@ function log_critical($message, array $context = [])
 
 /**
  * @param string $message
- * @param array<string, mixed> $context
+ * @param array<mixed> $context
  * @return void
  * @throws Exception
  */
@@ -63,7 +63,7 @@ function log_error($message, array $context = [])
 
 /**
  * @param string $message
- * @param array<string, mixed> $context
+ * @param array<mixed> $context
  * @return void
  * @throws Exception
  */
@@ -75,7 +75,7 @@ function log_warning($message, array $context = [])
 
 /**
  * @param string $message
- * @param array<string, mixed> $context
+ * @param array<mixed> $context
  * @return void
  * @throws Exception
  */
@@ -87,7 +87,7 @@ function log_notice($message, array $context = [])
 
 /**
  * @param string $message
- * @param array<string, mixed> $context
+ * @param array<mixed> $context
  * @return void
  * @throws Exception
  */
@@ -99,7 +99,7 @@ function log_info($message, array $context = [])
 
 /**
  * @param string $message
- * @param array<string, mixed> $context
+ * @param array<mixed> $context
  * @return void
  * @throws Exception
  */

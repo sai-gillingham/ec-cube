@@ -15,7 +15,7 @@ use Eccube\DependencyInjection\Facade\TranslatorFacade;
 
 /**
  * @param string|int $id
- * @param array<string, string> $parameters
+ * @param array<string, mixed> $parameters
  * @param string|null $domain
  * @param string|null $locale
  * @return string
@@ -31,7 +31,7 @@ function trans($id, array $parameters = [], ?string $domain = null, ?string $loc
 /**
  * @param string|int $id
  * @param mixed $number - 不要引数
- * @param array $parameters
+ * @param array<mixed> $parameters
  * @param null $domain
  * @param null $locale
  *
