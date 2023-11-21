@@ -417,7 +417,7 @@ class DeliveryController extends AbstractController
      *
      * @param Payment[] $PaymentsData
      *
-     * @return array<mixed>
+     * @return array<int,array<string,float|null|string>>
      */
     private function getMergeRules(array $PaymentsData)
     {

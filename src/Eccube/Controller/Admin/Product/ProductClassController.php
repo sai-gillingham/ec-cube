@@ -299,7 +299,7 @@ class ProductClassController extends AbstractController
     /**
      * 商品規格の配列をマージする.
      *
-     * @param array|ProductClass[] $ProductClassesForMatrix
+     * @param array<int,ProductClass> $ProductClassesForMatrix
      * @param \Doctrine\Common\Collections\ArrayCollection<int,ProductClass> $ProductClasses
      *
      * @return array|ProductClass[]
@@ -429,7 +429,7 @@ class ProductClassController extends AbstractController
     /**
      * 商品規格登録フォームを生成する.
      *
-     * @param array|ProductClass[] $ProductClasses
+     * @param array<int,ProductClass> $ProductClasses
      * @param ClassName|null $ClassName1
      * @param ClassName|null $ClassName2
      * @param array<string,mixed> $options

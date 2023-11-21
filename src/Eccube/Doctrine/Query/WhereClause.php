@@ -35,7 +35,7 @@ class WhereClause
      * WhereClause constructor.
      *
      * @param Expr\Comparison|string $expr
-     * @param array<mixed> $params
+     * @param array<string,string>|string|null $params
      */
     private function __construct($expr, $params = null)
     {
@@ -45,8 +45,8 @@ class WhereClause
 
     /**
      * @param Expr\Comparison $expr
-     * @param mixed $x
-     * @param mixed $y
+     * @param string $x
+     * @param array<string,string>|string $y
      *
      * @return WhereClause
      */
@@ -66,9 +66,9 @@ class WhereClause
      *      WhereClause::eq('name', ':Name', 'hoge')
      *      WhereClause::eq('name', ':Name', ['Name' => 'hoge'])
      *
-     * @param mixed $x
-     * @param mixed $y
-     * @param mixed $param
+     * @param string|null $x
+     * @param string|null|array<string, string> $y
+     * @param string|null|array<string, string> $param
      *
      * @return WhereClause
      */
@@ -84,9 +84,9 @@ class WhereClause
      *      WhereClause::neq('name', ':Name', 'hoge')
      *      WhereClause::neq('name', ':Name', ['Name' => 'hoge'])
      *
-     * @param mixed $x
-     * @param mixed $y
-     * @param mixed $param
+     * @param string|null $x
+     * @param string|null|array<string, string> $y
+     * @param string|null|array<string, string> $param
      *
      * @return WhereClause
      */
@@ -101,7 +101,7 @@ class WhereClause
      * Example:
      *      WhereClause::isNull('name')
      *
-     * @param mixed $x
+     * @param string $x
      *
      * @return WhereClause
      */
@@ -116,7 +116,7 @@ class WhereClause
      * Example:
      *      WhereClause::isNotNull('name')
      *
-     * @param mixed $x
+     * @param string $x
      *
      * @return WhereClause
      */
@@ -132,9 +132,9 @@ class WhereClause
      *      WhereClause::like('name', ':Name', '%hoge')
      *      WhereClause::like('name', ':Name', ['Name' => '%hoge'])
      *
-     * @param mixed $x
-     * @param mixed $y
-     * @param mixed $param
+     * @param string $x
+     * @param string $y
+     * @param string|null|array<string, string> $param
      *
      * @return WhereClause
      */
@@ -150,9 +150,9 @@ class WhereClause
      *      WhereClause::notLike('name', ':Name', '%hoge')
      *      WhereClause::notLike('name', ':Name', ['Name' => '%hoge'])
      *
-     * @param mixed $x
-     * @param mixed $y
-     * @param mixed $param
+     * @param string $x
+     * @param string $y
+     * @param string|null|array<string, string> $param
      *
      * @return WhereClause
      */
@@ -168,9 +168,9 @@ class WhereClause
      *      WhereClause::in('name', ':Names', ['foo', 'bar'])
      *      WhereClause::in('name', ':Names', ['Names' => ['foo', 'bar']])
      *
-     * @param mixed $x
-     * @param mixed $y
-     * @param mixed $param
+     * @param string $x
+     * @param string $y
+     * @param array<int, string>|array<string, string> $param
      *
      * @return WhereClause
      */
@@ -180,7 +180,7 @@ class WhereClause
     }
 
     /**
-     * @param mixed $arrayOrMap
+     * @param array<int, string>|array<string, string> $arrayOrMap
      * @return bool
      */
     private static function isMap($arrayOrMap)
@@ -213,10 +213,10 @@ class WhereClause
      *      WhereClause::between('price', ':PriceMin', ':PriceMax', [1000, 2000])
      *      WhereClause::between('price', ':PriceMin', ':PriceMax', ['PriceMin' => 1000, 'PriceMax' => 2000])
      *
-     * @param mixed $var
-     * @param mixed $x
-     * @param mixed $y
-     * @param mixed $params
+     * @param string $var
+     * @param string $x
+     * @param string $y
+     * @param array<int, string>|array<string, string> $params
      *
      * @return WhereClause
      */
@@ -232,9 +232,9 @@ class WhereClause
      *      WhereClause::gt('price', ':Price', 1000)
      *      WhereClause::gt('price', ':Price', ['Price' => 1000])
      *
-     * @param mixed $x
-     * @param mixed $y
-     * @param mixed $param
+     * @param string $x
+     * @param string $y
+     * @param int|float|string|array<string, int|float|string> $param
      *
      * @return WhereClause
      */
@@ -250,9 +250,9 @@ class WhereClause
      *      WhereClause::gte('price', ':Price', 1000)
      *      WhereClause::gte('price', ':Price', ['Price' => 1000])
      *
-     * @param mixed $x
-     * @param mixed $y
-     * @param mixed $param
+     * @param string $x
+     * @param string $y
+     * @param int|float|string|array<string, int|float|string> $param
      *
      * @return WhereClause
      */
@@ -268,9 +268,9 @@ class WhereClause
      *      WhereClause::lt('price', ':Price', 1000)
      *      WhereClause::lt('price', ':Price', ['Price' => 1000])
      *
-     * @param mixed $x
-     * @param mixed $y
-     * @param mixed $param
+     * @param string $x
+     * @param string $y
+     * @param int|float|string|array<string, int|float|string> $param
      *
      * @return WhereClause
      */
@@ -286,9 +286,9 @@ class WhereClause
      *      WhereClause::lte('price', ':Price', 1000)
      *      WhereClause::lte('price', ':Price', ['Price' => 1000])
      *
-     * @param mixed $x
-     * @param mixed $y
-     * @param mixed $param
+     * @param string $x
+     * @param string $y
+     * @param int|float|string|array<string, int|float|string> $param
      *
      * @return WhereClause
      */

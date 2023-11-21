@@ -683,7 +683,7 @@ class EditController extends AbstractController
      *
      * @param Request $request
      *
-     * @return array<string,mixed>
+     * @return array<string, array<int, array<string, OrderItemType|TaxType|null>>>
      * @throws BadRequestHttpException
      */
     public function searchOrderItemType(Request $request)

@@ -154,6 +154,8 @@ class LayoutController extends AbstractController
      * @Route("/%eccube_admin_route%/content/layout/{id}/edit", requirements={"id" = "\d+"}, name="admin_content_layout_edit", methods={"GET", "POST"})
      * @Template("@admin/Content/layout.twig")
      *
+     * @param Request $request
+     * @param CacheUtil $cacheUtil
      * @param string|null $id
      * @param string|null $previewPageId
      *

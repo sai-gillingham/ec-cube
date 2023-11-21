@@ -890,7 +890,7 @@ class CsvImportController extends AbstractCsvImportController
      * 登録、更新時のエラー画面表示
      *
      * @param FormInterface $form
-     * @param array<mixed> $headers
+     * @param array<string, array<string, mixed>> $headers
      * @param bool $rollback
      *
      * @return \Symfony\Component\HttpFoundation\JsonResponse|array<string,mixed>
@@ -929,7 +929,7 @@ class CsvImportController extends AbstractCsvImportController
     /**
      * 商品画像の削除、登録
      *
-     * @param mixed $row
+     * @param array<string,string> $row
      * @param Product $Product
      * @param CsvImportService<int,mixed> $data
      * @param array<mixed> $headerByKey
@@ -982,7 +982,7 @@ class CsvImportController extends AbstractCsvImportController
     /**
      * 商品カテゴリの削除、登録
      *
-     * @param mixed $row
+     * @param array<string,string> $row
      * @param Product $Product
      * @param CsvImportService<int,mixed> $data
      * @param array<mixed> $headerByKey
@@ -1052,7 +1052,7 @@ class CsvImportController extends AbstractCsvImportController
     /**
      * タグの登録
      *
-     * @param array<mixed> $row
+     * @param array<string,string> $row
      * @param Product $Product
      * @param CsvImportService<int,mixed> $data
      * @param array<mixed> $headerByKey
@@ -1453,7 +1453,7 @@ class CsvImportController extends AbstractCsvImportController
     }
 
     /**
-     * @return array<int,mixed>
+     * @return array<int,string>
      */
     protected function getErrors()
     {

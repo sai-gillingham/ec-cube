@@ -25,6 +25,7 @@ class NavCompilerPass implements CompilerPassInterface
      * @param ContainerBuilder $container
      *
      * @return void
+     * @throws \InvalidArgumentException
      */
     public function process(ContainerBuilder $container)
     {
