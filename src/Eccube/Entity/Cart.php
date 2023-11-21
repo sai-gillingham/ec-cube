@@ -210,7 +210,7 @@ if (!class_exists('\Eccube\Entity\Cart')) {
         /**
          * カートの中に出荷データがないので、空のコレクションを返します。
          *
-         * @return ArrayCollection<empty>
+         * @return ArrayCollection<int, empty>
          */
         public function getShippings()
         {
@@ -511,7 +511,7 @@ if (!class_exists('\Eccube\Entity\Cart')) {
         /**
          * {@inheritdoc}
          *
-         * @return ArrayCollection<empty>
+         * @return ArrayCollection<int, empty>
          */
         public function getProductOrderItems()
         {

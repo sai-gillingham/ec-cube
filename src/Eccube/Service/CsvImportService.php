@@ -42,12 +42,12 @@ use Eccube\Stream\Filter\SjisToUtf8EncodingFilter;
  *
  * CSV reader
  *
- * @template TKey
+ * @template TKey of array-key
  *
  * @template-covariant TValue
  *
  * @template-implements \Iterator<TKey, TValue>
- * @template-implements \SeekableIterator<Tkey,TValue>
+ * @template-implements \SeekableIterator<TKey, TValue>
  */
 class CsvImportService implements \Iterator, \SeekableIterator, \Countable
 {

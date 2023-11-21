@@ -43,7 +43,7 @@ class InstallerCommand extends Command
      * @var string
      */
     protected $databaseUrl;
-
+    /** @var object */
     private $envFileUpdater;
 
     public function __construct(ContainerInterface $container)
