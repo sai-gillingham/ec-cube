@@ -56,8 +56,8 @@ interface ComposerServiceInterface
     /**
      * @param string $packageName
      * @param string|null $version
-     * @param string $callback
-     * @param null $typeFilter
+     * @param mixed $callback
+     * @param string|null $typeFilter
      * @param int $level
      * @return void
      */

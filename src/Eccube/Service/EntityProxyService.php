@@ -53,8 +53,8 @@ class EntityProxyService
     /**
      * EntityのProxyを生成します。
      *
-     * @param array<int, array<int, string>> $includesDirs Proxyに含めるTraitがあるディレクトリ一覧
-     * @param array<int, array<int, array<int, string>>> $excludeDirs Proxyから除外するTraitがあるディレクトリ一覧
+     * @param array<int, array<int, string>>|array<int,string> $includesDirs Proxyに含めるTraitがあるディレクトリ一覧
+     * @param array<int, array<int, array<int, string>>>|array<int,string> $excludeDirs Proxyから除外するTraitがあるディレクトリ一覧
      * @param string $outputDir 出力先
      * @param OutputInterface|null $output ログ出力
      *

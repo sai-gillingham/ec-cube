@@ -26,10 +26,11 @@ if (!class_exists('\Eccube\Entity\OrderPdf')) {
      */
     class OrderPdf extends AbstractEntity
     {
+        /** @var mixed */
         public $ids;
-
+        /** @var \DateTime|string */
         public $issue_date;
-
+        /** @var mixed */
         public $default;
 
         /**

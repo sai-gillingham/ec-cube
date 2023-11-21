@@ -96,6 +96,7 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
     {
         if ($itemHolder instanceof Order) {
             foreach ($itemHolder->getShippings() as $Shipping) {
+                /** @var \Eccube\Entity\OrderItem $item */
                 foreach ($Shipping->getOrderItems() as $item) {
                     if ($item->getProcessorName() == DeliveryFeePreprocessor::class) {
                         $Shipping->removeOrderItem($item);

@@ -92,7 +92,7 @@ class AddPointProcessor extends ItemHolderPostValidator
 
                 return $carry + $point;
             }, 0);
-
+        /** @var float|int $totalPoint */
         return $totalPoint < 0 ? 0 : $totalPoint;
     }
 

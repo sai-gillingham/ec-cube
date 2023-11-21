@@ -373,9 +373,9 @@ class PurchaseFlow
      */
     protected function calculateDeliveryFeeTotal(ItemHolderInterface $itemHolder)
     {
-        /** @var  \Eccube\Service\PurchaseFlow\ItemCollection $ProductClasses */
-        $ProductClasses = $itemHolder->getItems()->getProductClasses();
-        $total = $ProductClasses->reduce(function ($sum, ItemInterface $item) {
+        /** @var \Eccube\Service\PurchaseFlow\ItemCollection $DeliveryFees */
+        $DeliveryFees = $itemHolder->getItems()->getDeliveryFees();
+        $total = $DeliveryFees->reduce(function ($sum, ItemInterface $item) {
                 $sum += $item->getPriceIncTax() * $item->getQuantity();
 
                 return $sum;
@@ -389,9 +389,9 @@ class PurchaseFlow
      */
     protected function calculateDiscount(ItemHolderInterface $itemHolder)
     {
-        /** @var  \Eccube\Service\PurchaseFlow\ItemCollection $ProductClasses */
-        $ProductClasses = $itemHolder->getItems()->getProductClasses();
-        $total = $ProductClasses->reduce(function ($sum, ItemInterface $item) {
+        /** @var  \Eccube\Service\PurchaseFlow\ItemCollection $Discounts */
+        $Discounts = $itemHolder->getItems()->getDiscounts();
+        $total = $Discounts->reduce(function ($sum, ItemInterface $item) {
                 $sum += $item->getPriceIncTax() * $item->getQuantity();
 
                 return $sum;
@@ -406,9 +406,9 @@ class PurchaseFlow
      */
     protected function calculateCharge(ItemHolderInterface $itemHolder)
     {
-        /** @var  \Eccube\Service\PurchaseFlow\ItemCollection $ProductClasses */
-        $ProductClasses = $itemHolder->getItems()->getProductClasses();
-        $total = $ProductClasses->reduce(function ($sum, ItemInterface $item) {
+        /** @var  \Eccube\Service\PurchaseFlow\ItemCollection $Charges */
+        $Charges = $itemHolder->getItems()->getCharges();
+        $total = $Charges->reduce(function ($sum, ItemInterface $item) {
                 $sum += $item->getPriceIncTax() * $item->getQuantity();
 
                 return $sum;

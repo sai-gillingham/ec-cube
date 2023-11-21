@@ -752,7 +752,9 @@ class MailService
      */
     public function getShippingNotifyMailBody(Shipping $Shipping, Order $Order, $templateName = null, $is_html = false)
     {
-        $ShippingItems = array_filter($Shipping->getOrderItems()->toArray(), function (OrderItem $OrderItem) use ($Order) {
+        /** @var OrderItem[] $OrderItems */
+        $OrderItems = $Shipping->getOrderItems()->toArray();
+        $ShippingItems = array_filter($OrderItems, function (OrderItem $OrderItem) use ($Order) {
             return $OrderItem->getOrderId() === $Order->getId();
         });
 
@@ -780,7 +782,7 @@ class MailService
      * 会員情報変更時にメール通知
      *
      * @param Customer $Customer
-     * @param array{userAgent: string, ipAddress: string, preEmail: string|null} $userData
+     * @param array{userAgent: string, ipAddress: string, preEmail: string|null}|array{userAgent:string|null,ipAddress:string|null} $userData
      * @param string $eventName
      *
      * @return void

@@ -75,7 +75,7 @@ class PaymentChargePreprocessor implements ItemHolderPreprocessor
         if (!$itemHolder->getPayment() instanceof Payment || !$itemHolder->getPayment()->getId()) {
             return;
         }
-
+        /** @var \Eccube\Entity\OrderItem $item */
         foreach ($itemHolder->getItems() as $item) {
             if ($item->getProcessorName() == PaymentChargePreprocessor::class) {
                 $item->setPrice($itemHolder->getPayment()->getCharge());

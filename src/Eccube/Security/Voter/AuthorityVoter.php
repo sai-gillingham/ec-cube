@@ -50,7 +50,7 @@ class AuthorityVoter implements VoterInterface
     /**
      * @param TokenInterface $token
      * @param null|object $object
-     * @param array $attributes
+     * @param array<mixed> $attributes
      * @return int
      */
     public function vote(TokenInterface $token, $object, array $attributes)
