@@ -28,6 +28,7 @@ use Symfony\Component\Serializer\Serializer;
 /**
  * @MappedSuperclass
  *
+ * @implements \ArrayAccess<string|int, mixed>
  */
 abstract class AbstractEntity implements \ArrayAccess
 {

@@ -19,6 +19,7 @@ use Eccube\Entity\AbstractEntity;
 /**
  * ECCUBE AbstractRepository
  *
+ * @extends ServiceEntityRepository<object>
  */
 abstract class AbstractRepository extends ServiceEntityRepository
 {
