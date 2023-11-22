@@ -23,7 +23,7 @@ jobs:
       - name: Setup PHP
         uses: nanasess/setup-php@master
         with:
-          php-version: '7.4'
+          php-version: '8.2'
 
       - name: Install to Composer
         run: composer install --no-scripts --no-dev --no-interaction --optimize-autoloader
