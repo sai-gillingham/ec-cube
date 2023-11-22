@@ -241,6 +241,9 @@ if (!class_exists('\Eccube\Entity\CartItem')) {
             return $this->product_class_id;
         }
 
+        /**
+         * @return float|int|string
+         */
         public function getPriceIncTax()
         {
             // TODO ItemInterfaceに追加, Cart::priceは税込み金額が入っているので,フィールドを分ける必要がある

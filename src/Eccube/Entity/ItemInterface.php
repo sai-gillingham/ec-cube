@@ -68,7 +68,7 @@ interface ItemInterface
     public function getProductClass();
 
     /**
-     * @return mixed
+     * @return float|string|int|null
      */
     public function getPrice();
 

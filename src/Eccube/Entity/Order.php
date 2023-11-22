@@ -73,7 +73,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
          * 課税対象の明細の合計金額を返す.
          * 商品合計 + 送料 + 手数料 + 値引き(課税).
          *
-         * @return int
+         * @return int|float
          */
         public function getTaxableTotal()
         {
@@ -89,7 +89,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * 課税対象の明細の合計金額を、税率ごとに集計する.
          *
-         * @return array<mixed>
+         * @return array<int|string,int|float>
          */
         public function getTaxableTotalByTaxRate()
         {
@@ -159,7 +159,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * 課税対象の値引き明細を返す.
          *
-         * @return array<mixed>
+         * @return array<int, OrderItem>
          */
         public function getTaxableDiscountItems()
         {
@@ -185,7 +185,7 @@ if (!class_exists('\Eccube\Entity\Order')) {
         /**
          * 非課税・不課税の値引き明細を返す.
          *
-         * @return array<mixed>
+         * @return array<int,OrderItem>
          */
         public function getTaxFreeDiscountItems()
         {

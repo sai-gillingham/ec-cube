@@ -109,7 +109,7 @@ if (!class_exists('\Eccube\Entity\Category')) {
         }
 
         /**
-         * @return array<mixed>
+         * @return array<int,mixed>
          */
         public function getDescendants()
         {

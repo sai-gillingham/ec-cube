@@ -75,7 +75,7 @@ abstract class AbstractEntity implements \ArrayAccess
      * 引数の連想配列を元にプロパティを設定します.
      * DBから取り出した連想配列を, プロパティへ設定する際に使用します.
      *
-     * @param array<mixed> $arrProps プロパティの情報を格納した連想配列
+     * @param array<string,mixed> $arrProps プロパティの情報を格納した連想配列
      * @param \ReflectionClass<$this>|null $parentClass 親のクラス. 本メソッドの内部的に使用します.
      * @param string[] $excludeAttribute 除外したいフィールド名の配列
      *
@@ -114,7 +114,7 @@ abstract class AbstractEntity implements \ArrayAccess
      * @param \ReflectionClass<$this>|null  $parentClass parent class. Use internally of this method..
      * @param array|string[] $excludeAttribute Array of field names to exclusion.
      *
-     * @return array<mixed>
+     * @return array<string,mixed>
      */
     public function toArray(array $excludeAttribute = ['__initializer__', '__cloner__', '__isInitialized__'], \ReflectionClass $parentClass = null)
     {
@@ -159,7 +159,7 @@ abstract class AbstractEntity implements \ArrayAccess
      *
      * @param array|string[] $excludeAttribute Array of field names to exclusion.
      *
-     * @return array<mixed>
+     * @return array<string,mixed>
      */
     public function toNormalizedArray(array $excludeAttribute = ['__initializer__', '__cloner__', '__isInitialized__'])
     {
@@ -200,7 +200,7 @@ abstract class AbstractEntity implements \ArrayAccess
     /**
      * Convert to XML.
      *
-     * @param array|string[] $excludeAttribute Array of field names to exclusion.
+     * @param array<string,mixed> $excludeAttribute Array of field names to exclusion.
      *
      * @return string
      */
