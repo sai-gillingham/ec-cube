@@ -32,4 +32,4 @@ jobs:
       uses: ./.github/actions/composer
 
     - name: PHPStan
-      run: vendor/bin/phpstan analyze src/ --error-format=github
+      run: vendor/bin/phpstan analyze src/ --level 6 --error-format=github

@@ -140,7 +140,7 @@ class PluginGenerateCommand extends Command
     }
 
     /**
-     * @param mixed $code
+     * @param string|null $code
      *
      * @return string
      */
