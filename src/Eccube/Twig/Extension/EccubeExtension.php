@@ -136,8 +136,8 @@ class EccubeExtension extends AbstractExtension
     /**
      * Name of this extension
      *
-     * @param \DateTime|string|null $date
-     * @param mixed $value
+     * @param \DateTime|null $date
+     * @param string $value
      * @param string $format
      *
      *
@@ -174,7 +174,7 @@ class EccubeExtension extends AbstractExtension
     /**
      * Name of this extension
      *
-     * @param mixed $value
+     * @param string $value
      * @param int $length
      * @param string $end
      *
@@ -306,8 +306,8 @@ class EccubeExtension extends AbstractExtension
     /**
      * Display file extension icon
      *
-     * @param mixed $ext
-     * @param array<mixed> $attr
+     * @param string $ext
+     * @param array<string,string> $attr
      * @param bool $iconOnly アイコンのクラス名のみ返す場合はtrue
      *
      * @return string

@@ -34,7 +34,7 @@ class ProductClassMatrixType extends AbstractType
      * {@inheritDoc}
      *
      * @param FormBuilderInterface $builder
-     * @param array<mixed> $options
+     * @param array<string, mixed> $options
      * @return void
      */
     public function buildForm(FormBuilderInterface $builder, array $options)

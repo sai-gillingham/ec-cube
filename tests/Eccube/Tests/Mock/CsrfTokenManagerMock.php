@@ -26,7 +26,7 @@ class CsrfTokenManagerMock implements CsrfTokenManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function getToken($tokenId): \Symfony\Component\Security\Csrf\CsrfToken
+    public function getToken($tokenId): CsrfToken
     {
         return new CsrfToken($tokenId, null);
     }
@@ -34,7 +34,7 @@ class CsrfTokenManagerMock implements CsrfTokenManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function refreshToken($tokenId): \Symfony\Component\Security\Csrf\CsrfToken
+    public function refreshToken($tokenId): CsrfToken
     {
         return new CsrfToken($tokenId, null);
     }
