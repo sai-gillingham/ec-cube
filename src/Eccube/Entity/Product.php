@@ -33,43 +33,43 @@ if (!class_exists('\Eccube\Entity\Product')) {
          */
         private $_calc = false;
         /**
-         * @var array<mixed>
+         * @var array<int,bool>
          */
         private $stockFinds = [];
         /**
-         * @var array<mixed>
+         * @var array<int,float|int|string>
          */
         private $stocks = [];
         /**
-         * @var array<mixed>
+         * @var array<int,bool>
          */
         private $stockUnlimiteds = [];
         /**
-         * @var array<mixed>
+         * @var array<int, int|null|float|string>
          */
         private $price01 = [];
         /**
-         * @var array<mixed>
+         * @var array<int, int|null|float|string>
          */
         private $price02 = [];
         /**
-         * @var array<mixed>
+         * @var array<int, int|null|float|string>
          */
         private $price01IncTaxs = [];
         /**
-         * @var array<mixed>
+         * @var array<int, int|null|float|string>
          */
         private $price02IncTaxs = [];
         /**
-         * @var array<mixed>
+         * @var array<int, string|null>
          */
         private $codes = [];
         /**
-         * @var array<mixed>
+         * @var array<string|int, string|null>
          */
         private $classCategories1 = [];
         /**
-         * @var array<mixed>
+         * @var array<string|int, string|null>
          */
         private $classCategories2 = [];
         /**
@@ -200,7 +200,7 @@ if (!class_exists('\Eccube\Entity\Product')) {
         /**
          * Get getClassCategories1
          *
-         * @return array<mixed>
+         * @return array<int, string|null>
          */
         public function getClassCategories1()
         {
@@ -210,7 +210,7 @@ if (!class_exists('\Eccube\Entity\Product')) {
         }
 
         /**
-         * @return array<mixed>
+         * @return array<string,int>
          */
         public function getClassCategories1AsFlip()
         {
@@ -222,7 +222,7 @@ if (!class_exists('\Eccube\Entity\Product')) {
          *
          * @param string $class_category1
          *
-         * @return array<mixed>
+         * @return array<int, string|null>
          */
         public function getClassCategories2($class_category1)
         {
@@ -233,7 +233,7 @@ if (!class_exists('\Eccube\Entity\Product')) {
 
         /**
          * @param string $class_category1
-         * @return array<mixed>
+         * @return array<string,int>
          */
         public function getClassCategories2AsFlip($class_category1)
         {
@@ -285,7 +285,7 @@ if (!class_exists('\Eccube\Entity\Product')) {
         /**
          * Get StockUnlimited min
          *
-         * @return integer
+         * @return bool|null
          */
         public function getStockUnlimitedMin()
         {
@@ -299,7 +299,7 @@ if (!class_exists('\Eccube\Entity\Product')) {
         /**
          * Get StockUnlimited max
          *
-         * @return integer
+         * @return bool|null
          */
         public function getStockUnlimitedMax()
         {
@@ -429,7 +429,7 @@ if (!class_exists('\Eccube\Entity\Product')) {
         /**
          * Get Product_code min
          *
-         * @return integer
+         * @return string|null
          */
         public function getCodeMin()
         {
@@ -448,7 +448,7 @@ if (!class_exists('\Eccube\Entity\Product')) {
         /**
          * Get Product_code max
          *
-         * @return integer
+         * @return string|null
          */
         public function getCodeMax()
         {
@@ -465,7 +465,7 @@ if (!class_exists('\Eccube\Entity\Product')) {
         }
 
         /**
-         * @return mixed|null
+         * @return \Eccube\Entity\ProductImage|null
          */
         public function getMainListImage()
         {
@@ -475,7 +475,7 @@ if (!class_exists('\Eccube\Entity\Product')) {
         }
 
         /**
-         * @return mixed|null
+         * @return \Eccube\Entity\ProductImage|null
          */
         public function getMainFileName()
         {
