@@ -200,7 +200,7 @@ abstract class AbstractEntity implements \ArrayAccess
     /**
      * Convert to XML.
      *
-     * @param array<string,mixed> $excludeAttribute Array of field names to exclusion.
+     * @param array<int|string,mixed> $excludeAttribute Array of field names to exclusion.
      *
      * @return string
      */
