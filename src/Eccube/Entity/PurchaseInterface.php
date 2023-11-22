@@ -18,7 +18,7 @@ interface PurchaseInterface
     /**
      * 合計金額を設定します。
      *
-     * @param int $total
+     * @param int|float|string $total
      *
      * @return mixed
      */
@@ -27,12 +27,12 @@ interface PurchaseInterface
     /**
      * 合計金額を返す。
      *
-     * @return int
+     * @return int|float|string|null
      */
     public function getTotal();
 
     /**
-     * @return mixed
+     * @return \Eccube\Service\PurchaseFlow\ItemCollection<int,\Eccube\Entity\ItemInterface>
      */
     public function getItems();
 }
