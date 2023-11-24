@@ -60,7 +60,7 @@ jobs:
           bin/console eccube:composer:require "ec-cube/sitekit42"
 
       - name: revert to config platform.php
-        run: composer config platform.php 7.4.0
+        run: composer config platform.php 8.1
 
       - name: Pre Install Plugins
         env:
