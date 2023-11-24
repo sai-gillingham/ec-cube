@@ -29,8 +29,8 @@ jobs:
             database_server_version: 14
           - group: admin01
             app_env: 'codeception'
-          - php: '8.2'
-            tag: '8.2-apache'
+          - php: '8.1'
+            tag: '8.1-apache'
     steps:
       - name: downcase REPO
         run: |
