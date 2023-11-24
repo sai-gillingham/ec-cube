@@ -54,13 +54,18 @@ class PluginApiException extends \Exception
         return $message;
     }
 
+    /**
+     * @return array<string, array<string,mixed>|null>
+     */
     public function __debugInfo()
     {
         return [
             'curlInfo' => $this->curlInfo
         ];
     }
-
+    /**
+     * @return array<string, array<string,mixed>|null>
+     */
     public function __serialize(): array
     {
         return [
@@ -68,6 +73,9 @@ class PluginApiException extends \Exception
         ];
     }
 
+    /**
+     * @return string
+     */
     public function __toString(): string
     {
         return parent::__toString().', CURL_INFO:'.json_encode($this->curlInfo ?? []);
