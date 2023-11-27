@@ -18,7 +18,8 @@ modules:
             host: '%WEB_DRIVER_HOST%'
             port: '%WEB_DRIVER_PORT%'
             url: '%BASE_URL%'    # テスト対象のurl
-            window_size: 1920x1680
+            # window_size: 1920x1680
+            window_size: 1680x3000
             wait: 10
             capabilities:
                 unexpectedAlertBehaviour: 'accept'
@@ -68,6 +69,7 @@ env:
                     browser: chrome
                     capabilities:
                         chromeOptions:
-                            args: ["--window-size=1920,1680", "--headless", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage"]
+                            args: ["--headless", "--disable-gpu"]
+                            # args: ["--window-size=1920,1680", "--headless", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage"]
                             prefs:
                                 download.default_directory: '%PWD%/codeception/_support/_downloads'
