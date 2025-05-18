@@ -1,0 +1,19 @@
+FROM ollama/ollama
+
+# Preload the llama3:70b model during build
+RUN  apt-get update && \
+    apt-get install -y curl
+
+RUN ollama serve &
+
+RUN echo "Waiting for Ollama server to start..." && \
+    until ollama list >/dev/null 2>&1; do sleep 1; done && \
+    echo "Ollama server is up!" && \
+    ollama pull llama3:70b && \
+    echo "Model llama3:70b pulled successfully!" && \
+    ollama pull nomic-embed-text && \
+    echo "Model nomic-embed-text pulled successfully!" && \
+    kill $(jobs -p)
+
+# Optional: you can use ENTRYPOINT or CMD here to start the server automatically
+CMD ["ollama", "serve"]
