@@ -1,12 +1,48 @@
 type: llm
 provider: litellm_llm
+timeout: 120
 models:
   - api_base: http://host.docker.internal:11434/v1  # if you are using mac/windows, don't change this; if you are using linux, please search "Run Ollama in docker container" in this page: https://docs.getwren.ai/oss/installation/custom_llm#running-wren-ai-with-your-custom-llm-embedder
-    model: ollama_chat/llama3.1:8b  # ollama_chat/<ollama_model_name>
+    model: ollama_chat/llama3:70b  # ollama_chat/<ollama_model_name>
     timeout: 600
     kwargs:
+      max_tokens: 4096
       n: 1
+      seed: 0
       temperature: 0
+  - alias: default
+    model: gpt-4.1-nano-2025-04-14
+    kwargs:
+      max_tokens: 4096
+      n: 1
+      seed: 0
+      temperature: 0
+  - model: gpt-4.1-mini-2025-04-14
+    kwargs:
+      max_tokens: 4096
+      n: 1
+      seed: 0
+      temperature: 0
+  - model: gpt-4.1-2025-04-14
+    kwargs:
+      max_tokens: 4096
+      n: 1
+      seed: 0
+      temperature: 0
+
+---
+# type: embedder
+# provider: litellm_embedder
+# models:
+#   - model: text-embedding-3-large
+#     alias: default
+#     timeout: 120
+type: embedder
+provider: litellm_embedder
+models:
+  - model: ollama/nomic-embed-text  # put your ollama embedder model name here, openai/<ollama_model_name>
+    api_base: http://host.docker.internal:11434/v1  # if you are using mac/windows, don't change this; if you are using linux, please search "Run Ollama in docker container" in this page: https://docs.getwren.ai/oss/installation/custom_llm#running-wren-ai-with-your-custom-llm-embedder
+    timeout: 600
 ---
 type: engine
 provider: wren_ui
@@ -18,13 +54,18 @@ provider: wren_ibis
 endpoint: http://wren-ibis:8000
 
 ---
+# type: document_store
+# provider: qdrant
+# location: http://qdrant:6333
+# embedding_model_dim: 3072
+# timeout: 120
+# recreate_index: true
 type: document_store
 provider: qdrant
 location: http://qdrant:6333
-embedding_model_dim: 3072
+embedding_model_dim: 768  # put your embedding model dimension here
 timeout: 120
 recreate_index: true
-
 ---
 type: pipeline
 pipes:
